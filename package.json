@@ -11,7 +11,8 @@
     "calculate": "tsx scripts/calculate.ts",
     "test": "node --import tsx/esm --test",
     "knip": "knip",
-    "verify": "pnpm run \"/test|knip/\""
+    "tsc": "tsc",
+    "verify": "pnpm run \"/test|knip|tsc/\""
   },
   "dependencies": {
     "ky": "^1.14.3",
