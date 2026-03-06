@@ -30,6 +30,7 @@ To run a single test file: `node --import tsx/esm --test scripts/calculate.test.
 **Core logic in `lib/`**:
 
 - `calculate.ts` — `buildSeasonChartData(year)` loads race data and accumulates cumulative points per entity per slot; `computeProjections(data, isDriver)` calculates min/max points and best/worst finishing positions from every completed race slot to every future slot
+- `calculation-results.ts` — `readCalculationResults(year)` / `writeCalculationResults(year, data)` for reading and writing `data/YYYY/calculation-results.json`
 - `points.ts` — per-year rules for max points (fastest lap 2019–2024, sprint points 2021+, expanded sprint 2023+)
 - `data.ts` — file I/O: reads races.json, results-N.json, sprint-N.json from `data/YYYY/`
 - `types.ts` — `Race` and `RaceResult` interfaces

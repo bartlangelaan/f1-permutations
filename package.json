@@ -9,7 +9,7 @@
     "start": "next start",
     "fetch-data": "tsx scripts/fetch-data.ts",
     "calculate": "tsx scripts/calculate.ts",
-    "test": "node --import tsx/esm --test",
+    "test": "pnpm calculate && node --import tsx/esm --test",
     "knip": "knip",
     "tsc": "tsc",
     "verify": "pnpm run \"/test|knip|tsc/\""

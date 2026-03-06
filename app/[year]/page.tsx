@@ -1,9 +1,7 @@
-import fs from "fs";
-import path from "path";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getSeasons } from "@/lib/data";
-import type { CalculatedChartData } from "@/lib/calculate";
+import { readCalculationResults } from "@/lib/calculation-results";
 import { SeasonChart } from "./SeasonChart";
 
 interface Props {
@@ -18,16 +16,14 @@ export default async function ChartPage({ params }: Props) {
   const seasons = getSeasons();
   if (!seasons.includes(year)) notFound();
 
-  const chartFile = path.join(process.cwd(), "data", String(year), "chart.json");
-  if (!fs.existsSync(chartFile)) {
+  const data = readCalculationResults(year);
+  if (!data) {
     return (
       <div className="text-zinc-400 p-8">
         Chart data not yet calculated for {year}. Run <code className="text-zinc-200">pnpm calculate</code> to generate it.
       </div>
     );
   }
-
-  const data = JSON.parse(fs.readFileSync(chartFile, "utf-8")) as CalculatedChartData;
   if (data.lastCompletedSlotIndex < 0) notFound();
 
   const currentIdx = seasons.indexOf(year);

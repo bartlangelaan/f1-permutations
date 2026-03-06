@@ -13,6 +13,7 @@ import {
   ReferenceLine,
 } from "recharts";
 import type { CalculatedChartData, EntitySeries, ProjectionMap, TimelineSlot } from "@/lib/calculate";
+import { getEndOfSeasonProjections } from "@/lib/calculation-results";
 
 // Custom tooltip
 function ChartTooltip({
@@ -161,10 +162,8 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
   }
 
   // Get the last (projected) GP for legend info
-  const lastSlotIdx = slots.length - 1;
-  const lastSlot = slots[lastSlotIdx];
-  const lastGpProjections: Record<string, any> | null =
-    lastSlot && selectedIdx < lastSlotIdx ? projections[selectedIdx]?.[lastSlotIdx] : null;
+  const lastSlot = slots[slots.length - 1];
+  const lastGpProjections = getEndOfSeasonProjections(data, selectedIdx, isDriverMode);
 
   return (
     <div className="space-y-4">
