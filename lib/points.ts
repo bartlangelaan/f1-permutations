@@ -34,13 +34,3 @@ export function maxSprintPointsConstructor(year: number): number {
   if (year >= SPRINT_YEAR) return 5;
   return 0;
 }
-
-/** Maximum points a driver can earn across a full race weekend. */
-export function maxWeekendPointsDriver(year: number, hasSprint: boolean): number {
-  return maxRacePointsDriver(year) + (hasSprint ? maxSprintPointsDriver(year) : 0);
-}
-
-/** Maximum points a constructor can earn across a full race weekend. */
-export function maxWeekendPointsConstructor(year: number, hasSprint: boolean): number {
-  return maxRacePointsConstructor(year) + (hasSprint ? maxSprintPointsConstructor(year) : 0);
-}

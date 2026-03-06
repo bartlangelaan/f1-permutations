@@ -63,14 +63,6 @@ export default async function ChartPage({ params }: Props) {
           </p>
         </div>
 
-        <div className="flex gap-2">
-          <Link
-            href={`/${year}`}
-            className="text-sm border border-zinc-700 rounded px-3 py-1.5 hover:border-zinc-500 text-zinc-400 hover:text-white transition-colors"
-          >
-            Race list
-          </Link>
-        </div>
       </div>
 
       <SeasonChart data={data} />

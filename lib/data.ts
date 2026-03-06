@@ -45,33 +45,3 @@ export function getSprintResults(year: number, round: number): RaceResult[] | nu
   return JSON.parse(fs.readFileSync(file, "utf-8")) as RaceResult[];
 }
 
-/**
- * Returns results for all rounds from 1 up to and including the given round.
- * Each entry in the returned array is the combined race + sprint results for a round.
- * Skips rounds with no results file (e.g. future races).
- */
-export function getResults(year: number, upToRound: number): RaceResult[][] {
-  const results: RaceResult[][] = [];
-  for (let round = 1; round <= upToRound; round++) {
-    const race = getRoundResults(year, round);
-    if (race === null) continue;
-    const sprint = getSprintResults(year, round);
-    // Combine race and sprint results — both contribute championship points
-    results.push(sprint ? [...race, ...sprint] : race);
-  }
-  return results;
-}
-
-/**
- * Returns the last completed round for a given year.
- * Returns 0 if no results exist yet.
- */
-export function getLastCompletedRound(year: number): number {
-  const races = getRaces(year);
-  let last = 0;
-  for (const race of races) {
-    const r = getRoundResults(year, race.round);
-    if (r !== null && r.length > 0) last = race.round;
-  }
-  return last;
-}
