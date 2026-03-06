@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildSeasonChartData, computeProjections } from '../lib/timeline.ts';
+import { buildSeasonChartData, computeProjections } from '../lib/calculate.ts';
 
 test('Check the calculation result of 2025 after race 23', () => {
   // We always check the calculation of the last race.

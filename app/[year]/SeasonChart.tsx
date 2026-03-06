@@ -12,7 +12,7 @@ import {
   ResponsiveContainer,
   ReferenceLine,
 } from "recharts";
-import type { CalculatedChartData, EntitySeries, ProjectionMap, TimelineSlot } from "@/lib/timeline";
+import type { CalculatedChartData, EntitySeries, ProjectionMap, TimelineSlot } from "@/lib/calculate";
 
 // Custom tooltip
 function ChartTooltip({

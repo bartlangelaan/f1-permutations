@@ -3,7 +3,7 @@ import path from "path";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getSeasons } from "@/lib/data";
-import type { CalculatedChartData } from "@/lib/timeline";
+import type { CalculatedChartData } from "@/lib/calculate";
 import { SeasonChart } from "./SeasonChart";
 
 interface Props {

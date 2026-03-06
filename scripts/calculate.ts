@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { getSeasons } from "../lib/data";
-import { buildSeasonChartData, computeProjections } from "../lib/timeline";
+import { buildSeasonChartData, computeProjections } from "../lib/calculate";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 
