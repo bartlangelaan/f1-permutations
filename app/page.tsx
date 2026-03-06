@@ -11,5 +11,5 @@ export default function Home() {
       </div>
     );
   }
-  redirect(`/${seasons[0]}/chart`);
+  redirect(`/${seasons[0]}`);
 }

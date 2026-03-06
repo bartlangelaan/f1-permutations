@@ -42,7 +42,7 @@ export default async function ChartPage({ params }: Props) {
           <div className="flex items-center gap-3 mb-1">
             {prevYear && (
               <Link
-                href={`/${prevYear}/chart`}
+                href={`/${prevYear}`}
                 className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors"
               >
                 ← {prevYear}
@@ -51,7 +51,7 @@ export default async function ChartPage({ params }: Props) {
             <h1 className="text-2xl font-bold">{year} Season</h1>
             {nextYear && (
               <Link
-                href={`/${nextYear}/chart`}
+                href={`/${nextYear}`}
                 className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors"
               >
                 {nextYear} →
