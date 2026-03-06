@@ -29,6 +29,16 @@ test('Check the calculation result of 2025 after race 23', () => {
   const gaslyProjection = proj[finalSlotIdx][gasly.id];
   assert.ok(gaslyProjection, 'Gasly end-of-season projection not found');
 
+  // Check current state at round 23 using cumulativePoints from the data
+  const gaslyCurrentPts = gasly.cumulativePoints[slot23raceIdx];
+  // Current points after race 23 are 22
+  assert.equal(gaslyCurrentPts, 22);
+  // Current position after race 23 is P18
+  const gaslyCurrentPos = 1 + data.drivers.filter(
+    d => d.id !== gasly.id && (d.cumulativePoints[slot23raceIdx] ?? 0) > gaslyCurrentPts!
+  ).length;
+  assert.equal(gaslyCurrentPos, 18);
+
   // Pierre Gasly has a minimum of 22 points (current points after round 23)
   assert.equal(gaslyProjection.minPts, 22);
   // Pierre Gasly has a maximum of 47 points (22 + 25 from Abu Dhabi)
