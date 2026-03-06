@@ -9,7 +9,9 @@
     "start": "next start",
     "fetch-data": "tsx scripts/fetch-data.ts",
     "calculate": "tsx scripts/calculate.ts",
-    "test": "node --import tsx/esm --test"
+    "test": "node --import tsx/esm --test",
+    "knip": "knip",
+    "verify": "pnpm run \"/test|knip/\""
   },
   "dependencies": {
     "ky": "^1.14.3",
@@ -23,6 +25,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "knip": "^5.85.0",
+    "postcss": "^8.5.8",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5"

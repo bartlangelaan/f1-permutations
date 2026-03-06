@@ -4,7 +4,7 @@ import { maxWeekendPointsDriver, maxWeekendPointsConstructor } from "./points";
 /**
  * Compute driver standings from an array of race results (multiple rounds).
  */
-export function computeDriverStandings(allResults: RaceResult[][]): StandingsEntry[] {
+function computeDriverStandings(allResults: RaceResult[][]): StandingsEntry[] {
   const totals = new Map<string, { name: string; points: number; wins: number }>();
 
   for (const raceResults of allResults) {
@@ -26,7 +26,7 @@ export function computeDriverStandings(allResults: RaceResult[][]): StandingsEnt
 /**
  * Compute constructor standings from an array of race results.
  */
-export function computeConstructorStandings(allResults: RaceResult[][]): StandingsEntry[] {
+function computeConstructorStandings(allResults: RaceResult[][]): StandingsEntry[] {
   const totals = new Map<string, { name: string; points: number; wins: number }>();
 
   for (const raceResults of allResults) {

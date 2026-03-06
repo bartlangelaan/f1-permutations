@@ -62,7 +62,7 @@ export interface EntitySeries {
   cumulativePoints: (number | null)[];
 }
 
-export interface SeasonChartData {
+interface SeasonChartData {
   year: number;
   slots: TimelineSlot[];
   /** Index of the last completed slot, -1 if none */

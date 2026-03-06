@@ -1,13 +1,13 @@
 // Fastest lap bonus point: introduced 2019, removed 2025
-export const FASTEST_LAP_POINT_YEAR = 2019;
-export const FASTEST_LAP_POINT_REMOVED_YEAR = 2025;
+const FASTEST_LAP_POINT_YEAR = 2019;
+const FASTEST_LAP_POINT_REMOVED_YEAR = 2025;
 
 // Sprint races: introduced 2021, expanded points system 2023
-export const SPRINT_YEAR = 2021;
-export const SPRINT_EXPANDED_YEAR = 2023;
+const SPRINT_YEAR = 2021;
+const SPRINT_EXPANDED_YEAR = 2023;
 
 /** Whether a year awards a fastest lap bonus point in the main race. */
-export function hasFastestLapPoint(year: number): boolean {
+function hasFastestLapPoint(year: number): boolean {
   return year >= FASTEST_LAP_POINT_YEAR && year < FASTEST_LAP_POINT_REMOVED_YEAR;
 }
 
