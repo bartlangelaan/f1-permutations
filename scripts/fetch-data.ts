@@ -57,60 +57,63 @@ async function fetchSeason(year: number) {
 
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
-  // For seasons before sprints were introduced (pre-2021), cached files without
-  // hasSprint are fine — we can return them directly. For 2021+, we need to
-  // re-fetch if hasSprint is missing (one-time migration).
+  // Reuse cache if it already has normalized event entries.
   if (fs.existsSync(racesFile)) {
     const cached = JSON.parse(fs.readFileSync(racesFile, "utf-8"));
-    if (year < 2021 || cached[0]?.hasSprint !== undefined) {
+    if (cached[0]?.raceNumber !== undefined && cached[0]?.type !== undefined) {
       console.log(`  [skip] ${year}/races.json already cached`);
-      return cached as { round: number; raceName: string; date: string; circuit: string; hasSprint: boolean }[];
+      return cached as { raceNumber: number; round: number; type: "race" | "sprint"; raceName: string; date: string; circuit: string }[];
     }
-    console.log(`  [refresh] ${year}/races.json missing hasSprint field`);
+    console.log(`  [refresh] ${year}/races.json needs normalized event format`);
   }
 
   console.log(`  [fetch] ${year} schedule`);
   const data = await fetchJSON(`${year}.json?limit=100`);
   const rawRaces = data?.MRData?.RaceTable?.Races ?? [];
-  const races = rawRaces.map((r: any) => ({
-    round: Number(r.round),
-    raceName: r.raceName,
-    date: r.date,
-    circuit: r.Circuit?.circuitName ?? "",
-    hasSprint: Boolean(r.Sprint),
-  }));
+  let raceNumber = 1;
+  const races = rawRaces.flatMap((r: any) => {
+    const entries: Array<{ raceNumber: number; round: number; type: "race" | "sprint"; raceName: string; date: string; circuit: string }> = [];
+    if (r.Sprint) {
+      entries.push({
+        raceNumber: raceNumber++,
+        round: Number(r.round),
+        type: "sprint",
+        raceName: r.raceName,
+        date: r.Sprint.date ?? r.date,
+        circuit: r.Circuit?.circuitName ?? "",
+      });
+    }
+
+    entries.push({
+      raceNumber: raceNumber++,
+      round: Number(r.round),
+      type: "race",
+      raceName: r.raceName,
+      date: r.date,
+      circuit: r.Circuit?.circuitName ?? "",
+    });
+
+    return entries;
+  });
   fs.writeFileSync(racesFile, JSON.stringify(races, null, 2));
   await sleep(DELAY_MS);
   return races;
 }
 
-async function fetchRaceResults(year: number, round: number) {
+async function fetchEventResults(year: number, raceNumber: number, round: number, type: "race" | "sprint") {
   const dir = path.join(DATA_DIR, String(year));
-  const file = path.join(dir, `results-${round}.json`);
+  const file = path.join(dir, `results-${raceNumber}.json`);
+  const endpoint = type === "sprint" ? "sprint" : "results";
+  const resultPath = type === "sprint" ? "SprintResults" : "Results";
 
   if (!fs.existsSync(file)) {
-    console.log(`  [fetch] ${year} round ${round} results`);
-    const data = await fetchJSON(`${year}/${round}/results.json?limit=100`);
-    const rawResults = data?.MRData?.RaceTable?.Races?.[0]?.Results ?? [];
+    console.log(`  [fetch] ${year} race ${raceNumber} (${type}, round ${round}) results`);
+    const data = await fetchJSON(`${year}/${round}/${endpoint}.json?limit=100`);
+    const rawResults = data?.MRData?.RaceTable?.Races?.[0]?.[resultPath] ?? [];
     fs.writeFileSync(file, JSON.stringify(mapResults(rawResults), null, 2));
     await sleep(DELAY_MS);
   } else {
-    console.log(`  [skip] ${year}/results-${round}.json already cached`);
-  }
-}
-
-async function fetchSprintResults(year: number, round: number) {
-  const dir = path.join(DATA_DIR, String(year));
-  const file = path.join(dir, `sprint-${round}.json`);
-
-  if (!fs.existsSync(file)) {
-    console.log(`  [fetch] ${year} round ${round} sprint results`);
-    const data = await fetchJSON(`${year}/${round}/sprint.json?limit=100`);
-    const rawResults = data?.MRData?.RaceTable?.Races?.[0]?.SprintResults ?? [];
-    fs.writeFileSync(file, JSON.stringify(mapResults(rawResults), null, 2));
-    await sleep(DELAY_MS);
-  } else {
-    console.log(`  [skip] ${year}/sprint-${round}.json already cached`);
+    console.log(`  [skip] ${year}/results-${raceNumber}.json already cached`);
   }
 }
 
@@ -122,10 +125,7 @@ async function main() {
     const races = await fetchSeason(year);
 
     for (const race of races) {
-      await fetchRaceResults(year, race.round);
-      if (race.hasSprint) {
-        await fetchSprintResults(year, race.round);
-      }
+      await fetchEventResults(year, race.raceNumber, race.round, race.type);
     }
   }
 
