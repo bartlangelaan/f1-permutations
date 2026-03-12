@@ -13,7 +13,7 @@ import {
   ReferenceLine,
 } from "recharts";
 import type { CalculatedChartData, EntitySeries, ProjectionMap, TimelineSlot } from "@/lib/calculate";
-import { getEndOfSeasonProjections } from "@/lib/calculation-results";
+import { getEndOfSeasonProjections } from "@/lib/projections";
 
 // Custom tooltip
 function ChartTooltip({

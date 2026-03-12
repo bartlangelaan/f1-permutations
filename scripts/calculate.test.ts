@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readCalculationResults, getEndOfSeasonProjections } from '../lib/calculation-results.ts';
+import { readCalculationResults } from '../lib/calculation-results.ts';
+import { getEndOfSeasonProjections } from '../lib/projections.ts';
 
 test('Check the calculation result of 2025 after race 23', () => {
   const year = 2025;
