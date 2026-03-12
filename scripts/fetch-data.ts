@@ -104,15 +104,22 @@ async function fetchEventResults(year: number, raceNumber: number, round: number
   const endpoint = type === "sprint" ? "sprint" : "results";
   const resultPath = type === "sprint" ? "SprintResults" : "Results";
 
-  if (!fs.existsSync(file)) {
-    console.log(`  [fetch] ${year} race ${raceNumber} (${type}, round ${round}) results`);
-    const data = await fetchJSON(`${year}/${round}/${endpoint}.json?limit=100`);
-    const rawResults = data?.MRData?.RaceTable?.Races?.[0]?.[resultPath] ?? [];
-    fs.writeFileSync(file, JSON.stringify(mapResults(rawResults), null, 2));
-    await sleep(DELAY_MS);
-  } else {
+  if (fs.existsSync(file)) {
     console.log(`  [skip] ${year}/results-${raceNumber}.json already cached`);
+    return true;
   }
+
+  console.log(`  [fetch] ${year} race ${raceNumber} (${type}, round ${round}) results`);
+  const data = await fetchJSON(`${year}/${round}/${endpoint}.json?limit=100`);
+  const rawResults = data?.MRData?.RaceTable?.Races?.[0]?.[resultPath] ?? [];
+  if (rawResults.length === 0) {
+    console.log(`  [stop] no ${type} results available for ${year} round ${round}; stopping this season`);
+    return false;
+  }
+
+  fs.writeFileSync(file, JSON.stringify(mapResults(rawResults), null, 2));
+  await sleep(DELAY_MS);
+  return true;
 }
 
 async function main() {
@@ -123,7 +130,8 @@ async function main() {
     const races = await fetchSeason(year);
 
     for (const race of races) {
-      await fetchEventResults(year, race.raceNumber, race.round, race.type);
+      const hasResults = await fetchEventResults(year, race.raceNumber, race.round, race.type);
+      if (!hasResults) break;
     }
   }
 
