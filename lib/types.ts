@@ -4,7 +4,6 @@ export interface Race {
   type: "race" | "sprint";
   raceName: string;
   date: string;
-  circuit: string;
 }
 
 export interface RaceResult {

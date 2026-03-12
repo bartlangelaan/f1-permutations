@@ -62,7 +62,7 @@ async function fetchSeason(year: number) {
     const cached = JSON.parse(fs.readFileSync(racesFile, "utf-8"));
     if (cached[0]?.raceNumber !== undefined && cached[0]?.type !== undefined) {
       console.log(`  [skip] ${year}/races.json already cached`);
-      return cached as { raceNumber: number; round: number; type: "race" | "sprint"; raceName: string; date: string; circuit: string }[];
+      return cached as { raceNumber: number; round: number; type: "race" | "sprint"; raceName: string; date: string }[];
     }
     console.log(`  [refresh] ${year}/races.json needs normalized event format`);
   }
@@ -72,7 +72,7 @@ async function fetchSeason(year: number) {
   const rawRaces = data?.MRData?.RaceTable?.Races ?? [];
   let raceNumber = 1;
   const races = rawRaces.flatMap((r: any) => {
-    const entries: Array<{ raceNumber: number; round: number; type: "race" | "sprint"; raceName: string; date: string; circuit: string }> = [];
+    const entries: Array<{ raceNumber: number; round: number; type: "race" | "sprint"; raceName: string; date: string }> = [];
     if (r.Sprint) {
       entries.push({
         raceNumber: raceNumber++,
@@ -80,7 +80,6 @@ async function fetchSeason(year: number) {
         type: "sprint",
         raceName: r.raceName,
         date: r.Sprint.date ?? r.date,
-        circuit: r.Circuit?.circuitName ?? "",
       });
     }
 
@@ -90,7 +89,6 @@ async function fetchSeason(year: number) {
       type: "race",
       raceName: r.raceName,
       date: r.date,
-      circuit: r.Circuit?.circuitName ?? "",
     });
 
     return entries;
