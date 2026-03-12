@@ -107,14 +107,8 @@ async function fetchEventResults(year: number, raceNumber: number, round: number
   const resultPath = type === "sprint" ? "SprintResults" : "Results";
 
   if (fs.existsSync(file)) {
-    const cached = JSON.parse(fs.readFileSync(file, "utf-8"));
-    if (Array.isArray(cached) && cached.length > 0) {
-      console.log(`  [skip] ${year}/results-${raceNumber}.json already cached`);
-      return true;
-    }
-
-    fs.rmSync(file);
-    console.log(`  [cleanup] removed empty cache file ${year}/results-${raceNumber}.json`);
+    console.log(`  [skip] ${year}/results-${raceNumber}.json already cached`);
+    return true;
   }
 
   console.log(`  [fetch] ${year} race ${raceNumber} (${type}, round ${round}) results`);
