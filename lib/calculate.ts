@@ -1,4 +1,4 @@
-import { getRaces, getRoundResults, getSprintResults } from "./data";
+import { getEventResults, getRaces } from "./data";
 import { maxRacePointsDriver, maxRacePointsConstructor, maxSprintPointsDriver, maxSprintPointsConstructor } from "./points";
 
 // Official / near-official team colors for every constructor since 2010
@@ -43,6 +43,7 @@ function teamColor(constructorId: string, fallbackIdx: number): string {
 
 export interface TimelineSlot {
   key: string;
+  raceNumber: number;
   round: number;
   type: "sprint" | "race";
   /** Short x-axis label, e.g. "R1" or "S4" */
@@ -82,33 +83,22 @@ export interface CalculatedChartData extends SeasonChartData {
 export function buildSeasonChartData(year: number): SeasonChartData {
   const races = getRaces(year);
 
-  // Build ordered event slots (sprint before race for sprint weekends)
-  const slots: TimelineSlot[] = [];
-  for (const race of races) {
+  // Build ordered event slots from normalized race data.
+  const slots: TimelineSlot[] = races.map((race) => {
     const shortName = race.raceName.replace(" Grand Prix", " GP");
-    if (race.hasSprint) {
-      slots.push({
-        key: `${race.round}-sprint`,
-        round: race.round,
-        type: "sprint",
-        label: `S${race.round}`,
-        fullLabel: `R${race.round} Sprint`,
-        maxDriverPoints: maxSprintPointsDriver(year),
-        maxConstructorPoints: maxSprintPointsConstructor(year),
-        completed: false,
-      });
-    }
-    slots.push({
-      key: `${race.round}-race`,
+    return {
+      key: `${race.raceNumber}-${race.type}`,
+      raceNumber: race.raceNumber,
       round: race.round,
-      type: "race",
-      label: `R${race.round}`,
-      fullLabel: shortName,
-      maxDriverPoints: maxRacePointsDriver(year),
-      maxConstructorPoints: maxRacePointsConstructor(year),
+      type: race.type,
+      label: `R${race.raceNumber}`,
+      fullLabel: race.type === "sprint" ? `R${race.raceNumber} ${shortName} Sprint` : shortName,
+      maxDriverPoints: race.type === "sprint" ? maxSprintPointsDriver(year) : maxRacePointsDriver(year),
+      maxConstructorPoints:
+        race.type === "sprint" ? maxSprintPointsConstructor(year) : maxRacePointsConstructor(year),
       completed: false,
-    });
-  }
+    };
+  });
 
   // Accumulate cumulative points slot-by-slot
   const driverCum = new Map<string, number>();
@@ -124,10 +114,7 @@ export function buildSeasonChartData(year: number): SeasonChartData {
 
   for (let i = 0; i < slots.length; i++) {
     const slot = slots[i];
-    const results =
-      slot.type === "sprint"
-        ? getSprintResults(year, slot.round)
-        : getRoundResults(year, slot.round);
+    const results = getEventResults(year, slot.raceNumber);
 
     if (results !== null && results.length > 0) {
       slot.completed = true;

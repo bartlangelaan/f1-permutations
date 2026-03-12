@@ -26,22 +26,10 @@ export function getRaces(year: number): Race[] {
 }
 
 /**
- * Returns the results for a specific round (race only).
- * Returns null if the file doesn't exist (race not yet run).
+ * Returns the results for a specific event raceNumber.
  */
-export function getRoundResults(year: number, round: number): RaceResult[] | null {
-  const file = path.join(DATA_DIR, String(year), `results-${round}.json`);
+export function getEventResults(year: number, raceNumber: number): RaceResult[] | null {
+  const file = path.join(DATA_DIR, String(year), `results-${raceNumber}.json`);
   if (!fs.existsSync(file)) return null;
   return JSON.parse(fs.readFileSync(file, "utf-8")) as RaceResult[];
 }
-
-/**
- * Returns sprint results for a specific round.
- * Returns null if the file doesn't exist (no sprint or not yet run).
- */
-export function getSprintResults(year: number, round: number): RaceResult[] | null {
-  const file = path.join(DATA_DIR, String(year), `sprint-${round}.json`);
-  if (!fs.existsSync(file)) return null;
-  return JSON.parse(fs.readFileSync(file, "utf-8")) as RaceResult[];
-}
-

@@ -1,9 +1,10 @@
 export interface Race {
+  raceNumber: number;
   round: number;
+  type: "race" | "sprint";
   raceName: string;
   date: string;
   circuit: string;
-  hasSprint: boolean;
 }
 
 export interface RaceResult {
