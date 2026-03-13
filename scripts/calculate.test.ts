@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readCalculationResults } from '../lib/calculation-results.ts';
+import type { ProjectionMap } from '../lib/calculate.ts';
 import { getEndOfSeasonProjections } from '../lib/projections.ts';
 
 test('Check the calculation result of 2025 after race 23', () => {
@@ -38,6 +39,61 @@ test('Check the calculation result of 2025 after race 23', () => {
   assert.equal(gaslyProjection.maxPts, 47);
   // Pierre Gasly has P13 as best possible position (12 drivers have > 47 pts guaranteed above him)
   assert.equal(gaslyProjection.bestPos, 13);
-  // Pierre Gasly has P21 as worst possible position (all 3 drivers below him can overtake)
-  assert.equal(gaslyProjection.worstPos, 21);
+  // Pierre Gasly has P20 as worst possible position (only 2 of the 3 drivers below can overtake in one race)
+  assert.equal(gaslyProjection.worstPos, 20);
+});
+
+
+function positionAtSlot(pointsAtSlot: Map<string, number>, entityId: string): number {
+  const pts = pointsAtSlot.get(entityId) ?? 0;
+  return 1 + [...pointsAtSlot.entries()].filter(([id, otherPts]) => id !== entityId && otherPts > pts).length;
+}
+
+function validateProjectionAgainstActual(
+  projections: ProjectionMap,
+  entities: { id: string; cumulativePoints: (number | null)[] }[],
+  selectedIdx: number,
+  futureIdx: number,
+  label: string
+): void {
+  const projectionForFuture = projections[String(selectedIdx)]?.[String(futureIdx)];
+  assert.ok(projectionForFuture, `${label}: missing projection for selected=${selectedIdx}, future=${futureIdx}`);
+
+  const pointsAtFuture = new Map<string, number>();
+  for (const entity of entities) {
+    const actualPts = entity.cumulativePoints[futureIdx] ?? 0;
+    pointsAtFuture.set(entity.id, actualPts);
+  }
+
+  for (const entity of entities) {
+    const entry = projectionForFuture[entity.id];
+    assert.ok(entry, `${label}: missing entity projection for ${entity.id}`);
+
+    const actualPts = pointsAtFuture.get(entity.id)!;
+    assert.ok(
+      actualPts >= entry.minPts && actualPts <= entry.maxPts,
+      `${label}: ${entity.id} points ${actualPts} not in [${entry.minPts}, ${entry.maxPts}] for selected=${selectedIdx}, future=${futureIdx}`
+    );
+
+    const actualPos = positionAtSlot(pointsAtFuture, entity.id);
+    assert.ok(
+      actualPos >= entry.bestPos && actualPos <= entry.worstPos,
+      `${label}: ${entity.id} position ${actualPos} not in [${entry.bestPos}, ${entry.worstPos}] for selected=${selectedIdx}, future=${futureIdx}`
+    );
+  }
+}
+
+test('All projections contain actual future points and positions for completed slots across all seasons', () => {
+  for (let year = 2010; year <= 2026; year++) {
+    const data = readCalculationResults(year);
+    assert.ok(data, `No calculation results found for ${year}. Run pnpm calculate first.`);
+
+    for (let selectedIdx = 0; selectedIdx <= data.lastCompletedSlotIndex; selectedIdx++) {
+      for (let futureIdx = selectedIdx + 1; futureIdx <= data.lastCompletedSlotIndex; futureIdx++) {
+        if (!data.slots[futureIdx].completed) continue;
+        validateProjectionAgainstActual(data.driverProjections, data.drivers, selectedIdx, futureIdx, `drivers-${year}`);
+        validateProjectionAgainstActual(data.constructorProjections, data.constructors, selectedIdx, futureIdx, `constructors-${year}`);
+      }
+    }
+  }
 });

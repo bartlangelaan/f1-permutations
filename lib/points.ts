@@ -4,7 +4,7 @@ const FASTEST_LAP_POINT_REMOVED_YEAR = 2025;
 
 // Sprint races: introduced 2021, expanded points system 2023
 const SPRINT_YEAR = 2021;
-const SPRINT_EXPANDED_YEAR = 2023;
+const SPRINT_EXPANDED_YEAR = 2022;
 
 /** Whether a year awards a fastest lap bonus point in the main race. */
 function hasFastestLapPoint(year: number): boolean {
@@ -33,4 +33,20 @@ export function maxSprintPointsConstructor(year: number): number {
   if (year >= SPRINT_EXPANDED_YEAR) return 15;
   if (year >= SPRINT_YEAR) return 5;
   return 0;
+}
+
+/** Driver points awarded by finishing position in a race (descending). */
+export function raceDriverMaxPointsByPosition(year: number): number[] {
+  const base = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1];
+  if (hasFastestLapPoint(year)) {
+    return base.map((pts) => pts + 1);
+  }
+  return base;
+}
+
+/** Driver points awarded by finishing position in a sprint (descending). */
+export function sprintDriverPointsByPosition(year: number): number[] {
+  if (year >= SPRINT_EXPANDED_YEAR) return [8, 7, 6, 5, 4, 3, 2, 1];
+  if (year >= SPRINT_YEAR) return [3, 2, 1];
+  return [];
 }

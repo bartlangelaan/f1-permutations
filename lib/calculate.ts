@@ -1,5 +1,12 @@
 import { getEventResults, getRaces } from "./data";
-import { maxRacePointsDriver, maxRacePointsConstructor, maxSprintPointsDriver, maxSprintPointsConstructor } from "./points";
+import {
+  maxRacePointsDriver,
+  maxRacePointsConstructor,
+  maxSprintPointsDriver,
+  maxSprintPointsConstructor,
+  raceDriverMaxPointsByPosition,
+  sprintDriverPointsByPosition,
+} from "./points";
 
 // Official / near-official team colors for every constructor since 2010
 const TEAM_COLORS: Record<string, string> = {
@@ -39,6 +46,57 @@ const FALLBACK_COLORS = [
 
 function teamColor(constructorId: string, fallbackIdx: number): string {
   return TEAM_COLORS[constructorId] ?? FALLBACK_COLORS[fallbackIdx % FALLBACK_COLORS.length];
+}
+
+
+function maxOvertakesSingleDriverSlot(basePts: Map<string, number>, targetId: string, targetMinPts: number, slotPoints: number[]): number {
+  const threshold = targetMinPts + 1;
+  const deficits: number[] = [];
+  let alreadyAhead = 0;
+
+  for (const [id, pts] of basePts.entries()) {
+    if (id === targetId) continue;
+    const need = threshold - pts;
+    if (need <= 0) {
+      alreadyAhead++;
+    } else if (need <= slotPoints[0]) {
+      deficits.push(need);
+    }
+  }
+
+  deficits.sort((a, b) => a - b);
+  const available = [...slotPoints].sort((a, b) => a - b);
+
+  let additionalOvertakes = 0;
+  let i = 0;
+  let j = 0;
+  while (i < deficits.length && j < available.length) {
+    if (available[j] >= deficits[i]) {
+      additionalOvertakes++;
+      i++;
+      j++;
+    } else {
+      j++;
+    }
+  }
+
+  return alreadyAhead + additionalOvertakes;
+}
+
+
+function driverPointsByPositionForSlot(year: number, slot: TimelineSlot): number[] {
+  if (slot.type === "sprint") {
+    return sprintDriverPointsByPosition(year);
+  }
+
+  const baseRacePoints = raceDriverMaxPointsByPosition(year);
+  const standardRaceMax = maxRacePointsDriver(year);
+  if (slot.maxDriverPoints === standardRaceMax) {
+    return baseRacePoints;
+  }
+
+  const multiplier = slot.maxDriverPoints / standardRaceMax;
+  return baseRacePoints.map((pts) => pts * multiplier);
 }
 
 export interface TimelineSlot {
@@ -93,9 +151,18 @@ export function buildSeasonChartData(year: number): SeasonChartData {
       type: race.type,
       label: `R${race.raceNumber}`,
       fullLabel: race.type === "sprint" ? `R${race.raceNumber} ${shortName} Sprint` : shortName,
-      maxDriverPoints: race.type === "sprint" ? maxSprintPointsDriver(year) : maxRacePointsDriver(year),
+      maxDriverPoints:
+        year === 2014 && race.type === "race" && race.round === 19
+          ? 50
+          : race.type === "sprint"
+            ? maxSprintPointsDriver(year)
+            : maxRacePointsDriver(year),
       maxConstructorPoints:
-        race.type === "sprint" ? maxSprintPointsConstructor(year) : maxRacePointsConstructor(year),
+        year === 2014 && race.type === "race" && race.round === 19
+          ? 86
+          : race.type === "sprint"
+            ? maxSprintPointsConstructor(year)
+            : maxRacePointsConstructor(year),
       completed: false,
     };
   });
@@ -194,7 +261,14 @@ export function computeProjections(data: SeasonChartData, isDriver: boolean): Pr
       const slotData: Record<string, ProjectionEntry> = {};
       for (const e of ranges) {
         const bestPos = 1 + ranges.filter((o) => o.id !== e.id && o.minPts > e.maxPts).length;
-        const worstPos = 1 + ranges.filter((o) => o.id !== e.id && o.maxPts > e.minPts).length;
+        let worstPos = 1 + ranges.filter((o) => o.id !== e.id && o.maxPts > e.minPts).length;
+
+        if (isDriver && j === selectedIdx + 1) {
+          const slotPoints = driverPointsByPositionForSlot(data.year, slot);
+          const maxOvertakes = maxOvertakesSingleDriverSlot(basePts, e.id, e.minPts, slotPoints);
+          worstPos = 1 + maxOvertakes;
+        }
+
         slotData[e.id] = { minPts: e.minPts, maxPts: e.maxPts, bestPos, worstPos };
       }
 
