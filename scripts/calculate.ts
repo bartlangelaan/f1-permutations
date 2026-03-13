@@ -1,6 +1,9 @@
 import { getSeasons } from "../lib/data";
-import { buildSeasonChartData, computeProjections } from "../lib/calculate";
-import { writeCalculationResults } from "../lib/calculation-results";
+import { buildSeasonChartData, computeProjectionsForSelectedSlot } from "../lib/calculate";
+import {
+  writeCalculationResults,
+  writeCalculationResultsForSelectedSlot,
+} from "../lib/calculation-results";
 
 const seasons = getSeasons();
 console.log(`Processing ${seasons.length} seasons...`);
@@ -14,9 +17,20 @@ for (const year of seasons) {
     continue;
   }
 
-  const driverProjections = computeProjections(data, true);
-  const constructorProjections = computeProjections(data, false);
-  writeCalculationResults(year, { ...data, driverProjections, constructorProjections });
+  writeCalculationResults(year, data);
+
+  for (let selectedIdx = 0; selectedIdx <= data.lastCompletedSlotIndex; selectedIdx++) {
+    const slot = data.slots[selectedIdx];
+
+    const driverProjections = computeProjectionsForSelectedSlot(data, selectedIdx, true);
+    const constructorProjections = computeProjectionsForSelectedSlot(data, selectedIdx, false);
+
+    writeCalculationResultsForSelectedSlot(year, slot.raceNumber, selectedIdx, {
+      driverProjections,
+      constructorProjections,
+    });
+  }
+
   console.log("done");
 }
 
