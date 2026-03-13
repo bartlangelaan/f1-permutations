@@ -4,8 +4,14 @@ import { getSeasons } from "@/lib/data";
 import { readCalculationResults } from "@/lib/calculation-results";
 import { SeasonChart } from "./SeasonChart";
 
+export const dynamicParams = false;
+
 interface Props {
   params: Promise<{ year: string }>;
+}
+
+export function generateStaticParams() {
+  return getSeasons().map((year) => ({ year: String(year) }));
 }
 
 export default async function ChartPage({ params }: Props) {
