@@ -133,9 +133,206 @@ interface SeasonChartData {
 export type ProjectionEntry = { minPts: number; maxPts: number; bestPos: number; worstPos: number };
 /** projections[selectedIdx][futureSlotIdx][entityId] */
 export type ProjectionMap = Record<string, Record<string, Record<string, ProjectionEntry>>>;
+
+type LockCondition = {
+  opponentId: string;
+  points: number;
+};
+
+export type LockInsight =
+  | {
+      type: "already_locked_in";
+      entityId: string;
+      position: number;
+    }
+  | {
+      type: "can_be_locked_in_next_race";
+      entityId: string;
+      position: number;
+      nextSlotIndex: number;
+      mustOutscoreBy: LockCondition[];
+      mustBeOutscoredBy: LockCondition[];
+    }
+  | {
+      type: "can_be_locked_in_later";
+      entityId: string;
+      position: number;
+      earliestSlotIndex: number;
+    };
+
+/** lockInsights[selectedIdx][entityId-position] */
+export type LockInsightMap = Record<string, Record<string, LockInsight>>;
+
 export interface CalculatedChartData extends SeasonChartData {
   driverProjections: ProjectionMap;
   constructorProjections: ProjectionMap;
+  driverLockInsights: LockInsightMap;
+  constructorLockInsights: LockInsightMap;
+}
+
+function slotMaxPoints(slot: TimelineSlot, isDriver: boolean): number {
+  return isDriver ? slot.maxDriverPoints : slot.maxConstructorPoints;
+}
+
+function cumulativeMaxPoints(slots: TimelineSlot[], fromExclusive: number, toInclusive: number, isDriver: boolean): number {
+  if (toInclusive <= fromExclusive) return 0;
+  let total = 0;
+  for (let i = fromExclusive + 1; i <= toInclusive; i++) {
+    total += slotMaxPoints(slots[i], isDriver);
+  }
+  return total;
+}
+
+function findLockPlanForPosition(
+  entityId: string,
+  position: number,
+  entityIds: string[],
+  basePts: Map<string, number>,
+  horizonMaxDelta: number,
+  pointsRemainingAfterHorizon: number
+): { mustOutscoreBy: LockCondition[]; mustBeOutscoredBy: LockCondition[] } | null {
+  const opponents = entityIds.filter((id) => id !== entityId).map((opponentId) => {
+    const currentGap = (basePts.get(entityId) ?? 0) - (basePts.get(opponentId) ?? 0);
+    // Need entity-above-opponent by at least remaining points to make an overtake impossible.
+    const requiredForEntityAbove = pointsRemainingAfterHorizon - currentGap;
+    // Need opponent-above-entity by more than remaining points to make catch-up impossible.
+    const requiredForOpponentAbove = -pointsRemainingAfterHorizon - 1 - currentGap;
+
+    const canForceEntityAbove = requiredForEntityAbove < horizonMaxDelta;
+    const canForceOpponentAbove = requiredForOpponentAbove > -horizonMaxDelta;
+
+    return {
+      opponentId,
+      requiredForEntityAbove,
+      requiredForOpponentAbove,
+      canForceEntityAbove,
+      canForceOpponentAbove,
+    };
+  });
+
+  const mandatoryAbove = opponents.filter((o) => !o.canForceEntityAbove);
+  const mandatoryBelow = opponents.filter((o) => !o.canForceOpponentAbove);
+  const optional = opponents.filter((o) => o.canForceEntityAbove && o.canForceOpponentAbove);
+
+  const targetAboveCount = position - 1;
+  const minAboveCount = mandatoryAbove.length;
+  const maxAboveCount = entityIds.length - 1 - mandatoryBelow.length;
+  if (targetAboveCount < minAboveCount || targetAboveCount > maxAboveCount) {
+    return null;
+  }
+
+  const optionalNeededAbove = targetAboveCount - mandatoryAbove.length;
+  optional.sort((a, b) => a.requiredForOpponentAbove - b.requiredForOpponentAbove);
+  const selectedOptionalAbove = new Set(optional.slice(0, optionalNeededAbove).map((o) => o.opponentId));
+
+  const mustBeOutscoredBy = [...mandatoryAbove, ...optional.filter((o) => selectedOptionalAbove.has(o.opponentId))]
+    .map((o) => ({
+      opponentId: o.opponentId,
+      points: Math.max(0, -o.requiredForOpponentAbove),
+    }))
+    .filter((c) => c.points > 0)
+    .sort((a, b) => b.points - a.points);
+
+  const mustOutscoreBy = [...mandatoryBelow, ...optional.filter((o) => !selectedOptionalAbove.has(o.opponentId))]
+    .map((o) => ({
+      opponentId: o.opponentId,
+      points: Math.max(0, o.requiredForEntityAbove),
+    }))
+    .filter((c) => c.points > 0)
+    .sort((a, b) => b.points - a.points);
+
+  return { mustOutscoreBy, mustBeOutscoredBy };
+}
+
+export function computeLockInsightsForSelectedSlot(
+  data: SeasonChartData,
+  selectedIdx: number,
+  isDriver: boolean
+): Record<string, LockInsight> {
+  const entities = isDriver ? data.drivers : data.constructors;
+  const entityIds = entities.map((e) => e.id);
+  const lastSlotIdx = data.slots.length - 1;
+  const nextSlotIdx = selectedIdx + 1;
+  const insights: Record<string, LockInsight> = {};
+
+  const basePts = new Map<string, number>();
+  for (const entity of entities) {
+    basePts.set(entity.id, entity.cumulativePoints[selectedIdx] ?? 0);
+  }
+
+  const endProjections = computeProjectionsForSelectedSlot(data, selectedIdx, isDriver)[lastSlotIdx];
+  if (!endProjections) return insights;
+
+  for (const entity of entities) {
+    const endEntry = endProjections[entity.id];
+    if (!endEntry) continue;
+
+    for (let position = endEntry.bestPos; position <= endEntry.worstPos; position++) {
+      const key = `${entity.id}-${position}`;
+
+      if (endEntry.bestPos === endEntry.worstPos) {
+        insights[key] = { type: "already_locked_in", entityId: entity.id, position };
+        continue;
+      }
+
+      if (nextSlotIdx <= lastSlotIdx) {
+        const nextHorizonMax = cumulativeMaxPoints(data.slots, selectedIdx, nextSlotIdx, isDriver);
+        const pointsRemainingAfterNext = cumulativeMaxPoints(data.slots, nextSlotIdx, lastSlotIdx, isDriver);
+        const nextPlan = findLockPlanForPosition(
+          entity.id,
+          position,
+          entityIds,
+          basePts,
+          nextHorizonMax,
+          pointsRemainingAfterNext
+        );
+
+        if (nextPlan) {
+          insights[key] = {
+            type: "can_be_locked_in_next_race",
+            entityId: entity.id,
+            position,
+            nextSlotIndex: nextSlotIdx,
+            mustOutscoreBy: nextPlan.mustOutscoreBy,
+            mustBeOutscoredBy: nextPlan.mustBeOutscoredBy,
+          };
+          continue;
+        }
+      }
+
+      let earliestSlotIndex = -1;
+      for (let slotIdx = selectedIdx + 2; slotIdx <= lastSlotIdx; slotIdx++) {
+        const horizonMax = cumulativeMaxPoints(data.slots, selectedIdx, slotIdx, isDriver);
+        const pointsRemaining = cumulativeMaxPoints(data.slots, slotIdx, lastSlotIdx, isDriver);
+        const plan = findLockPlanForPosition(
+          entity.id,
+          position,
+          entityIds,
+          basePts,
+          horizonMax,
+          pointsRemaining
+        );
+        if (plan) {
+          const nextRoundStart = data.slots.findIndex(
+            (slot, idx) => idx > slotIdx && slot.round > data.slots[slotIdx].round
+          );
+          earliestSlotIndex = nextRoundStart >= 0 ? nextRoundStart : slotIdx;
+          break;
+        }
+      }
+
+      if (earliestSlotIndex >= 0) {
+        insights[key] = {
+          type: "can_be_locked_in_later",
+          entityId: entity.id,
+          position,
+          earliestSlotIndex,
+        };
+      }
+    }
+  }
+
+  return insights;
 }
 
 export function buildSeasonChartData(year: number): SeasonChartData {
