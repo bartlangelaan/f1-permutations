@@ -144,6 +144,8 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
 
   const currentSlot = slots[selectedIdx];
   const hasFuture = selectedIdx < slots.length - 1;
+  const lastSlotIdx = slots.length - 1;
+  const isLastSlotProjected = selectedIdx < lastSlotIdx;
 
   function toggleEntity(id: string) {
     setHiddenIds((prev) => {
@@ -161,9 +163,54 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
     return s.type === "sprint" ? "·" : label;
   }
 
-  // Get the last (projected) GP for legend info
-  const lastSlot = slots[slots.length - 1];
+  // Build last-slot legend rows with the same ordering/columns as the tooltip.
+  const lastSlot = slots[lastSlotIdx];
   const lastGpProjections = getEndOfSeasonProjections(data, selectedIdx, isDriverMode);
+  const lastSlotLegendRows = useMemo(() => {
+    if (isLastSlotProjected && lastGpProjections) {
+      const projectedRows = allEntities.reduce<
+        { id: string; name: string; color: string; positionText: string; pointsText: string; sortPos: number; sortPts: number }[]
+      >((acc, e) => {
+        const proj = lastGpProjections[e.id];
+        if (!proj) return acc;
+        acc.push({
+            id: e.id,
+            name: e.name,
+            color: e.color,
+            positionText:
+              proj.bestPos === proj.worstPos ? `P${proj.bestPos}` : `P${proj.bestPos}–${proj.worstPos}`,
+            pointsText: `${Math.round(proj.minPts)}–${Math.round(proj.maxPts)}`,
+            sortPos: proj.bestPos,
+            sortPts: proj.maxPts,
+          });
+        return acc;
+      }, []);
+
+      return projectedRows.sort((a, b) => a.sortPos - b.sortPos || b.sortPts - a.sortPts);
+    }
+
+    const actualRows = allEntities.reduce<{ id: string; name: string; color: string; points: number }[]>((acc, e) => {
+      const points = e.cumulativePoints[lastSlotIdx];
+      if (points == null) return acc;
+      acc.push({
+        id: e.id,
+        name: e.name,
+        color: e.color,
+        points,
+      });
+      return acc;
+    }, []);
+
+    return actualRows
+      .sort((a, b) => b.points - a.points)
+      .map((e, i) => ({
+        id: e.id,
+        name: e.name,
+        color: e.color,
+        positionText: `P${i + 1}`,
+        pointsText: `${Math.round(e.points)}`,
+      }));
+  }, [allEntities, isLastSlotProjected, lastGpProjections, lastSlotIdx]);
 
   return (
     <div className="space-y-4">
@@ -338,38 +385,29 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
           {/* Entity toggles with inline projection */}
           <div className="space-y-2">
             <div className="text-xs font-semibold text-zinc-400">
-              Legend{lastGpProjections && <span className="ml-1 font-normal text-zinc-600">· Projected {lastSlot?.fullLabel}</span>}
+              Legend
+              {lastSlot && (
+                <span className="ml-1 font-normal text-zinc-600">
+                  · {isLastSlotProjected ? "Projected " : ""}
+                  {lastSlot.fullLabel}
+                </span>
+              )}
             </div>
             <div className="space-y-1">
-              {allEntities.map((e) => {
-                const hidden = hiddenIds.has(e.id);
-                const proj = lastGpProjections?.[e.id];
+              {lastSlotLegendRows.map((row) => {
+                const hidden = hiddenIds.has(row.id);
                 return (
                   <button
-                    key={e.id}
-                    onClick={() => toggleEntity(e.id)}
+                    key={row.id}
+                    onClick={() => toggleEntity(row.id)}
                     className={[
                       "w-full flex items-center gap-1.5 rounded px-2 py-1 text-xs transition-opacity hover:bg-zinc-800/50",
                       hidden ? "opacity-30" : "opacity-100",
                     ].join(" ")}
                   >
-                    <span
-                      className="inline-block h-2.5 w-2.5 rounded-sm shrink-0"
-                      style={{ background: e.color }}
-                    />
-                    <span className="flex-1 text-left" style={{ color: e.color }}>{e.name}</span>
-                    {proj && (
-                      <span className="flex items-center gap-2 tabular-nums">
-                        <span className="text-zinc-500">
-                          {proj.bestPos === proj.worstPos
-                            ? `P${proj.bestPos}`
-                            : `P${proj.bestPos}–${proj.worstPos}`}
-                        </span>
-                        <span className="text-zinc-200 font-medium">
-                          {Math.round(proj.minPts)}–{Math.round(proj.maxPts)}
-                        </span>
-                      </span>
-                    )}
+                    <span className="text-zinc-500 tabular-nums w-10 text-left">{row.positionText}</span>
+                    <span className="flex-1 text-left" style={{ color: row.color }}>{row.name}</span>
+                    <span className="tabular-nums text-zinc-200 font-medium">{row.pointsText}</span>
                   </button>
                 );
               })}
