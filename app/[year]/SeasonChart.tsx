@@ -13,24 +13,33 @@ import {
   ReferenceLine,
 } from "recharts";
 import type { CalculatedChartData, EntitySeries, ProjectionMap, TimelineSlot } from "@/lib/calculate";
-import { getEndOfSeasonProjections } from "@/lib/projections";
 
 type StandingsRow = {
   id: string;
   name: string;
   color: string;
-  positionText: string;
-  pointsText: string;
+  minPos: number;
+  maxPos: number;
+  minPoints: number;
+  maxPoints: number;
 };
+
+function formatPositionRange(minPos: number, maxPos: number): string {
+  return minPos === maxPos ? `P${minPos}` : `P${minPos}–${maxPos}`;
+}
+
+function formatPointsRange(minPoints: number, maxPoints: number): string {
+  const min = Math.round(minPoints);
+  const max = Math.round(maxPoints);
+  return min === max ? `${min}` : `${min}–${max}`;
+}
 
 function StandingsRows({
   rows,
   getInteraction,
-  pointsClassName = "text-zinc-300",
 }: {
   rows: StandingsRow[];
   getInteraction?: (row: StandingsRow) => { hidden: boolean; onClick: () => void };
-  pointsClassName?: string;
 }) {
   return rows.map((row) => {
     const interaction = getInteraction?.(row);
@@ -42,9 +51,9 @@ function StandingsRows({
 
     const content = (
       <>
-        <span className="text-zinc-500 tabular-nums w-16 text-left">{row.positionText}</span>
+        <span className="text-zinc-500 tabular-nums w-16 text-left">{formatPositionRange(row.minPos, row.maxPos)}</span>
         <span className="flex-1 text-left" style={{ color: row.color }}>{row.name}</span>
-        <span className={["tabular-nums", pointsClassName].join(" ")}>{row.pointsText}</span>
+        <span className="tabular-nums text-zinc-300">{formatPointsRange(row.minPoints, row.maxPoints)}</span>
       </>
     );
 
@@ -60,6 +69,73 @@ function StandingsRows({
   });
 }
 
+function getStandingsRowsForSlot({
+  entities,
+  projections,
+  selectedIdx,
+  slotIdx,
+}: {
+  entities: EntitySeries[];
+  projections: ProjectionMap;
+  selectedIdx: number;
+  slotIdx: number;
+}): { rows: StandingsRow[]; isProjected: boolean } {
+  if (slotIdx > selectedIdx) {
+    const slotData = projections?.[selectedIdx]?.[slotIdx];
+    if (!slotData) return { rows: [], isProjected: true };
+
+    const projectedRows = entities.reduce<(StandingsRow & { sortPos: number; sortPts: number })[]>((acc, e) => {
+      const entry = slotData[e.id];
+      if (!entry) return acc;
+      acc.push({
+        id: e.id,
+        name: e.name,
+        color: e.color,
+        minPos: entry.bestPos,
+        maxPos: entry.worstPos,
+        minPoints: entry.minPts,
+        maxPoints: entry.maxPts,
+        sortPos: entry.bestPos,
+        sortPts: entry.maxPts,
+      });
+      return acc;
+    }, []);
+
+    projectedRows.sort((a, b) => a.sortPos - b.sortPos || b.sortPts - a.sortPts);
+    return {
+      isProjected: true,
+      rows: projectedRows.map(({ sortPos, sortPts, ...row }) => row),
+    };
+  }
+
+  const actualRows = entities.reduce<{ id: string; name: string; color: string; points: number }[]>((acc, e) => {
+    const points = e.cumulativePoints[slotIdx];
+    if (points == null) return acc;
+    acc.push({
+      id: e.id,
+      name: e.name,
+      color: e.color,
+      points,
+    });
+    return acc;
+  }, []);
+
+  actualRows.sort((a, b) => b.points - a.points);
+
+  return {
+    isProjected: false,
+    rows: actualRows.map((e, i) => ({
+      id: e.id,
+      name: e.name,
+      color: e.color,
+      minPos: i + 1,
+      maxPos: i + 1,
+      minPoints: e.points,
+      maxPoints: e.points,
+    })),
+  };
+}
+
 // Custom tooltip
 function ChartTooltip({
   active,
@@ -73,62 +149,22 @@ function ChartTooltip({
   if (!active || !payload?.length) return null;
   const slotIdx = payload[0]?.payload?.idx;
   const slot = slots[slotIdx];
-  const isFuture = slotIdx > selectedIdx;
 
-  if (isFuture) {
-    const slotData = projections?.[selectedIdx]?.[slotIdx];
-    if (!slotData) return null;
-
-    const withPositions = (entities as EntitySeries[])
-      .map((e) => {
-        const entry = slotData[e.id];
-        if (!entry) return null;
-        return { id: e.id, name: e.name, color: e.color, ...entry };
-      })
-      .filter(Boolean) as (EntitySeries & { minPts: number; maxPts: number; bestPos: number; worstPos: number })[];
-
-    withPositions.sort((a, b) => a.bestPos - b.bestPos || b.maxPts - a.maxPts);
-
-    const rows: StandingsRow[] = withPositions.map((e) => ({
-      id: e.id,
-      name: e.name,
-      color: e.color,
-      positionText: e.bestPos === e.worstPos ? `P${e.bestPos}` : `P${e.bestPos}–${e.worstPos}`,
-      pointsText: `${Math.round(e.minPts)}–${Math.round(e.maxPts)}`,
-    }));
-
-    if (!rows.length) return null;
-    return (
-      <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-3 text-xs shadow-xl max-w-xs">
-        <div className="font-semibold text-zinc-200 mb-2">
-          {slot?.fullLabel ?? label}
-          <span className="ml-2 text-zinc-500">(projected)</span>
-        </div>
-        <div className="space-y-0.5">
-          <StandingsRows rows={rows} />
-        </div>
-      </div>
-    );
-  }
-
-  // Past slot: actual cumulative points + current position
-  const entries = payload
-    .filter((p: any) => p.value != null && !p.dataKey.endsWith("_floor") && !p.dataKey.endsWith("_delta"))
-    .map((p: any) => ({ name: p.name, value: p.value, color: p.color }))
-    .sort((a: any, b: any) => b.value - a.value);
-
-  const rows: StandingsRow[] = entries.map((e: any, i: number) => ({
-    id: e.name,
-    name: e.name,
-    color: e.color,
-    positionText: `P${i + 1}`,
-    pointsText: `${Math.round(e.value)}`,
-  }));
+  const { rows, isProjected } = getStandingsRowsForSlot({
+    entities,
+    projections,
+    selectedIdx,
+    slotIdx,
+  });
 
   if (!rows.length) return null;
+
   return (
     <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-3 text-xs shadow-xl max-w-xs">
-      <div className="font-semibold text-zinc-200 mb-2">{slot?.fullLabel ?? label}</div>
+      <div className="font-semibold text-zinc-200 mb-2">
+        {slot?.fullLabel ?? label}
+        {isProjected && <span className="ml-2 text-zinc-500">(projected)</span>}
+      </div>
       <div className="space-y-0.5">
         <StandingsRows rows={rows} />
       </div>
@@ -190,7 +226,6 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
   const currentSlot = slots[selectedIdx];
   const hasFuture = selectedIdx < slots.length - 1;
   const lastSlotIdx = slots.length - 1;
-  const isLastSlotProjected = selectedIdx < lastSlotIdx;
 
   function toggleEntity(id: string) {
     setHiddenIds((prev) => {
@@ -208,54 +243,17 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
     return s.type === "sprint" ? "·" : label;
   }
 
-  // Build last-slot legend rows with the same ordering/columns as the tooltip.
   const lastSlot = slots[lastSlotIdx];
-  const lastGpProjections = getEndOfSeasonProjections(data, selectedIdx, isDriverMode);
-  const lastSlotLegendRows = useMemo<StandingsRow[]>(() => {
-    if (isLastSlotProjected && lastGpProjections) {
-      const projectedRows = allEntities.reduce<
-        (StandingsRow & { sortPos: number; sortPts: number })[]
-      >((acc, e) => {
-        const proj = lastGpProjections[e.id];
-        if (!proj) return acc;
-        acc.push({
-            id: e.id,
-            name: e.name,
-            color: e.color,
-            positionText:
-              proj.bestPos === proj.worstPos ? `P${proj.bestPos}` : `P${proj.bestPos}–${proj.worstPos}`,
-            pointsText: `${Math.round(proj.minPts)}–${Math.round(proj.maxPts)}`,
-            sortPos: proj.bestPos,
-            sortPts: proj.maxPts,
-        });
-        return acc;
-      }, []);
-
-      return projectedRows.sort((a, b) => a.sortPos - b.sortPos || b.sortPts - a.sortPts);
-    }
-
-    const actualRows = allEntities.reduce<{ id: string; name: string; color: string; points: number }[]>((acc, e) => {
-      const points = e.cumulativePoints[lastSlotIdx];
-      if (points == null) return acc;
-      acc.push({
-        id: e.id,
-        name: e.name,
-        color: e.color,
-        points,
-      });
-      return acc;
-    }, []);
-
-    return actualRows
-      .sort((a, b) => b.points - a.points)
-      .map((e, i) => ({
-        id: e.id,
-        name: e.name,
-        color: e.color,
-        positionText: `P${i + 1}`,
-        pointsText: `${Math.round(e.points)}`,
-      }));
-  }, [allEntities, isLastSlotProjected, lastGpProjections, lastSlotIdx]);
+  const { rows: lastSlotLegendRows, isProjected: isLastSlotProjected } = useMemo(
+    () =>
+      getStandingsRowsForSlot({
+        entities: allEntities,
+        projections,
+        selectedIdx,
+        slotIdx: lastSlotIdx,
+      }),
+    [allEntities, projections, selectedIdx, lastSlotIdx]
+  );
 
   return (
     <div className="space-y-4">
@@ -445,7 +443,6 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
                   hidden: hiddenIds.has(row.id),
                   onClick: () => toggleEntity(row.id),
                 })}
-                pointsClassName="text-zinc-200 font-medium"
               />
             </div>
           </div>
