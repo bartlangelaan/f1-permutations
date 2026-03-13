@@ -234,47 +234,59 @@ export function buildSeasonChartData(year: number): SeasonChartData {
   return { year, slots, lastCompletedSlotIndex, drivers, constructors };
 }
 
-export function computeProjections(data: SeasonChartData, isDriver: boolean): ProjectionMap {
+function computeProjections(data: SeasonChartData, isDriver: boolean): ProjectionMap {
   const { slots, lastCompletedSlotIndex } = data;
   const entities = isDriver ? data.drivers : data.constructors;
   const projections: ProjectionMap = {};
 
   for (let selectedIdx = 0; selectedIdx <= lastCompletedSlotIndex; selectedIdx++) {
-    projections[selectedIdx] = {};
-
-    const basePts = new Map<string, number>();
-    for (const e of entities) {
-      basePts.set(e.id, e.cumulativePoints[selectedIdx] ?? 0);
-    }
-
-    let cumulativeMax = 0;
-    for (let j = selectedIdx + 1; j < slots.length; j++) {
-      const slot = slots[j];
-      cumulativeMax += isDriver ? slot.maxDriverPoints : slot.maxConstructorPoints;
-
-      const ranges = entities.map((e) => ({
-        id: e.id,
-        minPts: basePts.get(e.id)!,
-        maxPts: basePts.get(e.id)! + cumulativeMax,
-      }));
-
-      const slotData: Record<string, ProjectionEntry> = {};
-      for (const e of ranges) {
-        const bestPos = 1 + ranges.filter((o) => o.id !== e.id && o.minPts > e.maxPts).length;
-        let worstPos = 1 + ranges.filter((o) => o.id !== e.id && o.maxPts > e.minPts).length;
-
-        if (isDriver && j === selectedIdx + 1) {
-          const slotPoints = driverPointsByPositionForSlot(data.year, slot);
-          const maxOvertakes = maxOvertakesSingleDriverSlot(basePts, e.id, e.minPts, slotPoints);
-          worstPos = 1 + maxOvertakes;
-        }
-
-        slotData[e.id] = { minPts: e.minPts, maxPts: e.maxPts, bestPos, worstPos };
-      }
-
-      projections[selectedIdx][j] = slotData;
-    }
+    projections[selectedIdx] = computeProjectionsForSelectedSlot(data, selectedIdx, isDriver);
   }
 
   return projections;
+}
+
+export function computeProjectionsForSelectedSlot(
+  data: SeasonChartData,
+  selectedIdx: number,
+  isDriver: boolean
+): Record<string, Record<string, ProjectionEntry>> {
+  const { slots } = data;
+  const entities = isDriver ? data.drivers : data.constructors;
+  const projectionsForSelectedIdx: Record<string, Record<string, ProjectionEntry>> = {};
+
+  const basePts = new Map<string, number>();
+  for (const e of entities) {
+    basePts.set(e.id, e.cumulativePoints[selectedIdx] ?? 0);
+  }
+
+  let cumulativeMax = 0;
+  for (let j = selectedIdx + 1; j < slots.length; j++) {
+    const slot = slots[j];
+    cumulativeMax += isDriver ? slot.maxDriverPoints : slot.maxConstructorPoints;
+
+    const ranges = entities.map((e) => ({
+      id: e.id,
+      minPts: basePts.get(e.id)!,
+      maxPts: basePts.get(e.id)! + cumulativeMax,
+    }));
+
+    const slotData: Record<string, ProjectionEntry> = {};
+    for (const e of ranges) {
+      const bestPos = 1 + ranges.filter((o) => o.id !== e.id && o.minPts > e.maxPts).length;
+      let worstPos = 1 + ranges.filter((o) => o.id !== e.id && o.maxPts > e.minPts).length;
+
+      if (isDriver && j === selectedIdx + 1) {
+        const slotPoints = driverPointsByPositionForSlot(data.year, slot);
+        const maxOvertakes = maxOvertakesSingleDriverSlot(basePts, e.id, e.minPts, slotPoints);
+        worstPos = 1 + maxOvertakes;
+      }
+
+      slotData[e.id] = { minPts: e.minPts, maxPts: e.maxPts, bestPos, worstPos };
+    }
+
+    projectionsForSelectedIdx[j] = slotData;
+  }
+
+  return projectionsForSelectedIdx;
 }
