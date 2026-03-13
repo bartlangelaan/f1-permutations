@@ -15,6 +15,51 @@ import {
 import type { CalculatedChartData, EntitySeries, ProjectionMap, TimelineSlot } from "@/lib/calculate";
 import { getEndOfSeasonProjections } from "@/lib/projections";
 
+type StandingsRow = {
+  id: string;
+  name: string;
+  color: string;
+  positionText: string;
+  pointsText: string;
+};
+
+function StandingsRows({
+  rows,
+  getInteraction,
+  pointsClassName = "text-zinc-300",
+}: {
+  rows: StandingsRow[];
+  getInteraction?: (row: StandingsRow) => { hidden: boolean; onClick: () => void };
+  pointsClassName?: string;
+}) {
+  return rows.map((row) => {
+    const interaction = getInteraction?.(row);
+    const className = [
+      "flex w-full items-center gap-1.5 py-0.5 text-xs",
+      interaction ? "rounded px-2 transition-opacity hover:bg-zinc-800/50" : "",
+      interaction && interaction.hidden ? "opacity-30" : "opacity-100",
+    ].join(" ");
+
+    const content = (
+      <>
+        <span className="text-zinc-500 tabular-nums w-16 text-left">{row.positionText}</span>
+        <span className="flex-1 text-left" style={{ color: row.color }}>{row.name}</span>
+        <span className={["tabular-nums", pointsClassName].join(" ")}>{row.pointsText}</span>
+      </>
+    );
+
+    return interaction ? (
+      <button key={row.id} onClick={interaction.onClick} className={className}>
+        {content}
+      </button>
+    ) : (
+      <div key={row.id} className={className}>
+        {content}
+      </div>
+    );
+  });
+}
+
 // Custom tooltip
 function ChartTooltip({
   active,
@@ -44,26 +89,24 @@ function ChartTooltip({
 
     withPositions.sort((a, b) => a.bestPos - b.bestPos || b.maxPts - a.maxPts);
 
-    if (!withPositions.length) return null;
+    const rows: StandingsRow[] = withPositions.map((e) => ({
+      id: e.id,
+      name: e.name,
+      color: e.color,
+      positionText: e.bestPos === e.worstPos ? `P${e.bestPos}` : `P${e.bestPos}–${e.worstPos}`,
+      pointsText: `${Math.round(e.minPts)}–${Math.round(e.maxPts)}`,
+    }));
+
+    if (!rows.length) return null;
     return (
       <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-3 text-xs shadow-xl max-w-xs">
         <div className="font-semibold text-zinc-200 mb-2">
           {slot?.fullLabel ?? label}
           <span className="ml-2 text-zinc-500">(projected)</span>
         </div>
-        {withPositions.map((e) => (
-          <div key={e.id} className="flex justify-between gap-4 py-0.5">
-            <span className="flex items-center gap-1.5">
-              <span className="text-zinc-500 tabular-nums w-10">
-                {e.bestPos === e.worstPos ? `P${e.bestPos}` : `P${e.bestPos}–${e.worstPos}`}
-              </span>
-              <span style={{ color: e.color }}>{e.name}</span>
-            </span>
-            <span className="tabular-nums text-zinc-300">
-              {Math.round(e.minPts)}–{Math.round(e.maxPts)}
-            </span>
-          </div>
-        ))}
+        <div className="space-y-0.5">
+          <StandingsRows rows={rows} />
+        </div>
       </div>
     );
   }
@@ -74,19 +117,21 @@ function ChartTooltip({
     .map((p: any) => ({ name: p.name, value: p.value, color: p.color }))
     .sort((a: any, b: any) => b.value - a.value);
 
-  if (!entries.length) return null;
+  const rows: StandingsRow[] = entries.map((e: any, i: number) => ({
+    id: e.name,
+    name: e.name,
+    color: e.color,
+    positionText: `P${i + 1}`,
+    pointsText: `${Math.round(e.value)}`,
+  }));
+
+  if (!rows.length) return null;
   return (
     <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-3 text-xs shadow-xl max-w-xs">
       <div className="font-semibold text-zinc-200 mb-2">{slot?.fullLabel ?? label}</div>
-      {entries.map((e: any, i: number) => (
-        <div key={e.name} className="flex justify-between gap-4 py-0.5">
-          <span className="flex items-center gap-1.5">
-            <span className="text-zinc-500 tabular-nums w-6">P{i + 1}</span>
-            <span style={{ color: e.color }}>{e.name}</span>
-          </span>
-          <span className="tabular-nums text-zinc-300">{Math.round(e.value)}</span>
-        </div>
-      ))}
+      <div className="space-y-0.5">
+        <StandingsRows rows={rows} />
+      </div>
     </div>
   );
 }
@@ -166,10 +211,10 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
   // Build last-slot legend rows with the same ordering/columns as the tooltip.
   const lastSlot = slots[lastSlotIdx];
   const lastGpProjections = getEndOfSeasonProjections(data, selectedIdx, isDriverMode);
-  const lastSlotLegendRows = useMemo(() => {
+  const lastSlotLegendRows = useMemo<StandingsRow[]>(() => {
     if (isLastSlotProjected && lastGpProjections) {
       const projectedRows = allEntities.reduce<
-        { id: string; name: string; color: string; positionText: string; pointsText: string; sortPos: number; sortPts: number }[]
+        (StandingsRow & { sortPos: number; sortPts: number })[]
       >((acc, e) => {
         const proj = lastGpProjections[e.id];
         if (!proj) return acc;
@@ -182,7 +227,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
             pointsText: `${Math.round(proj.minPts)}–${Math.round(proj.maxPts)}`,
             sortPos: proj.bestPos,
             sortPts: proj.maxPts,
-          });
+        });
         return acc;
       }, []);
 
@@ -394,23 +439,14 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
               )}
             </div>
             <div className="space-y-1">
-              {lastSlotLegendRows.map((row) => {
-                const hidden = hiddenIds.has(row.id);
-                return (
-                  <button
-                    key={row.id}
-                    onClick={() => toggleEntity(row.id)}
-                    className={[
-                      "w-full flex items-center gap-1.5 rounded px-2 py-1 text-xs transition-opacity hover:bg-zinc-800/50",
-                      hidden ? "opacity-30" : "opacity-100",
-                    ].join(" ")}
-                  >
-                    <span className="text-zinc-500 tabular-nums w-10 text-left">{row.positionText}</span>
-                    <span className="flex-1 text-left" style={{ color: row.color }}>{row.name}</span>
-                    <span className="tabular-nums text-zinc-200 font-medium">{row.pointsText}</span>
-                  </button>
-                );
-              })}
+              <StandingsRows
+                rows={lastSlotLegendRows}
+                getInteraction={(row) => ({
+                  hidden: hiddenIds.has(row.id),
+                  onClick: () => toggleEntity(row.id),
+                })}
+                pointsClassName="text-zinc-200 font-medium"
+              />
             </div>
           </div>
 
