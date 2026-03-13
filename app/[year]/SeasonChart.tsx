@@ -13,7 +13,128 @@ import {
   ReferenceLine,
 } from "recharts";
 import type { CalculatedChartData, EntitySeries, ProjectionMap, TimelineSlot } from "@/lib/calculate";
-import { getEndOfSeasonProjections } from "@/lib/projections";
+
+type StandingsRow = {
+  id: string;
+  name: string;
+  color: string;
+  minPos: number;
+  maxPos: number;
+  minPoints: number;
+  maxPoints: number;
+};
+
+function formatPositionRange(minPos: number, maxPos: number): string {
+  return minPos === maxPos ? `P${minPos}` : `P${minPos}–${maxPos}`;
+}
+
+function formatPointsRange(minPoints: number, maxPoints: number): string {
+  const min = Math.round(minPoints);
+  const max = Math.round(maxPoints);
+  return min === max ? `${min}` : `${min}–${max}`;
+}
+
+function StandingsRows({
+  rows,
+  getInteraction,
+}: {
+  rows: StandingsRow[];
+  getInteraction?: (row: StandingsRow) => { hidden: boolean; onClick: () => void };
+}) {
+  return rows.map((row) => {
+    const interaction = getInteraction?.(row);
+    const className = [
+      "flex w-full items-center gap-1.5 py-0.5 text-xs",
+      interaction ? "rounded px-2 transition-opacity hover:bg-zinc-800/50" : "",
+      interaction && interaction.hidden ? "opacity-30" : "opacity-100",
+    ].join(" ");
+
+    const content = (
+      <>
+        <span className="text-zinc-500 tabular-nums w-16 text-left">{formatPositionRange(row.minPos, row.maxPos)}</span>
+        <span className="flex-1 text-left" style={{ color: row.color }}>{row.name}</span>
+        <span className="tabular-nums text-zinc-300">{formatPointsRange(row.minPoints, row.maxPoints)}</span>
+      </>
+    );
+
+    return interaction ? (
+      <button key={row.id} onClick={interaction.onClick} className={className}>
+        {content}
+      </button>
+    ) : (
+      <div key={row.id} className={className}>
+        {content}
+      </div>
+    );
+  });
+}
+
+function getStandingsRowsForSlot({
+  entities,
+  projections,
+  selectedIdx,
+  slotIdx,
+}: {
+  entities: EntitySeries[];
+  projections: ProjectionMap;
+  selectedIdx: number;
+  slotIdx: number;
+}): { rows: StandingsRow[]; isProjected: boolean } {
+  if (slotIdx > selectedIdx) {
+    const slotData = projections?.[selectedIdx]?.[slotIdx];
+    if (!slotData) return { rows: [], isProjected: true };
+
+    const projectedRows = entities.reduce<(StandingsRow & { sortPos: number; sortPts: number })[]>((acc, e) => {
+      const entry = slotData[e.id];
+      if (!entry) return acc;
+      acc.push({
+        id: e.id,
+        name: e.name,
+        color: e.color,
+        minPos: entry.bestPos,
+        maxPos: entry.worstPos,
+        minPoints: entry.minPts,
+        maxPoints: entry.maxPts,
+        sortPos: entry.bestPos,
+        sortPts: entry.maxPts,
+      });
+      return acc;
+    }, []);
+
+    projectedRows.sort((a, b) => a.sortPos - b.sortPos || b.sortPts - a.sortPts);
+    return {
+      isProjected: true,
+      rows: projectedRows.map(({ sortPos, sortPts, ...row }) => row),
+    };
+  }
+
+  const actualRows = entities.reduce<{ id: string; name: string; color: string; points: number }[]>((acc, e) => {
+    const points = e.cumulativePoints[slotIdx];
+    if (points == null) return acc;
+    acc.push({
+      id: e.id,
+      name: e.name,
+      color: e.color,
+      points,
+    });
+    return acc;
+  }, []);
+
+  actualRows.sort((a, b) => b.points - a.points);
+
+  return {
+    isProjected: false,
+    rows: actualRows.map((e, i) => ({
+      id: e.id,
+      name: e.name,
+      color: e.color,
+      minPos: i + 1,
+      maxPos: i + 1,
+      minPoints: e.points,
+      maxPoints: e.points,
+    })),
+  };
+}
 
 // Custom tooltip
 function ChartTooltip({
@@ -28,65 +149,25 @@ function ChartTooltip({
   if (!active || !payload?.length) return null;
   const slotIdx = payload[0]?.payload?.idx;
   const slot = slots[slotIdx];
-  const isFuture = slotIdx > selectedIdx;
 
-  if (isFuture) {
-    const slotData = projections?.[selectedIdx]?.[slotIdx];
-    if (!slotData) return null;
+  const { rows, isProjected } = getStandingsRowsForSlot({
+    entities,
+    projections,
+    selectedIdx,
+    slotIdx,
+  });
 
-    const withPositions = (entities as EntitySeries[])
-      .map((e) => {
-        const entry = slotData[e.id];
-        if (!entry) return null;
-        return { id: e.id, name: e.name, color: e.color, ...entry };
-      })
-      .filter(Boolean) as (EntitySeries & { minPts: number; maxPts: number; bestPos: number; worstPos: number })[];
+  if (!rows.length) return null;
 
-    withPositions.sort((a, b) => a.bestPos - b.bestPos || b.maxPts - a.maxPts);
-
-    if (!withPositions.length) return null;
-    return (
-      <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-3 text-xs shadow-xl max-w-xs">
-        <div className="font-semibold text-zinc-200 mb-2">
-          {slot?.fullLabel ?? label}
-          <span className="ml-2 text-zinc-500">(projected)</span>
-        </div>
-        {withPositions.map((e) => (
-          <div key={e.id} className="flex justify-between gap-4 py-0.5">
-            <span className="flex items-center gap-1.5">
-              <span className="text-zinc-500 tabular-nums w-10">
-                {e.bestPos === e.worstPos ? `P${e.bestPos}` : `P${e.bestPos}–${e.worstPos}`}
-              </span>
-              <span style={{ color: e.color }}>{e.name}</span>
-            </span>
-            <span className="tabular-nums text-zinc-300">
-              {Math.round(e.minPts)}–{Math.round(e.maxPts)}
-            </span>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  // Past slot: actual cumulative points + current position
-  const entries = payload
-    .filter((p: any) => p.value != null && !p.dataKey.endsWith("_floor") && !p.dataKey.endsWith("_delta"))
-    .map((p: any) => ({ name: p.name, value: p.value, color: p.color }))
-    .sort((a: any, b: any) => b.value - a.value);
-
-  if (!entries.length) return null;
   return (
     <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-3 text-xs shadow-xl max-w-xs">
-      <div className="font-semibold text-zinc-200 mb-2">{slot?.fullLabel ?? label}</div>
-      {entries.map((e: any, i: number) => (
-        <div key={e.name} className="flex justify-between gap-4 py-0.5">
-          <span className="flex items-center gap-1.5">
-            <span className="text-zinc-500 tabular-nums w-6">P{i + 1}</span>
-            <span style={{ color: e.color }}>{e.name}</span>
-          </span>
-          <span className="tabular-nums text-zinc-300">{Math.round(e.value)}</span>
-        </div>
-      ))}
+      <div className="font-semibold text-zinc-200 mb-2">
+        {slot?.fullLabel ?? label}
+        {isProjected && <span className="ml-2 text-zinc-500">(projected)</span>}
+      </div>
+      <div className="space-y-0.5">
+        <StandingsRows rows={rows} />
+      </div>
     </div>
   );
 }
@@ -144,6 +225,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
 
   const currentSlot = slots[selectedIdx];
   const hasFuture = selectedIdx < slots.length - 1;
+  const lastSlotIdx = slots.length - 1;
 
   function toggleEntity(id: string) {
     setHiddenIds((prev) => {
@@ -161,9 +243,17 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
     return s.type === "sprint" ? "·" : label;
   }
 
-  // Get the last (projected) GP for legend info
-  const lastSlot = slots[slots.length - 1];
-  const lastGpProjections = getEndOfSeasonProjections(data, selectedIdx, isDriverMode);
+  const lastSlot = slots[lastSlotIdx];
+  const { rows: lastSlotLegendRows, isProjected: isLastSlotProjected } = useMemo(
+    () =>
+      getStandingsRowsForSlot({
+        entities: allEntities,
+        projections,
+        selectedIdx,
+        slotIdx: lastSlotIdx,
+      }),
+    [allEntities, projections, selectedIdx, lastSlotIdx]
+  );
 
   return (
     <div className="space-y-4">
@@ -338,41 +428,22 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
           {/* Entity toggles with inline projection */}
           <div className="space-y-2">
             <div className="text-xs font-semibold text-zinc-400">
-              Legend{lastGpProjections && <span className="ml-1 font-normal text-zinc-600">· Projected {lastSlot?.fullLabel}</span>}
+              Legend
+              {lastSlot && (
+                <span className="ml-1 font-normal text-zinc-600">
+                  · {isLastSlotProjected ? "Projected " : ""}
+                  {lastSlot.fullLabel}
+                </span>
+              )}
             </div>
             <div className="space-y-1">
-              {allEntities.map((e) => {
-                const hidden = hiddenIds.has(e.id);
-                const proj = lastGpProjections?.[e.id];
-                return (
-                  <button
-                    key={e.id}
-                    onClick={() => toggleEntity(e.id)}
-                    className={[
-                      "w-full flex items-center gap-1.5 rounded px-2 py-1 text-xs transition-opacity hover:bg-zinc-800/50",
-                      hidden ? "opacity-30" : "opacity-100",
-                    ].join(" ")}
-                  >
-                    <span
-                      className="inline-block h-2.5 w-2.5 rounded-sm shrink-0"
-                      style={{ background: e.color }}
-                    />
-                    <span className="flex-1 text-left" style={{ color: e.color }}>{e.name}</span>
-                    {proj && (
-                      <span className="flex items-center gap-2 tabular-nums">
-                        <span className="text-zinc-500">
-                          {proj.bestPos === proj.worstPos
-                            ? `P${proj.bestPos}`
-                            : `P${proj.bestPos}–${proj.worstPos}`}
-                        </span>
-                        <span className="text-zinc-200 font-medium">
-                          {Math.round(proj.minPts)}–{Math.round(proj.maxPts)}
-                        </span>
-                      </span>
-                    )}
-                  </button>
-                );
-              })}
+              <StandingsRows
+                rows={lastSlotLegendRows}
+                getInteraction={(row) => ({
+                  hidden: hiddenIds.has(row.id),
+                  onClick: () => toggleEntity(row.id),
+                })}
+              />
             </div>
           </div>
 
