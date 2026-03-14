@@ -1,5 +1,9 @@
 import { getSeasons } from "../lib/data";
-import { buildSeasonChartData, computeProjectionsForSelectedSlot } from "../lib/calculate";
+import {
+  buildSeasonChartData,
+  computeLockInsightsForSelectedSlot,
+  computeProjectionsForSelectedSlot,
+} from "../lib/calculate";
 import {
   writeCalculationResults,
   writeCalculationResultsForSelectedSlot,
@@ -24,10 +28,14 @@ for (const year of seasons) {
 
     const driverProjections = computeProjectionsForSelectedSlot(data, selectedIdx, true);
     const constructorProjections = computeProjectionsForSelectedSlot(data, selectedIdx, false);
+    const driverLockInsights = computeLockInsightsForSelectedSlot(data, selectedIdx, true);
+    const constructorLockInsights = computeLockInsightsForSelectedSlot(data, selectedIdx, false);
 
     writeCalculationResultsForSelectedSlot(year, slot.raceNumber, selectedIdx, {
       driverProjections,
       constructorProjections,
+      driverLockInsights,
+      constructorLockInsights,
     });
   }
 

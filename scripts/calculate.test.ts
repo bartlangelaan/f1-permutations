@@ -97,3 +97,48 @@ test('All projections contain actual future points and positions for completed s
     }
   }
 });
+
+test('Lock-in insight: Norris cannot lock P1 in the next race after Mexico 2025', () => {
+  const data2025 = readCalculationResults(2025);
+  assert.ok(data2025, 'No calculation results found for 2025. Run pnpm calculate first.');
+
+  const mexicoRaceIdx = data2025.slots.findIndex((s) => s.round === 20 && s.type === 'race');
+  assert.ok(mexicoRaceIdx >= 0, 'Mexico 2025 race slot not found');
+
+  const norris = data2025.drivers.find((d) => d.id === 'norris');
+  assert.ok(norris, 'Lando Norris not found in 2025 drivers');
+
+  const norrisP1Insight = data2025.driverLockInsights[String(mexicoRaceIdx)]?.[`${norris.id}-1`];
+  assert.ok(norrisP1Insight, 'Norris P1 lock insight missing after Mexico 2025');
+  assert.equal(norrisP1Insight.type, 'can_be_locked_in_later');
+  if (norrisP1Insight.type === 'can_be_locked_in_later') {
+    const earliestSlot = data2025.slots[norrisP1Insight.earliestSlotIndex];
+    assert.equal(earliestSlot.type, 'sprint');
+    assert.ok(earliestSlot.fullLabel.includes('Qatar GP'));
+  }
+});
+
+test('Lock-in insight: Verstappen can lock P1 next race after Italy 2022 with exact margins', () => {
+  const data2022 = readCalculationResults(2022);
+  assert.ok(data2022, 'No calculation results found for 2022. Run pnpm calculate first.');
+
+  const italyRaceIdx = data2022.slots.findIndex((s) => s.round === 16 && s.type === 'race');
+  assert.ok(italyRaceIdx >= 0, 'Italy 2022 race slot not found');
+
+  const verstappen = data2022.drivers.find((d) => d.id === 'max_verstappen');
+  assert.ok(verstappen, 'Max Verstappen not found in 2022 drivers');
+
+  const verstappenP1Insight = data2022.driverLockInsights[String(italyRaceIdx)]?.[`${verstappen.id}-1`];
+  assert.ok(verstappenP1Insight, 'Verstappen P1 lock insight missing after Italy 2022');
+  assert.equal(verstappenP1Insight.type, 'can_be_locked_in_next_race');
+  if (verstappenP1Insight.type === 'can_be_locked_in_next_race') {
+    const nextSlot = data2022.slots[verstappenP1Insight.nextSlotIndex];
+    assert.equal(nextSlot.round, 17);
+    assert.ok(nextSlot.fullLabel.includes('Singapore GP'));
+
+    const outscoreByOpponent = new Map(verstappenP1Insight.mustOutscoreBy.map((c) => [c.opponentId, c.points]));
+    assert.equal(outscoreByOpponent.get('leclerc'), 22);
+    assert.equal(outscoreByOpponent.get('perez'), 13);
+    assert.equal(outscoreByOpponent.get('russell'), 6);
+  }
+});

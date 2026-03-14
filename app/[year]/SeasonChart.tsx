@@ -12,7 +12,13 @@ import {
   ResponsiveContainer,
   ReferenceLine,
 } from "recharts";
-import type { CalculatedChartData, EntitySeries, ProjectionMap, TimelineSlot } from "@/lib/calculate";
+import type {
+  CalculatedChartData,
+  EntitySeries,
+  LockInsight,
+  ProjectionMap,
+  TimelineSlot,
+} from "@/lib/calculate";
 
 type StandingsRow = {
   id: string;
@@ -208,7 +214,16 @@ function buildChartData(
 }
 
 export function SeasonChart({ data }: { data: CalculatedChartData }) {
-  const { slots, lastCompletedSlotIndex, drivers, constructors, driverProjections, constructorProjections } = data;
+  const {
+    slots,
+    lastCompletedSlotIndex,
+    drivers,
+    constructors,
+    driverProjections,
+    constructorProjections,
+    driverLockInsights,
+    constructorLockInsights,
+  } = data;
   const [selectedIdx, setSelectedIdx] = useState(lastCompletedSlotIndex);
   const [mode, setMode] = useState<"drivers" | "constructors">("drivers");
   const [hiddenIds, setHiddenIds] = useState<Set<string>>(new Set());
@@ -217,6 +232,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
   const allEntities = isDriverMode ? drivers : constructors;
   const entities = allEntities.filter((e) => !hiddenIds.has(e.id));
   const projections: ProjectionMap = isDriverMode ? driverProjections : constructorProjections;
+  const lockInsightsBySelectedIdx = isDriverMode ? driverLockInsights : constructorLockInsights;
 
   const chartData = useMemo(
     () => buildChartData(slots, entities, selectedIdx, isDriverMode),
@@ -244,6 +260,24 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
   }
 
   const lastSlot = slots[lastSlotIdx];
+  const entitiesById = useMemo(() => {
+    const map = new Map<string, EntitySeries>();
+    for (const entity of allEntities) {
+      map.set(entity.id, entity);
+    }
+    return map;
+  }, [allEntities]);
+
+  const insightItems = useMemo(() => {
+    const insights = Object.values(lockInsightsBySelectedIdx[String(selectedIdx)] ?? {});
+    return insights.sort((a, b) => {
+      const aName = entitiesById.get(a.entityId)?.name ?? a.entityId;
+      const bName = entitiesById.get(b.entityId)?.name ?? b.entityId;
+      if (aName !== bName) return aName.localeCompare(bName);
+      return a.position - b.position;
+    });
+  }, [lockInsightsBySelectedIdx, selectedIdx, entitiesById]);
+
   const { rows: lastSlotLegendRows, isProjected: isLastSlotProjected } = useMemo(
     () =>
       getStandingsRowsForSlot({
@@ -254,6 +288,39 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
       }),
     [allEntities, projections, selectedIdx, lastSlotIdx]
   );
+
+  function renderInsightText(insight: LockInsight): string {
+    const entityName = entitiesById.get(insight.entityId)?.name ?? insight.entityId;
+    const positionLabel = `P${insight.position}`;
+
+    if (insight.type === "already_locked_in") {
+      return `${entityName} has already locked in ${positionLabel}.`;
+    }
+
+    if (insight.type === "can_be_locked_in_later") {
+      const slot = slots[insight.earliestSlotIndex];
+      return `${entityName} can first lock in ${positionLabel} after ${slot?.fullLabel ?? `slot ${insight.earliestSlotIndex + 1}`}.`;
+    }
+
+    const slot = slots[insight.nextSlotIndex];
+    const details: string[] = [];
+    if (insight.mustOutscoreBy.length) {
+      details.push(
+        `outscores ${insight.mustOutscoreBy
+          .map((c) => `${entitiesById.get(c.opponentId)?.name ?? c.opponentId} by ${c.points} points`)
+          .join(", ")}`
+      );
+    }
+    if (insight.mustBeOutscoredBy.length) {
+      details.push(
+        `is outscored by ${insight.mustBeOutscoredBy
+          .map((c) => `${entitiesById.get(c.opponentId)?.name ?? c.opponentId} by ${c.points} points`)
+          .join(", ")}`
+      );
+    }
+    const detailText = details.length ? ` if ${details.join(" and ")}` : "";
+    return `${entityName} can lock in ${positionLabel} in ${slot?.fullLabel ?? "the next event"}${detailText}.`;
+  }
 
   return (
     <div className="space-y-4">
@@ -474,6 +541,16 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
               Projected range
             </span>
           </div>
+        </div>
+      </div>
+
+      <div className="border-t border-zinc-800 pt-4">
+        <div className="mb-2 text-sm font-semibold text-zinc-300">Lock-in insights</div>
+        <div className="space-y-1 text-xs text-zinc-400 max-h-64 overflow-y-auto pr-2">
+          {insightItems.map((insight) => {
+            const key = `${insight.entityId}-${insight.position}`;
+            return <p key={key}>• {renderInsightText(insight)}</p>;
+          })}
         </div>
       </div>
     </div>
