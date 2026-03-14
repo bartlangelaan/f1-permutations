@@ -617,7 +617,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
             Only show next-race lock-in scenarios
           </label>
         </div>
-        <div className="space-y-1 text-xs text-zinc-400 max-h-64 overflow-y-auto pr-2">
+        <div key={mode} className="space-y-1 text-xs text-zinc-400 max-h-64 overflow-y-auto pr-2">
           {insightItems.map((insight, i) => <p key={i}>• {renderInsightText(insight)}</p>)}
         </div>
       </div>
