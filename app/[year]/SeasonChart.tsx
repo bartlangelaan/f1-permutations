@@ -237,7 +237,20 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
       }).withDefault(lastCompletedSlotIndex),
     [lastCompletedSlotIndex]
   );
+  const nextRaceOnlyParser = useMemo(
+    () =>
+      createParser({
+        parse: (value) => {
+          if (value === "true") return true;
+          if (value === "false") return false;
+          return null;
+        },
+        serialize: (value) => String(value),
+      }).withDefault(true),
+    []
+  );
   const [selectedIdx, setSelectedIdx] = useQueryState("afterRace", afterRaceParser);
+  const [nextRaceOnly, setNextRaceOnly] = useQueryState("nextRaceOnly", nextRaceOnlyParser);
   const [mode, setMode] = useState<"drivers" | "constructors">("drivers");
   const [hiddenIds, setHiddenIds] = useState<Set<string>>(new Set());
 
@@ -282,8 +295,15 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
   }, [allEntities]);
 
   const insightItems = useMemo(() => {
-    return lockInsightsBySelectedIdx[String(selectedIdx)] ?? [];
-  }, [lockInsightsBySelectedIdx, selectedIdx]);
+    const items = lockInsightsBySelectedIdx[String(selectedIdx)] ?? [];
+    if (!nextRaceOnly) return items;
+
+    return items.filter(
+      (insight) =>
+        insight.type !== "can_be_locked_in_later" &&
+        insight.type !== "can_be_ruled_out_later"
+    );
+  }, [lockInsightsBySelectedIdx, nextRaceOnly, selectedIdx]);
 
   const { rows: lastSlotLegendRows, isProjected: isLastSlotProjected } = useMemo(
     () =>
@@ -585,7 +605,18 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
       </div>
 
       <div className="border-t border-zinc-800 pt-4">
-        <div className="mb-2 text-sm font-semibold text-zinc-300">Lock-in insights</div>
+        <div className="mb-2 flex flex-wrap items-center justify-between gap-3">
+          <div className="text-sm font-semibold text-zinc-300">Lock-in insights</div>
+          <label className="flex items-center gap-2 text-xs text-zinc-400">
+            <input
+              type="checkbox"
+              checked={nextRaceOnly}
+              onChange={(e) => setNextRaceOnly(e.target.checked)}
+              className="h-4 w-4 cursor-pointer accent-red-500"
+            />
+            Only show next-race lock-in scenarios
+          </label>
+        </div>
         <div className="space-y-1 text-xs text-zinc-400 max-h-64 overflow-y-auto pr-2">
           {insightItems.map((insight, i) => <p key={i}>• {renderInsightText(insight)}</p>)}
         </div>
