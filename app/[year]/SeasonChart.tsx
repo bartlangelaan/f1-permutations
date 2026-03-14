@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { createParser, parseAsIndex, useQueryState } from "nuqs";
 import {
   ComposedChart,
   Line,
@@ -224,7 +225,19 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
     driverLockInsights,
     constructorLockInsights,
   } = data;
-  const [selectedIdx, setSelectedIdx] = useState(lastCompletedSlotIndex);
+  const afterRaceParser = useMemo(
+    () =>
+      createParser({
+        parse: (value) => {
+          const idx = parseAsIndex.parse(value);
+          if (idx == null || idx < 0) return null;
+          return Math.min(idx, lastCompletedSlotIndex);
+        },
+        serialize: parseAsIndex.serialize,
+      }).withDefault(lastCompletedSlotIndex),
+    [lastCompletedSlotIndex]
+  );
+  const [selectedIdx, setSelectedIdx] = useQueryState("afterRace", afterRaceParser);
   const [mode, setMode] = useState<"drivers" | "constructors">("drivers");
   const [hiddenIds, setHiddenIds] = useState<Set<string>>(new Set());
 
