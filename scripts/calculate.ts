@@ -31,7 +31,7 @@ for (const year of seasons) {
     const driverLockInsights = computeLockInsightsForSelectedSlot(data, selectedIdx, true);
     const constructorLockInsights = computeLockInsightsForSelectedSlot(data, selectedIdx, false);
 
-    writeCalculationResultsForSelectedSlot(year, slot.raceNumber, selectedIdx, {
+    writeCalculationResultsForSelectedSlot(year, slot.raceNumber, {
       driverProjections,
       constructorProjections,
       driverLockInsights,

@@ -16,10 +16,10 @@ type BaseCalculatedChartData = Omit<
 >;
 
 type RaceProjectionFile = {
-  driverProjections: ProjectionMap;
-  constructorProjections: ProjectionMap;
-  driverLockInsights: Record<string, Record<string, LockInsight>>;
-  constructorLockInsights: Record<string, Record<string, LockInsight>>;
+  driverProjections: Record<string, Record<string, ProjectionEntry>>;
+  constructorProjections: Record<string, Record<string, ProjectionEntry>>;
+  driverLockInsights: LockInsight[];
+  constructorLockInsights: LockInsight[];
 };
 
 function projectionFilename(raceNumber: number): string {
@@ -40,8 +40,8 @@ export function readCalculationResults(year: number): CalculatedChartData | null
 
   const driverProjections: ProjectionMap = {};
   const constructorProjections: ProjectionMap = {};
-  const driverLockInsights: Record<string, Record<string, LockInsight>> = {};
-  const constructorLockInsights: Record<string, Record<string, LockInsight>> = {};
+  const driverLockInsights: Record<string, LockInsight[]> = {};
+  const constructorLockInsights: Record<string, LockInsight[]> = {};
 
   const loadedRaceFiles = new Set<number>();
   for (let selectedIdx = 0; selectedIdx <= baseData.lastCompletedSlotIndex; selectedIdx++) {
@@ -52,10 +52,10 @@ export function readCalculationResults(year: number): CalculatedChartData | null
     const perRaceData = readProjectionFile(year, raceNumber);
     if (!perRaceData) continue;
 
-    Object.assign(driverProjections, perRaceData.driverProjections);
-    Object.assign(constructorProjections, perRaceData.constructorProjections);
-    Object.assign(driverLockInsights, perRaceData.driverLockInsights);
-    Object.assign(constructorLockInsights, perRaceData.constructorLockInsights);
+    driverProjections[selectedIdx] = perRaceData.driverProjections;
+    constructorProjections[selectedIdx] = perRaceData.constructorProjections;
+    driverLockInsights[selectedIdx] = perRaceData.driverLockInsights;
+    constructorLockInsights[selectedIdx] = perRaceData.constructorLockInsights;
   }
 
   return {
@@ -83,24 +83,13 @@ export function writeCalculationResults(year: number, data: BaseCalculatedChartD
 export function writeCalculationResultsForSelectedSlot(
   year: number,
   raceNumber: number,
-  selectedIdx: number,
-    data: {
+  data: {
     driverProjections: Record<string, Record<string, ProjectionEntry>>;
     constructorProjections: Record<string, Record<string, ProjectionEntry>>;
-    driverLockInsights: Record<string, LockInsight>;
-    constructorLockInsights: Record<string, LockInsight>;
+    driverLockInsights: LockInsight[];
+    constructorLockInsights: LockInsight[];
   }
 ): void {
   const file = path.join(DATA_DIR, String(year), projectionFilename(raceNumber));
-
-  const existing: RaceProjectionFile = fs.existsSync(file)
-    ? (JSON.parse(fs.readFileSync(file, "utf-8")) as RaceProjectionFile)
-    : { driverProjections: {}, constructorProjections: {}, driverLockInsights: {}, constructorLockInsights: {} };
-
-  existing.driverProjections[selectedIdx] = data.driverProjections;
-  existing.constructorProjections[selectedIdx] = data.constructorProjections;
-  existing.driverLockInsights[selectedIdx] = data.driverLockInsights;
-  existing.constructorLockInsights[selectedIdx] = data.constructorLockInsights;
-
-  fs.writeFileSync(file, JSON.stringify(existing, null, 2));
+  fs.writeFileSync(file, JSON.stringify(data, null, 2));
 }

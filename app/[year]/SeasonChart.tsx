@@ -282,7 +282,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
   }, [allEntities]);
 
   const insightItems = useMemo(() => {
-    return Object.values(lockInsightsBySelectedIdx[String(selectedIdx)] ?? {});
+    return lockInsightsBySelectedIdx[String(selectedIdx)] ?? [];
   }, [lockInsightsBySelectedIdx, selectedIdx]);
 
   const { rows: lastSlotLegendRows, isProjected: isLastSlotProjected } = useMemo(

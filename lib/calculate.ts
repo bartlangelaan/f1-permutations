@@ -174,8 +174,8 @@ export type LockInsight =
       earliestSlotIndex: number;
     };
 
-/** lockInsights[selectedIdx][entityId-position] */
-export type LockInsightMap = Record<string, Record<string, LockInsight>>;
+/** lockInsights[selectedIdx] */
+export type LockInsightMap = Record<string, LockInsight[]>;
 
 export interface CalculatedChartData extends SeasonChartData {
   driverProjections: ProjectionMap;
@@ -329,12 +329,12 @@ export function computeLockInsightsForSelectedSlot(
   data: SeasonChartData,
   selectedIdx: number,
   isDriver: boolean
-): Record<string, LockInsight> {
+): LockInsight[] {
   const entities = isDriver ? data.drivers : data.constructors;
   const entityIds = entities.map((e) => e.id);
   const lastSlotIdx = data.slots.length - 1;
   const nextSlotIdx = selectedIdx + 1;
-  const insights: Record<string, LockInsight> = {};
+  const insights: LockInsight[] = [];
 
   const basePts = new Map<string, number>();
   for (const entity of entities) {
@@ -349,17 +349,22 @@ export function computeLockInsightsForSelectedSlot(
     if (pointDelta !== 0) return pointDelta;
     return a.name.localeCompare(b.name);
   });
+  const hasInsight = (
+    entityId: string,
+    position: number,
+    type: LockInsight["type"]
+  ): boolean => insights.some((insight) => insight.entityId === entityId && insight.position === position && insight.type === type);
 
   for (const entity of orderedEntities) {
     const endEntry = endProjections[entity.id];
     if (!endEntry) continue;
 
     if (endEntry.bestPos === endEntry.worstPos) {
-      insights[`${entity.id}-lock-${endEntry.bestPos}`] = {
+      insights.push({
         type: "already_locked_in",
         entityId: entity.id,
         position: endEntry.bestPos,
-      };
+      });
       continue;
     }
 
@@ -380,14 +385,14 @@ export function computeLockInsightsForSelectedSlot(
         if (!nextPlan) continue;
         if (!hasGuaranteeConditions(nextPlan)) continue;
 
-        insights[`${entity.id}-lock-${position}`] = {
+        insights.push({
           type: "can_be_locked_in_next_race",
           entityId: entity.id,
           position,
           nextSlotIndex: nextSlotIdx,
           mustOutscoreBy: nextPlan.mustOutscoreBy,
           cannotBeOutscoredByMoreThan: nextPlan.cannotBeOutscoredByMoreThan,
-        };
+        });
       }
 
       for (let position = endEntry.bestPos; position < endEntry.worstPos; position++) {
@@ -403,19 +408,19 @@ export function computeLockInsightsForSelectedSlot(
         if (!ruleOutPlan) continue;
         if (!hasRuleOutConditions(ruleOutPlan)) continue;
 
-        insights[`${entity.id}-ruled-out-${position}`] = {
+        insights.push({
           type: "can_be_ruled_out_next_race",
           entityId: entity.id,
           position,
           nextSlotIndex: nextSlotIdx,
           mustBeOutscoredBy: ruleOutPlan.mustBeOutscoredBy,
           cannotOutscoreByMoreThan: ruleOutPlan.cannotOutscoreByMoreThan,
-        };
+        });
       }
     }
 
     for (let position = endEntry.bestPos; position <= endEntry.worstPos; position++) {
-      if (insights[`${entity.id}-lock-${position}`]) continue;
+      if (hasInsight(entity.id, position, "can_be_locked_in_next_race")) continue;
 
       let earliestSlotIndex = -1;
       for (let slotIdx = selectedIdx + 2; slotIdx <= lastSlotIdx; slotIdx++) {
@@ -439,18 +444,19 @@ export function computeLockInsightsForSelectedSlot(
       }
 
       if (earliestSlotIndex >= 0) {
-        insights[`${entity.id}-later-${position}`] = {
+        insights.push({
           type: "can_be_locked_in_later",
           entityId: entity.id,
           position,
           earliestSlotIndex,
-        };
+        });
       }
     }
 
     for (let position = endEntry.bestPos; position < endEntry.worstPos; position++) {
-      if (insights[`${entity.id}-lock-${position}`] || insights[`${entity.id}-later-${position}`]) continue;
-      if (insights[`${entity.id}-ruled-out-${position}`]) continue;
+      if (hasInsight(entity.id, position, "can_be_locked_in_next_race")) continue;
+      if (hasInsight(entity.id, position, "can_be_locked_in_later")) continue;
+      if (hasInsight(entity.id, position, "can_be_ruled_out_next_race")) continue;
 
       let earliestSlotIndex = -1;
       for (let slotIdx = selectedIdx + 2; slotIdx <= lastSlotIdx; slotIdx++) {
@@ -475,12 +481,12 @@ export function computeLockInsightsForSelectedSlot(
       }
 
       if (earliestSlotIndex >= 0) {
-        insights[`${entity.id}-ruled-out-later-${position}`] = {
+        insights.push({
           type: "can_be_ruled_out_later",
           entityId: entity.id,
           position,
           earliestSlotIndex,
-        };
+        });
       }
     }
   }

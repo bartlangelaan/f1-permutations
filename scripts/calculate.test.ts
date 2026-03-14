@@ -96,6 +96,17 @@ function actualPositionAtSlot(
   return positionAtSlot(pointsAtSlot, entityId);
 }
 
+function findInsight(
+  insights: LockInsight[] | undefined,
+  type: LockInsight['type'],
+  entityId: string,
+  position: number
+): LockInsight | undefined {
+  return insights?.find(
+    (insight) => insight.type === type && insight.entityId === entityId && insight.position === position
+  );
+}
+
 test('All projections contain actual future points and positions for completed slots across all seasons', () => {
   for (let year = 2010; year <= 2026; year++) {
     const data = readCalculationResults(year);
@@ -121,7 +132,12 @@ test('Lock-in insight: Norris cannot lock P1 in the next race after Mexico 2025'
   const norris = data2025.drivers.find((d) => d.id === 'norris');
   assert.ok(norris, 'Lando Norris not found in 2025 drivers');
 
-  const norrisP1Insight = data2025.driverLockInsights[String(mexicoRaceIdx)]?.[`${norris.id}-later-1`];
+  const norrisP1Insight = findInsight(
+    data2025.driverLockInsights[String(mexicoRaceIdx)],
+    'can_be_locked_in_later',
+    norris.id,
+    1
+  );
   assert.ok(norrisP1Insight, 'Norris P1 lock insight missing after Mexico 2025');
   assert.equal(norrisP1Insight.type, 'can_be_locked_in_later');
   if (norrisP1Insight.type === 'can_be_locked_in_later') {
@@ -141,10 +157,30 @@ test('Lock-in insight: Verstappen exposes every next-race minimum lock from P1 t
   const verstappen = data2022.drivers.find((d) => d.id === 'max_verstappen');
   assert.ok(verstappen, 'Max Verstappen not found in 2022 drivers');
 
-  const verstappenP1 = data2022.driverLockInsights[String(italyRaceIdx)]?.[`${verstappen.id}-lock-1`];
-  const verstappenP2 = data2022.driverLockInsights[String(italyRaceIdx)]?.[`${verstappen.id}-lock-2`];
-  const verstappenP3 = data2022.driverLockInsights[String(italyRaceIdx)]?.[`${verstappen.id}-lock-3`];
-  const verstappenP4 = data2022.driverLockInsights[String(italyRaceIdx)]?.[`${verstappen.id}-lock-4`];
+  const verstappenP1 = findInsight(
+    data2022.driverLockInsights[String(italyRaceIdx)],
+    'can_be_locked_in_next_race',
+    verstappen.id,
+    1
+  );
+  const verstappenP2 = findInsight(
+    data2022.driverLockInsights[String(italyRaceIdx)],
+    'can_be_locked_in_next_race',
+    verstappen.id,
+    2
+  );
+  const verstappenP3 = findInsight(
+    data2022.driverLockInsights[String(italyRaceIdx)],
+    'can_be_locked_in_next_race',
+    verstappen.id,
+    3
+  );
+  const verstappenP4 = findInsight(
+    data2022.driverLockInsights[String(italyRaceIdx)],
+    'can_be_locked_in_next_race',
+    verstappen.id,
+    4
+  );
 
   assert.ok(verstappenP1, 'Verstappen P1 guarantee insight missing after Italy 2022');
   assert.ok(verstappenP2, 'Verstappen P2 guarantee insight missing after Italy 2022');
@@ -194,9 +230,9 @@ test('Lock-in insight: 2025 title contenders show every lockable minimum positio
 
   for (const entityId of ['norris', 'max_verstappen', 'piastri'] as const) {
     const p1Insight: LockInsight | undefined =
-      data2025.driverLockInsights[String(qatarRaceIdx)]?.[`${entityId}-lock-1`];
+      findInsight(data2025.driverLockInsights[String(qatarRaceIdx)], 'can_be_locked_in_next_race', entityId, 1);
     const p2Insight: LockInsight | undefined =
-      data2025.driverLockInsights[String(qatarRaceIdx)]?.[`${entityId}-lock-2`];
+      findInsight(data2025.driverLockInsights[String(qatarRaceIdx)], 'can_be_locked_in_next_race', entityId, 2);
     assert.ok(p1Insight, `${entityId} P1 guarantee insight missing after Qatar 2025`);
     assert.ok(p2Insight, `${entityId} P2 guarantee insight missing after Qatar 2025`);
     assert.equal(p1Insight.type, 'can_be_locked_in_next_race');
@@ -211,12 +247,17 @@ test('Lock-in insight: positions without a next-race minimum guarantee fall back
   const mexicoRaceIdx = data2025.slots.findIndex((s) => s.round === 20 && s.type === 'race');
   assert.ok(mexicoRaceIdx >= 0, 'Mexico 2025 race slot not found');
 
-  const norrisInsights = Object.values(data2025.driverLockInsights[String(mexicoRaceIdx)] ?? {}).filter(
+  const norrisInsights = (data2025.driverLockInsights[String(mexicoRaceIdx)] ?? []).filter(
     (insight) => insight.entityId === 'norris' && insight.type === 'can_be_locked_in_next_race'
   );
 
   assert.equal(norrisInsights.length, 0, 'Expected no conditional next-race guarantee insight for Norris');
-  const norrisLaterP1 = data2025.driverLockInsights[String(mexicoRaceIdx)]?.['norris-later-1'];
+  const norrisLaterP1 = findInsight(
+    data2025.driverLockInsights[String(mexicoRaceIdx)],
+    'can_be_locked_in_later',
+    'norris',
+    1
+  );
   assert.ok(norrisLaterP1, 'Expected a later P1 guarantee insight for Norris');
 });
 
@@ -227,10 +268,30 @@ test('Lock-in insight: later guarantees are emitted per position instead of stop
   const singaporeRaceIdx = data2025.slots.findIndex((s) => s.round === 20 && s.type === 'race');
   assert.ok(singaporeRaceIdx >= 0, 'Singapore 2025 race slot not found');
 
-  const norrisLaterP1 = data2025.driverLockInsights[String(singaporeRaceIdx)]?.['norris-later-1'];
-  const norrisLaterP2 = data2025.driverLockInsights[String(singaporeRaceIdx)]?.['norris-later-2'];
-  const norrisLaterP3 = data2025.driverLockInsights[String(singaporeRaceIdx)]?.['norris-later-3'];
-  const norrisLaterP4 = data2025.driverLockInsights[String(singaporeRaceIdx)]?.['norris-later-4'];
+  const norrisLaterP1 = findInsight(
+    data2025.driverLockInsights[String(singaporeRaceIdx)],
+    'can_be_locked_in_later',
+    'norris',
+    1
+  );
+  const norrisLaterP2 = findInsight(
+    data2025.driverLockInsights[String(singaporeRaceIdx)],
+    'can_be_locked_in_later',
+    'norris',
+    2
+  );
+  const norrisLaterP3 = findInsight(
+    data2025.driverLockInsights[String(singaporeRaceIdx)],
+    'can_be_locked_in_later',
+    'norris',
+    3
+  );
+  const norrisLaterP4 = findInsight(
+    data2025.driverLockInsights[String(singaporeRaceIdx)],
+    'can_be_locked_in_later',
+    'norris',
+    4
+  );
 
   assert.ok(norrisLaterP1, 'Expected a later P1 guarantee insight for Norris after Singapore 2025');
   assert.ok(norrisLaterP2, 'Expected a later P2 guarantee insight for Norris after Singapore 2025');
@@ -245,7 +306,12 @@ test('Lock-in insight: next-race ruled-out positions are exposed', () => {
   const mexicoRaceIdx = data2025.slots.findIndex((s) => s.round === 20 && s.type === 'race');
   assert.ok(mexicoRaceIdx >= 0, 'Mexico 2025 race slot not found');
 
-  const leclercP3RuleOut = data2025.driverLockInsights[String(mexicoRaceIdx)]?.['leclerc-ruled-out-3'];
+  const leclercP3RuleOut = findInsight(
+    data2025.driverLockInsights[String(mexicoRaceIdx)],
+    'can_be_ruled_out_next_race',
+    'leclerc',
+    3
+  );
   assert.ok(leclercP3RuleOut, 'Leclerc P3 rule-out insight missing after Mexico 2025');
   assert.equal(leclercP3RuleOut.type, 'can_be_ruled_out_next_race');
   if (leclercP3RuleOut.type === 'can_be_ruled_out_next_race') {
@@ -269,7 +335,7 @@ test('Lock-in insight: impossible next-event margins are omitted from upper-boun
       [data.constructorLockInsights, data.slots],
     ] as const) {
       for (const insights of Object.values(insightMap)) {
-        for (const insight of Object.values(insights)) {
+        for (const insight of insights) {
           if (insight.type !== 'can_be_locked_in_next_race' && insight.type !== 'can_be_ruled_out_next_race') continue;
 
           const nextSlot = slots[insight.nextSlotIndex];
@@ -306,7 +372,7 @@ test('All explicit lock margins are positive', () => {
 
     for (const insightMap of [data.driverLockInsights, data.constructorLockInsights]) {
       for (const insights of Object.values(insightMap)) {
-        for (const insight of Object.values(insights)) {
+        for (const insight of insights) {
           if (insight.type === 'can_be_locked_in_next_race') {
             for (const condition of insight.mustOutscoreBy) {
               assert.ok(
@@ -337,7 +403,7 @@ test('All can_be_locked_in_next_race insights include at least one lock conditio
 
     for (const insightMap of [data.driverLockInsights, data.constructorLockInsights]) {
       for (const [selectedIdx, insights] of Object.entries(insightMap)) {
-        for (const [key, insight] of Object.entries(insights)) {
+        for (const insight of insights) {
           if (insight.type === 'can_be_locked_in_next_race') {
             const conditionCount =
               insight.mustOutscoreBy.length +
@@ -345,7 +411,7 @@ test('All can_be_locked_in_next_race insights include at least one lock conditio
 
             assert.ok(
               conditionCount > 0,
-              `${year} selectedIdx=${selectedIdx} ${key} is can_be_locked_in_next_race without any lock condition`
+              `${year} selectedIdx=${selectedIdx} ${insight.entityId}-P${insight.position} is can_be_locked_in_next_race without any lock condition`
             );
           }
 
@@ -356,7 +422,7 @@ test('All can_be_locked_in_next_race insights include at least one lock conditio
 
             assert.ok(
               conditionCount > 0,
-              `${year} selectedIdx=${selectedIdx} ${key} is can_be_ruled_out_next_race without any lock condition`
+              `${year} selectedIdx=${selectedIdx} ${insight.entityId}-P${insight.position} is can_be_ruled_out_next_race without any lock condition`
             );
           }
         }
@@ -381,21 +447,24 @@ test('All already_locked_in insights match a single exact end-of-season projecte
         const endProjection: Record<string, ProjectionEntry> | undefined =
           projectionMap[selectedIdx]?.[String(data.slots.length - 1)];
 
-        for (const [key, insight] of Object.entries(insights)) {
+        for (const insight of insights) {
           if (insight.type !== 'already_locked_in') continue;
 
           if (endProjection) {
             const entry: ProjectionEntry | undefined = endProjection[insight.entityId];
-            assert.ok(entry, `${year} selectedIdx=${selectedIdx} ${key} is missing an end-of-season projection entry`);
+            assert.ok(
+              entry,
+              `${year} selectedIdx=${selectedIdx} ${insight.entityId}-P${insight.position} is missing an end-of-season projection entry`
+            );
             assert.equal(
               entry.bestPos,
               insight.position,
-              `${year} selectedIdx=${selectedIdx} ${key} bestPos does not match already_locked_in position`
+              `${year} selectedIdx=${selectedIdx} ${insight.entityId}-P${insight.position} bestPos does not match already_locked_in position`
             );
             assert.equal(
               entry.worstPos,
               insight.position,
-              `${year} selectedIdx=${selectedIdx} ${key} worstPos does not match already_locked_in position`
+              `${year} selectedIdx=${selectedIdx} ${insight.entityId}-P${insight.position} worstPos does not match already_locked_in position`
             );
             continue;
           }
@@ -409,7 +478,7 @@ test('All already_locked_in insights match a single exact end-of-season projecte
           assert.equal(
             actualPosition,
             insight.position,
-            `${year} selectedIdx=${selectedIdx} ${key} actual final position does not match already_locked_in position`
+            `${year} selectedIdx=${selectedIdx} ${insight.entityId}-P${insight.position} actual final position does not match already_locked_in position`
           );
         }
       }
