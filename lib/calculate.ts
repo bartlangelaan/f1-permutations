@@ -238,29 +238,29 @@ function findLockPlanForPosition(
   const cannotBeOutscoredByMoreThan: LockCondition[] = [];
 
   for (const opponent of [...mandatoryAbove, ...optional.filter((o) => selectedOptionalAbove.has(o.opponentId))]) {
-    if (opponent.requiredForOpponentAbove >= 0) {
-      cannotOutscoreByMoreThan.push({
-        opponentId: opponent.opponentId,
-        points: opponent.requiredForOpponentAbove,
-      });
-    } else {
+    if (opponent.requiredForOpponentAbove < 0) {
       mustBeOutscoredBy.push({
         opponentId: opponent.opponentId,
         points: -opponent.requiredForOpponentAbove,
+      });
+    } else if (opponent.requiredForOpponentAbove < horizonMaxDelta) {
+      cannotOutscoreByMoreThan.push({
+        opponentId: opponent.opponentId,
+        points: opponent.requiredForOpponentAbove,
       });
     }
   }
 
   for (const opponent of [...mandatoryBelow, ...optional.filter((o) => !selectedOptionalAbove.has(o.opponentId))]) {
-    if (opponent.requiredForEntityAbove <= 0) {
-      cannotBeOutscoredByMoreThan.push({
-        opponentId: opponent.opponentId,
-        points: -opponent.requiredForEntityAbove,
-      });
-    } else {
+    if (opponent.requiredForEntityAbove > 0) {
       mustOutscoreBy.push({
         opponentId: opponent.opponentId,
         points: opponent.requiredForEntityAbove,
+      });
+    } else if (-opponent.requiredForEntityAbove < horizonMaxDelta) {
+      cannotBeOutscoredByMoreThan.push({
+        opponentId: opponent.opponentId,
+        points: -opponent.requiredForEntityAbove,
       });
     }
   }

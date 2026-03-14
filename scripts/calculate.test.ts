@@ -156,6 +156,71 @@ test('Lock-in insight: Verstappen can lock P1 next race after Italy 2022 with ex
   }
 });
 
+test('Lock-in insight: impossible next-event margins are omitted from upper-bound conditions', () => {
+  for (let year = 2010; year <= 2026; year++) {
+    const data = readCalculationResults(year);
+    assert.ok(data, `No calculation results found for ${year}. Run pnpm calculate first.`);
+
+    for (const [insightMap, slots] of [
+      [data.driverLockInsights, data.slots],
+      [data.constructorLockInsights, data.slots],
+    ] as const) {
+      for (const insights of Object.values(insightMap)) {
+        for (const insight of Object.values(insights)) {
+          if (insight.type !== 'can_be_locked_in_next_race') continue;
+
+          const nextSlot = slots[insight.nextSlotIndex];
+          const maxDelta =
+            insightMap === data.driverLockInsights ? nextSlot.maxDriverPoints : nextSlot.maxConstructorPoints;
+
+          for (const condition of insight.cannotOutscoreByMoreThan) {
+            assert.ok(
+              condition.points < maxDelta,
+              `${year} ${insight.entityId}-P${insight.position} includes impossible cannotOutscoreByMoreThan=${condition.points} for maxDelta=${maxDelta}`
+            );
+          }
+
+          for (const condition of insight.cannotBeOutscoredByMoreThan) {
+            assert.ok(
+              condition.points < maxDelta,
+              `${year} ${insight.entityId}-P${insight.position} includes impossible cannotBeOutscoredByMoreThan=${condition.points} for maxDelta=${maxDelta}`
+            );
+          }
+        }
+      }
+    }
+  }
+});
+
+test('All explicit lock margins are positive', () => {
+  for (let year = 2010; year <= 2026; year++) {
+    const data = readCalculationResults(year);
+    assert.ok(data, `No calculation results found for ${year}. Run pnpm calculate first.`);
+
+    for (const insightMap of [data.driverLockInsights, data.constructorLockInsights]) {
+      for (const insights of Object.values(insightMap)) {
+        for (const insight of Object.values(insights)) {
+          if (insight.type !== 'can_be_locked_in_next_race') continue;
+
+          for (const condition of insight.mustOutscoreBy) {
+            assert.ok(
+              condition.points > 0,
+              `${year} ${insight.entityId}-P${insight.position} has non-positive mustOutscoreBy=${condition.points}`
+            );
+          }
+
+          for (const condition of insight.mustBeOutscoredBy) {
+            assert.ok(
+              condition.points > 0,
+              `${year} ${insight.entityId}-P${insight.position} has non-positive mustBeOutscoredBy=${condition.points}`
+            );
+          }
+        }
+      }
+    }
+  }
+});
+
 test('All can_be_locked_in_next_race insights include at least one lock condition', () => {
   for (let year = 2010; year <= 2026; year++) {
     const data = readCalculationResults(year);
