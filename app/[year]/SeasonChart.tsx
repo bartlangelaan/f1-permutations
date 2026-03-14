@@ -587,10 +587,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
       <div className="border-t border-zinc-800 pt-4">
         <div className="mb-2 text-sm font-semibold text-zinc-300">Lock-in insights</div>
         <div className="space-y-1 text-xs text-zinc-400 max-h-64 overflow-y-auto pr-2">
-          {insightItems.map((insight) => {
-            const key = `${insight.entityId}-${insight.position}`;
-            return <p key={key}>• {renderInsightText(insight)}</p>;
-          })}
+          {insightItems.map((insight, i) => <p key={i}>• {renderInsightText(insight)}</p>)}
         </div>
       </div>
     </div>
