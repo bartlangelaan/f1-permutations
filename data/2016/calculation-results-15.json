@@ -1431,6 +1431,12 @@
         "position": 11,
         "earliestSlotIndex": 20
       },
+      "ricciardo-12": {
+        "type": "can_be_locked_in_later",
+        "entityId": "ricciardo",
+        "position": 12,
+        "earliestSlotIndex": 20
+      },
       "vettel-1": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
@@ -1891,7 +1897,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "perez",
         "position": 15,
-        "earliestSlotIndex": 20
+        "earliestSlotIndex": 19
       },
       "perez-16": {
         "type": "can_be_locked_in_later",
@@ -4081,7 +4087,50 @@
         "position": 1,
         "nextSlotIndex": 15,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "red_bull",
+            "points": 6
+          },
+          {
+            "opponentId": "ferrari",
+            "points": 21
+          },
+          {
+            "opponentId": "force_india",
+            "points": 210
+          },
+          {
+            "opponentId": "williams",
+            "points": 211
+          },
+          {
+            "opponentId": "mclaren",
+            "points": 268
+          },
+          {
+            "opponentId": "toro_rosso",
+            "points": 275
+          },
+          {
+            "opponentId": "haas",
+            "points": 294
+          },
+          {
+            "opponentId": "renault",
+            "points": 315
+          },
+          {
+            "opponentId": "manor",
+            "points": 321
+          },
+          {
+            "opponentId": "sauber",
+            "points": 322
+          }
+        ]
       },
       "mercedes-2": {
         "type": "can_be_locked_in_later",
@@ -4249,7 +4298,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "williams",
         "position": 5,
-        "earliestSlotIndex": 19
+        "earliestSlotIndex": 18
       },
       "williams-6": {
         "type": "can_be_locked_in_later",
@@ -4537,7 +4586,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "sauber",
         "position": 11,
-        "earliestSlotIndex": 19
+        "earliestSlotIndex": 18
       },
       "manor-4": {
         "type": "can_be_locked_in_later",

@@ -1353,7 +1353,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "massa",
         "position": 7,
-        "earliestSlotIndex": 18
+        "earliestSlotIndex": 17
       },
       "massa-8": {
         "type": "can_be_locked_in_later",
@@ -3281,10 +3281,45 @@
         "mustOutscoreBy": [
           {
             "opponentId": "ferrari",
-            "points": 3
+            "points": 4
           }
         ],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "williams",
+            "points": 125
+          },
+          {
+            "opponentId": "red_bull",
+            "points": 194
+          },
+          {
+            "opponentId": "force_india",
+            "points": 256
+          },
+          {
+            "opponentId": "lotus_f1",
+            "points": 273
+          },
+          {
+            "opponentId": "toro_rosso",
+            "points": 289
+          },
+          {
+            "opponentId": "sauber",
+            "points": 307
+          },
+          {
+            "opponentId": "mclaren",
+            "points": 316
+          },
+          {
+            "opponentId": "manor",
+            "points": 333
+          }
+        ]
       },
       "mercedes-2": {
         "type": "can_be_locked_in_later",

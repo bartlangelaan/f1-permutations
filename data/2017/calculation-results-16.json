@@ -873,14 +873,105 @@
         "mustOutscoreBy": [
           {
             "opponentId": "vettel",
-            "points": 16
+            "points": 17
           },
           {
             "opponentId": "bottas",
-            "points": 3
+            "points": 4
           }
         ],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "ricciardo",
+            "points": 38
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 82
+          },
+          {
+            "opponentId": "max_verstappen",
+            "points": 119
+          },
+          {
+            "opponentId": "perez",
+            "points": 148
+          },
+          {
+            "opponentId": "ocon",
+            "points": 165
+          },
+          {
+            "opponentId": "sainz",
+            "points": 182
+          },
+          {
+            "opponentId": "massa",
+            "points": 196
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 196
+          },
+          {
+            "opponentId": "stroll",
+            "points": 198
+          },
+          {
+            "opponentId": "grosjean",
+            "points": 202
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 215
+          },
+          {
+            "opponentId": "vandoorne",
+            "points": 217
+          },
+          {
+            "opponentId": "alonso",
+            "points": 220
+          },
+          {
+            "opponentId": "jolyon_palmer",
+            "points": 222
+          },
+          {
+            "opponentId": "wehrlein",
+            "points": 225
+          },
+          {
+            "opponentId": "kvyat",
+            "points": 226
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 230
+          },
+          {
+            "opponentId": "ericsson",
+            "points": 230
+          },
+          {
+            "opponentId": "button",
+            "points": 230
+          },
+          {
+            "opponentId": "resta",
+            "points": 230
+          },
+          {
+            "opponentId": "gasly",
+            "points": 230
+          },
+          {
+            "opponentId": "brendon_hartley",
+            "points": 230
+          }
+        ]
       },
       "hamilton-2": {
         "type": "can_be_locked_in_later",
@@ -916,6 +1007,12 @@
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 4,
+        "earliestSlotIndex": 19
+      },
+      "vettel-5": {
+        "type": "can_be_locked_in_later",
+        "entityId": "vettel",
+        "position": 5,
         "earliestSlotIndex": 19
       },
       "bottas-1": {
@@ -2488,7 +2585,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "kvyat",
         "position": 19,
-        "earliestSlotIndex": 19
+        "earliestSlotIndex": 18
       },
       "kvyat-20": {
         "type": "can_be_locked_in_later",
@@ -3334,7 +3431,46 @@
         "position": 1,
         "nextSlotIndex": 16,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "ferrari",
+            "points": 15
+          },
+          {
+            "opponentId": "red_bull",
+            "points": 107
+          },
+          {
+            "opponentId": "force_india",
+            "points": 263
+          },
+          {
+            "opponentId": "williams",
+            "points": 344
+          },
+          {
+            "opponentId": "toro_rosso",
+            "points": 358
+          },
+          {
+            "opponentId": "haas",
+            "points": 367
+          },
+          {
+            "opponentId": "renault",
+            "points": 368
+          },
+          {
+            "opponentId": "mclaren",
+            "points": 387
+          },
+          {
+            "opponentId": "sauber",
+            "points": 405
+          }
+        ]
       },
       "mercedes-2": {
         "type": "can_be_locked_in_later",
@@ -3356,10 +3492,46 @@
         "mustOutscoreBy": [
           {
             "opponentId": "red_bull",
-            "points": 37
+            "points": 38
           }
         ],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "mercedes",
+            "points": 15
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "force_india",
+            "points": 118
+          },
+          {
+            "opponentId": "williams",
+            "points": 199
+          },
+          {
+            "opponentId": "toro_rosso",
+            "points": 213
+          },
+          {
+            "opponentId": "haas",
+            "points": 222
+          },
+          {
+            "opponentId": "renault",
+            "points": 223
+          },
+          {
+            "opponentId": "mclaren",
+            "points": 242
+          },
+          {
+            "opponentId": "sauber",
+            "points": 260
+          }
+        ]
       },
       "ferrari-3": {
         "type": "can_be_locked_in_later",
@@ -3383,6 +3555,42 @@
           {
             "opponentId": "ferrari",
             "points": 38
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "mercedes",
+            "points": 107
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "force_india",
+            "points": 26
+          },
+          {
+            "opponentId": "williams",
+            "points": 107
+          },
+          {
+            "opponentId": "toro_rosso",
+            "points": 121
+          },
+          {
+            "opponentId": "haas",
+            "points": 130
+          },
+          {
+            "opponentId": "renault",
+            "points": 131
+          },
+          {
+            "opponentId": "mclaren",
+            "points": 150
+          },
+          {
+            "opponentId": "sauber",
+            "points": 168
           }
         ]
       },
@@ -3510,7 +3718,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "renault",
         "position": 8,
-        "earliestSlotIndex": 19
+        "earliestSlotIndex": 18
       },
       "renault-9": {
         "type": "can_be_locked_in_later",

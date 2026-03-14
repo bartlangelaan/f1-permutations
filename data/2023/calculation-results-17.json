@@ -2379,7 +2379,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "hamilton",
         "position": 10,
-        "earliestSlotIndex": 27
+        "earliestSlotIndex": 26
       },
       "hamilton-11": {
         "type": "can_be_locked_in_later",
@@ -2487,7 +2487,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 6,
-        "earliestSlotIndex": 26
+        "earliestSlotIndex": 24
       },
       "alonso-7": {
         "type": "can_be_locked_in_later",
@@ -4071,7 +4071,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 18,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 23
       },
       "hulkenberg-19": {
         "type": "can_be_locked_in_later",
@@ -4865,10 +4865,45 @@
         "mustOutscoreBy": [
           {
             "opponentId": "mercedes",
-            "points": 43
+            "points": 44
           }
         ],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "ferrari",
+            "points": 1
+          },
+          {
+            "opponentId": "aston_martin",
+            "points": 12
+          },
+          {
+            "opponentId": "mclaren",
+            "points": 114
+          },
+          {
+            "opponentId": "alpine",
+            "points": 156
+          },
+          {
+            "opponentId": "williams",
+            "points": 208
+          },
+          {
+            "opponentId": "haas",
+            "points": 218
+          },
+          {
+            "opponentId": "alfa",
+            "points": 219
+          },
+          {
+            "opponentId": "alphatauri",
+            "points": 226
+          }
+        ]
       },
       "red_bull-2": {
         "type": "can_be_locked_in_later",
@@ -5090,7 +5125,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "aston_martin",
         "position": 5,
-        "earliestSlotIndex": 26
+        "earliestSlotIndex": 24
       },
       "aston_martin-6": {
         "type": "can_be_locked_in_later",

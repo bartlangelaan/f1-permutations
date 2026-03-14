@@ -950,6 +950,30 @@
         "position": 18,
         "earliestSlotIndex": 18
       },
+      "ricciardo-19": {
+        "type": "can_be_locked_in_later",
+        "entityId": "ricciardo",
+        "position": 19,
+        "earliestSlotIndex": 18
+      },
+      "ricciardo-20": {
+        "type": "can_be_locked_in_later",
+        "entityId": "ricciardo",
+        "position": 20,
+        "earliestSlotIndex": 18
+      },
+      "ricciardo-21": {
+        "type": "can_be_locked_in_later",
+        "entityId": "ricciardo",
+        "position": 21,
+        "earliestSlotIndex": 18
+      },
+      "ricciardo-22": {
+        "type": "can_be_locked_in_later",
+        "entityId": "ricciardo",
+        "position": 22,
+        "earliestSlotIndex": 18
+      },
       "perez-4": {
         "type": "can_be_locked_in_later",
         "entityId": "perez",
@@ -2346,10 +2370,46 @@
         "mustOutscoreBy": [
           {
             "opponentId": "red_bull",
-            "points": 16
+            "points": 17
           }
         ],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "ferrari",
+            "points": 67
+          },
+          {
+            "opponentId": "mercedes",
+            "points": 267
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "force_india",
+            "points": 31
+          },
+          {
+            "opponentId": "lotus_f1",
+            "points": 63
+          },
+          {
+            "opponentId": "toro_rosso",
+            "points": 70
+          },
+          {
+            "opponentId": "sauber",
+            "points": 97
+          },
+          {
+            "opponentId": "mclaren",
+            "points": 106
+          },
+          {
+            "opponentId": "manor",
+            "points": 133
+          }
+        ]
       },
       "williams-4": {
         "type": "can_be_locked_in_later",
@@ -2377,17 +2437,45 @@
         "mustOutscoreBy": [
           {
             "opponentId": "force_india",
-            "points": 38
+            "points": 39
           },
           {
             "opponentId": "lotus_f1",
-            "points": 6
+            "points": 7
           }
         ],
         "mustBeOutscoredBy": [
           {
             "opponentId": "williams",
             "points": 17
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "ferrari",
+            "points": 137
+          },
+          {
+            "opponentId": "mercedes",
+            "points": 337
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "toro_rosso",
+            "points": 0
+          },
+          {
+            "opponentId": "sauber",
+            "points": 27
+          },
+          {
+            "opponentId": "mclaren",
+            "points": 36
+          },
+          {
+            "opponentId": "manor",
+            "points": 63
           }
         ]
       },

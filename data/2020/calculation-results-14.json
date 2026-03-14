@@ -628,10 +628,98 @@
         "mustOutscoreBy": [
           {
             "opponentId": "max_verstappen",
-            "points": 25
+            "points": 26
           }
         ],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "hamilton",
+            "points": 57
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 44
+          },
+          {
+            "opponentId": "leclerc",
+            "points": 47
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 48
+          },
+          {
+            "opponentId": "sainz",
+            "points": 69
+          },
+          {
+            "opponentId": "norris",
+            "points": 70
+          },
+          {
+            "opponentId": "albon",
+            "points": 74
+          },
+          {
+            "opponentId": "gasly",
+            "points": 81
+          },
+          {
+            "opponentId": "stroll",
+            "points": 85
+          },
+          {
+            "opponentId": "ocon",
+            "points": 104
+          },
+          {
+            "opponentId": "vettel",
+            "points": 111
+          },
+          {
+            "opponentId": "kvyat",
+            "points": 118
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 134
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 140
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 140
+          },
+          {
+            "opponentId": "grosjean",
+            "points": 142
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 143
+          },
+          {
+            "opponentId": "russell",
+            "points": 144
+          },
+          {
+            "opponentId": "latifi",
+            "points": 144
+          },
+          {
+            "opponentId": "aitken",
+            "points": 144
+          },
+          {
+            "opponentId": "pietro_fittipaldi",
+            "points": 144
+          }
+        ]
       },
       "bottas-3": {
         "type": "can_be_locked_in_later",
@@ -646,10 +734,105 @@
         "earliestSlotIndex": 16
       },
       "max_verstappen-3": {
-        "type": "can_be_locked_in_later",
+        "type": "can_be_locked_in_next_race",
         "entityId": "max_verstappen",
         "position": 3,
-        "earliestSlotIndex": 16
+        "nextSlotIndex": 14,
+        "mustOutscoreBy": [],
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "bottas",
+            "points": 26
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "hamilton",
+            "points": 84
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 17
+          },
+          {
+            "opponentId": "leclerc",
+            "points": 20
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 21
+          },
+          {
+            "opponentId": "sainz",
+            "points": 42
+          },
+          {
+            "opponentId": "norris",
+            "points": 43
+          },
+          {
+            "opponentId": "albon",
+            "points": 47
+          },
+          {
+            "opponentId": "gasly",
+            "points": 54
+          },
+          {
+            "opponentId": "stroll",
+            "points": 58
+          },
+          {
+            "opponentId": "ocon",
+            "points": 77
+          },
+          {
+            "opponentId": "vettel",
+            "points": 84
+          },
+          {
+            "opponentId": "kvyat",
+            "points": 91
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 107
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 113
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 113
+          },
+          {
+            "opponentId": "grosjean",
+            "points": 115
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 116
+          },
+          {
+            "opponentId": "russell",
+            "points": 117
+          },
+          {
+            "opponentId": "latifi",
+            "points": 117
+          },
+          {
+            "opponentId": "aitken",
+            "points": 117
+          },
+          {
+            "opponentId": "pietro_fittipaldi",
+            "points": 117
+          }
+        ]
       },
       "max_verstappen-4": {
         "type": "can_be_locked_in_later",
@@ -2780,10 +2963,46 @@
         "mustOutscoreBy": [
           {
             "opponentId": "racing_point",
-            "points": 17
+            "points": 18
           }
         ],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "mercedes",
+            "points": 175
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mclaren",
+            "points": 2
+          },
+          {
+            "opponentId": "renault",
+            "points": 15
+          },
+          {
+            "opponentId": "ferrari",
+            "points": 21
+          },
+          {
+            "opponentId": "alphatauri",
+            "points": 62
+          },
+          {
+            "opponentId": "alfa",
+            "points": 143
+          },
+          {
+            "opponentId": "haas",
+            "points": 148
+          },
+          {
+            "opponentId": "williams",
+            "points": 151
+          }
+        ]
       },
       "red_bull-3": {
         "type": "can_be_locked_in_later",

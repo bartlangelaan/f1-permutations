@@ -152,6 +152,8 @@ export type LockInsight =
       nextSlotIndex: number;
       mustOutscoreBy: LockCondition[];
       mustBeOutscoredBy: LockCondition[];
+      cannotOutscoreByMoreThan: LockCondition[];
+      cannotBeOutscoredByMoreThan: LockCondition[];
     }
   | {
       type: "can_be_locked_in_later";
@@ -190,16 +192,21 @@ function findLockPlanForPosition(
   basePts: Map<string, number>,
   horizonMaxDelta: number,
   pointsRemainingAfterHorizon: number
-): { mustOutscoreBy: LockCondition[]; mustBeOutscoredBy: LockCondition[] } | null {
+): {
+  mustOutscoreBy: LockCondition[];
+  mustBeOutscoredBy: LockCondition[];
+  cannotOutscoreByMoreThan: LockCondition[];
+  cannotBeOutscoredByMoreThan: LockCondition[];
+} | null {
   const opponents = entityIds.filter((id) => id !== entityId).map((opponentId) => {
     const currentGap = (basePts.get(entityId) ?? 0) - (basePts.get(opponentId) ?? 0);
-    // Need entity-above-opponent by at least remaining points to make an overtake impossible.
-    const requiredForEntityAbove = pointsRemainingAfterHorizon - currentGap;
-    // Need opponent-above-entity by more than remaining points to make catch-up impossible.
+    // Need entity-above-opponent by more than the remaining points to make a catch-up impossible.
+    const requiredForEntityAbove = pointsRemainingAfterHorizon + 1 - currentGap;
+    // Need opponent-above-entity by more than the remaining points to make catch-up impossible.
     const requiredForOpponentAbove = -pointsRemainingAfterHorizon - 1 - currentGap;
 
-    const canForceEntityAbove = requiredForEntityAbove < horizonMaxDelta;
-    const canForceOpponentAbove = requiredForOpponentAbove > -horizonMaxDelta;
+    const canForceEntityAbove = requiredForEntityAbove <= horizonMaxDelta;
+    const canForceOpponentAbove = requiredForOpponentAbove >= -horizonMaxDelta;
 
     return {
       opponentId,
@@ -225,23 +232,50 @@ function findLockPlanForPosition(
   optional.sort((a, b) => a.requiredForOpponentAbove - b.requiredForOpponentAbove);
   const selectedOptionalAbove = new Set(optional.slice(0, optionalNeededAbove).map((o) => o.opponentId));
 
-  const mustBeOutscoredBy = [...mandatoryAbove, ...optional.filter((o) => selectedOptionalAbove.has(o.opponentId))]
-    .map((o) => ({
-      opponentId: o.opponentId,
-      points: Math.max(0, -o.requiredForOpponentAbove),
-    }))
-    .filter((c) => c.points > 0)
-    .sort((a, b) => b.points - a.points);
+  const mustBeOutscoredBy: LockCondition[] = [];
+  const mustOutscoreBy: LockCondition[] = [];
+  const cannotOutscoreByMoreThan: LockCondition[] = [];
+  const cannotBeOutscoredByMoreThan: LockCondition[] = [];
 
-  const mustOutscoreBy = [...mandatoryBelow, ...optional.filter((o) => !selectedOptionalAbove.has(o.opponentId))]
-    .map((o) => ({
-      opponentId: o.opponentId,
-      points: Math.max(0, o.requiredForEntityAbove),
-    }))
-    .filter((c) => c.points > 0)
-    .sort((a, b) => b.points - a.points);
+  for (const opponent of [...mandatoryAbove, ...optional.filter((o) => selectedOptionalAbove.has(o.opponentId))]) {
+    if (opponent.requiredForOpponentAbove >= 0) {
+      cannotOutscoreByMoreThan.push({
+        opponentId: opponent.opponentId,
+        points: opponent.requiredForOpponentAbove,
+      });
+    } else {
+      mustBeOutscoredBy.push({
+        opponentId: opponent.opponentId,
+        points: -opponent.requiredForOpponentAbove,
+      });
+    }
+  }
 
-  return { mustOutscoreBy, mustBeOutscoredBy };
+  for (const opponent of [...mandatoryBelow, ...optional.filter((o) => !selectedOptionalAbove.has(o.opponentId))]) {
+    if (opponent.requiredForEntityAbove <= 0) {
+      cannotBeOutscoredByMoreThan.push({
+        opponentId: opponent.opponentId,
+        points: -opponent.requiredForEntityAbove,
+      });
+    } else {
+      mustOutscoreBy.push({
+        opponentId: opponent.opponentId,
+        points: opponent.requiredForEntityAbove,
+      });
+    }
+  }
+
+  mustOutscoreBy.sort((a, b) => b.points - a.points);
+  mustBeOutscoredBy.sort((a, b) => b.points - a.points);
+  cannotOutscoreByMoreThan.sort((a, b) => a.points - b.points);
+  cannotBeOutscoredByMoreThan.sort((a, b) => a.points - b.points);
+
+  return {
+    mustOutscoreBy,
+    mustBeOutscoredBy,
+    cannotOutscoreByMoreThan,
+    cannotBeOutscoredByMoreThan,
+  };
 }
 
 export function computeLockInsightsForSelectedSlot(
@@ -295,6 +329,8 @@ export function computeLockInsightsForSelectedSlot(
             nextSlotIndex: nextSlotIdx,
             mustOutscoreBy: nextPlan.mustOutscoreBy,
             mustBeOutscoredBy: nextPlan.mustBeOutscoredBy,
+            cannotOutscoreByMoreThan: nextPlan.cannotOutscoreByMoreThan,
+            cannotBeOutscoredByMoreThan: nextPlan.cannotBeOutscoredByMoreThan,
           };
           continue;
         }

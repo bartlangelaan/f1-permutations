@@ -1533,7 +1533,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "perez",
         "position": 17,
-        "earliestSlotIndex": 20
+        "earliestSlotIndex": 19
       },
       "perez-18": {
         "type": "can_be_locked_in_later",
@@ -1893,7 +1893,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "kvyat",
         "position": 17,
-        "earliestSlotIndex": 20
+        "earliestSlotIndex": 19
       },
       "kvyat-18": {
         "type": "can_be_locked_in_later",
@@ -2465,10 +2465,45 @@
         "mustOutscoreBy": [
           {
             "opponentId": "ferrari",
-            "points": 14
+            "points": 15
           }
         ],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "red_bull",
+            "points": 83
+          },
+          {
+            "opponentId": "mclaren",
+            "points": 293
+          },
+          {
+            "opponentId": "renault",
+            "points": 326
+          },
+          {
+            "opponentId": "toro_rosso",
+            "points": 339
+          },
+          {
+            "opponentId": "racing_point",
+            "points": 342
+          },
+          {
+            "opponentId": "alfa",
+            "points": 359
+          },
+          {
+            "opponentId": "haas",
+            "points": 366
+          },
+          {
+            "opponentId": "williams",
+            "points": 393
+          }
+        ]
       },
       "mercedes-2": {
         "type": "can_be_locked_in_later",

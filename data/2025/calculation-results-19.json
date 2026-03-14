@@ -2135,6 +2135,12 @@
         "position": 6,
         "earliestSlotIndex": 29
       },
+      "norris-7": {
+        "type": "can_be_locked_in_later",
+        "entityId": "norris",
+        "position": 7,
+        "earliestSlotIndex": 29
+      },
       "max_verstappen-1": {
         "type": "can_be_locked_in_later",
         "entityId": "max_verstappen",
@@ -4379,10 +4385,45 @@
         "mustOutscoreBy": [
           {
             "opponentId": "ferrari",
-            "points": 9
+            "points": 10
           }
         ],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mercedes",
+            "points": 10
+          },
+          {
+            "opponentId": "red_bull",
+            "points": 31
+          },
+          {
+            "opponentId": "williams",
+            "points": 184
+          },
+          {
+            "opponentId": "aston_martin",
+            "points": 208
+          },
+          {
+            "opponentId": "rb",
+            "points": 209
+          },
+          {
+            "opponentId": "sauber",
+            "points": 215
+          },
+          {
+            "opponentId": "haas",
+            "points": 226
+          },
+          {
+            "opponentId": "alpine",
+            "points": 250
+          }
+        ]
       },
       "mclaren-2": {
         "type": "can_be_locked_in_later",

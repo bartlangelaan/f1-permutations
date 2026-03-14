@@ -318,7 +318,21 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
           .join(", ")}`
       );
     }
-    const detailText = details.length ? ` if ${details.join(" and ")}` : "";
+    if (insight.cannotOutscoreByMoreThan.length) {
+      details.push(
+        `does not outscore ${insight.cannotOutscoreByMoreThan
+          .map((c) => `${entitiesById.get(c.opponentId)?.name ?? c.opponentId} by more than ${c.points} points`)
+          .join(", ")}`
+      );
+    }
+    if (insight.cannotBeOutscoredByMoreThan.length) {
+      details.push(
+        `is not outscored by ${insight.cannotBeOutscoredByMoreThan
+          .map((c) => `${entitiesById.get(c.opponentId)?.name ?? c.opponentId} by more than ${c.points} points`)
+          .join(", ")}`
+      );
+    }
+    const detailText = details.length ? ` if ${details.join(" and ")}` : " regardless of the result there";
     return `${entityName} can lock in ${positionLabel} in ${slot?.fullLabel ?? "the next event"}${detailText}.`;
   }
 

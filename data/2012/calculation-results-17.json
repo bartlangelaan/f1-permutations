@@ -891,6 +891,12 @@
         "position": 6,
         "earliestSlotIndex": 19
       },
+      "webber-7": {
+        "type": "can_be_locked_in_later",
+        "entityId": "webber",
+        "position": 7,
+        "earliestSlotIndex": 19
+      },
       "massa-6": {
         "type": "can_be_locked_in_later",
         "entityId": "massa",
@@ -2773,7 +2779,54 @@
         "position": 1,
         "nextSlotIndex": 17,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "ferrari",
+            "points": 4
+          },
+          {
+            "opponentId": "mclaren",
+            "points": 14
+          },
+          {
+            "opponentId": "lotus_f1",
+            "points": 57
+          },
+          {
+            "opponentId": "mercedes",
+            "points": 184
+          },
+          {
+            "opponentId": "sauber",
+            "points": 204
+          },
+          {
+            "opponentId": "force_india",
+            "points": 227
+          },
+          {
+            "opponentId": "williams",
+            "points": 261
+          },
+          {
+            "opponentId": "toro_rosso",
+            "points": 299
+          },
+          {
+            "opponentId": "marussia",
+            "points": 320
+          },
+          {
+            "opponentId": "caterham",
+            "points": 320
+          },
+          {
+            "opponentId": "hrt",
+            "points": 320
+          }
+        ]
       },
       "red_bull-2": {
         "type": "can_be_locked_in_later",

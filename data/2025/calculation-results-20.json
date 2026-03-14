@@ -2309,7 +2309,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "hamilton",
         "position": 9,
-        "earliestSlotIndex": 29
+        "earliestSlotIndex": 27
       },
       "hamilton-10": {
         "type": "can_be_locked_in_later",
@@ -3467,13 +3467,13 @@
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 20,
-        "earliestSlotIndex": 27
+        "earliestSlotIndex": 26
       },
       "stroll-21": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 21,
-        "earliestSlotIndex": 27
+        "earliestSlotIndex": 26
       },
       "tsunoda-4": {
         "type": "can_be_locked_in_later",
@@ -4013,7 +4013,46 @@
         "position": 1,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mercedes",
+            "points": 29
+          },
+          {
+            "opponentId": "ferrari",
+            "points": 33
+          },
+          {
+            "opponentId": "red_bull",
+            "points": 47
+          },
+          {
+            "opponentId": "williams",
+            "points": 218
+          },
+          {
+            "opponentId": "rb",
+            "points": 247
+          },
+          {
+            "opponentId": "aston_martin",
+            "points": 257
+          },
+          {
+            "opponentId": "sauber",
+            "points": 264
+          },
+          {
+            "opponentId": "haas",
+            "points": 275
+          },
+          {
+            "opponentId": "alpine",
+            "points": 299
+          }
+        ]
       },
       "mclaren-2": {
         "type": "can_be_locked_in_later",
@@ -4247,7 +4286,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "williams",
         "position": 9,
-        "earliestSlotIndex": 27
+        "earliestSlotIndex": 26
       },
       "williams-10": {
         "type": "can_be_locked_in_later",

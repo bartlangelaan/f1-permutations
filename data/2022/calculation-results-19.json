@@ -1193,14 +1193,93 @@
         "mustOutscoreBy": [
           {
             "opponentId": "leclerc",
-            "points": 8
+            "points": 9
           },
           {
             "opponentId": "perez",
-            "points": 6
+            "points": 7
           }
         ],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 25
+          },
+          {
+            "opponentId": "sainz",
+            "points": 26
+          },
+          {
+            "opponentId": "hamilton",
+            "points": 58
+          },
+          {
+            "opponentId": "norris",
+            "points": 128
+          },
+          {
+            "opponentId": "ocon",
+            "points": 162
+          },
+          {
+            "opponentId": "alonso",
+            "points": 169
+          },
+          {
+            "opponentId": "bottas",
+            "points": 182
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 199
+          },
+          {
+            "opponentId": "vettel",
+            "points": 204
+          },
+          {
+            "opponentId": "gasly",
+            "points": 205
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 206
+          },
+          {
+            "opponentId": "stroll",
+            "points": 215
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 216
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 217
+          },
+          {
+            "opponentId": "zhou",
+            "points": 222
+          },
+          {
+            "opponentId": "albon",
+            "points": 224
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 226
+          },
+          {
+            "opponentId": "latifi",
+            "points": 228
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 228
+          }
+        ]
       },
       "max_verstappen-2": {
         "type": "can_be_locked_in_later",
@@ -1248,6 +1327,12 @@
         "type": "can_be_locked_in_later",
         "entityId": "leclerc",
         "position": 6,
+        "earliestSlotIndex": 24
+      },
+      "leclerc-7": {
+        "type": "can_be_locked_in_later",
+        "entityId": "leclerc",
+        "position": 7,
         "earliestSlotIndex": 24
       },
       "perez-1": {
@@ -1326,6 +1411,12 @@
         "type": "can_be_locked_in_later",
         "entityId": "russell",
         "position": 7,
+        "earliestSlotIndex": 24
+      },
+      "russell-8": {
+        "type": "can_be_locked_in_later",
+        "entityId": "russell",
+        "position": 8,
         "earliestSlotIndex": 24
       },
       "sainz-2": {
@@ -1800,7 +1891,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 11,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
       "bottas-12": {
         "type": "can_be_locked_in_later",
@@ -1926,7 +2017,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 16,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
       "ricciardo-17": {
         "type": "can_be_locked_in_later",
@@ -2226,7 +2317,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 18,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
       "gasly-19": {
         "type": "can_be_locked_in_later",
@@ -3286,7 +3377,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "haas",
         "position": 10,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
       "alphatauri-4": {
         "type": "can_be_locked_in_later",
@@ -3328,7 +3419,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "alphatauri",
         "position": 10,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
       "williams-4": {
         "type": "can_be_locked_in_later",

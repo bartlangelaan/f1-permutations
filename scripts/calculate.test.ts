@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readCalculationResults } from '../lib/calculation-results.ts';
-import type { ProjectionMap } from '../lib/calculate.ts';
+import type { ProjectionEntry, ProjectionMap } from '../lib/calculate.ts';
 import { getEndOfSeasonProjections } from '../lib/projections.ts';
 
 test('Check the calculation result of 2025 after race 23', () => {
@@ -83,6 +83,19 @@ function validateProjectionAgainstActual(
   }
 }
 
+function actualPositionAtSlot(
+  entities: { id: string; cumulativePoints: (number | null)[] }[],
+  slotIdx: number,
+  entityId: string
+): number {
+  const pointsAtSlot = new Map<string, number>();
+  for (const entity of entities) {
+    pointsAtSlot.set(entity.id, entity.cumulativePoints[slotIdx] ?? 0);
+  }
+
+  return positionAtSlot(pointsAtSlot, entityId);
+}
+
 test('All projections contain actual future points and positions for completed slots across all seasons', () => {
   for (let year = 2010; year <= 2026; year++) {
     const data = readCalculationResults(year);
@@ -137,8 +150,86 @@ test('Lock-in insight: Verstappen can lock P1 next race after Italy 2022 with ex
     assert.ok(nextSlot.fullLabel.includes('Singapore GP'));
 
     const outscoreByOpponent = new Map(verstappenP1Insight.mustOutscoreBy.map((c) => [c.opponentId, c.points]));
-    assert.equal(outscoreByOpponent.get('leclerc'), 22);
-    assert.equal(outscoreByOpponent.get('perez'), 13);
-    assert.equal(outscoreByOpponent.get('russell'), 6);
+    assert.equal(outscoreByOpponent.get('leclerc'), 23);
+    assert.equal(outscoreByOpponent.get('perez'), 14);
+    assert.equal(outscoreByOpponent.get('russell'), 7);
+  }
+});
+
+test('All can_be_locked_in_next_race insights include at least one lock condition', () => {
+  for (let year = 2010; year <= 2026; year++) {
+    const data = readCalculationResults(year);
+    assert.ok(data, `No calculation results found for ${year}. Run pnpm calculate first.`);
+
+    for (const insightMap of [data.driverLockInsights, data.constructorLockInsights]) {
+      for (const [selectedIdx, insights] of Object.entries(insightMap)) {
+        for (const [key, insight] of Object.entries(insights)) {
+          if (insight.type !== 'can_be_locked_in_next_race') continue;
+
+          const conditionCount =
+            insight.mustOutscoreBy.length +
+            insight.mustBeOutscoredBy.length +
+            insight.cannotOutscoreByMoreThan.length +
+            insight.cannotBeOutscoredByMoreThan.length;
+
+          assert.ok(
+            conditionCount > 0,
+            `${year} selectedIdx=${selectedIdx} ${key} is can_be_locked_in_next_race without any lock condition`
+          );
+        }
+      }
+    }
+  }
+});
+
+test('All already_locked_in insights match a single exact end-of-season projected position', () => {
+  for (let year = 2010; year <= 2026; year++) {
+    const data = readCalculationResults(year);
+    assert.ok(data, `No calculation results found for ${year}. Run pnpm calculate first.`);
+
+    for (const [insightMap, projectionMap] of [
+      [data.driverLockInsights, data.driverProjections],
+      [data.constructorLockInsights, data.constructorProjections],
+    ] as const) {
+      const entities = projectionMap === data.driverProjections ? data.drivers : data.constructors;
+
+      for (const [selectedIdx, insights] of Object.entries(insightMap)) {
+        const selectedIdxNum = Number(selectedIdx);
+        const endProjection: Record<string, ProjectionEntry> | undefined =
+          projectionMap[selectedIdx]?.[String(data.slots.length - 1)];
+
+        for (const [key, insight] of Object.entries(insights)) {
+          if (insight.type !== 'already_locked_in') continue;
+
+          if (endProjection) {
+            const entry: ProjectionEntry | undefined = endProjection[insight.entityId];
+            assert.ok(entry, `${year} selectedIdx=${selectedIdx} ${key} is missing an end-of-season projection entry`);
+            assert.equal(
+              entry.bestPos,
+              insight.position,
+              `${year} selectedIdx=${selectedIdx} ${key} bestPos does not match already_locked_in position`
+            );
+            assert.equal(
+              entry.worstPos,
+              insight.position,
+              `${year} selectedIdx=${selectedIdx} ${key} worstPos does not match already_locked_in position`
+            );
+            continue;
+          }
+
+          assert.equal(
+            selectedIdxNum,
+            data.slots.length - 1,
+            `${year} selectedIdx=${selectedIdx} is missing end-of-season projections before the final slot`
+          );
+          const actualPosition = actualPositionAtSlot(entities, selectedIdxNum, insight.entityId);
+          assert.equal(
+            actualPosition,
+            insight.position,
+            `${year} selectedIdx=${selectedIdx} ${key} actual final position does not match already_locked_in position`
+          );
+        }
+      }
+    }
   }
 });

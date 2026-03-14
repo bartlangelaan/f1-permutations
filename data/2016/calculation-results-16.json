@@ -1169,6 +1169,12 @@
         "position": 6,
         "earliestSlotIndex": 20
       },
+      "ricciardo-7": {
+        "type": "can_be_locked_in_later",
+        "entityId": "ricciardo",
+        "position": 7,
+        "earliestSlotIndex": 20
+      },
       "vettel-2": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
@@ -1407,7 +1413,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "perez",
         "position": 9,
-        "earliestSlotIndex": 20
+        "earliestSlotIndex": 19
       },
       "perez-10": {
         "type": "can_be_locked_in_later",
@@ -2313,19 +2319,19 @@
         "type": "can_be_locked_in_later",
         "entityId": "kvyat",
         "position": 17,
-        "earliestSlotIndex": 20
+        "earliestSlotIndex": 19
       },
       "kvyat-18": {
         "type": "can_be_locked_in_later",
         "entityId": "kvyat",
         "position": 18,
-        "earliestSlotIndex": 20
+        "earliestSlotIndex": 19
       },
       "kvyat-19": {
         "type": "can_be_locked_in_later",
         "entityId": "kvyat",
         "position": 19,
-        "earliestSlotIndex": 20
+        "earliestSlotIndex": 19
       },
       "kvyat-20": {
         "type": "can_be_locked_in_later",
@@ -3447,7 +3453,50 @@
         "position": 1,
         "nextSlotIndex": 16,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "red_bull",
+            "points": 21
+          },
+          {
+            "opponentId": "ferrari",
+            "points": 67
+          },
+          {
+            "opponentId": "force_india",
+            "points": 256
+          },
+          {
+            "opponentId": "williams",
+            "points": 259
+          },
+          {
+            "opponentId": "mclaren",
+            "points": 318
+          },
+          {
+            "opponentId": "toro_rosso",
+            "points": 333
+          },
+          {
+            "opponentId": "haas",
+            "points": 352
+          },
+          {
+            "opponentId": "renault",
+            "points": 372
+          },
+          {
+            "opponentId": "manor",
+            "points": 379
+          },
+          {
+            "opponentId": "sauber",
+            "points": 380
+          }
+        ]
       },
       "mercedes-2": {
         "type": "can_be_locked_in_later",

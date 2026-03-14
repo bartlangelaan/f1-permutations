@@ -927,6 +927,12 @@
         "position": 8,
         "earliestSlotIndex": 18
       },
+      "massa-9": {
+        "type": "can_be_locked_in_later",
+        "entityId": "massa",
+        "position": 9,
+        "earliestSlotIndex": 18
+      },
       "rosberg-4": {
         "type": "can_be_locked_in_later",
         "entityId": "rosberg",
@@ -3207,10 +3213,53 @@
         "mustOutscoreBy": [
           {
             "opponentId": "mclaren",
-            "points": 41
+            "points": 42
           }
         ],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "ferrari",
+            "points": 5
+          },
+          {
+            "opponentId": "mercedes",
+            "points": 163
+          },
+          {
+            "opponentId": "renault",
+            "points": 206
+          },
+          {
+            "opponentId": "force_india",
+            "points": 279
+          },
+          {
+            "opponentId": "williams",
+            "points": 281
+          },
+          {
+            "opponentId": "sauber",
+            "points": 302
+          },
+          {
+            "opponentId": "toro_rosso",
+            "points": 328
+          },
+          {
+            "opponentId": "lotus_racing",
+            "points": 339
+          },
+          {
+            "opponentId": "hrt",
+            "points": 339
+          },
+          {
+            "opponentId": "virgin",
+            "points": 339
+          }
+        ]
       },
       "red_bull-2": {
         "type": "can_be_locked_in_later",
@@ -3238,13 +3287,52 @@
         "mustOutscoreBy": [
           {
             "opponentId": "ferrari",
-            "points": 39
+            "points": 40
           }
         ],
         "mustBeOutscoredBy": [
           {
             "opponentId": "red_bull",
             "points": 42
+          }
+        ],
+        "cannotOutscoreByMoreThan": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mercedes",
+            "points": 118
+          },
+          {
+            "opponentId": "renault",
+            "points": 161
+          },
+          {
+            "opponentId": "force_india",
+            "points": 234
+          },
+          {
+            "opponentId": "williams",
+            "points": 236
+          },
+          {
+            "opponentId": "sauber",
+            "points": 257
+          },
+          {
+            "opponentId": "toro_rosso",
+            "points": 283
+          },
+          {
+            "opponentId": "lotus_racing",
+            "points": 294
+          },
+          {
+            "opponentId": "hrt",
+            "points": 294
+          },
+          {
+            "opponentId": "virgin",
+            "points": 294
           }
         ]
       },
@@ -3276,6 +3364,50 @@
           {
             "opponentId": "mclaren",
             "points": 40
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "red_bull",
+            "points": 5
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mercedes",
+            "points": 71
+          },
+          {
+            "opponentId": "renault",
+            "points": 114
+          },
+          {
+            "opponentId": "force_india",
+            "points": 187
+          },
+          {
+            "opponentId": "williams",
+            "points": 189
+          },
+          {
+            "opponentId": "sauber",
+            "points": 210
+          },
+          {
+            "opponentId": "toro_rosso",
+            "points": 236
+          },
+          {
+            "opponentId": "lotus_racing",
+            "points": 247
+          },
+          {
+            "opponentId": "hrt",
+            "points": 247
+          },
+          {
+            "opponentId": "virgin",
+            "points": 247
           }
         ]
       },

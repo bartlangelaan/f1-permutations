@@ -2621,7 +2621,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "sainz",
         "position": 7,
-        "earliestSlotIndex": 26
+        "earliestSlotIndex": 24
       },
       "sainz-8": {
         "type": "can_be_locked_in_later",
@@ -2915,7 +2915,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "piastri",
         "position": 14,
-        "earliestSlotIndex": 26
+        "earliestSlotIndex": 24
       },
       "piastri-15": {
         "type": "can_be_locked_in_later",
@@ -3311,13 +3311,13 @@
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 17,
-        "earliestSlotIndex": 26
+        "earliestSlotIndex": 24
       },
       "ocon-18": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 18,
-        "earliestSlotIndex": 26
+        "earliestSlotIndex": 24
       },
       "ocon-19": {
         "type": "can_be_locked_in_later",
@@ -4561,10 +4561,45 @@
         "mustOutscoreBy": [
           {
             "opponentId": "mercedes",
-            "points": 1
+            "points": 2
           }
         ],
-        "mustBeOutscoredBy": []
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "ferrari",
+            "points": 22
+          },
+          {
+            "opponentId": "aston_martin",
+            "points": 70
+          },
+          {
+            "opponentId": "mclaren",
+            "points": 148
+          },
+          {
+            "opponentId": "alpine",
+            "points": 206
+          },
+          {
+            "opponentId": "williams",
+            "points": 266
+          },
+          {
+            "opponentId": "haas",
+            "points": 275
+          },
+          {
+            "opponentId": "alfa",
+            "points": 277
+          },
+          {
+            "opponentId": "alphatauri",
+            "points": 282
+          }
+        ]
       },
       "red_bull-2": {
         "type": "can_be_locked_in_later",
@@ -4726,7 +4761,7 @@
         "type": "can_be_locked_in_later",
         "entityId": "mclaren",
         "position": 6,
-        "earliestSlotIndex": 26
+        "earliestSlotIndex": 24
       },
       "mclaren-7": {
         "type": "can_be_locked_in_later",
