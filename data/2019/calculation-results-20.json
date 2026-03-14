@@ -193,24 +193,22 @@
   },
   "driverLockInsights": {
     "19": {
-      "hamilton-1": {
+      "hamilton-lock-1": {
         "type": "already_locked_in",
         "entityId": "hamilton",
         "position": 1
       },
-      "bottas-2": {
+      "bottas-lock-2": {
         "type": "already_locked_in",
         "entityId": "bottas",
         "position": 2
       },
-      "max_verstappen-3": {
+      "max_verstappen-lock-3": {
         "type": "can_be_locked_in_next_race",
         "entityId": "max_verstappen",
         "position": 3,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "leclerc",
@@ -218,22 +216,20 @@
           }
         ]
       },
-      "max_verstappen-4": {
-        "type": "can_be_locked_in_next_race",
+      "max_verstappen-ruled-out-3": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "max_verstappen",
-        "position": 4,
+        "position": 3,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "leclerc",
             "points": 12
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "leclerc-3": {
+      "leclerc-lock-3": {
         "type": "can_be_locked_in_next_race",
         "entityId": "leclerc",
         "position": 3,
@@ -244,8 +240,6 @@
             "points": 12
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "vettel",
@@ -253,32 +247,37 @@
           }
         ]
       },
-      "leclerc-4": {
+      "leclerc-lock-4": {
         "type": "can_be_locked_in_next_race",
         "entityId": "leclerc",
         "position": 4,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "max_verstappen",
-            "points": 12
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "vettel",
-            "points": 20
+            "points": 18
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "leclerc-5": {
-        "type": "can_be_locked_in_next_race",
+      "leclerc-ruled-out-3": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "leclerc",
-        "position": 5,
+        "position": 3,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "max_verstappen",
+            "points": 10
+          }
+        ]
+      },
+      "leclerc-ruled-out-4": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "leclerc",
+        "position": 4,
+        "nextSlotIndex": 20,
         "mustBeOutscoredBy": [
           {
             "opponentId": "vettel",
@@ -290,10 +289,9 @@
             "opponentId": "max_verstappen",
             "points": 10
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "vettel-4": {
+      "vettel-lock-4": {
         "type": "can_be_locked_in_next_race",
         "entityId": "vettel",
         "position": 4,
@@ -304,26 +302,22 @@
             "points": 20
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "vettel-5": {
-        "type": "can_be_locked_in_next_race",
+      "vettel-ruled-out-4": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "vettel",
-        "position": 5,
+        "position": 4,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
             "opponentId": "leclerc",
             "points": 18
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "sainz-6": {
+      "sainz-lock-6": {
         "type": "can_be_locked_in_next_race",
         "entityId": "sainz",
         "position": 6,
@@ -334,8 +328,6 @@
             "points": 1
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "albon",
@@ -343,32 +335,37 @@
           }
         ]
       },
-      "sainz-7": {
+      "sainz-lock-7": {
         "type": "can_be_locked_in_next_race",
         "entityId": "sainz",
         "position": 7,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "albon",
+            "points": 10
+          }
+        ]
+      },
+      "sainz-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "sainz",
+        "position": 6,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
           {
             "opponentId": "gasly",
             "points": 1
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "albon",
-            "points": 12
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "sainz-8": {
-        "type": "can_be_locked_in_next_race",
+      "sainz-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "sainz",
-        "position": 8,
+        "position": 7,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "albon",
@@ -379,10 +376,9 @@
             "points": 1
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "gasly-6": {
+      "gasly-lock-6": {
         "type": "can_be_locked_in_next_race",
         "entityId": "gasly",
         "position": 6,
@@ -393,8 +389,6 @@
             "points": 1
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "albon",
@@ -402,32 +396,37 @@
           }
         ]
       },
-      "gasly-7": {
+      "gasly-lock-7": {
         "type": "can_be_locked_in_next_race",
         "entityId": "gasly",
         "position": 7,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "albon",
+            "points": 10
+          }
+        ]
+      },
+      "gasly-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "gasly",
+        "position": 6,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
           {
             "opponentId": "sainz",
             "points": 1
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "albon",
-            "points": 12
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "gasly-8": {
-        "type": "can_be_locked_in_next_race",
+      "gasly-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "gasly",
-        "position": 8,
+        "position": 7,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "albon",
@@ -438,10 +437,9 @@
             "points": 1
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "albon-6": {
+      "albon-lock-6": {
         "type": "can_be_locked_in_next_race",
         "entityId": "albon",
         "position": 6,
@@ -456,36 +454,39 @@
             "points": 12
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "albon-7": {
+      "albon-lock-7": {
         "type": "can_be_locked_in_next_race",
         "entityId": "albon",
         "position": 7,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "gasly",
-            "points": 12
-          }
-        ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [
-          {
             "opponentId": "sainz",
-            "points": 10
+            "points": 12
           }
         ],
         "cannotBeOutscoredByMoreThan": []
       },
-      "albon-8": {
-        "type": "can_be_locked_in_next_race",
+      "albon-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "albon",
-        "position": 8,
+        "position": 6,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "sainz",
+            "points": 10
+          }
+        ]
+      },
+      "albon-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "albon",
+        "position": 7,
+        "nextSlotIndex": 20,
         "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
@@ -496,17 +497,14 @@
             "opponentId": "gasly",
             "points": 10
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "ricciardo-9": {
+      "ricciardo-lock-9": {
         "type": "can_be_locked_in_next_race",
         "entityId": "ricciardo",
         "position": 9,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "perez",
@@ -530,24 +528,13 @@
           }
         ]
       },
-      "ricciardo-10": {
+      "ricciardo-lock-10": {
         "type": "can_be_locked_in_next_race",
         "entityId": "ricciardo",
         "position": 10,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "kvyat",
-            "points": 20
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "perez",
-            "points": 7
-          },
           {
             "opponentId": "norris",
             "points": 8
@@ -559,84 +546,121 @@
           {
             "opponentId": "hulkenberg",
             "points": 16
+          },
+          {
+            "opponentId": "kvyat",
+            "points": 18
           }
         ]
       },
-      "ricciardo-11": {
+      "ricciardo-lock-11": {
         "type": "can_be_locked_in_next_race",
         "entityId": "ricciardo",
         "position": 11,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "kvyat",
-            "points": 20
-          },
-          {
-            "opponentId": "hulkenberg",
-            "points": 18
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "perez",
-            "points": 7
-          },
-          {
-            "opponentId": "norris",
-            "points": 8
-          },
           {
             "opponentId": "raikkonen",
             "points": 10
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 16
+          },
+          {
+            "opponentId": "kvyat",
+            "points": 18
           }
         ]
       },
-      "ricciardo-12": {
+      "ricciardo-lock-12": {
         "type": "can_be_locked_in_next_race",
         "entityId": "ricciardo",
         "position": 12,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "kvyat",
-            "points": 20
-          },
-          {
-            "opponentId": "hulkenberg",
-            "points": 18
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 12
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "perez",
-            "points": 7
+            "opponentId": "hulkenberg",
+            "points": 16
           },
           {
-            "opponentId": "norris",
-            "points": 8
+            "opponentId": "kvyat",
+            "points": 18
           }
         ]
       },
-      "ricciardo-13": {
+      "ricciardo-lock-13": {
         "type": "can_be_locked_in_next_race",
         "entityId": "ricciardo",
         "position": 13,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kvyat",
-            "points": 20
+            "points": 18
+          }
+        ]
+      },
+      "ricciardo-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "ricciardo",
+        "position": 9,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "perez",
+            "points": 9
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "ricciardo-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "ricciardo",
+        "position": 10,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "norris",
+            "points": 10
           },
+          {
+            "opponentId": "perez",
+            "points": 9
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "ricciardo-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "ricciardo",
+        "position": 11,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "raikkonen",
+            "points": 12
+          },
+          {
+            "opponentId": "norris",
+            "points": 10
+          },
+          {
+            "opponentId": "perez",
+            "points": 9
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "ricciardo-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "ricciardo",
+        "position": 12,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
           {
             "opponentId": "hulkenberg",
             "points": 18
@@ -648,22 +672,19 @@
           {
             "opponentId": "norris",
             "points": 10
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
+          },
           {
             "opponentId": "perez",
-            "points": 7
+            "points": 9
           }
-        ]
+        ],
+        "cannotOutscoreByMoreThan": []
       },
-      "ricciardo-14": {
-        "type": "can_be_locked_in_next_race",
+      "ricciardo-ruled-out-13": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "ricciardo",
-        "position": 14,
+        "position": 13,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "kvyat",
@@ -686,10 +707,9 @@
             "points": 9
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "perez-9": {
+      "perez-lock-9": {
         "type": "can_be_locked_in_next_race",
         "entityId": "perez",
         "position": 9,
@@ -700,8 +720,6 @@
             "points": 9
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "norris",
@@ -729,24 +747,12 @@
           }
         ]
       },
-      "perez-10": {
+      "perez-lock-10": {
         "type": "can_be_locked_in_next_race",
         "entityId": "perez",
         "position": 10,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "ricciardo",
-            "points": 9
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "stroll",
-            "points": 26
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
+        "mustOutscoreBy": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "norris",
@@ -765,38 +771,22 @@
             "points": 10
           },
           {
+            "opponentId": "stroll",
+            "points": 24
+          },
+          {
             "opponentId": "kevin_magnussen",
             "points": 25
           }
         ]
       },
-      "perez-11": {
+      "perez-lock-11": {
         "type": "can_be_locked_in_next_race",
         "entityId": "perez",
         "position": 11,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "ricciardo",
-            "points": 9
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "stroll",
-            "points": 26
-          },
-          {
-            "opponentId": "kvyat",
-            "points": 12
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
+        "mustOutscoreBy": [],
         "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "norris",
-            "points": 0
-          },
           {
             "opponentId": "raikkonen",
             "points": 2
@@ -806,45 +796,37 @@
             "points": 8
           },
           {
+            "opponentId": "kvyat",
+            "points": 10
+          },
+          {
+            "opponentId": "stroll",
+            "points": 24
+          },
+          {
             "opponentId": "kevin_magnussen",
             "points": 25
           }
         ]
       },
-      "perez-12": {
+      "perez-lock-12": {
         "type": "can_be_locked_in_next_race",
         "entityId": "perez",
         "position": 12,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "ricciardo",
-            "points": 9
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "stroll",
-            "points": 26
+            "opponentId": "hulkenberg",
+            "points": 8
           },
           {
             "opponentId": "kvyat",
-            "points": 12
-          },
-          {
-            "opponentId": "hulkenberg",
             "points": 10
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "norris",
-            "points": 0
           },
           {
-            "opponentId": "raikkonen",
-            "points": 2
+            "opponentId": "stroll",
+            "points": 24
           },
           {
             "opponentId": "kevin_magnussen",
@@ -852,40 +834,20 @@
           }
         ]
       },
-      "perez-13": {
+      "perez-lock-13": {
         "type": "can_be_locked_in_next_race",
         "entityId": "perez",
         "position": 13,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "ricciardo",
-            "points": 9
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "stroll",
-            "points": 26
-          },
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kvyat",
-            "points": 12
-          },
-          {
-            "opponentId": "hulkenberg",
             "points": 10
           },
           {
-            "opponentId": "raikkonen",
-            "points": 4
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "norris",
-            "points": 0
+            "opponentId": "stroll",
+            "points": 24
           },
           {
             "opponentId": "kevin_magnussen",
@@ -893,53 +855,150 @@
           }
         ]
       },
-      "perez-14": {
+      "perez-lock-14": {
         "type": "can_be_locked_in_next_race",
         "entityId": "perez",
         "position": 14,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "ricciardo",
-            "points": 9
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "stroll",
-            "points": 26
+            "points": 24
           },
-          {
-            "opponentId": "kvyat",
-            "points": 12
-          },
-          {
-            "opponentId": "hulkenberg",
-            "points": 10
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 4
-          },
-          {
-            "opponentId": "norris",
-            "points": 2
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kevin_magnussen",
             "points": 25
           }
         ]
       },
-      "perez-15": {
+      "perez-lock-15": {
         "type": "can_be_locked_in_next_race",
         "entityId": "perez",
         "position": 15,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 25
+          }
+        ]
+      },
+      "perez-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "perez",
+        "position": 9,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "ricciardo",
+            "points": 7
+          }
+        ]
+      },
+      "perez-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "perez",
+        "position": 10,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "norris",
+            "points": 2
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "ricciardo",
+            "points": 7
+          }
+        ]
+      },
+      "perez-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "perez",
+        "position": 11,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "raikkonen",
+            "points": 4
+          },
+          {
+            "opponentId": "norris",
+            "points": 2
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "ricciardo",
+            "points": 7
+          }
+        ]
+      },
+      "perez-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "perez",
+        "position": 12,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "hulkenberg",
+            "points": 10
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 4
+          },
+          {
+            "opponentId": "norris",
+            "points": 2
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "ricciardo",
+            "points": 7
+          }
+        ]
+      },
+      "perez-ruled-out-13": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "perez",
+        "position": 13,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "kvyat",
+            "points": 12
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 10
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 4
+          },
+          {
+            "opponentId": "norris",
+            "points": 2
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "ricciardo",
+            "points": 7
+          }
+        ]
+      },
+      "perez-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "perez",
+        "position": 14,
+        "nextSlotIndex": 20,
         "mustBeOutscoredBy": [
           {
             "opponentId": "stroll",
@@ -967,15 +1026,9 @@
             "opponentId": "ricciardo",
             "points": 7
           }
-        ],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 25
-          }
         ]
       },
-      "norris-9": {
+      "norris-lock-9": {
         "type": "can_be_locked_in_next_race",
         "entityId": "norris",
         "position": 9,
@@ -990,8 +1043,6 @@
             "points": 2
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "raikkonen",
@@ -1015,28 +1066,17 @@
           }
         ]
       },
-      "norris-10": {
+      "norris-lock-10": {
         "type": "can_be_locked_in_next_race",
         "entityId": "norris",
         "position": 10,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "ricciardo",
-            "points": 10
-          },
-          {
             "opponentId": "perez",
             "points": 2
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 26
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "raikkonen",
@@ -1053,35 +1093,19 @@
           {
             "opponentId": "stroll",
             "points": 23
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 24
           }
         ]
       },
-      "norris-11": {
+      "norris-lock-11": {
         "type": "can_be_locked_in_next_race",
         "entityId": "norris",
         "position": 11,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "ricciardo",
-            "points": 10
-          },
-          {
-            "opponentId": "perez",
-            "points": 2
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 26
-          },
-          {
-            "opponentId": "stroll",
-            "points": 25
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
+        "mustOutscoreBy": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "raikkonen",
@@ -1094,115 +1118,177 @@
           {
             "opponentId": "kvyat",
             "points": 9
+          },
+          {
+            "opponentId": "stroll",
+            "points": 23
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 24
           }
         ]
       },
-      "norris-12": {
+      "norris-lock-12": {
         "type": "can_be_locked_in_next_race",
         "entityId": "norris",
         "position": 12,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "ricciardo",
-            "points": 10
-          },
-          {
-            "opponentId": "perez",
-            "points": 2
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 26
-          },
-          {
-            "opponentId": "stroll",
-            "points": 25
-          },
-          {
-            "opponentId": "kvyat",
-            "points": 11
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
+        "mustOutscoreBy": [],
         "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "raikkonen",
-            "points": 1
-          },
           {
             "opponentId": "hulkenberg",
             "points": 7
+          },
+          {
+            "opponentId": "kvyat",
+            "points": 9
+          },
+          {
+            "opponentId": "stroll",
+            "points": 23
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 24
           }
         ]
       },
-      "norris-13": {
+      "norris-lock-13": {
         "type": "can_be_locked_in_next_race",
         "entityId": "norris",
         "position": 13,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "ricciardo",
-            "points": 10
-          },
-          {
-            "opponentId": "perez",
-            "points": 2
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 26
+            "opponentId": "kvyat",
+            "points": 9
           },
           {
             "opponentId": "stroll",
-            "points": 25
+            "points": 23
           },
           {
-            "opponentId": "kvyat",
-            "points": 11
-          },
-          {
-            "opponentId": "hulkenberg",
-            "points": 9
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "raikkonen",
-            "points": 1
+            "opponentId": "kevin_magnussen",
+            "points": 24
           }
         ]
       },
-      "norris-14": {
+      "norris-lock-14": {
         "type": "can_be_locked_in_next_race",
         "entityId": "norris",
         "position": 14,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "ricciardo",
-            "points": 10
-          },
-          {
-            "opponentId": "perez",
-            "points": 2
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 26
-          },
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "stroll",
-            "points": 25
+            "points": 23
           },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 24
+          }
+        ]
+      },
+      "norris-lock-15": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "norris",
+        "position": 15,
+        "nextSlotIndex": 20,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 24
+          }
+        ]
+      },
+      "norris-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "norris",
+        "position": 9,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "ricciardo",
+            "points": 8
+          }
+        ]
+      },
+      "norris-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "norris",
+        "position": 10,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 0
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 8
+          }
+        ]
+      },
+      "norris-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "norris",
+        "position": 11,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "raikkonen",
+            "points": 3
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 0
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 8
+          }
+        ]
+      },
+      "norris-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "norris",
+        "position": 12,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "hulkenberg",
+            "points": 9
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 3
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 0
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 8
+          }
+        ]
+      },
+      "norris-ruled-out-13": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "norris",
+        "position": 13,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
           {
             "opponentId": "kvyat",
             "points": 11
@@ -1216,25 +1302,23 @@
             "points": 3
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "norris-15": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "norris",
-        "position": 15,
-        "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 0
+          },
           {
             "opponentId": "ricciardo",
-            "points": 10
+            "points": 8
           }
-        ],
+        ]
+      },
+      "norris-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "norris",
+        "position": 14,
+        "nextSlotIndex": 20,
         "mustBeOutscoredBy": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 26
-          },
           {
             "opponentId": "stroll",
             "points": 25
@@ -1256,11 +1340,14 @@
           {
             "opponentId": "perez",
             "points": 0
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 8
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "raikkonen-9": {
+      "raikkonen-lock-9": {
         "type": "can_be_locked_in_next_race",
         "entityId": "raikkonen",
         "position": 9,
@@ -1279,8 +1366,6 @@
             "points": 3
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "hulkenberg",
@@ -1300,16 +1385,12 @@
           }
         ]
       },
-      "raikkonen-10": {
+      "raikkonen-lock-10": {
         "type": "can_be_locked_in_next_race",
         "entityId": "raikkonen",
         "position": 10,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
-          {
-            "opponentId": "ricciardo",
-            "points": 12
-          },
           {
             "opponentId": "perez",
             "points": 4
@@ -1319,13 +1400,6 @@
             "points": 3
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 24
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "hulkenberg",
@@ -1338,39 +1412,24 @@
           {
             "opponentId": "stroll",
             "points": 21
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 22
           }
         ]
       },
-      "raikkonen-11": {
+      "raikkonen-lock-11": {
         "type": "can_be_locked_in_next_race",
         "entityId": "raikkonen",
         "position": 11,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "ricciardo",
-            "points": 12
-          },
-          {
-            "opponentId": "perez",
-            "points": 4
-          },
-          {
             "opponentId": "norris",
             "points": 3
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 24
-          },
-          {
-            "opponentId": "stroll",
-            "points": 23
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "hulkenberg",
@@ -1379,114 +1438,176 @@
           {
             "opponentId": "kvyat",
             "points": 7
+          },
+          {
+            "opponentId": "stroll",
+            "points": 21
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 22
           }
         ]
       },
-      "raikkonen-12": {
+      "raikkonen-lock-12": {
         "type": "can_be_locked_in_next_race",
         "entityId": "raikkonen",
         "position": 12,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "ricciardo",
-            "points": 12
-          },
-          {
-            "opponentId": "perez",
-            "points": 4
-          },
-          {
-            "opponentId": "norris",
-            "points": 3
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 24
-          },
-          {
-            "opponentId": "stroll",
-            "points": 23
-          },
-          {
-            "opponentId": "kvyat",
-            "points": 9
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
+        "mustOutscoreBy": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "hulkenberg",
             "points": 5
+          },
+          {
+            "opponentId": "kvyat",
+            "points": 7
+          },
+          {
+            "opponentId": "stroll",
+            "points": 21
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 22
           }
         ]
       },
-      "raikkonen-13": {
+      "raikkonen-lock-13": {
         "type": "can_be_locked_in_next_race",
         "entityId": "raikkonen",
         "position": 13,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "ricciardo",
-            "points": 12
-          },
-          {
-            "opponentId": "perez",
-            "points": 4
-          },
-          {
-            "opponentId": "norris",
-            "points": 3
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 24
+            "opponentId": "kvyat",
+            "points": 7
           },
           {
             "opponentId": "stroll",
-            "points": 23
+            "points": 21
           },
           {
-            "opponentId": "kvyat",
-            "points": 9
+            "opponentId": "kevin_magnussen",
+            "points": 22
+          }
+        ]
+      },
+      "raikkonen-lock-14": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "raikkonen",
+        "position": 14,
+        "nextSlotIndex": 20,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 21
           },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 22
+          }
+        ]
+      },
+      "raikkonen-lock-15": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "raikkonen",
+        "position": 15,
+        "nextSlotIndex": 20,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 22
+          }
+        ]
+      },
+      "raikkonen-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "raikkonen",
+        "position": 9,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "ricciardo",
+            "points": 10
+          }
+        ]
+      },
+      "raikkonen-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "raikkonen",
+        "position": 10,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 2
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 10
+          }
+        ]
+      },
+      "raikkonen-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "raikkonen",
+        "position": 11,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "norris",
+            "points": 1
+          },
+          {
+            "opponentId": "perez",
+            "points": 2
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 10
+          }
+        ]
+      },
+      "raikkonen-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "raikkonen",
+        "position": 12,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
           {
             "opponentId": "hulkenberg",
             "points": 7
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "raikkonen-14": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "raikkonen",
-        "position": 14,
-        "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "cannotOutscoreByMoreThan": [
           {
-            "opponentId": "ricciardo",
-            "points": 12
+            "opponentId": "norris",
+            "points": 1
           },
           {
             "opponentId": "perez",
-            "points": 4
+            "points": 2
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 10
           }
-        ],
+        ]
+      },
+      "raikkonen-ruled-out-13": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "raikkonen",
+        "position": 13,
+        "nextSlotIndex": 20,
         "mustBeOutscoredBy": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 24
-          },
-          {
-            "opponentId": "stroll",
-            "points": 23
-          },
           {
             "opponentId": "kvyat",
             "points": 9
@@ -1500,26 +1621,23 @@
           {
             "opponentId": "norris",
             "points": 1
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "raikkonen-15": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "raikkonen",
-        "position": 15,
-        "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+          },
+          {
+            "opponentId": "perez",
+            "points": 2
+          },
           {
             "opponentId": "ricciardo",
-            "points": 12
+            "points": 10
           }
-        ],
+        ]
+      },
+      "raikkonen-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "raikkonen",
+        "position": 14,
+        "nextSlotIndex": 20,
         "mustBeOutscoredBy": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 24
-          },
           {
             "opponentId": "stroll",
             "points": 23
@@ -1541,11 +1659,14 @@
           {
             "opponentId": "perez",
             "points": 2
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 10
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "hulkenberg-9": {
+      "hulkenberg-lock-9": {
         "type": "can_be_locked_in_next_race",
         "entityId": "hulkenberg",
         "position": 9,
@@ -1568,8 +1689,6 @@
             "points": 7
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kvyat",
@@ -1589,16 +1708,12 @@
           }
         ]
       },
-      "hulkenberg-10": {
+      "hulkenberg-lock-10": {
         "type": "can_be_locked_in_next_race",
         "entityId": "hulkenberg",
         "position": 10,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
-          {
-            "opponentId": "ricciardo",
-            "points": 18
-          },
           {
             "opponentId": "perez",
             "points": 10
@@ -1612,13 +1727,6 @@
             "points": 7
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 24
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kvyat",
@@ -1631,23 +1739,19 @@
           {
             "opponentId": "kevin_magnussen",
             "points": 16
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 22
           }
         ]
       },
-      "hulkenberg-11": {
+      "hulkenberg-lock-11": {
         "type": "can_be_locked_in_next_race",
         "entityId": "hulkenberg",
         "position": 11,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
-          {
-            "opponentId": "ricciardo",
-            "points": 18
-          },
-          {
-            "opponentId": "perez",
-            "points": 10
-          },
           {
             "opponentId": "norris",
             "points": 9
@@ -1657,17 +1761,6 @@
             "points": 7
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 24
-          },
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 18
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kvyat",
@@ -1676,130 +1769,205 @@
           {
             "opponentId": "stroll",
             "points": 15
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 16
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 22
           }
         ]
       },
-      "hulkenberg-12": {
+      "hulkenberg-lock-12": {
         "type": "can_be_locked_in_next_race",
         "entityId": "hulkenberg",
         "position": 12,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "ricciardo",
-            "points": 18
-          },
-          {
-            "opponentId": "perez",
-            "points": 10
-          },
-          {
-            "opponentId": "norris",
-            "points": 9
-          },
-          {
             "opponentId": "raikkonen",
             "points": 7
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 24
-          },
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 18
-          },
-          {
-            "opponentId": "stroll",
-            "points": 17
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kvyat",
             "points": 1
+          },
+          {
+            "opponentId": "stroll",
+            "points": 15
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 16
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 22
           }
         ]
       },
-      "hulkenberg-13": {
+      "hulkenberg-lock-13": {
         "type": "can_be_locked_in_next_race",
         "entityId": "hulkenberg",
         "position": 13,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "ricciardo",
-            "points": 18
-          },
-          {
-            "opponentId": "perez",
-            "points": 10
-          },
-          {
-            "opponentId": "norris",
-            "points": 9
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 7
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 24
-          },
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 18
+            "opponentId": "kvyat",
+            "points": 1
           },
           {
             "opponentId": "stroll",
-            "points": 17
+            "points": 15
           },
           {
-            "opponentId": "kvyat",
-            "points": 3
+            "opponentId": "kevin_magnussen",
+            "points": 16
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 22
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "hulkenberg-14": {
+      "hulkenberg-lock-14": {
         "type": "can_be_locked_in_next_race",
         "entityId": "hulkenberg",
         "position": 14,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "ricciardo",
-            "points": 18
-          },
-          {
-            "opponentId": "perez",
-            "points": 10
-          },
-          {
-            "opponentId": "norris",
-            "points": 9
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 24
+            "opponentId": "stroll",
+            "points": 15
           },
           {
             "opponentId": "kevin_magnussen",
-            "points": 18
+            "points": 16
           },
           {
-            "opponentId": "stroll",
-            "points": 17
+            "opponentId": "giovinazzi",
+            "points": 22
+          }
+        ]
+      },
+      "hulkenberg-lock-15": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "hulkenberg",
+        "position": 15,
+        "nextSlotIndex": 20,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 16
           },
+          {
+            "opponentId": "giovinazzi",
+            "points": 22
+          }
+        ]
+      },
+      "hulkenberg-lock-16": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "hulkenberg",
+        "position": 16,
+        "nextSlotIndex": 20,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "giovinazzi",
+            "points": 22
+          }
+        ]
+      },
+      "hulkenberg-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "hulkenberg",
+        "position": 9,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "ricciardo",
+            "points": 16
+          }
+        ]
+      },
+      "hulkenberg-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "hulkenberg",
+        "position": 10,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 8
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 16
+          }
+        ]
+      },
+      "hulkenberg-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "hulkenberg",
+        "position": 11,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "norris",
+            "points": 7
+          },
+          {
+            "opponentId": "perez",
+            "points": 8
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 16
+          }
+        ]
+      },
+      "hulkenberg-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "hulkenberg",
+        "position": 12,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "raikkonen",
+            "points": 5
+          },
+          {
+            "opponentId": "norris",
+            "points": 7
+          },
+          {
+            "opponentId": "perez",
+            "points": 8
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 16
+          }
+        ]
+      },
+      "hulkenberg-ruled-out-13": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "hulkenberg",
+        "position": 13,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
           {
             "opponentId": "kvyat",
             "points": 3
@@ -1809,34 +1977,27 @@
           {
             "opponentId": "raikkonen",
             "points": 5
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "hulkenberg-15": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "hulkenberg",
-        "position": 15,
-        "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+          },
           {
-            "opponentId": "ricciardo",
-            "points": 18
+            "opponentId": "norris",
+            "points": 7
           },
           {
             "opponentId": "perez",
-            "points": 10
+            "points": 8
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 16
           }
-        ],
+        ]
+      },
+      "hulkenberg-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "hulkenberg",
+        "position": 14,
+        "nextSlotIndex": 20,
         "mustBeOutscoredBy": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 24
-          },
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 18
-          },
           {
             "opponentId": "stroll",
             "points": 17
@@ -1854,26 +2015,23 @@
           {
             "opponentId": "norris",
             "points": 7
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "hulkenberg-16": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "hulkenberg",
-        "position": 16,
-        "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+          },
+          {
+            "opponentId": "perez",
+            "points": 8
+          },
           {
             "opponentId": "ricciardo",
-            "points": 18
+            "points": 16
           }
-        ],
+        ]
+      },
+      "hulkenberg-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "hulkenberg",
+        "position": 15,
+        "nextSlotIndex": 20,
         "mustBeOutscoredBy": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 24
-          },
           {
             "opponentId": "kevin_magnussen",
             "points": 18
@@ -1899,11 +2057,14 @@
           {
             "opponentId": "perez",
             "points": 8
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 16
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "kvyat-9": {
+      "kvyat-lock-9": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kvyat",
         "position": 9,
@@ -1930,8 +2091,6 @@
             "points": 3
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "stroll",
@@ -1947,17 +2106,13 @@
           }
         ]
       },
-      "kvyat-10": {
+      "kvyat-lock-10": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kvyat",
         "position": 10,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "ricciardo",
-            "points": 20
-          },
-          {
             "opponentId": "perez",
             "points": 12
           },
@@ -1974,13 +2129,6 @@
             "points": 3
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 22
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "stroll",
@@ -1989,24 +2137,20 @@
           {
             "opponentId": "kevin_magnussen",
             "points": 14
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 20
           }
         ]
       },
-      "kvyat-11": {
+      "kvyat-lock-11": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kvyat",
         "position": 11,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "ricciardo",
-            "points": 20
-          },
-          {
-            "opponentId": "perez",
-            "points": 12
-          },
-          {
             "opponentId": "norris",
             "points": 11
           },
@@ -2019,43 +2163,28 @@
             "points": 3
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 22
-          },
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 16
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "stroll",
             "points": 13
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 14
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 20
           }
         ]
       },
-      "kvyat-12": {
+      "kvyat-lock-12": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kvyat",
         "position": 12,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "ricciardo",
-            "points": 20
-          },
-          {
-            "opponentId": "perez",
-            "points": 12
-          },
-          {
-            "opponentId": "norris",
-            "points": 11
-          },
-          {
             "opponentId": "raikkonen",
             "points": 9
           },
@@ -2064,101 +2193,180 @@
             "points": 3
           }
         ],
-        "mustBeOutscoredBy": [
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "giovinazzi",
-            "points": 22
+            "opponentId": "stroll",
+            "points": 13
           },
           {
             "opponentId": "kevin_magnussen",
-            "points": 16
+            "points": 14
           },
           {
-            "opponentId": "stroll",
-            "points": 15
+            "opponentId": "giovinazzi",
+            "points": 20
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "kvyat-13": {
+      "kvyat-lock-13": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kvyat",
         "position": 13,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "ricciardo",
-            "points": 20
-          },
-          {
-            "opponentId": "perez",
-            "points": 12
-          },
-          {
-            "opponentId": "norris",
-            "points": 11
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 9
+            "opponentId": "hulkenberg",
+            "points": 3
           }
         ],
-        "mustBeOutscoredBy": [
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "giovinazzi",
-            "points": 22
+            "opponentId": "stroll",
+            "points": 13
           },
           {
             "opponentId": "kevin_magnussen",
-            "points": 16
+            "points": 14
           },
           {
-            "opponentId": "stroll",
-            "points": 15
+            "opponentId": "giovinazzi",
+            "points": 20
           }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "hulkenberg",
-            "points": 1
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "kvyat-14": {
+      "kvyat-lock-14": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kvyat",
         "position": 14,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "ricciardo",
-            "points": 20
-          },
-          {
-            "opponentId": "perez",
-            "points": 12
-          },
-          {
-            "opponentId": "norris",
-            "points": 11
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 22
+            "opponentId": "stroll",
+            "points": 13
           },
           {
             "opponentId": "kevin_magnussen",
-            "points": 16
+            "points": 14
           },
           {
-            "opponentId": "stroll",
-            "points": 15
+            "opponentId": "giovinazzi",
+            "points": 20
           }
-        ],
+        ]
+      },
+      "kvyat-lock-15": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "kvyat",
+        "position": 15,
+        "nextSlotIndex": 20,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 14
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 20
+          }
+        ]
+      },
+      "kvyat-lock-16": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "kvyat",
+        "position": 16,
+        "nextSlotIndex": 20,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "giovinazzi",
+            "points": 20
+          }
+        ]
+      },
+      "kvyat-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kvyat",
+        "position": 9,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "ricciardo",
+            "points": 18
+          }
+        ]
+      },
+      "kvyat-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kvyat",
+        "position": 10,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 10
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 18
+          }
+        ]
+      },
+      "kvyat-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kvyat",
+        "position": 11,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "norris",
+            "points": 9
+          },
+          {
+            "opponentId": "perez",
+            "points": 10
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 18
+          }
+        ]
+      },
+      "kvyat-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kvyat",
+        "position": 12,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "raikkonen",
+            "points": 7
+          },
+          {
+            "opponentId": "norris",
+            "points": 9
+          },
+          {
+            "opponentId": "perez",
+            "points": 10
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 18
+          }
+        ]
+      },
+      "kvyat-ruled-out-13": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kvyat",
+        "position": 13,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
             "opponentId": "hulkenberg",
@@ -2167,34 +2375,27 @@
           {
             "opponentId": "raikkonen",
             "points": 7
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "kvyat-15": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "kvyat",
-        "position": 15,
-        "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+          },
           {
-            "opponentId": "ricciardo",
-            "points": 20
+            "opponentId": "norris",
+            "points": 9
           },
           {
             "opponentId": "perez",
-            "points": 12
+            "points": 10
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 18
           }
-        ],
+        ]
+      },
+      "kvyat-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kvyat",
+        "position": 14,
+        "nextSlotIndex": 20,
         "mustBeOutscoredBy": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 22
-          },
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 16
-          },
           {
             "opponentId": "stroll",
             "points": 15
@@ -2212,26 +2413,23 @@
           {
             "opponentId": "norris",
             "points": 9
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "kvyat-16": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "kvyat",
-        "position": 16,
-        "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+          },
+          {
+            "opponentId": "perez",
+            "points": 10
+          },
           {
             "opponentId": "ricciardo",
-            "points": 20
+            "points": 18
           }
-        ],
+        ]
+      },
+      "kvyat-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kvyat",
+        "position": 15,
+        "nextSlotIndex": 20,
         "mustBeOutscoredBy": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 22
-          },
           {
             "opponentId": "kevin_magnussen",
             "points": 16
@@ -2257,16 +2455,18 @@
           {
             "opponentId": "perez",
             "points": 10
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 18
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "kvyat-17": {
-        "type": "can_be_locked_in_next_race",
+      "kvyat-ruled-out-16": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "kvyat",
-        "position": 17,
+        "position": 16,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "giovinazzi",
@@ -2302,10 +2502,9 @@
             "opponentId": "ricciardo",
             "points": 18
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "stroll-10": {
+      "stroll-lock-10": {
         "type": "can_be_locked_in_next_race",
         "entityId": "stroll",
         "position": 10,
@@ -2332,8 +2531,6 @@
             "points": 15
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kevin_magnussen",
@@ -2357,17 +2554,13 @@
           }
         ]
       },
-      "stroll-11": {
+      "stroll-lock-11": {
         "type": "can_be_locked_in_next_race",
         "entityId": "stroll",
         "position": 11,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "perez",
-            "points": 26
-          },
-          {
             "opponentId": "norris",
             "points": 25
           },
@@ -2384,13 +2577,6 @@
             "points": 15
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 22
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kevin_magnussen",
@@ -2407,23 +2593,19 @@
           {
             "opponentId": "kubica",
             "points": 19
+          },
+          {
+            "opponentId": "russell",
+            "points": 20
           }
         ]
       },
-      "stroll-12": {
+      "stroll-lock-12": {
         "type": "can_be_locked_in_next_race",
         "entityId": "stroll",
         "position": 12,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
-          {
-            "opponentId": "perez",
-            "points": 26
-          },
-          {
-            "opponentId": "norris",
-            "points": 25
-          },
           {
             "opponentId": "raikkonen",
             "points": 23
@@ -2437,17 +2619,6 @@
             "points": 15
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 22
-          },
-          {
-            "opponentId": "kubica",
-            "points": 21
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kevin_magnussen",
@@ -2460,27 +2631,23 @@
           {
             "opponentId": "grosjean",
             "points": 12
+          },
+          {
+            "opponentId": "kubica",
+            "points": 19
+          },
+          {
+            "opponentId": "russell",
+            "points": 20
           }
         ]
       },
-      "stroll-13": {
+      "stroll-lock-13": {
         "type": "can_be_locked_in_next_race",
         "entityId": "stroll",
         "position": 13,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
-          {
-            "opponentId": "perez",
-            "points": 26
-          },
-          {
-            "opponentId": "norris",
-            "points": 25
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 23
-          },
           {
             "opponentId": "hulkenberg",
             "points": 17
@@ -2490,21 +2657,6 @@
             "points": 15
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 22
-          },
-          {
-            "opponentId": "kubica",
-            "points": 21
-          },
-          {
-            "opponentId": "grosjean",
-            "points": 14
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kevin_magnussen",
@@ -2513,244 +2665,343 @@
           {
             "opponentId": "giovinazzi",
             "points": 6
+          },
+          {
+            "opponentId": "grosjean",
+            "points": 12
+          },
+          {
+            "opponentId": "kubica",
+            "points": 19
+          },
+          {
+            "opponentId": "russell",
+            "points": 20
           }
         ]
       },
-      "stroll-14": {
+      "stroll-lock-14": {
         "type": "can_be_locked_in_next_race",
         "entityId": "stroll",
         "position": 14,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "perez",
-            "points": 26
-          },
-          {
-            "opponentId": "norris",
-            "points": 25
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 23
-          },
-          {
-            "opponentId": "hulkenberg",
-            "points": 17
-          },
-          {
             "opponentId": "kvyat",
             "points": 15
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 22
-          },
-          {
-            "opponentId": "kubica",
-            "points": 21
-          },
-          {
-            "opponentId": "grosjean",
-            "points": 14
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 8
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kevin_magnussen",
             "points": 0
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 6
+          },
+          {
+            "opponentId": "grosjean",
+            "points": 12
+          },
+          {
+            "opponentId": "kubica",
+            "points": 19
+          },
+          {
+            "opponentId": "russell",
+            "points": 20
           }
         ]
       },
-      "stroll-15": {
+      "stroll-lock-15": {
         "type": "can_be_locked_in_next_race",
         "entityId": "stroll",
         "position": 15,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "perez",
-            "points": 26
-          },
-          {
-            "opponentId": "norris",
-            "points": 25
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 23
-          },
-          {
-            "opponentId": "hulkenberg",
-            "points": 17
-          },
-          {
-            "opponentId": "kvyat",
-            "points": 15
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 22
-          },
-          {
-            "opponentId": "kubica",
-            "points": 21
-          },
-          {
-            "opponentId": "grosjean",
-            "points": 14
+            "opponentId": "kevin_magnussen",
+            "points": 0
           },
           {
             "opponentId": "giovinazzi",
-            "points": 8
+            "points": 6
           },
           {
-            "opponentId": "kevin_magnussen",
-            "points": 2
+            "opponentId": "grosjean",
+            "points": 12
+          },
+          {
+            "opponentId": "kubica",
+            "points": 19
+          },
+          {
+            "opponentId": "russell",
+            "points": 20
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "stroll-16": {
+      "stroll-lock-16": {
         "type": "can_be_locked_in_next_race",
         "entityId": "stroll",
         "position": 16,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "perez",
-            "points": 26
-          },
-          {
-            "opponentId": "norris",
-            "points": 25
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 23
-          },
-          {
-            "opponentId": "hulkenberg",
-            "points": 17
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 22
-          },
-          {
-            "opponentId": "kubica",
-            "points": 21
+            "opponentId": "giovinazzi",
+            "points": 6
           },
           {
             "opponentId": "grosjean",
-            "points": 14
+            "points": 12
           },
           {
-            "opponentId": "giovinazzi",
-            "points": 8
+            "opponentId": "kubica",
+            "points": 19
           },
           {
-            "opponentId": "kevin_magnussen",
-            "points": 2
+            "opponentId": "russell",
+            "points": 20
           }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "kvyat",
-            "points": 13
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "stroll-17": {
+      "stroll-lock-17": {
         "type": "can_be_locked_in_next_race",
         "entityId": "stroll",
         "position": 17,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "perez",
-            "points": 26
-          },
-          {
-            "opponentId": "norris",
-            "points": 25
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 23
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 22
+            "opponentId": "grosjean",
+            "points": 12
           },
           {
             "opponentId": "kubica",
-            "points": 21
+            "points": 19
           },
           {
-            "opponentId": "grosjean",
-            "points": 14
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 8
-          },
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 2
+            "opponentId": "russell",
+            "points": 20
           }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "kvyat",
-            "points": 13
-          },
-          {
-            "opponentId": "hulkenberg",
-            "points": 15
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "stroll-18": {
+      "stroll-lock-18": {
         "type": "can_be_locked_in_next_race",
         "entityId": "stroll",
         "position": 18,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "kubica",
+            "points": 19
+          },
+          {
+            "opponentId": "russell",
+            "points": 20
+          }
+        ]
+      },
+      "stroll-lock-19": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "stroll",
+        "position": 19,
+        "nextSlotIndex": 20,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 20
+          }
+        ]
+      },
+      "stroll-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "stroll",
+        "position": 10,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
           {
             "opponentId": "perez",
-            "points": 26
+            "points": 24
+          }
+        ]
+      },
+      "stroll-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "stroll",
+        "position": 11,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "norris",
+            "points": 23
+          },
+          {
+            "opponentId": "perez",
+            "points": 24
+          }
+        ]
+      },
+      "stroll-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "stroll",
+        "position": 12,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "raikkonen",
+            "points": 21
           },
           {
             "opponentId": "norris",
-            "points": 25
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 22
+            "points": 23
           },
           {
-            "opponentId": "kubica",
+            "opponentId": "perez",
+            "points": 24
+          }
+        ]
+      },
+      "stroll-ruled-out-13": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "stroll",
+        "position": 13,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "hulkenberg",
+            "points": 15
+          },
+          {
+            "opponentId": "raikkonen",
             "points": 21
           },
+          {
+            "opponentId": "norris",
+            "points": 23
+          },
+          {
+            "opponentId": "perez",
+            "points": 24
+          }
+        ]
+      },
+      "stroll-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "stroll",
+        "position": 14,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "kvyat",
+            "points": 13
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 15
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 21
+          },
+          {
+            "opponentId": "norris",
+            "points": 23
+          },
+          {
+            "opponentId": "perez",
+            "points": 24
+          }
+        ]
+      },
+      "stroll-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "stroll",
+        "position": 15,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 2
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "kvyat",
+            "points": 13
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 15
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 21
+          },
+          {
+            "opponentId": "norris",
+            "points": 23
+          },
+          {
+            "opponentId": "perez",
+            "points": 24
+          }
+        ]
+      },
+      "stroll-ruled-out-16": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "stroll",
+        "position": 16,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "giovinazzi",
+            "points": 8
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 2
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "kvyat",
+            "points": 13
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 15
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 21
+          },
+          {
+            "opponentId": "norris",
+            "points": 23
+          },
+          {
+            "opponentId": "perez",
+            "points": 24
+          }
+        ]
+      },
+      "stroll-ruled-out-17": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "stroll",
+        "position": 17,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
           {
             "opponentId": "grosjean",
             "points": 14
@@ -2776,26 +3027,23 @@
           {
             "opponentId": "raikkonen",
             "points": 21
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "stroll-19": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "stroll",
-        "position": 19,
-        "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+          },
+          {
+            "opponentId": "norris",
+            "points": 23
+          },
           {
             "opponentId": "perez",
-            "points": 26
+            "points": 24
           }
-        ],
+        ]
+      },
+      "stroll-ruled-out-18": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "stroll",
+        "position": 18,
+        "nextSlotIndex": 20,
         "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 22
-          },
           {
             "opponentId": "kubica",
             "points": 21
@@ -2829,11 +3077,14 @@
           {
             "opponentId": "norris",
             "points": 23
+          },
+          {
+            "opponentId": "perez",
+            "points": 24
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "kevin_magnussen-11": {
+      "kevin_magnussen-lock-11": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kevin_magnussen",
         "position": 11,
@@ -2860,13 +3111,6 @@
             "points": 2
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "perez",
-            "points": 25
-          }
-        ],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "giovinazzi",
@@ -2886,17 +3130,13 @@
           }
         ]
       },
-      "kevin_magnussen-12": {
+      "kevin_magnussen-lock-12": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kevin_magnussen",
         "position": 12,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "norris",
-            "points": 26
-          },
-          {
             "opponentId": "raikkonen",
             "points": 24
           },
@@ -2913,18 +3153,6 @@
             "points": 2
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 21
-          }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "perez",
-            "points": 25
-          }
-        ],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "giovinazzi",
@@ -2937,24 +3165,20 @@
           {
             "opponentId": "kubica",
             "points": 18
+          },
+          {
+            "opponentId": "russell",
+            "points": 19
           }
         ]
       },
-      "kevin_magnussen-13": {
+      "kevin_magnussen-lock-13": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kevin_magnussen",
         "position": 13,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "norris",
-            "points": 26
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 24
-          },
-          {
             "opponentId": "hulkenberg",
             "points": 18
           },
@@ -2965,22 +3189,6 @@
           {
             "opponentId": "stroll",
             "points": 2
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 21
-          },
-          {
-            "opponentId": "kubica",
-            "points": 20
-          }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "perez",
-            "points": 25
           }
         ],
         "cannotBeOutscoredByMoreThan": [
@@ -2991,201 +3199,301 @@
           {
             "opponentId": "grosjean",
             "points": 11
+          },
+          {
+            "opponentId": "kubica",
+            "points": 18
+          },
+          {
+            "opponentId": "russell",
+            "points": 19
           }
         ]
       },
-      "kevin_magnussen-14": {
+      "kevin_magnussen-lock-14": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kevin_magnussen",
         "position": 14,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "norris",
-            "points": 26
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 24
-          },
-          {
-            "opponentId": "hulkenberg",
-            "points": 18
-          },
-          {
             "opponentId": "kvyat",
             "points": 16
           },
           {
             "opponentId": "stroll",
             "points": 2
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 21
-          },
-          {
-            "opponentId": "kubica",
-            "points": 20
-          },
-          {
-            "opponentId": "grosjean",
-            "points": 13
-          }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "perez",
-            "points": 25
           }
         ],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "giovinazzi",
             "points": 5
+          },
+          {
+            "opponentId": "grosjean",
+            "points": 11
+          },
+          {
+            "opponentId": "kubica",
+            "points": 18
+          },
+          {
+            "opponentId": "russell",
+            "points": 19
           }
         ]
       },
-      "kevin_magnussen-15": {
+      "kevin_magnussen-lock-15": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kevin_magnussen",
         "position": 15,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "norris",
-            "points": 26
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 24
-          },
-          {
-            "opponentId": "hulkenberg",
-            "points": 18
-          },
-          {
-            "opponentId": "kvyat",
-            "points": 16
-          },
-          {
             "opponentId": "stroll",
             "points": 2
           }
         ],
-        "mustBeOutscoredBy": [
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "russell",
-            "points": 21
-          },
-          {
-            "opponentId": "kubica",
-            "points": 20
+            "opponentId": "giovinazzi",
+            "points": 5
           },
           {
             "opponentId": "grosjean",
-            "points": 13
+            "points": 11
           },
           {
-            "opponentId": "giovinazzi",
-            "points": 7
-          }
-        ],
-        "cannotOutscoreByMoreThan": [
+            "opponentId": "kubica",
+            "points": 18
+          },
           {
-            "opponentId": "perez",
-            "points": 25
+            "opponentId": "russell",
+            "points": 19
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "kevin_magnussen-16": {
+      "kevin_magnussen-lock-16": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kevin_magnussen",
         "position": 16,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "norris",
-            "points": 26
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 24
-          },
-          {
-            "opponentId": "hulkenberg",
-            "points": 18
-          },
-          {
-            "opponentId": "kvyat",
-            "points": 16
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 21
-          },
-          {
-            "opponentId": "kubica",
-            "points": 20
+            "opponentId": "giovinazzi",
+            "points": 5
           },
           {
             "opponentId": "grosjean",
-            "points": 13
+            "points": 11
           },
           {
-            "opponentId": "giovinazzi",
-            "points": 7
-          }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "stroll",
-            "points": 0
+            "opponentId": "kubica",
+            "points": 18
           },
           {
-            "opponentId": "perez",
-            "points": 25
+            "opponentId": "russell",
+            "points": 19
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "kevin_magnussen-17": {
+      "kevin_magnussen-lock-17": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kevin_magnussen",
         "position": 17,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "norris",
-            "points": 26
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 24
-          },
-          {
-            "opponentId": "hulkenberg",
-            "points": 18
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 21
+            "opponentId": "grosjean",
+            "points": 11
           },
           {
             "opponentId": "kubica",
-            "points": 20
+            "points": 18
           },
           {
-            "opponentId": "grosjean",
-            "points": 13
+            "opponentId": "russell",
+            "points": 19
+          }
+        ]
+      },
+      "kevin_magnussen-lock-18": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "kevin_magnussen",
+        "position": 18,
+        "nextSlotIndex": 20,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "kubica",
+            "points": 18
           },
+          {
+            "opponentId": "russell",
+            "points": 19
+          }
+        ]
+      },
+      "kevin_magnussen-lock-19": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "kevin_magnussen",
+        "position": 19,
+        "nextSlotIndex": 20,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 19
+          }
+        ]
+      },
+      "kevin_magnussen-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kevin_magnussen",
+        "position": 10,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 25
+          }
+        ]
+      },
+      "kevin_magnussen-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kevin_magnussen",
+        "position": 11,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "norris",
+            "points": 24
+          },
+          {
+            "opponentId": "perez",
+            "points": 25
+          }
+        ]
+      },
+      "kevin_magnussen-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kevin_magnussen",
+        "position": 12,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "raikkonen",
+            "points": 22
+          },
+          {
+            "opponentId": "norris",
+            "points": 24
+          },
+          {
+            "opponentId": "perez",
+            "points": 25
+          }
+        ]
+      },
+      "kevin_magnussen-ruled-out-13": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kevin_magnussen",
+        "position": 13,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "hulkenberg",
+            "points": 16
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 22
+          },
+          {
+            "opponentId": "norris",
+            "points": 24
+          },
+          {
+            "opponentId": "perez",
+            "points": 25
+          }
+        ]
+      },
+      "kevin_magnussen-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kevin_magnussen",
+        "position": 14,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "kvyat",
+            "points": 14
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 16
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 22
+          },
+          {
+            "opponentId": "norris",
+            "points": 24
+          },
+          {
+            "opponentId": "perez",
+            "points": 25
+          }
+        ]
+      },
+      "kevin_magnussen-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kevin_magnussen",
+        "position": 15,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 0
+          },
+          {
+            "opponentId": "kvyat",
+            "points": 14
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 16
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 22
+          },
+          {
+            "opponentId": "norris",
+            "points": 24
+          },
+          {
+            "opponentId": "perez",
+            "points": 25
+          }
+        ]
+      },
+      "kevin_magnussen-ruled-out-16": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kevin_magnussen",
+        "position": 16,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
           {
             "opponentId": "giovinazzi",
             "points": 7
@@ -3201,36 +3509,29 @@
             "points": 14
           },
           {
-            "opponentId": "perez",
-            "points": 25
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "kevin_magnussen-18": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "kevin_magnussen",
-        "position": 18,
-        "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "norris",
-            "points": 26
+            "opponentId": "hulkenberg",
+            "points": 16
           },
           {
             "opponentId": "raikkonen",
+            "points": 22
+          },
+          {
+            "opponentId": "norris",
             "points": 24
+          },
+          {
+            "opponentId": "perez",
+            "points": 25
           }
-        ],
+        ]
+      },
+      "kevin_magnussen-ruled-out-17": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kevin_magnussen",
+        "position": 17,
+        "nextSlotIndex": 20,
         "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 21
-          },
-          {
-            "opponentId": "kubica",
-            "points": 20
-          },
           {
             "opponentId": "grosjean",
             "points": 13
@@ -3254,28 +3555,25 @@
             "points": 16
           },
           {
+            "opponentId": "raikkonen",
+            "points": 22
+          },
+          {
+            "opponentId": "norris",
+            "points": 24
+          },
+          {
             "opponentId": "perez",
             "points": 25
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "kevin_magnussen-19": {
-        "type": "can_be_locked_in_next_race",
+      "kevin_magnussen-ruled-out-18": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "kevin_magnussen",
-        "position": 19,
+        "position": 18,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "norris",
-            "points": 26
-          }
-        ],
         "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 21
-          },
           {
             "opponentId": "kubica",
             "points": 20
@@ -3307,13 +3605,16 @@
             "points": 22
           },
           {
+            "opponentId": "norris",
+            "points": 24
+          },
+          {
             "opponentId": "perez",
             "points": 25
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "giovinazzi-13": {
+      "giovinazzi-lock-13": {
         "type": "can_be_locked_in_next_race",
         "entityId": "giovinazzi",
         "position": 13,
@@ -3336,8 +3637,6 @@
             "points": 7
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "grosjean",
@@ -3353,17 +3652,13 @@
           }
         ]
       },
-      "giovinazzi-14": {
+      "giovinazzi-lock-14": {
         "type": "can_be_locked_in_next_race",
         "entityId": "giovinazzi",
         "position": 14,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "hulkenberg",
-            "points": 24
-          },
-          {
             "opponentId": "kvyat",
             "points": 22
           },
@@ -3376,13 +3671,6 @@
             "points": 7
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 15
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "grosjean",
@@ -3391,23 +3679,19 @@
           {
             "opponentId": "kubica",
             "points": 12
+          },
+          {
+            "opponentId": "russell",
+            "points": 13
           }
         ]
       },
-      "giovinazzi-15": {
+      "giovinazzi-lock-15": {
         "type": "can_be_locked_in_next_race",
         "entityId": "giovinazzi",
         "position": 15,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
-          {
-            "opponentId": "hulkenberg",
-            "points": 24
-          },
-          {
-            "opponentId": "kvyat",
-            "points": 22
-          },
           {
             "opponentId": "stroll",
             "points": 8
@@ -3417,248 +3701,295 @@
             "points": 7
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 15
-          },
-          {
-            "opponentId": "kubica",
-            "points": 14
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "grosjean",
             "points": 5
+          },
+          {
+            "opponentId": "kubica",
+            "points": 12
+          },
+          {
+            "opponentId": "russell",
+            "points": 13
           }
         ]
       },
-      "giovinazzi-16": {
+      "giovinazzi-lock-16": {
         "type": "can_be_locked_in_next_race",
         "entityId": "giovinazzi",
         "position": 16,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "hulkenberg",
-            "points": 24
-          },
-          {
-            "opponentId": "kvyat",
-            "points": 22
-          },
-          {
-            "opponentId": "stroll",
-            "points": 8
-          },
-          {
             "opponentId": "kevin_magnussen",
             "points": 7
           }
         ],
-        "mustBeOutscoredBy": [
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "russell",
-            "points": 15
+            "opponentId": "grosjean",
+            "points": 5
           },
           {
             "opponentId": "kubica",
-            "points": 14
+            "points": 12
           },
           {
-            "opponentId": "grosjean",
-            "points": 7
+            "opponentId": "russell",
+            "points": 13
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "giovinazzi-17": {
+      "giovinazzi-lock-17": {
         "type": "can_be_locked_in_next_race",
         "entityId": "giovinazzi",
         "position": 17,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "hulkenberg",
-            "points": 24
-          },
-          {
-            "opponentId": "kvyat",
-            "points": 22
-          },
-          {
-            "opponentId": "stroll",
-            "points": 8
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 15
+            "opponentId": "grosjean",
+            "points": 5
           },
           {
             "opponentId": "kubica",
-            "points": 14
+            "points": 12
           },
           {
-            "opponentId": "grosjean",
-            "points": 7
+            "opponentId": "russell",
+            "points": 13
           }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 5
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "giovinazzi-18": {
+      "giovinazzi-lock-18": {
         "type": "can_be_locked_in_next_race",
         "entityId": "giovinazzi",
         "position": 18,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "hulkenberg",
-            "points": 24
-          },
-          {
-            "opponentId": "kvyat",
-            "points": 22
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 15
-          },
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kubica",
-            "points": 14
+            "points": 12
           },
           {
-            "opponentId": "grosjean",
-            "points": 7
+            "opponentId": "russell",
+            "points": 13
           }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 5
-          },
-          {
-            "opponentId": "stroll",
-            "points": 6
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "giovinazzi-19": {
+      "giovinazzi-lock-19": {
         "type": "can_be_locked_in_next_race",
         "entityId": "giovinazzi",
         "position": 19,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "hulkenberg",
-            "points": 24
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 15
-          },
-          {
-            "opponentId": "kubica",
-            "points": 14
-          },
-          {
-            "opponentId": "grosjean",
-            "points": 7
-          }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 5
-          },
-          {
-            "opponentId": "stroll",
-            "points": 6
-          },
-          {
-            "opponentId": "kvyat",
-            "points": 20
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "giovinazzi-20": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "giovinazzi",
-        "position": 20,
-        "nextSlotIndex": 20,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "russell",
-            "points": 15
-          },
-          {
-            "opponentId": "kubica",
-            "points": 14
-          },
-          {
-            "opponentId": "grosjean",
-            "points": 7
-          }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 5
-          },
-          {
-            "opponentId": "stroll",
-            "points": 6
-          },
-          {
-            "opponentId": "kvyat",
-            "points": 20
-          },
-          {
-            "opponentId": "hulkenberg",
-            "points": 22
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "grosjean-15": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "grosjean",
-        "position": 15,
-        "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 14
-          },
-          {
-            "opponentId": "kevin_magnussen",
             "points": 13
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 7
           }
-        ],
+        ]
+      },
+      "giovinazzi-ruled-out-13": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "giovinazzi",
+        "position": 13,
+        "nextSlotIndex": 20,
         "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "hulkenberg",
+            "points": 22
+          }
+        ]
+      },
+      "giovinazzi-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "giovinazzi",
+        "position": 14,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "kvyat",
+            "points": 20
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 22
+          }
+        ]
+      },
+      "giovinazzi-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "giovinazzi",
+        "position": 15,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 6
+          },
+          {
+            "opponentId": "kvyat",
+            "points": 20
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 22
+          }
+        ]
+      },
+      "giovinazzi-ruled-out-16": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "giovinazzi",
+        "position": 16,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 5
+          },
+          {
+            "opponentId": "stroll",
+            "points": 6
+          },
+          {
+            "opponentId": "kvyat",
+            "points": 20
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 22
+          }
+        ]
+      },
+      "giovinazzi-ruled-out-17": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "giovinazzi",
+        "position": 17,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "grosjean",
+            "points": 7
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 5
+          },
+          {
+            "opponentId": "stroll",
+            "points": 6
+          },
+          {
+            "opponentId": "kvyat",
+            "points": 20
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 22
+          }
+        ]
+      },
+      "giovinazzi-ruled-out-18": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "giovinazzi",
+        "position": 18,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "kubica",
+            "points": 14
+          },
+          {
+            "opponentId": "grosjean",
+            "points": 7
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 5
+          },
+          {
+            "opponentId": "stroll",
+            "points": 6
+          },
+          {
+            "opponentId": "kvyat",
+            "points": 20
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 22
+          }
+        ]
+      },
+      "giovinazzi-ruled-out-19": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "giovinazzi",
+        "position": 19,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "russell",
+            "points": 15
+          },
+          {
+            "opponentId": "kubica",
+            "points": 14
+          },
+          {
+            "opponentId": "grosjean",
+            "points": 7
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 5
+          },
+          {
+            "opponentId": "stroll",
+            "points": 6
+          },
+          {
+            "opponentId": "kvyat",
+            "points": 20
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 22
+          }
+        ]
+      },
+      "grosjean-lock-15": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "grosjean",
+        "position": 15,
+        "nextSlotIndex": 20,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "stroll",
+            "points": 14
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 13
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 7
+          }
+        ],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kubica",
@@ -3670,17 +4001,13 @@
           }
         ]
       },
-      "grosjean-16": {
+      "grosjean-lock-16": {
         "type": "can_be_locked_in_next_race",
         "entityId": "grosjean",
         "position": 16,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "stroll",
-            "points": 14
-          },
-          {
             "opponentId": "kevin_magnussen",
             "points": 13
           },
@@ -3689,101 +4016,126 @@
             "points": 7
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 9
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kubica",
             "points": 6
+          },
+          {
+            "opponentId": "russell",
+            "points": 7
           }
         ]
       },
-      "grosjean-17": {
+      "grosjean-lock-17": {
         "type": "can_be_locked_in_next_race",
         "entityId": "grosjean",
         "position": 17,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "stroll",
-            "points": 14
-          },
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 13
-          },
-          {
             "opponentId": "giovinazzi",
             "points": 7
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 9
-          },
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kubica",
-            "points": 8
+            "points": 6
+          },
+          {
+            "opponentId": "russell",
+            "points": 7
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "grosjean-18": {
+      "grosjean-lock-18": {
         "type": "can_be_locked_in_next_race",
         "entityId": "grosjean",
         "position": 18,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 14
-          },
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 13
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 9
-          },
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "kubica",
-            "points": 8
-          }
-        ],
-        "cannotOutscoreByMoreThan": [
+            "points": 6
+          },
           {
-            "opponentId": "giovinazzi",
-            "points": 5
+            "opponentId": "russell",
+            "points": 7
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "grosjean-19": {
+      "grosjean-lock-19": {
         "type": "can_be_locked_in_next_race",
         "entityId": "grosjean",
         "position": 19,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 14
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "russell",
-            "points": 9
+            "points": 7
+          }
+        ]
+      },
+      "grosjean-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "grosjean",
+        "position": 15,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 12
+          }
+        ]
+      },
+      "grosjean-ruled-out-16": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "grosjean",
+        "position": 16,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 11
           },
+          {
+            "opponentId": "stroll",
+            "points": 12
+          }
+        ]
+      },
+      "grosjean-ruled-out-17": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "grosjean",
+        "position": 17,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "giovinazzi",
+            "points": 5
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 11
+          },
+          {
+            "opponentId": "stroll",
+            "points": 12
+          }
+        ]
+      },
+      "grosjean-ruled-out-18": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "grosjean",
+        "position": 18,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
           {
             "opponentId": "kubica",
             "points": 8
@@ -3797,16 +4149,18 @@
           {
             "opponentId": "kevin_magnussen",
             "points": 11
+          },
+          {
+            "opponentId": "stroll",
+            "points": 12
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "grosjean-20": {
-        "type": "can_be_locked_in_next_race",
+      "grosjean-ruled-out-19": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "grosjean",
-        "position": 20,
+        "position": 19,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "russell",
@@ -3830,10 +4184,9 @@
             "opponentId": "stroll",
             "points": 12
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "kubica-15": {
+      "kubica-lock-15": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kubica",
         "position": 15,
@@ -3856,8 +4209,6 @@
             "points": 8
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "russell",
@@ -3865,16 +4216,12 @@
           }
         ]
       },
-      "kubica-16": {
+      "kubica-lock-16": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kubica",
         "position": 16,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 21
-          },
           {
             "opponentId": "kevin_magnussen",
             "points": 20
@@ -3888,98 +4235,123 @@
             "points": 8
           }
         ],
-        "mustBeOutscoredBy": [
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "russell",
-            "points": 2
+            "points": 0
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "kubica-17": {
+      "kubica-lock-17": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kubica",
         "position": 17,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "stroll",
-            "points": 21
-          },
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 20
-          },
-          {
             "opponentId": "giovinazzi",
             "points": 14
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "russell",
-            "points": 2
-          }
-        ],
-        "cannotOutscoreByMoreThan": [
+          },
           {
             "opponentId": "grosjean",
-            "points": 6
+            "points": 8
           }
         ],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 0
+          }
+        ]
       },
-      "kubica-18": {
+      "kubica-lock-18": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kubica",
         "position": 18,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "stroll",
-            "points": 21
-          },
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 20
+            "opponentId": "grosjean",
+            "points": 8
           }
         ],
-        "mustBeOutscoredBy": [
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "russell",
-            "points": 2
+            "points": 0
           }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "grosjean",
-            "points": 6
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 12
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "kubica-19": {
+      "kubica-lock-19": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kubica",
         "position": 19,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 21
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "russell",
-            "points": 2
+            "points": 0
           }
-        ],
+        ]
+      },
+      "kubica-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kubica",
+        "position": 15,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 19
+          }
+        ]
+      },
+      "kubica-ruled-out-16": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kubica",
+        "position": 16,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 18
+          },
+          {
+            "opponentId": "stroll",
+            "points": 19
+          }
+        ]
+      },
+      "kubica-ruled-out-17": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kubica",
+        "position": 17,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "giovinazzi",
+            "points": 12
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 18
+          },
+          {
+            "opponentId": "stroll",
+            "points": 19
+          }
+        ]
+      },
+      "kubica-ruled-out-18": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kubica",
+        "position": 18,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
             "opponentId": "grosjean",
@@ -3992,16 +4364,18 @@
           {
             "opponentId": "kevin_magnussen",
             "points": 18
+          },
+          {
+            "opponentId": "stroll",
+            "points": 19
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "kubica-20": {
-        "type": "can_be_locked_in_next_race",
+      "kubica-ruled-out-19": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "kubica",
-        "position": 20,
+        "position": 19,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "russell",
@@ -4025,10 +4399,9 @@
             "opponentId": "stroll",
             "points": 19
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "russell-15": {
+      "russell-lock-15": {
         "type": "can_be_locked_in_next_race",
         "entityId": "russell",
         "position": 15,
@@ -4055,20 +4428,14 @@
             "points": 2
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "russell-16": {
+      "russell-lock-16": {
         "type": "can_be_locked_in_next_race",
         "entityId": "russell",
         "position": 16,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 22
-          },
           {
             "opponentId": "kevin_magnussen",
             "points": 21
@@ -4080,98 +4447,123 @@
           {
             "opponentId": "grosjean",
             "points": 9
-          }
-        ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [
+          },
           {
             "opponentId": "kubica",
-            "points": 0
+            "points": 2
           }
         ],
         "cannotBeOutscoredByMoreThan": []
       },
-      "russell-17": {
+      "russell-lock-17": {
         "type": "can_be_locked_in_next_race",
         "entityId": "russell",
         "position": 17,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "stroll",
-            "points": 22
-          },
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 21
-          },
-          {
             "opponentId": "giovinazzi",
             "points": 15
-          }
-        ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "kubica",
-            "points": 0
           },
           {
             "opponentId": "grosjean",
-            "points": 7
+            "points": 9
+          },
+          {
+            "opponentId": "kubica",
+            "points": 2
           }
         ],
         "cannotBeOutscoredByMoreThan": []
       },
-      "russell-18": {
+      "russell-lock-18": {
         "type": "can_be_locked_in_next_race",
         "entityId": "russell",
         "position": 18,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "stroll",
-            "points": 22
+            "opponentId": "grosjean",
+            "points": 9
           },
-          {
-            "opponentId": "kevin_magnussen",
-            "points": 21
-          }
-        ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [
           {
             "opponentId": "kubica",
-            "points": 0
-          },
-          {
-            "opponentId": "grosjean",
-            "points": 7
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 13
+            "points": 2
           }
         ],
         "cannotBeOutscoredByMoreThan": []
       },
-      "russell-19": {
+      "russell-lock-19": {
         "type": "can_be_locked_in_next_race",
         "entityId": "russell",
         "position": 19,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "stroll",
-            "points": 22
+            "opponentId": "kubica",
+            "points": 2
           }
         ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "russell-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "russell",
+        "position": 15,
+        "nextSlotIndex": 20,
         "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
-            "opponentId": "kubica",
-            "points": 0
+            "opponentId": "stroll",
+            "points": 20
+          }
+        ]
+      },
+      "russell-ruled-out-16": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "russell",
+        "position": 16,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 19
           },
+          {
+            "opponentId": "stroll",
+            "points": 20
+          }
+        ]
+      },
+      "russell-ruled-out-17": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "russell",
+        "position": 17,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "giovinazzi",
+            "points": 13
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 19
+          },
+          {
+            "opponentId": "stroll",
+            "points": 20
+          }
+        ]
+      },
+      "russell-ruled-out-18": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "russell",
+        "position": 18,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
           {
             "opponentId": "grosjean",
             "points": 7
@@ -4183,16 +4575,18 @@
           {
             "opponentId": "kevin_magnussen",
             "points": 19
+          },
+          {
+            "opponentId": "stroll",
+            "points": 20
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "russell-20": {
-        "type": "can_be_locked_in_next_race",
+      "russell-ruled-out-19": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "russell",
-        "position": 20,
+        "position": 19,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
@@ -4215,41 +4609,38 @@
             "opponentId": "stroll",
             "points": 20
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       }
     }
   },
   "constructorLockInsights": {
     "19": {
-      "mercedes-1": {
+      "mercedes-lock-1": {
         "type": "already_locked_in",
         "entityId": "mercedes",
         "position": 1
       },
-      "ferrari-2": {
+      "ferrari-lock-2": {
         "type": "already_locked_in",
         "entityId": "ferrari",
         "position": 2
       },
-      "red_bull-3": {
+      "red_bull-lock-3": {
         "type": "already_locked_in",
         "entityId": "red_bull",
         "position": 3
       },
-      "mclaren-4": {
+      "mclaren-lock-4": {
         "type": "already_locked_in",
         "entityId": "mclaren",
         "position": 4
       },
-      "renault-5": {
+      "renault-lock-5": {
         "type": "can_be_locked_in_next_race",
         "entityId": "renault",
         "position": 5,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "toro_rosso",
@@ -4265,60 +4656,71 @@
           }
         ]
       },
-      "renault-6": {
+      "renault-lock-6": {
         "type": "can_be_locked_in_next_race",
         "entityId": "renault",
         "position": 6,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "alfa",
-            "points": 35
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "toro_rosso",
-            "points": 7
-          },
           {
             "opponentId": "racing_point",
             "points": 23
+          },
+          {
+            "opponentId": "alfa",
+            "points": 33
           }
         ]
       },
-      "renault-7": {
+      "renault-lock-7": {
         "type": "can_be_locked_in_next_race",
         "entityId": "renault",
         "position": 7,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "alfa",
-            "points": 35
-          },
-          {
-            "opponentId": "racing_point",
-            "points": 25
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "toro_rosso",
-            "points": 7
+            "opponentId": "alfa",
+            "points": 33
           }
         ]
       },
-      "renault-8": {
-        "type": "can_be_locked_in_next_race",
+      "renault-ruled-out-5": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "renault",
-        "position": 8,
+        "position": 5,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "toro_rosso",
+            "points": 9
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "renault-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "renault",
+        "position": 6,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "racing_point",
+            "points": 25
+          },
+          {
+            "opponentId": "toro_rosso",
+            "points": 9
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "renault-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "renault",
+        "position": 7,
+        "nextSlotIndex": 20,
         "mustBeOutscoredBy": [
           {
             "opponentId": "alfa",
@@ -4333,10 +4735,9 @@
             "points": 9
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "toro_rosso-5": {
+      "toro_rosso-lock-5": {
         "type": "can_be_locked_in_next_race",
         "entityId": "toro_rosso",
         "position": 5,
@@ -4347,8 +4748,6 @@
             "points": 9
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "racing_point",
@@ -4360,61 +4759,72 @@
           }
         ]
       },
-      "toro_rosso-6": {
+      "toro_rosso-lock-6": {
         "type": "can_be_locked_in_next_race",
         "entityId": "toro_rosso",
         "position": 6,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "renault",
-            "points": 9
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "alfa",
-            "points": 27
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
+        "mustOutscoreBy": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "racing_point",
             "points": 15
+          },
+          {
+            "opponentId": "alfa",
+            "points": 25
           }
         ]
       },
-      "toro_rosso-7": {
+      "toro_rosso-lock-7": {
         "type": "can_be_locked_in_next_race",
         "entityId": "toro_rosso",
         "position": 7,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "renault",
-            "points": 9
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "alfa",
-            "points": 27
-          },
+            "points": 25
+          }
+        ]
+      },
+      "toro_rosso-ruled-out-5": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "toro_rosso",
+        "position": 5,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "renault",
+            "points": 7
+          }
+        ]
+      },
+      "toro_rosso-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "toro_rosso",
+        "position": 6,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
           {
             "opponentId": "racing_point",
             "points": 17
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "renault",
+            "points": 7
+          }
+        ]
       },
-      "toro_rosso-8": {
-        "type": "can_be_locked_in_next_race",
+      "toro_rosso-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "toro_rosso",
-        "position": 8,
+        "position": 7,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "alfa",
@@ -4430,10 +4840,9 @@
             "opponentId": "renault",
             "points": 7
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "racing_point-5": {
+      "racing_point-lock-5": {
         "type": "can_be_locked_in_next_race",
         "entityId": "racing_point",
         "position": 5,
@@ -4448,8 +4857,6 @@
             "points": 17
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "alfa",
@@ -4461,79 +4868,94 @@
           }
         ]
       },
-      "racing_point-6": {
+      "racing_point-lock-6": {
         "type": "can_be_locked_in_next_race",
         "entityId": "racing_point",
         "position": 6,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "renault",
-            "points": 25
-          },
-          {
             "opponentId": "toro_rosso",
             "points": 17
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "haas",
-            "points": 40
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "alfa",
             "points": 9
+          },
+          {
+            "opponentId": "haas",
+            "points": 38
           }
         ]
       },
-      "racing_point-7": {
+      "racing_point-lock-7": {
         "type": "can_be_locked_in_next_race",
         "entityId": "racing_point",
         "position": 7,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "renault",
-            "points": 25
-          },
-          {
-            "opponentId": "toro_rosso",
-            "points": 17
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "haas",
-            "points": 40
-          },
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "alfa",
-            "points": 11
+            "points": 9
+          },
+          {
+            "opponentId": "haas",
+            "points": 38
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "racing_point-8": {
+      "racing_point-lock-8": {
         "type": "can_be_locked_in_next_race",
         "entityId": "racing_point",
         "position": 8,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "renault",
-            "points": 25
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "haas",
-            "points": 40
+            "points": 38
+          }
+        ]
+      },
+      "racing_point-ruled-out-5": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "racing_point",
+        "position": 5,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "renault",
+            "points": 23
+          }
+        ]
+      },
+      "racing_point-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "racing_point",
+        "position": 6,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "toro_rosso",
+            "points": 15
           },
+          {
+            "opponentId": "renault",
+            "points": 23
+          }
+        ]
+      },
+      "racing_point-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "racing_point",
+        "position": 7,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [
           {
             "opponentId": "alfa",
             "points": 11
@@ -4543,16 +4965,18 @@
           {
             "opponentId": "toro_rosso",
             "points": 15
+          },
+          {
+            "opponentId": "renault",
+            "points": 23
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "racing_point-9": {
-        "type": "can_be_locked_in_next_race",
+      "racing_point-ruled-out-8": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "racing_point",
-        "position": 9,
+        "position": 8,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "haas",
@@ -4572,10 +4996,9 @@
             "opponentId": "renault",
             "points": 23
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "alfa-5": {
+      "alfa-lock-5": {
         "type": "can_be_locked_in_next_race",
         "entityId": "alfa",
         "position": 5,
@@ -4594,8 +5017,6 @@
             "points": 11
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "haas",
@@ -4603,16 +5024,12 @@
           }
         ]
       },
-      "alfa-6": {
+      "alfa-lock-6": {
         "type": "can_be_locked_in_next_race",
         "entityId": "alfa",
         "position": 6,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
-          {
-            "opponentId": "renault",
-            "points": 35
-          },
           {
             "opponentId": "toro_rosso",
             "points": 27
@@ -4622,61 +5039,80 @@
             "points": 11
           }
         ],
-        "mustBeOutscoredBy": [
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "haas",
-            "points": 30
+            "points": 28
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "alfa-7": {
+      "alfa-lock-7": {
         "type": "can_be_locked_in_next_race",
         "entityId": "alfa",
         "position": 7,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "renault",
-            "points": 35
-          },
-          {
-            "opponentId": "toro_rosso",
-            "points": 27
+            "opponentId": "racing_point",
+            "points": 11
           }
         ],
-        "mustBeOutscoredBy": [
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "haas",
-            "points": 30
+            "points": 28
           }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "racing_point",
-            "points": 9
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "alfa-8": {
+      "alfa-lock-8": {
         "type": "can_be_locked_in_next_race",
         "entityId": "alfa",
         "position": 8,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "renault",
-            "points": 35
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "haas",
-            "points": 30
+            "points": 28
           }
-        ],
+        ]
+      },
+      "alfa-ruled-out-5": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "alfa",
+        "position": 5,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "renault",
+            "points": 33
+          }
+        ]
+      },
+      "alfa-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "alfa",
+        "position": 6,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "toro_rosso",
+            "points": 25
+          },
+          {
+            "opponentId": "renault",
+            "points": 33
+          }
+        ]
+      },
+      "alfa-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "alfa",
+        "position": 7,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
             "opponentId": "racing_point",
@@ -4685,16 +5121,18 @@
           {
             "opponentId": "toro_rosso",
             "points": 25
+          },
+          {
+            "opponentId": "renault",
+            "points": 33
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "alfa-9": {
-        "type": "can_be_locked_in_next_race",
+      "alfa-ruled-out-8": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "alfa",
-        "position": 9,
+        "position": 8,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "haas",
@@ -4714,10 +5152,9 @@
             "opponentId": "renault",
             "points": 33
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "haas-7": {
+      "haas-lock-7": {
         "type": "can_be_locked_in_next_race",
         "entityId": "haas",
         "position": 7,
@@ -4732,8 +5169,6 @@
             "points": 30
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "williams",
@@ -4741,61 +5176,72 @@
           }
         ]
       },
-      "haas-8": {
+      "haas-lock-8": {
         "type": "can_be_locked_in_next_race",
         "entityId": "haas",
         "position": 8,
         "nextSlotIndex": 20,
         "mustOutscoreBy": [
           {
-            "opponentId": "racing_point",
-            "points": 40
-          },
-          {
             "opponentId": "alfa",
             "points": 30
           }
         ],
-        "mustBeOutscoredBy": [
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "williams",
-            "points": 28
+            "points": 26
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "haas-9": {
+      "haas-lock-9": {
         "type": "can_be_locked_in_next_race",
         "entityId": "haas",
         "position": 9,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "racing_point",
-            "points": 40
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "williams",
-            "points": 28
+            "points": 26
           }
-        ],
+        ]
+      },
+      "haas-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "haas",
+        "position": 7,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "racing_point",
+            "points": 38
+          }
+        ]
+      },
+      "haas-ruled-out-8": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "haas",
+        "position": 8,
+        "nextSlotIndex": 20,
+        "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
             "opponentId": "alfa",
             "points": 28
+          },
+          {
+            "opponentId": "racing_point",
+            "points": 38
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "haas-10": {
-        "type": "can_be_locked_in_next_race",
+      "haas-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "haas",
-        "position": 10,
+        "position": 9,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "williams",
@@ -4811,10 +5257,9 @@
             "opponentId": "racing_point",
             "points": 38
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "williams-9": {
+      "williams-lock-9": {
         "type": "can_be_locked_in_next_race",
         "entityId": "williams",
         "position": 9,
@@ -4825,24 +5270,20 @@
             "points": 28
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "williams-10": {
-        "type": "can_be_locked_in_next_race",
+      "williams-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "williams",
-        "position": 10,
+        "position": 9,
         "nextSlotIndex": 20,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
             "opponentId": "haas",
             "points": 26
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       }
     }
   }

@@ -1185,7 +1185,7 @@
   },
   "driverLockInsights": {
     "18": {
-      "max_verstappen-1": {
+      "max_verstappen-lock-1": {
         "type": "can_be_locked_in_next_race",
         "entityId": "max_verstappen",
         "position": 1,
@@ -1200,8 +1200,6 @@
             "points": 7
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "russell",
@@ -1209,2187 +1207,2780 @@
           }
         ]
       },
-      "max_verstappen-2": {
-        "type": "can_be_locked_in_later",
+      "max_verstappen-lock-2": {
+        "type": "can_be_locked_in_next_race",
         "entityId": "max_verstappen",
         "position": 2,
-        "earliestSlotIndex": 24
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "perez",
+            "points": 7
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 25
+          }
+        ]
       },
-      "max_verstappen-3": {
-        "type": "can_be_locked_in_later",
+      "max_verstappen-lock-3": {
+        "type": "can_be_locked_in_next_race",
         "entityId": "max_verstappen",
         "position": 3,
-        "earliestSlotIndex": 24
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 25
+          }
+        ]
       },
-      "leclerc-1": {
+      "leclerc-lock-6": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "leclerc",
+        "position": 6,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "norris",
+            "points": 24
+          }
+        ]
+      },
+      "leclerc-ruled-out-1": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "leclerc",
+        "position": 1,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "max_verstappen",
+            "points": 9
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "leclerc-later-1": {
         "type": "can_be_locked_in_later",
         "entityId": "leclerc",
         "position": 1,
         "earliestSlotIndex": 24
       },
-      "leclerc-2": {
+      "leclerc-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "leclerc",
         "position": 2,
         "earliestSlotIndex": 22
       },
-      "leclerc-3": {
+      "leclerc-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "leclerc",
         "position": 3,
         "earliestSlotIndex": 22
       },
-      "leclerc-4": {
+      "leclerc-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "leclerc",
         "position": 4,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "leclerc-5": {
+      "leclerc-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "leclerc",
         "position": 5,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "leclerc-6": {
-        "type": "can_be_locked_in_later",
-        "entityId": "leclerc",
-        "position": 6,
-        "earliestSlotIndex": 24
-      },
-      "leclerc-7": {
+      "leclerc-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "leclerc",
         "position": 7,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "perez-1": {
+      "perez-lock-6": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "perez",
+        "position": 6,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "norris",
+            "points": 22
+          }
+        ]
+      },
+      "perez-ruled-out-1": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "perez",
+        "position": 1,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "max_verstappen",
+            "points": 7
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "perez-later-1": {
         "type": "can_be_locked_in_later",
         "entityId": "perez",
         "position": 1,
         "earliestSlotIndex": 24
       },
-      "perez-2": {
+      "perez-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "perez",
         "position": 2,
         "earliestSlotIndex": 22
       },
-      "perez-3": {
+      "perez-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "perez",
         "position": 3,
         "earliestSlotIndex": 22
       },
-      "perez-4": {
+      "perez-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "perez",
         "position": 4,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "perez-5": {
+      "perez-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "perez",
         "position": 5,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "perez-6": {
-        "type": "can_be_locked_in_later",
-        "entityId": "perez",
-        "position": 6,
-        "earliestSlotIndex": 24
-      },
-      "perez-7": {
+      "perez-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "perez",
         "position": 7,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "russell-2": {
+      "russell-lock-6": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "russell",
+        "position": 6,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "norris",
+            "points": 10
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "ocon",
+            "points": 24
+          }
+        ]
+      },
+      "russell-lock-7": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "russell",
+        "position": 7,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "ocon",
+            "points": 24
+          }
+        ]
+      },
+      "russell-ruled-out-1": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "russell",
+        "position": 1,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "max_verstappen",
+            "points": 25
+          }
+        ]
+      },
+      "russell-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "russell",
         "position": 2,
         "earliestSlotIndex": 24
       },
-      "russell-3": {
+      "russell-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "russell",
         "position": 3,
         "earliestSlotIndex": 24
       },
-      "russell-4": {
+      "russell-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "russell",
         "position": 4,
         "earliestSlotIndex": 22
       },
-      "russell-5": {
+      "russell-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "russell",
         "position": 5,
         "earliestSlotIndex": 22
       },
-      "russell-6": {
-        "type": "can_be_locked_in_later",
-        "entityId": "russell",
-        "position": 6,
-        "earliestSlotIndex": 24
-      },
-      "russell-7": {
-        "type": "can_be_locked_in_later",
-        "entityId": "russell",
-        "position": 7,
-        "earliestSlotIndex": 24
-      },
-      "russell-8": {
+      "russell-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "russell",
         "position": 8,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "sainz-2": {
+      "sainz-lock-6": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "sainz",
+        "position": 6,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "norris",
+            "points": 11
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "ocon",
+            "points": 23
+          }
+        ]
+      },
+      "sainz-lock-7": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "sainz",
+        "position": 7,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "ocon",
+            "points": 23
+          }
+        ]
+      },
+      "sainz-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "sainz",
         "position": 2,
         "earliestSlotIndex": 24
       },
-      "sainz-3": {
+      "sainz-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "sainz",
         "position": 3,
         "earliestSlotIndex": 24
       },
-      "sainz-4": {
+      "sainz-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "sainz",
         "position": 4,
         "earliestSlotIndex": 22
       },
-      "sainz-5": {
+      "sainz-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "sainz",
         "position": 5,
         "earliestSlotIndex": 22
       },
-      "sainz-6": {
-        "type": "can_be_locked_in_later",
-        "entityId": "sainz",
-        "position": 6,
-        "earliestSlotIndex": 24
-      },
-      "sainz-7": {
-        "type": "can_be_locked_in_later",
-        "entityId": "sainz",
-        "position": 7,
-        "earliestSlotIndex": 24
-      },
-      "sainz-8": {
+      "sainz-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "sainz",
         "position": 8,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "hamilton-2": {
+      "hamilton-lock-7": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "hamilton",
+        "position": 7,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "ocon",
+            "points": 9
+          },
+          {
+            "opponentId": "alonso",
+            "points": 2
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "bottas",
+            "points": 11
+          }
+        ]
+      },
+      "hamilton-lock-8": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "hamilton",
+        "position": 8,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "alonso",
+            "points": 2
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "bottas",
+            "points": 11
+          }
+        ]
+      },
+      "hamilton-lock-9": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "hamilton",
+        "position": 9,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "bottas",
+            "points": 11
+          }
+        ]
+      },
+      "hamilton-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "hamilton",
         "position": 2,
         "earliestSlotIndex": 24
       },
-      "hamilton-3": {
+      "hamilton-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "hamilton",
         "position": 3,
         "earliestSlotIndex": 24
       },
-      "hamilton-4": {
+      "hamilton-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "hamilton",
         "position": 4,
         "earliestSlotIndex": 24
       },
-      "hamilton-5": {
+      "hamilton-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "hamilton",
         "position": 5,
         "earliestSlotIndex": 24
       },
-      "hamilton-6": {
+      "hamilton-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "hamilton",
         "position": 6,
-        "earliestSlotIndex": 22
+        "earliestSlotIndex": 21
       },
-      "hamilton-7": {
-        "type": "can_be_locked_in_later",
-        "entityId": "hamilton",
-        "position": 7,
-        "earliestSlotIndex": 24
-      },
-      "hamilton-8": {
-        "type": "can_be_locked_in_later",
-        "entityId": "hamilton",
-        "position": 8,
-        "earliestSlotIndex": 24
-      },
-      "hamilton-9": {
-        "type": "can_be_locked_in_later",
-        "entityId": "hamilton",
-        "position": 9,
-        "earliestSlotIndex": 24
-      },
-      "hamilton-10": {
+      "hamilton-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "hamilton",
         "position": 10,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "norris-2": {
+      "norris-lock-14": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "norris",
+        "position": 14,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "stroll",
+            "points": 26
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 25
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 24
+          },
+          {
+            "opponentId": "zhou",
+            "points": 19
+          },
+          {
+            "opponentId": "albon",
+            "points": 17
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 15
+          },
+          {
+            "opponentId": "latifi",
+            "points": 13
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 13
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "norris-lock-15": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "norris",
+        "position": 15,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 25
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 24
+          },
+          {
+            "opponentId": "zhou",
+            "points": 19
+          },
+          {
+            "opponentId": "albon",
+            "points": 17
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 15
+          },
+          {
+            "opponentId": "latifi",
+            "points": 13
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 13
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "norris-lock-16": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "norris",
+        "position": 16,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "tsunoda",
+            "points": 24
+          },
+          {
+            "opponentId": "zhou",
+            "points": 19
+          },
+          {
+            "opponentId": "albon",
+            "points": 17
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 15
+          },
+          {
+            "opponentId": "latifi",
+            "points": 13
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 13
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "norris-lock-17": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "norris",
+        "position": 17,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "zhou",
+            "points": 19
+          },
+          {
+            "opponentId": "albon",
+            "points": 17
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 15
+          },
+          {
+            "opponentId": "latifi",
+            "points": 13
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 13
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "norris-lock-18": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "norris",
+        "position": 18,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "albon",
+            "points": 17
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 15
+          },
+          {
+            "opponentId": "latifi",
+            "points": 13
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 13
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "norris-lock-19": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "norris",
+        "position": 19,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "de_vries",
+            "points": 15
+          },
+          {
+            "opponentId": "latifi",
+            "points": 13
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 13
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "norris-lock-20": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "norris",
+        "position": 20,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "latifi",
+            "points": 13
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 13
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "norris-lock-21": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "norris",
+        "position": 21,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "latifi",
+            "points": 13
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "norris-ruled-out-2": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "norris",
+        "position": 2,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "leclerc",
+            "points": 24
+          }
+        ]
+      },
+      "norris-ruled-out-3": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "norris",
+        "position": 3,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 22
+          },
+          {
+            "opponentId": "leclerc",
+            "points": 24
+          }
+        ]
+      },
+      "norris-ruled-out-4": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "norris",
+        "position": 4,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "russell",
+            "points": 10
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 22
+          },
+          {
+            "opponentId": "leclerc",
+            "points": 24
+          }
+        ]
+      },
+      "norris-ruled-out-5": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "norris",
+        "position": 5,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "sainz",
+            "points": 11
+          },
+          {
+            "opponentId": "russell",
+            "points": 10
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 22
+          },
+          {
+            "opponentId": "leclerc",
+            "points": 24
+          }
+        ]
+      },
+      "norris-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 2,
         "earliestSlotIndex": 24
       },
-      "norris-3": {
+      "norris-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 3,
         "earliestSlotIndex": 24
       },
-      "norris-4": {
+      "norris-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 4,
         "earliestSlotIndex": 24
       },
-      "norris-5": {
+      "norris-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 5,
         "earliestSlotIndex": 24
       },
-      "norris-6": {
+      "norris-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 6,
         "earliestSlotIndex": 24
       },
-      "norris-7": {
+      "norris-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 7,
         "earliestSlotIndex": 22
       },
-      "norris-8": {
+      "norris-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 8,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "norris-9": {
+      "norris-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 9,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "norris-10": {
+      "norris-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 10,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "norris-11": {
+      "norris-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 11,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "norris-12": {
+      "norris-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 12,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "norris-13": {
+      "norris-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 13,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "norris-14": {
-        "type": "can_be_locked_in_later",
-        "entityId": "norris",
-        "position": 14,
-        "earliestSlotIndex": 24
-      },
-      "norris-15": {
-        "type": "can_be_locked_in_later",
-        "entityId": "norris",
-        "position": 15,
-        "earliestSlotIndex": 24
-      },
-      "norris-16": {
-        "type": "can_be_locked_in_later",
-        "entityId": "norris",
-        "position": 16,
-        "earliestSlotIndex": 24
-      },
-      "norris-17": {
-        "type": "can_be_locked_in_later",
-        "entityId": "norris",
-        "position": 17,
-        "earliestSlotIndex": 24
-      },
-      "norris-18": {
-        "type": "can_be_locked_in_later",
-        "entityId": "norris",
-        "position": 18,
-        "earliestSlotIndex": 24
-      },
-      "norris-19": {
-        "type": "can_be_locked_in_later",
-        "entityId": "norris",
-        "position": 19,
-        "earliestSlotIndex": 24
-      },
-      "norris-20": {
-        "type": "can_be_locked_in_later",
-        "entityId": "norris",
-        "position": 20,
-        "earliestSlotIndex": 24
-      },
-      "norris-21": {
-        "type": "can_be_locked_in_later",
-        "entityId": "norris",
-        "position": 21,
-        "earliestSlotIndex": 24
-      },
-      "norris-22": {
+      "norris-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 22,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "ocon-4": {
+      "ocon-ruled-out-4": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "ocon",
+        "position": 4,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 24
+          }
+        ]
+      },
+      "ocon-ruled-out-5": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "ocon",
+        "position": 5,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "sainz",
+            "points": 23
+          },
+          {
+            "opponentId": "russell",
+            "points": 24
+          }
+        ]
+      },
+      "ocon-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "ocon",
+        "position": 6,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "hamilton",
+            "points": 9
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "sainz",
+            "points": 23
+          },
+          {
+            "opponentId": "russell",
+            "points": 24
+          }
+        ]
+      },
+      "ocon-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 4,
         "earliestSlotIndex": 24
       },
-      "ocon-5": {
+      "ocon-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 5,
         "earliestSlotIndex": 24
       },
-      "ocon-6": {
+      "ocon-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 6,
         "earliestSlotIndex": 24
       },
-      "ocon-7": {
+      "ocon-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "ocon-8": {
+      "ocon-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 8,
         "earliestSlotIndex": 22
       },
-      "ocon-9": {
+      "ocon-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 9,
         "earliestSlotIndex": 22
       },
-      "ocon-10": {
+      "ocon-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 10,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "ocon-11": {
+      "ocon-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 11,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "ocon-12": {
+      "ocon-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 12,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "ocon-13": {
+      "ocon-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 13,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "ocon-14": {
+      "ocon-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 14,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "ocon-15": {
+      "ocon-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 15,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "ocon-16": {
+      "ocon-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 16,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "ocon-17": {
+      "ocon-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 17,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "ocon-18": {
+      "ocon-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 18,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "ocon-19": {
+      "ocon-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 19,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "ocon-20": {
+      "ocon-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 20,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "ocon-21": {
+      "ocon-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 21,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "ocon-22": {
+      "ocon-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 22,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alonso-6": {
+      "alonso-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "alonso",
+        "position": 6,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "hamilton",
+            "points": 2
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "alonso-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 6,
         "earliestSlotIndex": 24
       },
-      "alonso-7": {
+      "alonso-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "alonso-8": {
+      "alonso-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 8,
         "earliestSlotIndex": 22
       },
-      "alonso-9": {
+      "alonso-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 9,
         "earliestSlotIndex": 22
       },
-      "alonso-10": {
+      "alonso-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 10,
         "earliestSlotIndex": 22
       },
-      "alonso-11": {
+      "alonso-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 11,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alonso-12": {
+      "alonso-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 12,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alonso-13": {
+      "alonso-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 13,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alonso-14": {
+      "alonso-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 14,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alonso-15": {
+      "alonso-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 15,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alonso-16": {
+      "alonso-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 16,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alonso-17": {
+      "alonso-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 17,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alonso-18": {
+      "alonso-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 18,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alonso-19": {
+      "alonso-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 19,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alonso-20": {
+      "alonso-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 20,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alonso-21": {
+      "alonso-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 21,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alonso-22": {
+      "alonso-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 22,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "bottas-6": {
+      "bottas-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "bottas",
+        "position": 6,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "hamilton",
+            "points": 11
+          }
+        ]
+      },
+      "bottas-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 6,
         "earliestSlotIndex": 24
       },
-      "bottas-7": {
+      "bottas-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "bottas-8": {
+      "bottas-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 8,
         "earliestSlotIndex": 24
       },
-      "bottas-9": {
+      "bottas-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 9,
         "earliestSlotIndex": 22
       },
-      "bottas-10": {
+      "bottas-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 10,
         "earliestSlotIndex": 22
       },
-      "bottas-11": {
+      "bottas-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 11,
         "earliestSlotIndex": 22
       },
-      "bottas-12": {
+      "bottas-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 12,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "bottas-13": {
+      "bottas-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 13,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "bottas-14": {
+      "bottas-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 14,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "bottas-15": {
+      "bottas-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 15,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "bottas-16": {
+      "bottas-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 16,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "bottas-17": {
+      "bottas-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 17,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "bottas-18": {
+      "bottas-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 18,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "bottas-19": {
+      "bottas-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 19,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "bottas-20": {
+      "bottas-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 20,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "bottas-21": {
+      "bottas-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 21,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "bottas-22": {
+      "bottas-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 22,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "ricciardo-7": {
+      "ricciardo-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "ricciardo-8": {
+      "ricciardo-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 8,
         "earliestSlotIndex": 24
       },
-      "ricciardo-9": {
+      "ricciardo-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 9,
         "earliestSlotIndex": 24
       },
-      "ricciardo-10": {
+      "ricciardo-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 10,
         "earliestSlotIndex": 22
       },
-      "ricciardo-11": {
+      "ricciardo-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 11,
         "earliestSlotIndex": 22
       },
-      "ricciardo-12": {
+      "ricciardo-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 12,
         "earliestSlotIndex": 22
       },
-      "ricciardo-13": {
+      "ricciardo-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 13,
         "earliestSlotIndex": 22
       },
-      "ricciardo-14": {
+      "ricciardo-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 14,
         "earliestSlotIndex": 22
       },
-      "ricciardo-15": {
+      "ricciardo-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 15,
         "earliestSlotIndex": 22
       },
-      "ricciardo-16": {
+      "ricciardo-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 16,
         "earliestSlotIndex": 22
       },
-      "ricciardo-17": {
+      "ricciardo-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 17,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "ricciardo-18": {
+      "ricciardo-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 18,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "ricciardo-19": {
+      "ricciardo-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 19,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "ricciardo-20": {
+      "ricciardo-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 20,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "ricciardo-21": {
+      "ricciardo-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 21,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "ricciardo-22": {
+      "ricciardo-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 22,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "vettel-7": {
+      "vettel-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "vettel-8": {
+      "vettel-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 8,
         "earliestSlotIndex": 24
       },
-      "vettel-9": {
+      "vettel-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 9,
         "earliestSlotIndex": 24
       },
-      "vettel-10": {
+      "vettel-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 10,
         "earliestSlotIndex": 24
       },
-      "vettel-11": {
+      "vettel-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 11,
         "earliestSlotIndex": 22
       },
-      "vettel-12": {
+      "vettel-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 12,
         "earliestSlotIndex": 22
       },
-      "vettel-13": {
+      "vettel-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 13,
         "earliestSlotIndex": 22
       },
-      "vettel-14": {
+      "vettel-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 14,
         "earliestSlotIndex": 22
       },
-      "vettel-15": {
+      "vettel-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 15,
         "earliestSlotIndex": 22
       },
-      "vettel-16": {
+      "vettel-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 16,
         "earliestSlotIndex": 22
       },
-      "vettel-17": {
+      "vettel-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 17,
         "earliestSlotIndex": 22
       },
-      "vettel-18": {
+      "vettel-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 18,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "vettel-19": {
+      "vettel-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 19,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "vettel-20": {
+      "vettel-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 20,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "vettel-21": {
+      "vettel-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 21,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "vettel-22": {
+      "vettel-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "vettel",
         "position": 22,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "gasly-7": {
+      "gasly-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "gasly-8": {
+      "gasly-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 8,
         "earliestSlotIndex": 24
       },
-      "gasly-9": {
+      "gasly-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 9,
         "earliestSlotIndex": 24
       },
-      "gasly-10": {
+      "gasly-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 10,
         "earliestSlotIndex": 24
       },
-      "gasly-11": {
+      "gasly-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 11,
         "earliestSlotIndex": 22
       },
-      "gasly-12": {
+      "gasly-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 12,
         "earliestSlotIndex": 22
       },
-      "gasly-13": {
+      "gasly-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 13,
         "earliestSlotIndex": 22
       },
-      "gasly-14": {
+      "gasly-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 14,
         "earliestSlotIndex": 22
       },
-      "gasly-15": {
+      "gasly-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 15,
         "earliestSlotIndex": 22
       },
-      "gasly-16": {
+      "gasly-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 16,
         "earliestSlotIndex": 22
       },
-      "gasly-17": {
+      "gasly-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 17,
         "earliestSlotIndex": 22
       },
-      "gasly-18": {
+      "gasly-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 18,
         "earliestSlotIndex": 22
       },
-      "gasly-19": {
+      "gasly-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 19,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "gasly-20": {
+      "gasly-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 20,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "gasly-21": {
+      "gasly-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 21,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "gasly-22": {
+      "gasly-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 22,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "kevin_magnussen-7": {
+      "kevin_magnussen-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "kevin_magnussen-8": {
+      "kevin_magnussen-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 8,
         "earliestSlotIndex": 24
       },
-      "kevin_magnussen-9": {
+      "kevin_magnussen-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 9,
         "earliestSlotIndex": 24
       },
-      "kevin_magnussen-10": {
+      "kevin_magnussen-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 10,
         "earliestSlotIndex": 24
       },
-      "kevin_magnussen-11": {
+      "kevin_magnussen-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 11,
         "earliestSlotIndex": 22
       },
-      "kevin_magnussen-12": {
+      "kevin_magnussen-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 12,
         "earliestSlotIndex": 22
       },
-      "kevin_magnussen-13": {
+      "kevin_magnussen-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 13,
         "earliestSlotIndex": 22
       },
-      "kevin_magnussen-14": {
+      "kevin_magnussen-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 14,
         "earliestSlotIndex": 22
       },
-      "kevin_magnussen-15": {
+      "kevin_magnussen-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 15,
         "earliestSlotIndex": 22
       },
-      "kevin_magnussen-16": {
+      "kevin_magnussen-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 16,
         "earliestSlotIndex": 22
       },
-      "kevin_magnussen-17": {
+      "kevin_magnussen-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 17,
         "earliestSlotIndex": 22
       },
-      "kevin_magnussen-18": {
+      "kevin_magnussen-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 18,
         "earliestSlotIndex": 22
       },
-      "kevin_magnussen-19": {
+      "kevin_magnussen-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 19,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "kevin_magnussen-20": {
+      "kevin_magnussen-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 20,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "kevin_magnussen-21": {
+      "kevin_magnussen-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 21,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 22
       },
-      "kevin_magnussen-22": {
+      "kevin_magnussen-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 22,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "stroll-7": {
+      "stroll-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "stroll",
+        "position": 7,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "norris",
+            "points": 26
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "stroll-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "stroll-8": {
+      "stroll-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 8,
         "earliestSlotIndex": 24
       },
-      "stroll-9": {
+      "stroll-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 9,
         "earliestSlotIndex": 24
       },
-      "stroll-10": {
+      "stroll-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 10,
         "earliestSlotIndex": 24
       },
-      "stroll-11": {
+      "stroll-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 11,
         "earliestSlotIndex": 22
       },
-      "stroll-12": {
+      "stroll-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 12,
         "earliestSlotIndex": 22
       },
-      "stroll-13": {
+      "stroll-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 13,
         "earliestSlotIndex": 22
       },
-      "stroll-14": {
+      "stroll-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 14,
         "earliestSlotIndex": 22
       },
-      "stroll-15": {
+      "stroll-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 15,
         "earliestSlotIndex": 22
       },
-      "stroll-16": {
+      "stroll-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 16,
         "earliestSlotIndex": 22
       },
-      "stroll-17": {
+      "stroll-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 17,
         "earliestSlotIndex": 22
       },
-      "stroll-18": {
+      "stroll-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 18,
         "earliestSlotIndex": 22
       },
-      "stroll-19": {
+      "stroll-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 19,
         "earliestSlotIndex": 22
       },
-      "stroll-20": {
+      "stroll-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 20,
         "earliestSlotIndex": 22
       },
-      "stroll-21": {
+      "stroll-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 21,
         "earliestSlotIndex": 22
       },
-      "stroll-22": {
+      "stroll-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 22,
-        "earliestSlotIndex": 22
+        "earliestSlotIndex": 21
       },
-      "mick_schumacher-7": {
+      "mick_schumacher-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mick_schumacher",
+        "position": 7,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "norris",
+            "points": 25
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "mick_schumacher-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "mick_schumacher-8": {
+      "mick_schumacher-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 8,
         "earliestSlotIndex": 24
       },
-      "mick_schumacher-9": {
+      "mick_schumacher-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 9,
         "earliestSlotIndex": 24
       },
-      "mick_schumacher-10": {
+      "mick_schumacher-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 10,
         "earliestSlotIndex": 24
       },
-      "mick_schumacher-11": {
+      "mick_schumacher-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 11,
         "earliestSlotIndex": 22
       },
-      "mick_schumacher-12": {
+      "mick_schumacher-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 12,
         "earliestSlotIndex": 22
       },
-      "mick_schumacher-13": {
+      "mick_schumacher-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 13,
         "earliestSlotIndex": 22
       },
-      "mick_schumacher-14": {
+      "mick_schumacher-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 14,
         "earliestSlotIndex": 22
       },
-      "mick_schumacher-15": {
+      "mick_schumacher-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 15,
         "earliestSlotIndex": 22
       },
-      "mick_schumacher-16": {
+      "mick_schumacher-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 16,
         "earliestSlotIndex": 22
       },
-      "mick_schumacher-17": {
+      "mick_schumacher-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 17,
         "earliestSlotIndex": 22
       },
-      "mick_schumacher-18": {
+      "mick_schumacher-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 18,
         "earliestSlotIndex": 22
       },
-      "mick_schumacher-19": {
+      "mick_schumacher-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 19,
         "earliestSlotIndex": 22
       },
-      "mick_schumacher-20": {
+      "mick_schumacher-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 20,
         "earliestSlotIndex": 22
       },
-      "mick_schumacher-21": {
+      "mick_schumacher-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 21,
         "earliestSlotIndex": 22
       },
-      "mick_schumacher-22": {
+      "mick_schumacher-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "mick_schumacher",
         "position": 22,
-        "earliestSlotIndex": 22
+        "earliestSlotIndex": 21
       },
-      "tsunoda-7": {
+      "tsunoda-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "tsunoda",
+        "position": 7,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "norris",
+            "points": 24
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "tsunoda-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "tsunoda-8": {
+      "tsunoda-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 8,
         "earliestSlotIndex": 24
       },
-      "tsunoda-9": {
+      "tsunoda-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 9,
         "earliestSlotIndex": 24
       },
-      "tsunoda-10": {
+      "tsunoda-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 10,
         "earliestSlotIndex": 24
       },
-      "tsunoda-11": {
+      "tsunoda-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 11,
         "earliestSlotIndex": 24
       },
-      "tsunoda-12": {
+      "tsunoda-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 12,
         "earliestSlotIndex": 22
       },
-      "tsunoda-13": {
+      "tsunoda-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 13,
         "earliestSlotIndex": 22
       },
-      "tsunoda-14": {
+      "tsunoda-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 14,
         "earliestSlotIndex": 22
       },
-      "tsunoda-15": {
+      "tsunoda-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 15,
         "earliestSlotIndex": 22
       },
-      "tsunoda-16": {
+      "tsunoda-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 16,
         "earliestSlotIndex": 22
       },
-      "tsunoda-17": {
+      "tsunoda-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 17,
         "earliestSlotIndex": 22
       },
-      "tsunoda-18": {
+      "tsunoda-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 18,
         "earliestSlotIndex": 22
       },
-      "tsunoda-19": {
+      "tsunoda-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 19,
         "earliestSlotIndex": 22
       },
-      "tsunoda-20": {
+      "tsunoda-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 20,
         "earliestSlotIndex": 22
       },
-      "tsunoda-21": {
+      "tsunoda-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 21,
         "earliestSlotIndex": 22
       },
-      "tsunoda-22": {
+      "tsunoda-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 22,
-        "earliestSlotIndex": 22
+        "earliestSlotIndex": 21
       },
-      "zhou-7": {
+      "zhou-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "zhou",
+        "position": 7,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "norris",
+            "points": 19
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "zhou-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "zhou-8": {
+      "zhou-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 8,
         "earliestSlotIndex": 24
       },
-      "zhou-9": {
+      "zhou-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 9,
         "earliestSlotIndex": 24
       },
-      "zhou-10": {
+      "zhou-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 10,
         "earliestSlotIndex": 24
       },
-      "zhou-11": {
+      "zhou-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 11,
         "earliestSlotIndex": 24
       },
-      "zhou-12": {
+      "zhou-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 12,
         "earliestSlotIndex": 24
       },
-      "zhou-13": {
+      "zhou-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 13,
         "earliestSlotIndex": 22
       },
-      "zhou-14": {
+      "zhou-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 14,
         "earliestSlotIndex": 22
       },
-      "zhou-15": {
+      "zhou-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 15,
         "earliestSlotIndex": 22
       },
-      "zhou-16": {
+      "zhou-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 16,
         "earliestSlotIndex": 22
       },
-      "zhou-17": {
+      "zhou-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 17,
         "earliestSlotIndex": 22
       },
-      "zhou-18": {
+      "zhou-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 18,
         "earliestSlotIndex": 22
       },
-      "zhou-19": {
+      "zhou-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 19,
         "earliestSlotIndex": 22
       },
-      "zhou-20": {
+      "zhou-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 20,
         "earliestSlotIndex": 22
       },
-      "zhou-21": {
+      "zhou-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 21,
         "earliestSlotIndex": 22
       },
-      "zhou-22": {
+      "zhou-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 22,
-        "earliestSlotIndex": 22
+        "earliestSlotIndex": 21
       },
-      "albon-7": {
+      "albon-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "albon",
+        "position": 7,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "norris",
+            "points": 17
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "albon-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "albon-8": {
+      "albon-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 8,
         "earliestSlotIndex": 24
       },
-      "albon-9": {
+      "albon-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 9,
         "earliestSlotIndex": 24
       },
-      "albon-10": {
+      "albon-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 10,
         "earliestSlotIndex": 24
       },
-      "albon-11": {
+      "albon-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 11,
         "earliestSlotIndex": 24
       },
-      "albon-12": {
+      "albon-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 12,
         "earliestSlotIndex": 24
       },
-      "albon-13": {
+      "albon-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 13,
         "earliestSlotIndex": 24
       },
-      "albon-14": {
+      "albon-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 14,
         "earliestSlotIndex": 24
       },
-      "albon-15": {
+      "albon-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 15,
         "earliestSlotIndex": 22
       },
-      "albon-16": {
+      "albon-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 16,
         "earliestSlotIndex": 22
       },
-      "albon-17": {
+      "albon-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 17,
         "earliestSlotIndex": 22
       },
-      "albon-18": {
+      "albon-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 18,
         "earliestSlotIndex": 22
       },
-      "albon-19": {
+      "albon-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 19,
         "earliestSlotIndex": 22
       },
-      "albon-20": {
+      "albon-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 20,
         "earliestSlotIndex": 22
       },
-      "albon-21": {
+      "albon-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 21,
         "earliestSlotIndex": 22
       },
-      "albon-22": {
+      "albon-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 22,
-        "earliestSlotIndex": 22
+        "earliestSlotIndex": 21
       },
-      "de_vries-7": {
+      "de_vries-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "de_vries",
+        "position": 7,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "norris",
+            "points": 15
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "de_vries-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "de_vries-8": {
+      "de_vries-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 8,
         "earliestSlotIndex": 24
       },
-      "de_vries-9": {
+      "de_vries-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 9,
         "earliestSlotIndex": 24
       },
-      "de_vries-10": {
+      "de_vries-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 10,
         "earliestSlotIndex": 24
       },
-      "de_vries-11": {
+      "de_vries-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 11,
         "earliestSlotIndex": 24
       },
-      "de_vries-12": {
+      "de_vries-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 12,
         "earliestSlotIndex": 24
       },
-      "de_vries-13": {
+      "de_vries-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 13,
         "earliestSlotIndex": 24
       },
-      "de_vries-14": {
+      "de_vries-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 14,
         "earliestSlotIndex": 24
       },
-      "de_vries-15": {
+      "de_vries-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 15,
         "earliestSlotIndex": 22
       },
-      "de_vries-16": {
+      "de_vries-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 16,
         "earliestSlotIndex": 22
       },
-      "de_vries-17": {
+      "de_vries-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 17,
         "earliestSlotIndex": 22
       },
-      "de_vries-18": {
+      "de_vries-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 18,
         "earliestSlotIndex": 22
       },
-      "de_vries-19": {
+      "de_vries-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 19,
         "earliestSlotIndex": 22
       },
-      "de_vries-20": {
+      "de_vries-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 20,
         "earliestSlotIndex": 22
       },
-      "de_vries-21": {
+      "de_vries-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 21,
         "earliestSlotIndex": 22
       },
-      "de_vries-22": {
+      "de_vries-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 22,
-        "earliestSlotIndex": 22
+        "earliestSlotIndex": 21
       },
-      "latifi-7": {
+      "latifi-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "latifi",
+        "position": 7,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "norris",
+            "points": 13
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "latifi-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "latifi-8": {
+      "latifi-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 8,
         "earliestSlotIndex": 24
       },
-      "latifi-9": {
+      "latifi-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 9,
         "earliestSlotIndex": 24
       },
-      "latifi-10": {
+      "latifi-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 10,
         "earliestSlotIndex": 24
       },
-      "latifi-11": {
+      "latifi-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 11,
         "earliestSlotIndex": 24
       },
-      "latifi-12": {
+      "latifi-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 12,
         "earliestSlotIndex": 24
       },
-      "latifi-13": {
+      "latifi-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 13,
         "earliestSlotIndex": 24
       },
-      "latifi-14": {
+      "latifi-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 14,
         "earliestSlotIndex": 24
       },
-      "latifi-15": {
+      "latifi-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 15,
         "earliestSlotIndex": 22
       },
-      "latifi-16": {
+      "latifi-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 16,
         "earliestSlotIndex": 22
       },
-      "latifi-17": {
+      "latifi-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 17,
         "earliestSlotIndex": 22
       },
-      "latifi-18": {
+      "latifi-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 18,
         "earliestSlotIndex": 22
       },
-      "latifi-19": {
+      "latifi-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 19,
         "earliestSlotIndex": 22
       },
-      "latifi-20": {
+      "latifi-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 20,
         "earliestSlotIndex": 22
       },
-      "latifi-21": {
+      "latifi-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 21,
         "earliestSlotIndex": 22
       },
-      "latifi-22": {
+      "latifi-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "latifi",
         "position": 22,
-        "earliestSlotIndex": 22
+        "earliestSlotIndex": 21
       },
-      "hulkenberg-7": {
+      "hulkenberg-ruled-out-7": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "hulkenberg",
+        "position": 7,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "norris",
+            "points": 13
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "hulkenberg-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "hulkenberg-8": {
+      "hulkenberg-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 8,
         "earliestSlotIndex": 24
       },
-      "hulkenberg-9": {
+      "hulkenberg-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 9,
         "earliestSlotIndex": 24
       },
-      "hulkenberg-10": {
+      "hulkenberg-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 10,
         "earliestSlotIndex": 24
       },
-      "hulkenberg-11": {
+      "hulkenberg-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 11,
         "earliestSlotIndex": 24
       },
-      "hulkenberg-12": {
+      "hulkenberg-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 12,
         "earliestSlotIndex": 24
       },
-      "hulkenberg-13": {
+      "hulkenberg-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 13,
         "earliestSlotIndex": 24
       },
-      "hulkenberg-14": {
+      "hulkenberg-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 14,
         "earliestSlotIndex": 24
       },
-      "hulkenberg-15": {
+      "hulkenberg-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 15,
         "earliestSlotIndex": 22
       },
-      "hulkenberg-16": {
+      "hulkenberg-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 16,
         "earliestSlotIndex": 22
       },
-      "hulkenberg-17": {
+      "hulkenberg-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 17,
         "earliestSlotIndex": 22
       },
-      "hulkenberg-18": {
+      "hulkenberg-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 18,
         "earliestSlotIndex": 22
       },
-      "hulkenberg-19": {
+      "hulkenberg-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 19,
         "earliestSlotIndex": 22
       },
-      "hulkenberg-20": {
+      "hulkenberg-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 20,
         "earliestSlotIndex": 22
       },
-      "hulkenberg-21": {
+      "hulkenberg-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 21,
         "earliestSlotIndex": 22
       },
-      "hulkenberg-22": {
+      "hulkenberg-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 22,
-        "earliestSlotIndex": 22
+        "earliestSlotIndex": 21
       }
     }
   },
   "constructorLockInsights": {
     "18": {
-      "red_bull-1": {
+      "red_bull-lock-2": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "red_bull",
+        "position": 2,
+        "nextSlotIndex": 19,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mercedes",
+            "points": 11
+          }
+        ]
+      },
+      "red_bull-later-1": {
         "type": "can_be_locked_in_later",
         "entityId": "red_bull",
         "position": 1,
         "earliestSlotIndex": 21
       },
-      "red_bull-2": {
-        "type": "can_be_locked_in_later",
-        "entityId": "red_bull",
-        "position": 2,
-        "earliestSlotIndex": 24
-      },
-      "red_bull-3": {
+      "red_bull-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "red_bull",
         "position": 3,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "ferrari-1": {
+      "ferrari-later-1": {
         "type": "can_be_locked_in_later",
         "entityId": "ferrari",
         "position": 1,
         "earliestSlotIndex": 24
       },
-      "ferrari-2": {
+      "ferrari-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "ferrari",
         "position": 2,
         "earliestSlotIndex": 21
       },
-      "ferrari-3": {
+      "ferrari-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "ferrari",
         "position": 3,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "mercedes-1": {
+      "mercedes-ruled-out-1": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mercedes",
+        "position": 1,
+        "nextSlotIndex": 19,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "red_bull",
+            "points": 11
+          }
+        ]
+      },
+      "mercedes-later-1": {
         "type": "can_be_locked_in_later",
         "entityId": "mercedes",
         "position": 1,
         "earliestSlotIndex": 24
       },
-      "mercedes-2": {
+      "mercedes-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "mercedes",
         "position": 2,
         "earliestSlotIndex": 24
       },
-      "mercedes-3": {
+      "mercedes-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "mercedes",
         "position": 3,
         "earliestSlotIndex": 21
       },
-      "mclaren-4": {
+      "mclaren-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "mclaren",
         "position": 4,
         "earliestSlotIndex": 22
       },
-      "mclaren-5": {
+      "mclaren-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "mclaren",
         "position": 5,
-        "earliestSlotIndex": 22
+        "earliestSlotIndex": 21
       },
-      "mclaren-6": {
+      "mclaren-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "mclaren",
         "position": 6,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "mclaren-7": {
+      "mclaren-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "mclaren",
         "position": 7,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "mclaren-8": {
+      "mclaren-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "mclaren",
         "position": 8,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "mclaren-9": {
+      "mclaren-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "mclaren",
         "position": 9,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "mclaren-10": {
+      "mclaren-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "mclaren",
         "position": 10,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alpine-4": {
+      "alpine-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "alpine",
         "position": 4,
         "earliestSlotIndex": 22
       },
-      "alpine-5": {
+      "alpine-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "alpine",
         "position": 5,
-        "earliestSlotIndex": 22
+        "earliestSlotIndex": 21
       },
-      "alpine-6": {
+      "alpine-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "alpine",
         "position": 6,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alpine-7": {
+      "alpine-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "alpine",
         "position": 7,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alpine-8": {
+      "alpine-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "alpine",
         "position": 8,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alpine-9": {
+      "alpine-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "alpine",
         "position": 9,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alpine-10": {
+      "alpine-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "alpine",
         "position": 10,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alfa-4": {
+      "alfa-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "alfa",
         "position": 4,
         "earliestSlotIndex": 24
       },
-      "alfa-5": {
+      "alfa-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "alfa",
         "position": 5,
         "earliestSlotIndex": 24
       },
-      "alfa-6": {
+      "alfa-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "alfa",
         "position": 6,
         "earliestSlotIndex": 22
       },
-      "alfa-7": {
+      "alfa-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "alfa",
         "position": 7,
         "earliestSlotIndex": 22
       },
-      "alfa-8": {
+      "alfa-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "alfa",
         "position": 8,
         "earliestSlotIndex": 22
       },
-      "alfa-9": {
+      "alfa-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "alfa",
         "position": 9,
         "earliestSlotIndex": 22
       },
-      "alfa-10": {
+      "alfa-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "alfa",
         "position": 10,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "aston_martin-4": {
+      "aston_martin-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "aston_martin",
         "position": 4,
         "earliestSlotIndex": 24
       },
-      "aston_martin-5": {
+      "aston_martin-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "aston_martin",
         "position": 5,
         "earliestSlotIndex": 24
       },
-      "aston_martin-6": {
+      "aston_martin-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "aston_martin",
         "position": 6,
         "earliestSlotIndex": 22
       },
-      "aston_martin-7": {
+      "aston_martin-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "aston_martin",
         "position": 7,
         "earliestSlotIndex": 22
       },
-      "aston_martin-8": {
+      "aston_martin-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "aston_martin",
         "position": 8,
         "earliestSlotIndex": 22
       },
-      "aston_martin-9": {
+      "aston_martin-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "aston_martin",
         "position": 9,
         "earliestSlotIndex": 22
       },
-      "aston_martin-10": {
+      "aston_martin-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "aston_martin",
         "position": 10,
-        "earliestSlotIndex": 24
+        "earliestSlotIndex": 21
       },
-      "alphatauri-4": {
+      "alphatauri-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "alphatauri",
         "position": 4,
         "earliestSlotIndex": 24
       },
-      "alphatauri-5": {
+      "alphatauri-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "alphatauri",
         "position": 5,
         "earliestSlotIndex": 24
       },
-      "alphatauri-6": {
+      "alphatauri-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "alphatauri",
         "position": 6,
         "earliestSlotIndex": 22
       },
-      "alphatauri-7": {
+      "alphatauri-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "alphatauri",
         "position": 7,
         "earliestSlotIndex": 22
       },
-      "alphatauri-8": {
+      "alphatauri-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "alphatauri",
         "position": 8,
         "earliestSlotIndex": 22
       },
-      "alphatauri-9": {
+      "alphatauri-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "alphatauri",
         "position": 9,
         "earliestSlotIndex": 22
       },
-      "alphatauri-10": {
+      "alphatauri-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "alphatauri",
         "position": 10,
-        "earliestSlotIndex": 22
+        "earliestSlotIndex": 21
       },
-      "haas-4": {
+      "haas-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "haas",
         "position": 4,
         "earliestSlotIndex": 24
       },
-      "haas-5": {
+      "haas-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "haas",
         "position": 5,
         "earliestSlotIndex": 24
       },
-      "haas-6": {
+      "haas-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "haas",
         "position": 6,
         "earliestSlotIndex": 22
       },
-      "haas-7": {
+      "haas-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "haas",
         "position": 7,
         "earliestSlotIndex": 22
       },
-      "haas-8": {
+      "haas-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "haas",
         "position": 8,
         "earliestSlotIndex": 22
       },
-      "haas-9": {
+      "haas-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "haas",
         "position": 9,
         "earliestSlotIndex": 22
       },
-      "haas-10": {
+      "haas-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "haas",
         "position": 10,
-        "earliestSlotIndex": 22
+        "earliestSlotIndex": 21
       },
-      "williams-4": {
+      "williams-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "williams",
         "position": 4,
         "earliestSlotIndex": 24
       },
-      "williams-5": {
+      "williams-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "williams",
         "position": 5,
         "earliestSlotIndex": 24
       },
-      "williams-6": {
+      "williams-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "williams",
         "position": 6,
         "earliestSlotIndex": 24
       },
-      "williams-7": {
+      "williams-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "williams",
         "position": 7,
         "earliestSlotIndex": 24
       },
-      "williams-8": {
+      "williams-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "williams",
         "position": 8,
         "earliestSlotIndex": 22
       },
-      "williams-9": {
+      "williams-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "williams",
         "position": 9,
         "earliestSlotIndex": 22
       },
-      "williams-10": {
+      "williams-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "williams",
         "position": 10,
-        "earliestSlotIndex": 22
+        "earliestSlotIndex": 21
       }
     }
   }

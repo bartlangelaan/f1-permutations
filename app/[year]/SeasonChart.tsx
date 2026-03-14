@@ -286,6 +286,12 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
   function renderInsightText(insight: LockInsight): string {
     const entityName = entitiesById.get(insight.entityId)?.name ?? insight.entityId;
     const positionLabel = `P${insight.position}`;
+    const formatOutscoreCap = (opponentId: string, points: number) => {
+      const opponentName = entitiesById.get(opponentId)?.name ?? opponentId;
+      return points === 0
+        ? `${entityName} does not outscore ${opponentName}`
+        : `${entityName} does not outscore ${opponentName} by more than ${points} points`;
+    };
 
     if (insight.type === "already_locked_in") {
       return `${entityName} has already locked in ${positionLabel}.`;
@@ -293,18 +299,37 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
 
     if (insight.type === "can_be_locked_in_later") {
       const slot = slots[insight.earliestSlotIndex];
-      return `${entityName} can first lock in ${positionLabel} after ${slot?.fullLabel ?? `slot ${insight.earliestSlotIndex + 1}`}.`;
+      return `${entityName} can first guarantee at least ${positionLabel} after ${slot?.fullLabel ?? `slot ${insight.earliestSlotIndex + 1}`}.`;
+    }
+
+    if (insight.type === "can_be_ruled_out_later") {
+      const slot = slots[insight.earliestSlotIndex];
+      return `${entityName} could first lose the ability to finish ${positionLabel} after ${slot?.fullLabel ?? `slot ${insight.earliestSlotIndex + 1}`}.`;
     }
 
     const slot = slots[insight.nextSlotIndex];
     const details: string[] = [];
-    if (insight.mustOutscoreBy.length) {
-      details.push(
-        `outscores ${insight.mustOutscoreBy
-          .map((c) => `${entitiesById.get(c.opponentId)?.name ?? c.opponentId} by ${c.points} points`)
-          .join(", ")}`
-      );
+
+    if (insight.type === "can_be_locked_in_next_race") {
+      if (insight.mustOutscoreBy.length) {
+        details.push(
+          `outscores ${insight.mustOutscoreBy
+            .map((c) => `${entitiesById.get(c.opponentId)?.name ?? c.opponentId} by ${c.points} points`)
+            .join(", ")}`
+        );
+      }
+      if (insight.cannotBeOutscoredByMoreThan.length) {
+        details.push(
+          `is not outscored by ${insight.cannotBeOutscoredByMoreThan
+            .map((c) => `${entitiesById.get(c.opponentId)?.name ?? c.opponentId} by more than ${c.points} points`)
+            .join(", ")}`
+        );
+      }
+
+      const detailText = details.length ? ` if ${details.join(" and ")}` : " regardless of the result there";
+      return `${entityName} can guarantee at least ${positionLabel} in ${slot?.fullLabel ?? "the next event"}${detailText}.`;
     }
+
     if (insight.mustBeOutscoredBy.length) {
       details.push(
         `is outscored by ${insight.mustBeOutscoredBy
@@ -314,20 +339,14 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
     }
     if (insight.cannotOutscoreByMoreThan.length) {
       details.push(
-        `does not outscore ${insight.cannotOutscoreByMoreThan
-          .map((c) => `${entitiesById.get(c.opponentId)?.name ?? c.opponentId} by more than ${c.points} points`)
+        `${insight.cannotOutscoreByMoreThan
+          .map((c) => formatOutscoreCap(c.opponentId, c.points))
           .join(", ")}`
       );
     }
-    if (insight.cannotBeOutscoredByMoreThan.length) {
-      details.push(
-        `is not outscored by ${insight.cannotBeOutscoredByMoreThan
-          .map((c) => `${entitiesById.get(c.opponentId)?.name ?? c.opponentId} by more than ${c.points} points`)
-          .join(", ")}`
-      );
-    }
-    const detailText = details.length ? ` if ${details.join(" and ")}` : " regardless of the result there";
-    return `${entityName} can lock in ${positionLabel} in ${slot?.fullLabel ?? "the next event"}${detailText}.`;
+
+    const detailText = details.length ? ` if ${details.join(" and ")}` : "";
+    return `${positionLabel} is no longer possible for ${entityName} in ${slot?.fullLabel ?? "the next event"}${detailText}.`;
   }
 
   return (

@@ -597,306 +597,629 @@
   },
   "driverLockInsights": {
     "24": {
-      "max_verstappen-1": {
+      "max_verstappen-lock-1": {
         "type": "already_locked_in",
         "entityId": "max_verstappen",
         "position": 1
       },
-      "perez-2": {
+      "perez-lock-3": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "perez",
+        "position": 3,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "sainz",
+            "points": 9
+          },
+          {
+            "opponentId": "alonso",
+            "points": 10
+          },
+          {
+            "opponentId": "norris",
+            "points": 17
+          },
+          {
+            "opponentId": "leclerc",
+            "points": 23
+          }
+        ]
+      },
+      "perez-lock-4": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "perez",
+        "position": 4,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "alonso",
+            "points": 10
+          },
+          {
+            "opponentId": "norris",
+            "points": 17
+          },
+          {
+            "opponentId": "leclerc",
+            "points": 23
+          }
+        ]
+      },
+      "perez-lock-5": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "perez",
+        "position": 5,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "norris",
+            "points": 17
+          },
+          {
+            "opponentId": "leclerc",
+            "points": 23
+          }
+        ]
+      },
+      "perez-lock-6": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "perez",
+        "position": 6,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "leclerc",
+            "points": 23
+          }
+        ]
+      },
+      "perez-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "perez",
         "position": 2,
         "earliestSlotIndex": 27
       },
-      "perez-3": {
-        "type": "can_be_locked_in_later",
-        "entityId": "perez",
-        "position": 3,
-        "earliestSlotIndex": 27
-      },
-      "perez-4": {
-        "type": "can_be_locked_in_later",
-        "entityId": "perez",
-        "position": 4,
-        "earliestSlotIndex": 27
-      },
-      "perez-5": {
-        "type": "can_be_locked_in_later",
-        "entityId": "perez",
-        "position": 5,
-        "earliestSlotIndex": 27
-      },
-      "perez-6": {
-        "type": "can_be_locked_in_later",
-        "entityId": "perez",
-        "position": 6,
-        "earliestSlotIndex": 27
-      },
-      "perez-7": {
+      "perez-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "perez",
         "position": 7,
         "earliestSlotIndex": 27
       },
-      "hamilton-2": {
+      "hamilton-lock-3": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "hamilton",
+        "position": 3,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "sainz",
+            "points": 15
+          },
+          {
+            "opponentId": "alonso",
+            "points": 14
+          },
+          {
+            "opponentId": "norris",
+            "points": 7
+          },
+          {
+            "opponentId": "leclerc",
+            "points": 1
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 13
+          }
+        ]
+      },
+      "hamilton-lock-4": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "hamilton",
+        "position": 4,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "alonso",
+            "points": 14
+          },
+          {
+            "opponentId": "norris",
+            "points": 7
+          },
+          {
+            "opponentId": "leclerc",
+            "points": 1
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 13
+          }
+        ]
+      },
+      "hamilton-lock-5": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "hamilton",
+        "position": 5,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "norris",
+            "points": 7
+          },
+          {
+            "opponentId": "leclerc",
+            "points": 1
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 13
+          }
+        ]
+      },
+      "hamilton-lock-6": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "hamilton",
+        "position": 6,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "leclerc",
+            "points": 1
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 13
+          }
+        ]
+      },
+      "hamilton-lock-7": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "hamilton",
+        "position": 7,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 13
+          }
+        ]
+      },
+      "hamilton-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "hamilton",
         "position": 2,
         "earliestSlotIndex": 27
       },
-      "hamilton-3": {
-        "type": "can_be_locked_in_later",
-        "entityId": "hamilton",
-        "position": 3,
-        "earliestSlotIndex": 27
-      },
-      "hamilton-4": {
-        "type": "can_be_locked_in_later",
-        "entityId": "hamilton",
-        "position": 4,
-        "earliestSlotIndex": 27
-      },
-      "hamilton-5": {
-        "type": "can_be_locked_in_later",
-        "entityId": "hamilton",
-        "position": 5,
-        "earliestSlotIndex": 27
-      },
-      "hamilton-6": {
-        "type": "can_be_locked_in_later",
-        "entityId": "hamilton",
-        "position": 6,
-        "earliestSlotIndex": 27
-      },
-      "hamilton-7": {
-        "type": "can_be_locked_in_later",
-        "entityId": "hamilton",
-        "position": 7,
-        "earliestSlotIndex": 27
-      },
-      "hamilton-8": {
+      "hamilton-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "hamilton",
         "position": 8,
         "earliestSlotIndex": 27
       },
-      "sainz-2": {
+      "sainz-lock-7": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "sainz",
+        "position": 7,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "russell",
+            "points": 25
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "sainz-ruled-out-2": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "sainz",
+        "position": 2,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 9
+          }
+        ]
+      },
+      "sainz-ruled-out-3": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "sainz",
+        "position": 3,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "hamilton",
+            "points": 15
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 9
+          }
+        ]
+      },
+      "sainz-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "sainz",
         "position": 2,
         "earliestSlotIndex": 27
       },
-      "sainz-3": {
+      "sainz-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "sainz",
         "position": 3,
         "earliestSlotIndex": 27
       },
-      "sainz-4": {
+      "sainz-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "sainz",
         "position": 4,
         "earliestSlotIndex": 27
       },
-      "sainz-5": {
+      "sainz-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "sainz",
         "position": 5,
         "earliestSlotIndex": 27
       },
-      "sainz-6": {
+      "sainz-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "sainz",
         "position": 6,
         "earliestSlotIndex": 27
       },
-      "sainz-7": {
-        "type": "can_be_locked_in_later",
-        "entityId": "sainz",
-        "position": 7,
-        "earliestSlotIndex": 27
-      },
-      "sainz-8": {
+      "sainz-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "sainz",
         "position": 8,
         "earliestSlotIndex": 27
       },
-      "alonso-2": {
+      "alonso-lock-7": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "alonso",
+        "position": 7,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "russell",
+            "points": 26
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "alonso-ruled-out-2": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "alonso",
+        "position": 2,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 10
+          }
+        ]
+      },
+      "alonso-ruled-out-3": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "alonso",
+        "position": 3,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "hamilton",
+            "points": 14
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 10
+          }
+        ]
+      },
+      "alonso-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 2,
         "earliestSlotIndex": 27
       },
-      "alonso-3": {
+      "alonso-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 3,
         "earliestSlotIndex": 27
       },
-      "alonso-4": {
+      "alonso-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 4,
         "earliestSlotIndex": 27
       },
-      "alonso-5": {
+      "alonso-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 5,
         "earliestSlotIndex": 27
       },
-      "alonso-6": {
+      "alonso-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 6,
         "earliestSlotIndex": 27
       },
-      "alonso-7": {
-        "type": "can_be_locked_in_later",
-        "entityId": "alonso",
-        "position": 7,
-        "earliestSlotIndex": 27
-      },
-      "alonso-8": {
+      "alonso-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "alonso",
         "position": 8,
         "earliestSlotIndex": 27
       },
-      "norris-2": {
+      "norris-ruled-out-2": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "norris",
+        "position": 2,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 17
+          }
+        ]
+      },
+      "norris-ruled-out-3": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "norris",
+        "position": 3,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "hamilton",
+            "points": 7
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 17
+          }
+        ]
+      },
+      "norris-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 2,
         "earliestSlotIndex": 27
       },
-      "norris-3": {
+      "norris-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 3,
         "earliestSlotIndex": 27
       },
-      "norris-4": {
+      "norris-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 4,
         "earliestSlotIndex": 27
       },
-      "norris-5": {
+      "norris-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 5,
         "earliestSlotIndex": 27
       },
-      "norris-6": {
+      "norris-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 6,
         "earliestSlotIndex": 27
       },
-      "norris-7": {
+      "norris-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 7,
         "earliestSlotIndex": 27
       },
-      "norris-8": {
+      "norris-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "norris",
         "position": 8,
         "earliestSlotIndex": 27
       },
-      "leclerc-2": {
+      "leclerc-ruled-out-2": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "leclerc",
+        "position": 2,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 23
+          }
+        ]
+      },
+      "leclerc-ruled-out-3": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "leclerc",
+        "position": 3,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "hamilton",
+            "points": 1
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "perez",
+            "points": 23
+          }
+        ]
+      },
+      "leclerc-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "leclerc",
         "position": 2,
         "earliestSlotIndex": 27
       },
-      "leclerc-3": {
+      "leclerc-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "leclerc",
         "position": 3,
         "earliestSlotIndex": 27
       },
-      "leclerc-4": {
+      "leclerc-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "leclerc",
         "position": 4,
         "earliestSlotIndex": 27
       },
-      "leclerc-5": {
+      "leclerc-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "leclerc",
         "position": 5,
         "earliestSlotIndex": 27
       },
-      "leclerc-6": {
+      "leclerc-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "leclerc",
         "position": 6,
         "earliestSlotIndex": 27
       },
-      "leclerc-7": {
+      "leclerc-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "leclerc",
         "position": 7,
         "earliestSlotIndex": 27
       },
-      "leclerc-8": {
+      "leclerc-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "leclerc",
         "position": 8,
         "earliestSlotIndex": 27
       },
-      "russell-3": {
+      "russell-lock-8": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "russell",
+        "position": 8,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "piastri",
+            "points": 16
+          }
+        ]
+      },
+      "russell-ruled-out-3": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "russell",
+        "position": 3,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "hamilton",
+            "points": 13
+          }
+        ]
+      },
+      "russell-ruled-out-4": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "russell",
+        "position": 4,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "sainz",
+            "points": 25
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "hamilton",
+            "points": 13
+          }
+        ]
+      },
+      "russell-ruled-out-5": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "russell",
+        "position": 5,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "alonso",
+            "points": 26
+          },
+          {
+            "opponentId": "sainz",
+            "points": 25
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "hamilton",
+            "points": 13
+          }
+        ]
+      },
+      "russell-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "russell",
         "position": 3,
         "earliestSlotIndex": 27
       },
-      "russell-4": {
+      "russell-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "russell",
         "position": 4,
         "earliestSlotIndex": 27
       },
-      "russell-5": {
+      "russell-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "russell",
         "position": 5,
         "earliestSlotIndex": 27
       },
-      "russell-6": {
+      "russell-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "russell",
         "position": 6,
         "earliestSlotIndex": 27
       },
-      "russell-7": {
+      "russell-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "russell",
         "position": 7,
         "earliestSlotIndex": 27
       },
-      "russell-8": {
-        "type": "can_be_locked_in_later",
-        "entityId": "russell",
-        "position": 8,
-        "earliestSlotIndex": 27
-      },
-      "russell-9": {
+      "russell-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "russell",
         "position": 9,
         "earliestSlotIndex": 27
       },
-      "piastri-8": {
-        "type": "can_be_locked_in_later",
-        "entityId": "piastri",
-        "position": 8,
-        "earliestSlotIndex": 27
-      },
-      "piastri-9": {
+      "piastri-lock-9": {
         "type": "can_be_locked_in_next_race",
         "entityId": "piastri",
         "position": 9,
@@ -913,13 +1236,6 @@
           {
             "opponentId": "ocon",
             "points": 11
-          }
-        ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "russell",
-            "points": 16
           }
         ],
         "cannotBeOutscoredByMoreThan": [
@@ -941,1087 +1257,2541 @@
           }
         ]
       },
-      "piastri-10": {
-        "type": "can_be_locked_in_later",
+      "piastri-lock-10": {
+        "type": "can_be_locked_in_next_race",
         "entityId": "piastri",
         "position": 10,
-        "earliestSlotIndex": 27
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "stroll",
+            "points": 19
+          },
+          {
+            "opponentId": "ocon",
+            "points": 11
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "albon",
+            "points": 7
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 23
+          },
+          {
+            "opponentId": "bottas",
+            "points": 24
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 25
+          }
+        ]
       },
-      "piastri-11": {
-        "type": "can_be_locked_in_later",
+      "piastri-lock-11": {
+        "type": "can_be_locked_in_next_race",
         "entityId": "piastri",
         "position": 11,
-        "earliestSlotIndex": 27
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "ocon",
+            "points": 11
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "albon",
+            "points": 7
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 23
+          },
+          {
+            "opponentId": "bottas",
+            "points": 24
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 25
+          }
+        ]
       },
-      "piastri-12": {
-        "type": "can_be_locked_in_later",
+      "piastri-lock-12": {
+        "type": "can_be_locked_in_next_race",
         "entityId": "piastri",
         "position": 12,
-        "earliestSlotIndex": 27
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "albon",
+            "points": 7
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 23
+          },
+          {
+            "opponentId": "bottas",
+            "points": 24
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 25
+          }
+        ]
       },
-      "piastri-13": {
-        "type": "can_be_locked_in_later",
+      "piastri-lock-13": {
+        "type": "can_be_locked_in_next_race",
         "entityId": "piastri",
         "position": 13,
-        "earliestSlotIndex": 27
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "tsunoda",
+            "points": 23
+          },
+          {
+            "opponentId": "bottas",
+            "points": 24
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 25
+          }
+        ]
       },
-      "piastri-14": {
-        "type": "can_be_locked_in_later",
+      "piastri-lock-14": {
+        "type": "can_be_locked_in_next_race",
         "entityId": "piastri",
         "position": 14,
-        "earliestSlotIndex": 27
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "bottas",
+            "points": 24
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 25
+          }
+        ]
       },
-      "piastri-15": {
-        "type": "can_be_locked_in_later",
+      "piastri-lock-15": {
+        "type": "can_be_locked_in_next_race",
         "entityId": "piastri",
         "position": 15,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "hulkenberg",
+            "points": 25
+          }
+        ]
+      },
+      "piastri-ruled-out-8": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "piastri",
+        "position": 8,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 16
+          }
+        ]
+      },
+      "piastri-later-8": {
+        "type": "can_be_locked_in_later",
+        "entityId": "piastri",
+        "position": 8,
         "earliestSlotIndex": 27
       },
-      "gasly-9": {
+      "gasly-lock-12": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "gasly",
+        "position": 12,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "albon",
+            "points": 24
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 8
+          },
+          {
+            "opponentId": "bottas",
+            "points": 7
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 6
+          },
+          {
+            "opponentId": "zhou",
+            "points": 3
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 3
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 0
+          },
+          {
+            "opponentId": "lawson",
+            "points": 1
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 2
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 3
+          }
+        ]
+      },
+      "gasly-lock-13": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "gasly",
+        "position": 13,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "tsunoda",
+            "points": 8
+          },
+          {
+            "opponentId": "bottas",
+            "points": 7
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 6
+          },
+          {
+            "opponentId": "zhou",
+            "points": 3
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 3
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 0
+          },
+          {
+            "opponentId": "lawson",
+            "points": 1
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 2
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 3
+          }
+        ]
+      },
+      "gasly-lock-14": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "gasly",
+        "position": 14,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "bottas",
+            "points": 7
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 6
+          },
+          {
+            "opponentId": "zhou",
+            "points": 3
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 3
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 0
+          },
+          {
+            "opponentId": "lawson",
+            "points": 1
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 2
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 3
+          }
+        ]
+      },
+      "gasly-lock-15": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "gasly",
+        "position": 15,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "hulkenberg",
+            "points": 6
+          },
+          {
+            "opponentId": "zhou",
+            "points": 3
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 3
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 0
+          },
+          {
+            "opponentId": "lawson",
+            "points": 1
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 2
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 3
+          }
+        ]
+      },
+      "gasly-lock-16": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "gasly",
+        "position": 16,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "zhou",
+            "points": 3
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 3
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 0
+          },
+          {
+            "opponentId": "lawson",
+            "points": 1
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 2
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 3
+          }
+        ]
+      },
+      "gasly-lock-17": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "gasly",
+        "position": 17,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "zhou",
+            "points": 3
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 0
+          },
+          {
+            "opponentId": "lawson",
+            "points": 1
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 2
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 3
+          }
+        ]
+      },
+      "gasly-lock-18": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "gasly",
+        "position": 18,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 0
+          },
+          {
+            "opponentId": "lawson",
+            "points": 1
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 2
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 3
+          }
+        ]
+      },
+      "gasly-lock-19": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "gasly",
+        "position": 19,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "lawson",
+            "points": 1
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 2
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 3
+          }
+        ]
+      },
+      "gasly-lock-20": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "gasly",
+        "position": 20,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "sargeant",
+            "points": 2
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 3
+          }
+        ]
+      },
+      "gasly-lock-21": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "gasly",
+        "position": 21,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "de_vries",
+            "points": 3
+          }
+        ]
+      },
+      "gasly-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "gasly",
+        "position": 9,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "piastri",
+            "points": 22
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "gasly-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 9,
         "earliestSlotIndex": 27
       },
-      "gasly-10": {
+      "gasly-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "gasly-11": {
+      "gasly-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 11,
         "earliestSlotIndex": 27
       },
-      "gasly-12": {
-        "type": "can_be_locked_in_later",
-        "entityId": "gasly",
-        "position": 12,
-        "earliestSlotIndex": 27
-      },
-      "gasly-13": {
-        "type": "can_be_locked_in_later",
-        "entityId": "gasly",
-        "position": 13,
-        "earliestSlotIndex": 27
-      },
-      "gasly-14": {
-        "type": "can_be_locked_in_later",
-        "entityId": "gasly",
-        "position": 14,
-        "earliestSlotIndex": 27
-      },
-      "gasly-15": {
-        "type": "can_be_locked_in_later",
-        "entityId": "gasly",
-        "position": 15,
-        "earliestSlotIndex": 27
-      },
-      "gasly-16": {
-        "type": "can_be_locked_in_later",
-        "entityId": "gasly",
-        "position": 16,
-        "earliestSlotIndex": 27
-      },
-      "gasly-17": {
-        "type": "can_be_locked_in_later",
-        "entityId": "gasly",
-        "position": 17,
-        "earliestSlotIndex": 27
-      },
-      "gasly-18": {
-        "type": "can_be_locked_in_later",
-        "entityId": "gasly",
-        "position": 18,
-        "earliestSlotIndex": 27
-      },
-      "gasly-19": {
-        "type": "can_be_locked_in_later",
-        "entityId": "gasly",
-        "position": 19,
-        "earliestSlotIndex": 27
-      },
-      "gasly-20": {
-        "type": "can_be_locked_in_later",
-        "entityId": "gasly",
-        "position": 20,
-        "earliestSlotIndex": 27
-      },
-      "gasly-21": {
-        "type": "can_be_locked_in_later",
-        "entityId": "gasly",
-        "position": 21,
-        "earliestSlotIndex": 27
-      },
-      "gasly-22": {
+      "gasly-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "gasly",
         "position": 22,
         "earliestSlotIndex": 27
       },
-      "stroll-9": {
+      "stroll-lock-13": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "stroll",
+        "position": 13,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "tsunoda",
+            "points": 11
+          },
+          {
+            "opponentId": "bottas",
+            "points": 10
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 9
+          },
+          {
+            "opponentId": "zhou",
+            "points": 6
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 6
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 3
+          },
+          {
+            "opponentId": "lawson",
+            "points": 2
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 1
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "de_vries",
+            "points": 0
+          }
+        ]
+      },
+      "stroll-lock-14": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "stroll",
+        "position": 14,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "bottas",
+            "points": 10
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 9
+          },
+          {
+            "opponentId": "zhou",
+            "points": 6
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 6
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 3
+          },
+          {
+            "opponentId": "lawson",
+            "points": 2
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 1
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "de_vries",
+            "points": 0
+          }
+        ]
+      },
+      "stroll-lock-15": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "stroll",
+        "position": 15,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "hulkenberg",
+            "points": 9
+          },
+          {
+            "opponentId": "zhou",
+            "points": 6
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 6
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 3
+          },
+          {
+            "opponentId": "lawson",
+            "points": 2
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 1
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "de_vries",
+            "points": 0
+          }
+        ]
+      },
+      "stroll-lock-16": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "stroll",
+        "position": 16,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "zhou",
+            "points": 6
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 6
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 3
+          },
+          {
+            "opponentId": "lawson",
+            "points": 2
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 1
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "de_vries",
+            "points": 0
+          }
+        ]
+      },
+      "stroll-lock-17": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "stroll",
+        "position": 17,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "zhou",
+            "points": 6
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 3
+          },
+          {
+            "opponentId": "lawson",
+            "points": 2
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 1
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "de_vries",
+            "points": 0
+          }
+        ]
+      },
+      "stroll-lock-18": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "stroll",
+        "position": 18,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 3
+          },
+          {
+            "opponentId": "lawson",
+            "points": 2
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 1
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "de_vries",
+            "points": 0
+          }
+        ]
+      },
+      "stroll-lock-19": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "stroll",
+        "position": 19,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "lawson",
+            "points": 2
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 1
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "de_vries",
+            "points": 0
+          }
+        ]
+      },
+      "stroll-lock-20": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "stroll",
+        "position": 20,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "sargeant",
+            "points": 1
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "de_vries",
+            "points": 0
+          }
+        ]
+      },
+      "stroll-lock-21": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "stroll",
+        "position": 21,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "de_vries",
+            "points": 0
+          }
+        ]
+      },
+      "stroll-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "stroll",
+        "position": 9,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "piastri",
+            "points": 19
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "stroll-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 9,
         "earliestSlotIndex": 27
       },
-      "stroll-10": {
+      "stroll-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "stroll-11": {
+      "stroll-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 11,
         "earliestSlotIndex": 27
       },
-      "stroll-12": {
+      "stroll-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 12,
         "earliestSlotIndex": 27
       },
-      "stroll-13": {
-        "type": "can_be_locked_in_later",
-        "entityId": "stroll",
-        "position": 13,
-        "earliestSlotIndex": 27
-      },
-      "stroll-14": {
-        "type": "can_be_locked_in_later",
-        "entityId": "stroll",
-        "position": 14,
-        "earliestSlotIndex": 27
-      },
-      "stroll-15": {
-        "type": "can_be_locked_in_later",
-        "entityId": "stroll",
-        "position": 15,
-        "earliestSlotIndex": 27
-      },
-      "stroll-16": {
-        "type": "can_be_locked_in_later",
-        "entityId": "stroll",
-        "position": 16,
-        "earliestSlotIndex": 27
-      },
-      "stroll-17": {
-        "type": "can_be_locked_in_later",
-        "entityId": "stroll",
-        "position": 17,
-        "earliestSlotIndex": 27
-      },
-      "stroll-18": {
-        "type": "can_be_locked_in_later",
-        "entityId": "stroll",
-        "position": 18,
-        "earliestSlotIndex": 27
-      },
-      "stroll-19": {
-        "type": "can_be_locked_in_later",
-        "entityId": "stroll",
-        "position": 19,
-        "earliestSlotIndex": 27
-      },
-      "stroll-20": {
-        "type": "can_be_locked_in_later",
-        "entityId": "stroll",
-        "position": 20,
-        "earliestSlotIndex": 27
-      },
-      "stroll-21": {
-        "type": "can_be_locked_in_later",
-        "entityId": "stroll",
-        "position": 21,
-        "earliestSlotIndex": 27
-      },
-      "stroll-22": {
+      "stroll-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "stroll",
         "position": 22,
         "earliestSlotIndex": 27
       },
-      "ocon-9": {
+      "ocon-lock-13": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "ocon",
+        "position": 13,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "tsunoda",
+            "points": 19
+          },
+          {
+            "opponentId": "bottas",
+            "points": 18
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 17
+          },
+          {
+            "opponentId": "zhou",
+            "points": 14
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 14
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 11
+          },
+          {
+            "opponentId": "lawson",
+            "points": 10
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 9
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 8
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "ocon-lock-14": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "ocon",
+        "position": 14,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "bottas",
+            "points": 18
+          },
+          {
+            "opponentId": "hulkenberg",
+            "points": 17
+          },
+          {
+            "opponentId": "zhou",
+            "points": 14
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 14
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 11
+          },
+          {
+            "opponentId": "lawson",
+            "points": 10
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 9
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 8
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "ocon-lock-15": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "ocon",
+        "position": 15,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "hulkenberg",
+            "points": 17
+          },
+          {
+            "opponentId": "zhou",
+            "points": 14
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 14
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 11
+          },
+          {
+            "opponentId": "lawson",
+            "points": 10
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 9
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 8
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "ocon-lock-16": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "ocon",
+        "position": 16,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "zhou",
+            "points": 14
+          },
+          {
+            "opponentId": "ricciardo",
+            "points": 14
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 11
+          },
+          {
+            "opponentId": "lawson",
+            "points": 10
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 9
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 8
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "ocon-lock-17": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "ocon",
+        "position": 17,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "zhou",
+            "points": 14
+          },
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 11
+          },
+          {
+            "opponentId": "lawson",
+            "points": 10
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 9
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 8
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "ocon-lock-18": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "ocon",
+        "position": 18,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "kevin_magnussen",
+            "points": 11
+          },
+          {
+            "opponentId": "lawson",
+            "points": 10
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 9
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 8
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "ocon-lock-19": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "ocon",
+        "position": 19,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "lawson",
+            "points": 10
+          },
+          {
+            "opponentId": "sargeant",
+            "points": 9
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 8
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "ocon-lock-20": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "ocon",
+        "position": 20,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "sargeant",
+            "points": 9
+          },
+          {
+            "opponentId": "de_vries",
+            "points": 8
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "ocon-lock-21": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "ocon",
+        "position": 21,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "de_vries",
+            "points": 8
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "ocon-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "ocon",
+        "position": 9,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "piastri",
+            "points": 11
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "ocon-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 9,
         "earliestSlotIndex": 27
       },
-      "ocon-10": {
+      "ocon-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "ocon-11": {
+      "ocon-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 11,
         "earliestSlotIndex": 27
       },
-      "ocon-12": {
+      "ocon-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 12,
         "earliestSlotIndex": 27
       },
-      "ocon-13": {
-        "type": "can_be_locked_in_later",
-        "entityId": "ocon",
-        "position": 13,
-        "earliestSlotIndex": 27
-      },
-      "ocon-14": {
-        "type": "can_be_locked_in_later",
-        "entityId": "ocon",
-        "position": 14,
-        "earliestSlotIndex": 27
-      },
-      "ocon-15": {
-        "type": "can_be_locked_in_later",
-        "entityId": "ocon",
-        "position": 15,
-        "earliestSlotIndex": 27
-      },
-      "ocon-16": {
-        "type": "can_be_locked_in_later",
-        "entityId": "ocon",
-        "position": 16,
-        "earliestSlotIndex": 27
-      },
-      "ocon-17": {
-        "type": "can_be_locked_in_later",
-        "entityId": "ocon",
-        "position": 17,
-        "earliestSlotIndex": 27
-      },
-      "ocon-18": {
-        "type": "can_be_locked_in_later",
-        "entityId": "ocon",
-        "position": 18,
-        "earliestSlotIndex": 27
-      },
-      "ocon-19": {
-        "type": "can_be_locked_in_later",
-        "entityId": "ocon",
-        "position": 19,
-        "earliestSlotIndex": 27
-      },
-      "ocon-20": {
-        "type": "can_be_locked_in_later",
-        "entityId": "ocon",
-        "position": 20,
-        "earliestSlotIndex": 27
-      },
-      "ocon-21": {
-        "type": "can_be_locked_in_later",
-        "entityId": "ocon",
-        "position": 21,
-        "earliestSlotIndex": 27
-      },
-      "ocon-22": {
+      "ocon-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "ocon",
         "position": 22,
         "earliestSlotIndex": 27
       },
-      "albon-9": {
+      "albon-lock-21": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "albon",
+        "position": 21,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "de_vries",
+            "points": 26
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "albon-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "albon",
+        "position": 9,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "piastri",
+            "points": 7
+          }
+        ]
+      },
+      "albon-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "albon",
+        "position": 10,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "gasly",
+            "points": 24
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "piastri",
+            "points": 7
+          }
+        ]
+      },
+      "albon-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 9,
         "earliestSlotIndex": 27
       },
-      "albon-10": {
+      "albon-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "albon-11": {
+      "albon-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 11,
         "earliestSlotIndex": 27
       },
-      "albon-12": {
+      "albon-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 12,
         "earliestSlotIndex": 27
       },
-      "albon-13": {
+      "albon-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 13,
         "earliestSlotIndex": 27
       },
-      "albon-14": {
+      "albon-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 14,
         "earliestSlotIndex": 27
       },
-      "albon-15": {
+      "albon-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 15,
         "earliestSlotIndex": 27
       },
-      "albon-16": {
+      "albon-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 16,
         "earliestSlotIndex": 27
       },
-      "albon-17": {
+      "albon-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 17,
         "earliestSlotIndex": 27
       },
-      "albon-18": {
+      "albon-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 18,
         "earliestSlotIndex": 27
       },
-      "albon-19": {
+      "albon-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 19,
         "earliestSlotIndex": 27
       },
-      "albon-20": {
+      "albon-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 20,
         "earliestSlotIndex": 27
       },
-      "albon-21": {
-        "type": "can_be_locked_in_later",
-        "entityId": "albon",
-        "position": 21,
-        "earliestSlotIndex": 27
-      },
-      "albon-22": {
+      "albon-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "albon",
         "position": 22,
         "earliestSlotIndex": 27
       },
-      "tsunoda-9": {
+      "tsunoda-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "tsunoda",
+        "position": 9,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "piastri",
+            "points": 23
+          }
+        ]
+      },
+      "tsunoda-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "tsunoda",
+        "position": 10,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "gasly",
+            "points": 8
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "piastri",
+            "points": 23
+          }
+        ]
+      },
+      "tsunoda-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "tsunoda",
+        "position": 11,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "stroll",
+            "points": 11
+          },
+          {
+            "opponentId": "gasly",
+            "points": 8
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "piastri",
+            "points": 23
+          }
+        ]
+      },
+      "tsunoda-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "tsunoda",
+        "position": 12,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "ocon",
+            "points": 19
+          },
+          {
+            "opponentId": "stroll",
+            "points": 11
+          },
+          {
+            "opponentId": "gasly",
+            "points": 8
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "piastri",
+            "points": 23
+          }
+        ]
+      },
+      "tsunoda-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 9,
         "earliestSlotIndex": 27
       },
-      "tsunoda-10": {
+      "tsunoda-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "tsunoda-11": {
+      "tsunoda-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 11,
         "earliestSlotIndex": 27
       },
-      "tsunoda-12": {
+      "tsunoda-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 12,
         "earliestSlotIndex": 27
       },
-      "tsunoda-13": {
+      "tsunoda-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 13,
         "earliestSlotIndex": 27
       },
-      "tsunoda-14": {
+      "tsunoda-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 14,
         "earliestSlotIndex": 27
       },
-      "tsunoda-15": {
+      "tsunoda-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 15,
         "earliestSlotIndex": 27
       },
-      "tsunoda-16": {
+      "tsunoda-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 16,
         "earliestSlotIndex": 27
       },
-      "tsunoda-17": {
+      "tsunoda-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 17,
         "earliestSlotIndex": 27
       },
-      "tsunoda-18": {
+      "tsunoda-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 18,
         "earliestSlotIndex": 27
       },
-      "tsunoda-19": {
+      "tsunoda-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 19,
         "earliestSlotIndex": 27
       },
-      "tsunoda-20": {
+      "tsunoda-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 20,
         "earliestSlotIndex": 27
       },
-      "tsunoda-21": {
+      "tsunoda-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 21,
         "earliestSlotIndex": 27
       },
-      "tsunoda-22": {
+      "tsunoda-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "tsunoda",
         "position": 22,
         "earliestSlotIndex": 27
       },
-      "bottas-9": {
+      "bottas-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "bottas",
+        "position": 9,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "piastri",
+            "points": 24
+          }
+        ]
+      },
+      "bottas-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "bottas",
+        "position": 10,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "gasly",
+            "points": 7
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "piastri",
+            "points": 24
+          }
+        ]
+      },
+      "bottas-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "bottas",
+        "position": 11,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "stroll",
+            "points": 10
+          },
+          {
+            "opponentId": "gasly",
+            "points": 7
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "piastri",
+            "points": 24
+          }
+        ]
+      },
+      "bottas-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "bottas",
+        "position": 12,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "ocon",
+            "points": 18
+          },
+          {
+            "opponentId": "stroll",
+            "points": 10
+          },
+          {
+            "opponentId": "gasly",
+            "points": 7
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "piastri",
+            "points": 24
+          }
+        ]
+      },
+      "bottas-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 9,
         "earliestSlotIndex": 27
       },
-      "bottas-10": {
+      "bottas-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "bottas-11": {
+      "bottas-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 11,
         "earliestSlotIndex": 27
       },
-      "bottas-12": {
+      "bottas-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 12,
         "earliestSlotIndex": 27
       },
-      "bottas-13": {
+      "bottas-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 13,
         "earliestSlotIndex": 27
       },
-      "bottas-14": {
+      "bottas-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 14,
         "earliestSlotIndex": 27
       },
-      "bottas-15": {
+      "bottas-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 15,
         "earliestSlotIndex": 27
       },
-      "bottas-16": {
+      "bottas-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 16,
         "earliestSlotIndex": 27
       },
-      "bottas-17": {
+      "bottas-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 17,
         "earliestSlotIndex": 27
       },
-      "bottas-18": {
+      "bottas-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 18,
         "earliestSlotIndex": 27
       },
-      "bottas-19": {
+      "bottas-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 19,
         "earliestSlotIndex": 27
       },
-      "bottas-20": {
+      "bottas-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 20,
         "earliestSlotIndex": 27
       },
-      "bottas-21": {
+      "bottas-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 21,
         "earliestSlotIndex": 27
       },
-      "bottas-22": {
+      "bottas-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "bottas",
         "position": 22,
         "earliestSlotIndex": 27
       },
-      "hulkenberg-10": {
+      "hulkenberg-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "hulkenberg",
+        "position": 9,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "piastri",
+            "points": 25
+          }
+        ]
+      },
+      "hulkenberg-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "hulkenberg",
+        "position": 10,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "gasly",
+            "points": 6
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "piastri",
+            "points": 25
+          }
+        ]
+      },
+      "hulkenberg-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "hulkenberg",
+        "position": 11,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "stroll",
+            "points": 9
+          },
+          {
+            "opponentId": "gasly",
+            "points": 6
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "piastri",
+            "points": 25
+          }
+        ]
+      },
+      "hulkenberg-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "hulkenberg",
+        "position": 12,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "ocon",
+            "points": 17
+          },
+          {
+            "opponentId": "stroll",
+            "points": 9
+          },
+          {
+            "opponentId": "gasly",
+            "points": 6
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "piastri",
+            "points": 25
+          }
+        ]
+      },
+      "hulkenberg-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "hulkenberg-11": {
+      "hulkenberg-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 11,
         "earliestSlotIndex": 27
       },
-      "hulkenberg-12": {
+      "hulkenberg-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 12,
         "earliestSlotIndex": 27
       },
-      "hulkenberg-13": {
+      "hulkenberg-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 13,
         "earliestSlotIndex": 27
       },
-      "hulkenberg-14": {
+      "hulkenberg-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 14,
         "earliestSlotIndex": 27
       },
-      "hulkenberg-15": {
+      "hulkenberg-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 15,
         "earliestSlotIndex": 27
       },
-      "hulkenberg-16": {
+      "hulkenberg-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 16,
         "earliestSlotIndex": 27
       },
-      "hulkenberg-17": {
+      "hulkenberg-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 17,
         "earliestSlotIndex": 27
       },
-      "hulkenberg-18": {
+      "hulkenberg-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 18,
         "earliestSlotIndex": 27
       },
-      "hulkenberg-19": {
+      "hulkenberg-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 19,
         "earliestSlotIndex": 27
       },
-      "hulkenberg-20": {
+      "hulkenberg-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 20,
         "earliestSlotIndex": 27
       },
-      "hulkenberg-21": {
+      "hulkenberg-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 21,
         "earliestSlotIndex": 27
       },
-      "hulkenberg-22": {
+      "hulkenberg-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "hulkenberg",
         "position": 22,
         "earliestSlotIndex": 27
       },
-      "ricciardo-10": {
+      "ricciardo-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "ricciardo",
+        "position": 10,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "gasly",
+            "points": 3
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "ricciardo-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "ricciardo",
+        "position": 11,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "stroll",
+            "points": 6
+          },
+          {
+            "opponentId": "gasly",
+            "points": 3
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "ricciardo-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "ricciardo",
+        "position": 12,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "ocon",
+            "points": 14
+          },
+          {
+            "opponentId": "stroll",
+            "points": 6
+          },
+          {
+            "opponentId": "gasly",
+            "points": 3
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "ricciardo-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "ricciardo-11": {
+      "ricciardo-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 11,
         "earliestSlotIndex": 27
       },
-      "ricciardo-12": {
+      "ricciardo-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 12,
         "earliestSlotIndex": 27
       },
-      "ricciardo-13": {
+      "ricciardo-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 13,
         "earliestSlotIndex": 27
       },
-      "ricciardo-14": {
+      "ricciardo-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 14,
         "earliestSlotIndex": 27
       },
-      "ricciardo-15": {
+      "ricciardo-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 15,
         "earliestSlotIndex": 27
       },
-      "ricciardo-16": {
+      "ricciardo-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 16,
         "earliestSlotIndex": 27
       },
-      "ricciardo-17": {
+      "ricciardo-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 17,
         "earliestSlotIndex": 27
       },
-      "ricciardo-18": {
+      "ricciardo-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 18,
         "earliestSlotIndex": 27
       },
-      "ricciardo-19": {
+      "ricciardo-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 19,
         "earliestSlotIndex": 27
       },
-      "ricciardo-20": {
+      "ricciardo-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 20,
         "earliestSlotIndex": 27
       },
-      "ricciardo-21": {
+      "ricciardo-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 21,
         "earliestSlotIndex": 27
       },
-      "ricciardo-22": {
+      "ricciardo-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "ricciardo",
         "position": 22,
         "earliestSlotIndex": 27
       },
-      "zhou-10": {
+      "zhou-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "zhou",
+        "position": 10,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "gasly",
+            "points": 3
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "zhou-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "zhou",
+        "position": 11,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "stroll",
+            "points": 6
+          },
+          {
+            "opponentId": "gasly",
+            "points": 3
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "zhou-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "zhou",
+        "position": 12,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "ocon",
+            "points": 14
+          },
+          {
+            "opponentId": "stroll",
+            "points": 6
+          },
+          {
+            "opponentId": "gasly",
+            "points": 3
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "zhou-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "zhou-11": {
+      "zhou-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 11,
         "earliestSlotIndex": 27
       },
-      "zhou-12": {
+      "zhou-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 12,
         "earliestSlotIndex": 27
       },
-      "zhou-13": {
+      "zhou-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 13,
         "earliestSlotIndex": 27
       },
-      "zhou-14": {
+      "zhou-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 14,
         "earliestSlotIndex": 27
       },
-      "zhou-15": {
+      "zhou-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 15,
         "earliestSlotIndex": 27
       },
-      "zhou-16": {
+      "zhou-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 16,
         "earliestSlotIndex": 27
       },
-      "zhou-17": {
+      "zhou-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 17,
         "earliestSlotIndex": 27
       },
-      "zhou-18": {
+      "zhou-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 18,
         "earliestSlotIndex": 27
       },
-      "zhou-19": {
+      "zhou-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 19,
         "earliestSlotIndex": 27
       },
-      "zhou-20": {
+      "zhou-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 20,
         "earliestSlotIndex": 27
       },
-      "zhou-21": {
+      "zhou-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 21,
         "earliestSlotIndex": 27
       },
-      "zhou-22": {
+      "zhou-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "zhou",
         "position": 22,
         "earliestSlotIndex": 27
       },
-      "kevin_magnussen-10": {
+      "kevin_magnussen-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kevin_magnussen",
+        "position": 10,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "gasly",
+            "points": 0
+          }
+        ]
+      },
+      "kevin_magnussen-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kevin_magnussen",
+        "position": 11,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "stroll",
+            "points": 3
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "gasly",
+            "points": 0
+          }
+        ]
+      },
+      "kevin_magnussen-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kevin_magnussen",
+        "position": 12,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "ocon",
+            "points": 11
+          },
+          {
+            "opponentId": "stroll",
+            "points": 3
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "gasly",
+            "points": 0
+          }
+        ]
+      },
+      "kevin_magnussen-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "kevin_magnussen-11": {
+      "kevin_magnussen-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 11,
         "earliestSlotIndex": 27
       },
-      "kevin_magnussen-12": {
+      "kevin_magnussen-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 12,
         "earliestSlotIndex": 27
       },
-      "kevin_magnussen-13": {
+      "kevin_magnussen-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 13,
         "earliestSlotIndex": 27
       },
-      "kevin_magnussen-14": {
+      "kevin_magnussen-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 14,
         "earliestSlotIndex": 27
       },
-      "kevin_magnussen-15": {
+      "kevin_magnussen-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 15,
         "earliestSlotIndex": 27
       },
-      "kevin_magnussen-16": {
+      "kevin_magnussen-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 16,
         "earliestSlotIndex": 27
       },
-      "kevin_magnussen-17": {
+      "kevin_magnussen-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 17,
         "earliestSlotIndex": 27
       },
-      "kevin_magnussen-18": {
+      "kevin_magnussen-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 18,
         "earliestSlotIndex": 27
       },
-      "kevin_magnussen-19": {
+      "kevin_magnussen-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 19,
         "earliestSlotIndex": 27
       },
-      "kevin_magnussen-20": {
+      "kevin_magnussen-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 20,
         "earliestSlotIndex": 27
       },
-      "kevin_magnussen-21": {
+      "kevin_magnussen-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 21,
         "earliestSlotIndex": 27
       },
-      "kevin_magnussen-22": {
+      "kevin_magnussen-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "kevin_magnussen",
         "position": 22,
         "earliestSlotIndex": 27
       },
-      "lawson-10": {
+      "lawson-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "lawson",
+        "position": 10,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "gasly",
+            "points": 1
+          }
+        ]
+      },
+      "lawson-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "lawson",
+        "position": 11,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "stroll",
+            "points": 2
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "gasly",
+            "points": 1
+          }
+        ]
+      },
+      "lawson-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "lawson",
+        "position": 12,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "ocon",
+            "points": 10
+          },
+          {
+            "opponentId": "stroll",
+            "points": 2
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "gasly",
+            "points": 1
+          }
+        ]
+      },
+      "lawson-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "lawson",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "lawson-11": {
+      "lawson-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "lawson",
         "position": 11,
         "earliestSlotIndex": 27
       },
-      "lawson-12": {
+      "lawson-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "lawson",
         "position": 12,
         "earliestSlotIndex": 27
       },
-      "lawson-13": {
+      "lawson-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "lawson",
         "position": 13,
         "earliestSlotIndex": 27
       },
-      "lawson-14": {
+      "lawson-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "lawson",
         "position": 14,
         "earliestSlotIndex": 27
       },
-      "lawson-15": {
+      "lawson-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "lawson",
         "position": 15,
         "earliestSlotIndex": 27
       },
-      "lawson-16": {
+      "lawson-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "lawson",
         "position": 16,
         "earliestSlotIndex": 27
       },
-      "lawson-17": {
+      "lawson-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "lawson",
         "position": 17,
         "earliestSlotIndex": 27
       },
-      "lawson-18": {
+      "lawson-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "lawson",
         "position": 18,
         "earliestSlotIndex": 27
       },
-      "lawson-19": {
+      "lawson-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "lawson",
         "position": 19,
         "earliestSlotIndex": 27
       },
-      "lawson-20": {
+      "lawson-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "lawson",
         "position": 20,
         "earliestSlotIndex": 27
       },
-      "lawson-21": {
+      "lawson-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "lawson",
         "position": 21,
         "earliestSlotIndex": 27
       },
-      "lawson-22": {
+      "lawson-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "lawson",
         "position": 22,
         "earliestSlotIndex": 27
       },
-      "sargeant-10": {
+      "sargeant-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "sargeant",
+        "position": 10,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "gasly",
+            "points": 2
+          }
+        ]
+      },
+      "sargeant-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "sargeant",
+        "position": 11,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "stroll",
+            "points": 1
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "gasly",
+            "points": 2
+          }
+        ]
+      },
+      "sargeant-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "sargeant",
+        "position": 12,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "ocon",
+            "points": 9
+          },
+          {
+            "opponentId": "stroll",
+            "points": 1
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "gasly",
+            "points": 2
+          }
+        ]
+      },
+      "sargeant-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "sargeant",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "sargeant-11": {
+      "sargeant-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "sargeant",
         "position": 11,
         "earliestSlotIndex": 27
       },
-      "sargeant-12": {
+      "sargeant-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "sargeant",
         "position": 12,
         "earliestSlotIndex": 27
       },
-      "sargeant-13": {
+      "sargeant-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "sargeant",
         "position": 13,
         "earliestSlotIndex": 27
       },
-      "sargeant-14": {
+      "sargeant-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "sargeant",
         "position": 14,
         "earliestSlotIndex": 27
       },
-      "sargeant-15": {
+      "sargeant-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "sargeant",
         "position": 15,
         "earliestSlotIndex": 27
       },
-      "sargeant-16": {
+      "sargeant-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "sargeant",
         "position": 16,
         "earliestSlotIndex": 27
       },
-      "sargeant-17": {
+      "sargeant-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "sargeant",
         "position": 17,
         "earliestSlotIndex": 27
       },
-      "sargeant-18": {
+      "sargeant-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "sargeant",
         "position": 18,
         "earliestSlotIndex": 27
       },
-      "sargeant-19": {
+      "sargeant-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "sargeant",
         "position": 19,
         "earliestSlotIndex": 27
       },
-      "sargeant-20": {
+      "sargeant-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "sargeant",
         "position": 20,
         "earliestSlotIndex": 27
       },
-      "sargeant-21": {
+      "sargeant-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "sargeant",
         "position": 21,
         "earliestSlotIndex": 27
       },
-      "sargeant-22": {
+      "sargeant-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "sargeant",
         "position": 22,
         "earliestSlotIndex": 27
       },
-      "de_vries-10": {
+      "de_vries-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "de_vries",
+        "position": 10,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "gasly",
+            "points": 3
+          }
+        ]
+      },
+      "de_vries-ruled-out-11": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "de_vries",
+        "position": 11,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 0
+          },
+          {
+            "opponentId": "gasly",
+            "points": 3
+          }
+        ]
+      },
+      "de_vries-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "de_vries",
+        "position": 12,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "ocon",
+            "points": 8
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 0
+          },
+          {
+            "opponentId": "gasly",
+            "points": 3
+          }
+        ]
+      },
+      "de_vries-ruled-out-13": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "de_vries",
+        "position": 13,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "albon",
+            "points": 26
+          },
+          {
+            "opponentId": "ocon",
+            "points": 8
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 0
+          },
+          {
+            "opponentId": "gasly",
+            "points": 3
+          }
+        ]
+      },
+      "de_vries-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "de_vries-11": {
+      "de_vries-later-11": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 11,
         "earliestSlotIndex": 27
       },
-      "de_vries-12": {
+      "de_vries-later-12": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 12,
         "earliestSlotIndex": 27
       },
-      "de_vries-13": {
+      "de_vries-later-13": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 13,
         "earliestSlotIndex": 27
       },
-      "de_vries-14": {
+      "de_vries-later-14": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 14,
         "earliestSlotIndex": 27
       },
-      "de_vries-15": {
+      "de_vries-later-15": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 15,
         "earliestSlotIndex": 27
       },
-      "de_vries-16": {
+      "de_vries-later-16": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 16,
         "earliestSlotIndex": 27
       },
-      "de_vries-17": {
+      "de_vries-later-17": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 17,
         "earliestSlotIndex": 27
       },
-      "de_vries-18": {
+      "de_vries-later-18": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 18,
         "earliestSlotIndex": 27
       },
-      "de_vries-19": {
+      "de_vries-later-19": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 19,
         "earliestSlotIndex": 27
       },
-      "de_vries-20": {
+      "de_vries-later-20": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 20,
         "earliestSlotIndex": 27
       },
-      "de_vries-21": {
+      "de_vries-later-21": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 21,
         "earliestSlotIndex": 27
       },
-      "de_vries-22": {
+      "de_vries-later-22": {
         "type": "can_be_locked_in_later",
         "entityId": "de_vries",
         "position": 22,
@@ -2031,96 +3801,164 @@
   },
   "constructorLockInsights": {
     "24": {
-      "red_bull-1": {
+      "red_bull-lock-1": {
         "type": "already_locked_in",
         "entityId": "red_bull",
         "position": 1
       },
-      "mercedes-2": {
+      "mercedes-lock-3": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "mercedes",
+        "position": 3,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mclaren",
+            "points": 26
+          }
+        ]
+      },
+      "mercedes-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "mercedes",
         "position": 2,
         "earliestSlotIndex": 27
       },
-      "mercedes-3": {
-        "type": "can_be_locked_in_later",
-        "entityId": "mercedes",
-        "position": 3,
-        "earliestSlotIndex": 27
-      },
-      "mercedes-4": {
+      "mercedes-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "mercedes",
         "position": 4,
         "earliestSlotIndex": 27
       },
-      "ferrari-2": {
+      "ferrari-lock-3": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "ferrari",
+        "position": 3,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mclaren",
+            "points": 2
+          },
+          {
+            "opponentId": "aston_martin",
+            "points": 29
+          }
+        ]
+      },
+      "ferrari-lock-4": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "ferrari",
+        "position": 4,
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "aston_martin",
+            "points": 29
+          }
+        ]
+      },
+      "ferrari-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "ferrari",
         "position": 2,
         "earliestSlotIndex": 27
       },
-      "ferrari-3": {
-        "type": "can_be_locked_in_later",
-        "entityId": "ferrari",
-        "position": 3,
-        "earliestSlotIndex": 27
-      },
-      "ferrari-4": {
-        "type": "can_be_locked_in_later",
-        "entityId": "ferrari",
-        "position": 4,
-        "earliestSlotIndex": 27
-      },
-      "ferrari-5": {
+      "ferrari-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "ferrari",
         "position": 5,
         "earliestSlotIndex": 27
       },
-      "mclaren-2": {
+      "mclaren-ruled-out-2": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mclaren",
+        "position": 2,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "mercedes",
+            "points": 26
+          }
+        ]
+      },
+      "mclaren-ruled-out-3": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mclaren",
+        "position": 3,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "ferrari",
+            "points": 2
+          },
+          {
+            "opponentId": "mercedes",
+            "points": 26
+          }
+        ]
+      },
+      "mclaren-later-2": {
         "type": "can_be_locked_in_later",
         "entityId": "mclaren",
         "position": 2,
         "earliestSlotIndex": 27
       },
-      "mclaren-3": {
+      "mclaren-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "mclaren",
         "position": 3,
         "earliestSlotIndex": 27
       },
-      "mclaren-4": {
+      "mclaren-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "mclaren",
         "position": 4,
         "earliestSlotIndex": 27
       },
-      "mclaren-5": {
+      "mclaren-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "mclaren",
         "position": 5,
         "earliestSlotIndex": 27
       },
-      "aston_martin-3": {
+      "aston_martin-ruled-out-3": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "aston_martin",
+        "position": 3,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "ferrari",
+            "points": 29
+          }
+        ]
+      },
+      "aston_martin-later-3": {
         "type": "can_be_locked_in_later",
         "entityId": "aston_martin",
         "position": 3,
         "earliestSlotIndex": 27
       },
-      "aston_martin-4": {
+      "aston_martin-later-4": {
         "type": "can_be_locked_in_later",
         "entityId": "aston_martin",
         "position": 4,
         "earliestSlotIndex": 27
       },
-      "aston_martin-5": {
+      "aston_martin-later-5": {
         "type": "can_be_locked_in_later",
         "entityId": "aston_martin",
         "position": 5,
         "earliestSlotIndex": 27
       },
-      "alpine-6": {
+      "alpine-lock-6": {
         "type": "can_be_locked_in_next_race",
         "entityId": "alpine",
         "position": 6,
@@ -2139,8 +3977,6 @@
             "points": 4
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "haas",
@@ -2148,145 +3984,232 @@
           }
         ]
       },
-      "alpine-7": {
-        "type": "can_be_locked_in_later",
+      "alpine-lock-7": {
+        "type": "can_be_locked_in_next_race",
         "entityId": "alpine",
         "position": 7,
-        "earliestSlotIndex": 27
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "alphatauri",
+            "points": 7
+          },
+          {
+            "opponentId": "alfa",
+            "points": 4
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "haas",
+            "points": 0
+          }
+        ]
       },
-      "alpine-8": {
-        "type": "can_be_locked_in_later",
+      "alpine-lock-8": {
+        "type": "can_be_locked_in_next_race",
         "entityId": "alpine",
         "position": 8,
-        "earliestSlotIndex": 27
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "alfa",
+            "points": 4
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "haas",
+            "points": 0
+          }
+        ]
       },
-      "alpine-9": {
-        "type": "can_be_locked_in_later",
+      "alpine-lock-9": {
+        "type": "can_be_locked_in_next_race",
         "entityId": "alpine",
         "position": 9,
-        "earliestSlotIndex": 27
+        "nextSlotIndex": 25,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "haas",
+            "points": 0
+          }
+        ]
       },
-      "alpine-10": {
+      "alpine-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "alpine",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "williams-6": {
+      "williams-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "williams",
+        "position": 6,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "alpine",
+            "points": 16
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "williams-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "williams",
         "position": 6,
         "earliestSlotIndex": 27
       },
-      "williams-7": {
+      "williams-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "williams",
         "position": 7,
         "earliestSlotIndex": 27
       },
-      "williams-8": {
+      "williams-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "williams",
         "position": 8,
         "earliestSlotIndex": 27
       },
-      "williams-9": {
+      "williams-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "williams",
         "position": 9,
         "earliestSlotIndex": 27
       },
-      "williams-10": {
+      "williams-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "williams",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "alphatauri-6": {
+      "alphatauri-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "alphatauri",
+        "position": 6,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "alpine",
+            "points": 7
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "alphatauri-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "alphatauri",
         "position": 6,
         "earliestSlotIndex": 27
       },
-      "alphatauri-7": {
+      "alphatauri-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "alphatauri",
         "position": 7,
         "earliestSlotIndex": 27
       },
-      "alphatauri-8": {
+      "alphatauri-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "alphatauri",
         "position": 8,
         "earliestSlotIndex": 27
       },
-      "alphatauri-9": {
+      "alphatauri-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "alphatauri",
         "position": 9,
         "earliestSlotIndex": 27
       },
-      "alphatauri-10": {
+      "alphatauri-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "alphatauri",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "alfa-6": {
+      "alfa-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "alfa",
+        "position": 6,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "alpine",
+            "points": 4
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "alfa-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "alfa",
         "position": 6,
         "earliestSlotIndex": 27
       },
-      "alfa-7": {
+      "alfa-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "alfa",
         "position": 7,
         "earliestSlotIndex": 27
       },
-      "alfa-8": {
+      "alfa-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "alfa",
         "position": 8,
         "earliestSlotIndex": 27
       },
-      "alfa-9": {
+      "alfa-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "alfa",
         "position": 9,
         "earliestSlotIndex": 27
       },
-      "alfa-10": {
+      "alfa-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "alfa",
         "position": 10,
         "earliestSlotIndex": 27
       },
-      "haas-6": {
+      "haas-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "haas",
+        "position": 6,
+        "nextSlotIndex": 25,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "alpine",
+            "points": 0
+          }
+        ]
+      },
+      "haas-later-6": {
         "type": "can_be_locked_in_later",
         "entityId": "haas",
         "position": 6,
         "earliestSlotIndex": 27
       },
-      "haas-7": {
+      "haas-later-7": {
         "type": "can_be_locked_in_later",
         "entityId": "haas",
         "position": 7,
         "earliestSlotIndex": 27
       },
-      "haas-8": {
+      "haas-later-8": {
         "type": "can_be_locked_in_later",
         "entityId": "haas",
         "position": 8,
         "earliestSlotIndex": 27
       },
-      "haas-9": {
+      "haas-later-9": {
         "type": "can_be_locked_in_later",
         "entityId": "haas",
         "position": 9,
         "earliestSlotIndex": 27
       },
-      "haas-10": {
+      "haas-later-10": {
         "type": "can_be_locked_in_later",
         "entityId": "haas",
         "position": 10,

@@ -151,12 +151,24 @@ export type LockInsight =
       position: number;
       nextSlotIndex: number;
       mustOutscoreBy: LockCondition[];
-      mustBeOutscoredBy: LockCondition[];
-      cannotOutscoreByMoreThan: LockCondition[];
       cannotBeOutscoredByMoreThan: LockCondition[];
     }
   | {
       type: "can_be_locked_in_later";
+      entityId: string;
+      position: number;
+      earliestSlotIndex: number;
+    }
+  | {
+      type: "can_be_ruled_out_next_race";
+      entityId: string;
+      position: number;
+      nextSlotIndex: number;
+      mustBeOutscoredBy: LockCondition[];
+      cannotOutscoreByMoreThan: LockCondition[];
+    }
+  | {
+      type: "can_be_ruled_out_later";
       entityId: string;
       position: number;
       earliestSlotIndex: number;
@@ -185,7 +197,7 @@ function cumulativeMaxPoints(slots: TimelineSlot[], fromExclusive: number, toInc
   return total;
 }
 
-function findLockPlanForPosition(
+function findGuaranteePlanForPosition(
   entityId: string,
   position: number,
   entityIds: string[],
@@ -194,64 +206,32 @@ function findLockPlanForPosition(
   pointsRemainingAfterHorizon: number
 ): {
   mustOutscoreBy: LockCondition[];
-  mustBeOutscoredBy: LockCondition[];
-  cannotOutscoreByMoreThan: LockCondition[];
   cannotBeOutscoredByMoreThan: LockCondition[];
 } | null {
   const opponents = entityIds.filter((id) => id !== entityId).map((opponentId) => {
     const currentGap = (basePts.get(entityId) ?? 0) - (basePts.get(opponentId) ?? 0);
-    // Need entity-above-opponent by more than the remaining points to make a catch-up impossible.
     const requiredForEntityAbove = pointsRemainingAfterHorizon + 1 - currentGap;
-    // Need opponent-above-entity by more than the remaining points to make catch-up impossible.
-    const requiredForOpponentAbove = -pointsRemainingAfterHorizon - 1 - currentGap;
-
-    const canForceEntityAbove = requiredForEntityAbove <= horizonMaxDelta;
-    const canForceOpponentAbove = requiredForOpponentAbove >= -horizonMaxDelta;
 
     return {
       opponentId,
       requiredForEntityAbove,
-      requiredForOpponentAbove,
-      canForceEntityAbove,
-      canForceOpponentAbove,
+      canForceEntityAbove: requiredForEntityAbove <= horizonMaxDelta,
     };
   });
 
-  const mandatoryAbove = opponents.filter((o) => !o.canForceEntityAbove);
-  const mandatoryBelow = opponents.filter((o) => !o.canForceOpponentAbove);
-  const optional = opponents.filter((o) => o.canForceEntityAbove && o.canForceOpponentAbove);
-
-  const targetAboveCount = position - 1;
-  const minAboveCount = mandatoryAbove.length;
-  const maxAboveCount = entityIds.length - 1 - mandatoryBelow.length;
-  if (targetAboveCount < minAboveCount || targetAboveCount > maxAboveCount) {
+  const requiredBelowCount = entityIds.length - position;
+  const forceableBelow = opponents.filter((opponent) => opponent.canForceEntityAbove);
+  if (forceableBelow.length < requiredBelowCount) {
     return null;
   }
 
-  const optionalNeededAbove = targetAboveCount - mandatoryAbove.length;
-  optional.sort((a, b) => a.requiredForOpponentAbove - b.requiredForOpponentAbove);
-  const selectedOptionalAbove = new Set(optional.slice(0, optionalNeededAbove).map((o) => o.opponentId));
-
-  const mustBeOutscoredBy: LockCondition[] = [];
   const mustOutscoreBy: LockCondition[] = [];
-  const cannotOutscoreByMoreThan: LockCondition[] = [];
   const cannotBeOutscoredByMoreThan: LockCondition[] = [];
+  const selectedBelow = forceableBelow
+    .sort((a, b) => a.requiredForEntityAbove - b.requiredForEntityAbove)
+    .slice(0, requiredBelowCount);
 
-  for (const opponent of [...mandatoryAbove, ...optional.filter((o) => selectedOptionalAbove.has(o.opponentId))]) {
-    if (opponent.requiredForOpponentAbove < 0) {
-      mustBeOutscoredBy.push({
-        opponentId: opponent.opponentId,
-        points: -opponent.requiredForOpponentAbove,
-      });
-    } else if (opponent.requiredForOpponentAbove < horizonMaxDelta) {
-      cannotOutscoreByMoreThan.push({
-        opponentId: opponent.opponentId,
-        points: opponent.requiredForOpponentAbove,
-      });
-    }
-  }
-
-  for (const opponent of [...mandatoryBelow, ...optional.filter((o) => !selectedOptionalAbove.has(o.opponentId))]) {
+  for (const opponent of selectedBelow) {
     if (opponent.requiredForEntityAbove > 0) {
       mustOutscoreBy.push({
         opponentId: opponent.opponentId,
@@ -266,16 +246,83 @@ function findLockPlanForPosition(
   }
 
   mustOutscoreBy.sort((a, b) => b.points - a.points);
-  mustBeOutscoredBy.sort((a, b) => b.points - a.points);
-  cannotOutscoreByMoreThan.sort((a, b) => a.points - b.points);
   cannotBeOutscoredByMoreThan.sort((a, b) => a.points - b.points);
 
   return {
     mustOutscoreBy,
-    mustBeOutscoredBy,
-    cannotOutscoreByMoreThan,
     cannotBeOutscoredByMoreThan,
   };
+}
+
+function findRuleOutPlanForPosition(
+  entityId: string,
+  position: number,
+  entityIds: string[],
+  basePts: Map<string, number>,
+  horizonMaxDelta: number,
+  pointsRemainingAfterHorizon: number
+): {
+  mustBeOutscoredBy: LockCondition[];
+  cannotOutscoreByMoreThan: LockCondition[];
+} | null {
+  const opponents = entityIds.filter((id) => id !== entityId).map((opponentId) => {
+    const currentGap = (basePts.get(entityId) ?? 0) - (basePts.get(opponentId) ?? 0);
+    const requiredForOpponentAbove = -pointsRemainingAfterHorizon - 1 - currentGap;
+
+    return {
+      opponentId,
+      requiredForOpponentAbove,
+      canForceOpponentAbove: requiredForOpponentAbove >= -horizonMaxDelta,
+    };
+  });
+
+  const requiredAboveCount = position;
+  const forceableAbove = opponents.filter((opponent) => opponent.canForceOpponentAbove);
+  if (forceableAbove.length < requiredAboveCount) {
+    return null;
+  }
+
+  const mustBeOutscoredBy: LockCondition[] = [];
+  const cannotOutscoreByMoreThan: LockCondition[] = [];
+  const selectedAbove = forceableAbove
+    .sort((a, b) => b.requiredForOpponentAbove - a.requiredForOpponentAbove)
+    .slice(0, requiredAboveCount);
+
+  for (const opponent of selectedAbove) {
+    if (opponent.requiredForOpponentAbove < 0) {
+      mustBeOutscoredBy.push({
+        opponentId: opponent.opponentId,
+        points: -opponent.requiredForOpponentAbove,
+      });
+    } else if (opponent.requiredForOpponentAbove < horizonMaxDelta) {
+      cannotOutscoreByMoreThan.push({
+        opponentId: opponent.opponentId,
+        points: opponent.requiredForOpponentAbove,
+      });
+    }
+  }
+
+  mustBeOutscoredBy.sort((a, b) => b.points - a.points);
+  cannotOutscoreByMoreThan.sort((a, b) => a.points - b.points);
+
+  return {
+    mustBeOutscoredBy,
+    cannotOutscoreByMoreThan,
+  };
+}
+
+function hasGuaranteeConditions(plan: {
+  mustOutscoreBy: LockCondition[];
+  cannotBeOutscoredByMoreThan: LockCondition[];
+}): boolean {
+  return plan.mustOutscoreBy.length > 0 || plan.cannotBeOutscoredByMoreThan.length > 0;
+}
+
+function hasRuleOutConditions(plan: {
+  mustBeOutscoredBy: LockCondition[];
+  cannotOutscoreByMoreThan: LockCondition[];
+}): boolean {
+  return plan.mustBeOutscoredBy.length > 0 || plan.cannotOutscoreByMoreThan.length > 0;
 }
 
 export function computeLockInsightsForSelectedSlot(
@@ -307,18 +354,21 @@ export function computeLockInsightsForSelectedSlot(
     const endEntry = endProjections[entity.id];
     if (!endEntry) continue;
 
-    for (let position = endEntry.bestPos; position <= endEntry.worstPos; position++) {
-      const key = `${entity.id}-${position}`;
+    if (endEntry.bestPos === endEntry.worstPos) {
+      insights[`${entity.id}-lock-${endEntry.bestPos}`] = {
+        type: "already_locked_in",
+        entityId: entity.id,
+        position: endEntry.bestPos,
+      };
+      continue;
+    }
 
-      if (endEntry.bestPos === endEntry.worstPos) {
-        insights[key] = { type: "already_locked_in", entityId: entity.id, position };
-        continue;
-      }
+    if (nextSlotIdx <= lastSlotIdx) {
+      const nextHorizonMax = cumulativeMaxPoints(data.slots, selectedIdx, nextSlotIdx, isDriver);
+      const pointsRemainingAfterNext = cumulativeMaxPoints(data.slots, nextSlotIdx, lastSlotIdx, isDriver);
 
-      if (nextSlotIdx <= lastSlotIdx) {
-        const nextHorizonMax = cumulativeMaxPoints(data.slots, selectedIdx, nextSlotIdx, isDriver);
-        const pointsRemainingAfterNext = cumulativeMaxPoints(data.slots, nextSlotIdx, lastSlotIdx, isDriver);
-        const nextPlan = findLockPlanForPosition(
+      for (let position = endEntry.bestPos; position <= endEntry.worstPos; position++) {
+        const nextPlan = findGuaranteePlanForPosition(
           entity.id,
           position,
           entityIds,
@@ -327,26 +377,51 @@ export function computeLockInsightsForSelectedSlot(
           pointsRemainingAfterNext
         );
 
-        if (nextPlan) {
-          insights[key] = {
-            type: "can_be_locked_in_next_race",
-            entityId: entity.id,
-            position,
-            nextSlotIndex: nextSlotIdx,
-            mustOutscoreBy: nextPlan.mustOutscoreBy,
-            mustBeOutscoredBy: nextPlan.mustBeOutscoredBy,
-            cannotOutscoreByMoreThan: nextPlan.cannotOutscoreByMoreThan,
-            cannotBeOutscoredByMoreThan: nextPlan.cannotBeOutscoredByMoreThan,
-          };
-          continue;
-        }
+        if (!nextPlan) continue;
+        if (!hasGuaranteeConditions(nextPlan)) continue;
+
+        insights[`${entity.id}-lock-${position}`] = {
+          type: "can_be_locked_in_next_race",
+          entityId: entity.id,
+          position,
+          nextSlotIndex: nextSlotIdx,
+          mustOutscoreBy: nextPlan.mustOutscoreBy,
+          cannotBeOutscoredByMoreThan: nextPlan.cannotBeOutscoredByMoreThan,
+        };
       }
+
+      for (let position = endEntry.bestPos; position < endEntry.worstPos; position++) {
+        const ruleOutPlan = findRuleOutPlanForPosition(
+          entity.id,
+          position,
+          entityIds,
+          basePts,
+          nextHorizonMax,
+          pointsRemainingAfterNext
+        );
+
+        if (!ruleOutPlan) continue;
+        if (!hasRuleOutConditions(ruleOutPlan)) continue;
+
+        insights[`${entity.id}-ruled-out-${position}`] = {
+          type: "can_be_ruled_out_next_race",
+          entityId: entity.id,
+          position,
+          nextSlotIndex: nextSlotIdx,
+          mustBeOutscoredBy: ruleOutPlan.mustBeOutscoredBy,
+          cannotOutscoreByMoreThan: ruleOutPlan.cannotOutscoreByMoreThan,
+        };
+      }
+    }
+
+    for (let position = endEntry.bestPos; position <= endEntry.worstPos; position++) {
+      if (insights[`${entity.id}-lock-${position}`]) continue;
 
       let earliestSlotIndex = -1;
       for (let slotIdx = selectedIdx + 2; slotIdx <= lastSlotIdx; slotIdx++) {
         const horizonMax = cumulativeMaxPoints(data.slots, selectedIdx, slotIdx, isDriver);
         const pointsRemaining = cumulativeMaxPoints(data.slots, slotIdx, lastSlotIdx, isDriver);
-        const plan = findLockPlanForPosition(
+        const plan = findGuaranteePlanForPosition(
           entity.id,
           position,
           entityIds,
@@ -364,8 +439,44 @@ export function computeLockInsightsForSelectedSlot(
       }
 
       if (earliestSlotIndex >= 0) {
-        insights[key] = {
+        insights[`${entity.id}-later-${position}`] = {
           type: "can_be_locked_in_later",
+          entityId: entity.id,
+          position,
+          earliestSlotIndex,
+        };
+      }
+    }
+
+    for (let position = endEntry.bestPos; position < endEntry.worstPos; position++) {
+      if (insights[`${entity.id}-lock-${position}`] || insights[`${entity.id}-later-${position}`]) continue;
+      if (insights[`${entity.id}-ruled-out-${position}`]) continue;
+
+      let earliestSlotIndex = -1;
+      for (let slotIdx = selectedIdx + 2; slotIdx <= lastSlotIdx; slotIdx++) {
+        const horizonMax = cumulativeMaxPoints(data.slots, selectedIdx, slotIdx, isDriver);
+        const pointsRemaining = cumulativeMaxPoints(data.slots, slotIdx, lastSlotIdx, isDriver);
+        const plan = findRuleOutPlanForPosition(
+          entity.id,
+          position,
+          entityIds,
+          basePts,
+          horizonMax,
+          pointsRemaining
+        );
+        if (!plan) continue;
+        if (!hasRuleOutConditions(plan)) continue;
+
+        const nextRoundStart = data.slots.findIndex(
+          (slot, idx) => idx > slotIdx && slot.round > data.slots[slotIdx].round
+        );
+        earliestSlotIndex = nextRoundStart >= 0 ? nextRoundStart : slotIdx;
+        break;
+      }
+
+      if (earliestSlotIndex >= 0) {
+        insights[`${entity.id}-ruled-out-later-${position}`] = {
+          type: "can_be_ruled_out_later",
           entityId: entity.id,
           position,
           earliestSlotIndex,

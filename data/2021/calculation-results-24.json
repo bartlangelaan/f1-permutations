@@ -199,7 +199,7 @@
   },
   "driverLockInsights": {
     "23": {
-      "hamilton-1": {
+      "hamilton-lock-1": {
         "type": "can_be_locked_in_next_race",
         "entityId": "hamilton",
         "position": 1,
@@ -210,26 +210,22 @@
             "points": 1
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "hamilton-2": {
-        "type": "can_be_locked_in_next_race",
+      "hamilton-ruled-out-1": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "hamilton",
-        "position": 2,
+        "position": 1,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "max_verstappen",
             "points": 1
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "max_verstappen-1": {
+      "max_verstappen-lock-1": {
         "type": "can_be_locked_in_next_race",
         "entityId": "max_verstappen",
         "position": 1,
@@ -240,43 +236,37 @@
             "points": 1
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "max_verstappen-2": {
-        "type": "can_be_locked_in_next_race",
+      "max_verstappen-ruled-out-1": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "max_verstappen",
-        "position": 2,
+        "position": 1,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "hamilton",
             "points": 1
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "bottas-3": {
+      "bottas-lock-3": {
         "type": "already_locked_in",
         "entityId": "bottas",
         "position": 3
       },
-      "perez-4": {
+      "perez-lock-4": {
         "type": "already_locked_in",
         "entityId": "perez",
         "position": 4
       },
-      "leclerc-5": {
+      "leclerc-lock-5": {
         "type": "can_be_locked_in_next_race",
         "entityId": "leclerc",
         "position": 5,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "norris",
@@ -288,32 +278,37 @@
           }
         ]
       },
-      "leclerc-6": {
+      "leclerc-lock-6": {
         "type": "can_be_locked_in_next_race",
         "entityId": "leclerc",
         "position": 6,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "sainz",
-            "points": 9.5
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "norris",
-            "points": 3
+            "opponentId": "sainz",
+            "points": 7.5
           }
         ]
       },
-      "leclerc-7": {
-        "type": "can_be_locked_in_next_race",
+      "leclerc-ruled-out-5": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "leclerc",
-        "position": 7,
+        "position": 5,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "norris",
+            "points": 5
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "leclerc-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "leclerc",
+        "position": 6,
+        "nextSlotIndex": 24,
         "mustBeOutscoredBy": [
           {
             "opponentId": "sainz",
@@ -324,10 +319,9 @@
             "points": 5
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "norris-5": {
+      "norris-lock-5": {
         "type": "can_be_locked_in_next_race",
         "entityId": "norris",
         "position": 5,
@@ -338,8 +332,6 @@
             "points": 5
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "sainz",
@@ -347,32 +339,37 @@
           }
         ]
       },
-      "norris-6": {
+      "norris-lock-6": {
         "type": "can_be_locked_in_next_race",
         "entityId": "norris",
         "position": 6,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "leclerc",
-            "points": 5
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "sainz",
-            "points": 5.5
+            "points": 3.5
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "norris-7": {
-        "type": "can_be_locked_in_next_race",
+      "norris-ruled-out-5": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "norris",
-        "position": 7,
+        "position": 5,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "leclerc",
+            "points": 3
+          }
+        ]
+      },
+      "norris-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "norris",
+        "position": 6,
+        "nextSlotIndex": 24,
         "mustBeOutscoredBy": [
           {
             "opponentId": "sainz",
@@ -384,10 +381,9 @@
             "opponentId": "leclerc",
             "points": 3
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "sainz-5": {
+      "sainz-lock-5": {
         "type": "can_be_locked_in_next_race",
         "entityId": "sainz",
         "position": 5,
@@ -402,36 +398,39 @@
             "points": 5.5
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "sainz-6": {
+      "sainz-lock-6": {
         "type": "can_be_locked_in_next_race",
         "entityId": "sainz",
         "position": 6,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "leclerc",
-            "points": 9.5
-          }
-        ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [
-          {
             "opponentId": "norris",
-            "points": 3.5
+            "points": 5.5
           }
         ],
         "cannotBeOutscoredByMoreThan": []
       },
-      "sainz-7": {
-        "type": "can_be_locked_in_next_race",
+      "sainz-ruled-out-5": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "sainz",
-        "position": 7,
+        "position": 5,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "leclerc",
+            "points": 7.5
+          }
+        ]
+      },
+      "sainz-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "sainz",
+        "position": 6,
+        "nextSlotIndex": 24,
         "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
@@ -442,17 +441,14 @@
             "opponentId": "leclerc",
             "points": 7.5
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "ricciardo-8": {
+      "ricciardo-lock-8": {
         "type": "can_be_locked_in_next_race",
         "entityId": "ricciardo",
         "position": 8,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "gasly",
@@ -460,22 +456,20 @@
           }
         ]
       },
-      "ricciardo-9": {
-        "type": "can_be_locked_in_next_race",
+      "ricciardo-ruled-out-8": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "ricciardo",
-        "position": 9,
+        "position": 8,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "gasly",
             "points": 16
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "gasly-8": {
+      "gasly-lock-8": {
         "type": "can_be_locked_in_next_race",
         "entityId": "gasly",
         "position": 8,
@@ -486,8 +480,6 @@
             "points": 16
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "alonso",
@@ -495,32 +487,37 @@
           }
         ]
       },
-      "gasly-9": {
+      "gasly-lock-9": {
         "type": "can_be_locked_in_next_race",
         "entityId": "gasly",
         "position": 9,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "ricciardo",
-            "points": 16
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "alonso",
-            "points": 24
+            "points": 22
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "gasly-10": {
-        "type": "can_be_locked_in_next_race",
+      "gasly-ruled-out-8": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "gasly",
-        "position": 10,
+        "position": 8,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "ricciardo",
+            "points": 14
+          }
+        ]
+      },
+      "gasly-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "gasly",
+        "position": 9,
+        "nextSlotIndex": 24,
         "mustBeOutscoredBy": [
           {
             "opponentId": "alonso",
@@ -532,10 +529,9 @@
             "opponentId": "ricciardo",
             "points": 14
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "alonso-9": {
+      "alonso-lock-9": {
         "type": "can_be_locked_in_next_race",
         "entityId": "alonso",
         "position": 9,
@@ -546,8 +542,6 @@
             "points": 24
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "ocon",
@@ -555,32 +549,37 @@
           }
         ]
       },
-      "alonso-10": {
+      "alonso-lock-10": {
         "type": "can_be_locked_in_next_race",
         "entityId": "alonso",
         "position": 10,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "gasly",
-            "points": 24
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "ocon",
-            "points": 6
+            "points": 4
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "alonso-11": {
-        "type": "can_be_locked_in_next_race",
+      "alonso-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "alonso",
-        "position": 11,
+        "position": 9,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "gasly",
+            "points": 22
+          }
+        ]
+      },
+      "alonso-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "alonso",
+        "position": 10,
+        "nextSlotIndex": 24,
         "mustBeOutscoredBy": [
           {
             "opponentId": "ocon",
@@ -592,10 +591,9 @@
             "opponentId": "gasly",
             "points": 22
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "ocon-10": {
+      "ocon-lock-10": {
         "type": "can_be_locked_in_next_race",
         "entityId": "ocon",
         "position": 10,
@@ -606,33 +604,27 @@
             "points": 6
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "ocon-11": {
-        "type": "can_be_locked_in_next_race",
+      "ocon-ruled-out-10": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "ocon",
-        "position": 11,
+        "position": 10,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
             "opponentId": "alonso",
             "points": 4
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "vettel-12": {
+      "vettel-lock-12": {
         "type": "can_be_locked_in_next_race",
         "entityId": "vettel",
         "position": 12,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "stroll",
@@ -644,32 +636,37 @@
           }
         ]
       },
-      "vettel-13": {
+      "vettel-lock-13": {
         "type": "can_be_locked_in_next_race",
         "entityId": "vettel",
         "position": 13,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "tsunoda",
-            "points": 24
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "stroll",
-            "points": 8
+            "opponentId": "tsunoda",
+            "points": 22
           }
         ]
       },
-      "vettel-14": {
-        "type": "can_be_locked_in_next_race",
+      "vettel-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "vettel",
-        "position": 14,
+        "position": 12,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "stroll",
+            "points": 10
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "vettel-ruled-out-13": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "vettel",
+        "position": 13,
+        "nextSlotIndex": 24,
         "mustBeOutscoredBy": [
           {
             "opponentId": "tsunoda",
@@ -680,10 +677,9 @@
             "points": 10
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "stroll-12": {
+      "stroll-lock-12": {
         "type": "can_be_locked_in_next_race",
         "entityId": "stroll",
         "position": 12,
@@ -694,8 +690,6 @@
             "points": 10
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "tsunoda",
@@ -711,24 +705,12 @@
           }
         ]
       },
-      "stroll-13": {
+      "stroll-lock-13": {
         "type": "can_be_locked_in_next_race",
         "entityId": "stroll",
         "position": 13,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "vettel",
-            "points": 10
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "raikkonen",
-            "points": 25
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
+        "mustOutscoreBy": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "tsunoda",
@@ -737,54 +719,80 @@
           {
             "opponentId": "russell",
             "points": 17
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 23
           }
         ]
       },
-      "stroll-14": {
+      "stroll-lock-14": {
         "type": "can_be_locked_in_next_race",
         "entityId": "stroll",
         "position": 14,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "vettel",
-            "points": 10
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "raikkonen",
-            "points": 25
-          },
-          {
-            "opponentId": "russell",
-            "points": 19
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
+        "mustOutscoreBy": [],
         "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "tsunoda",
-            "points": 13
+            "opponentId": "russell",
+            "points": 17
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 23
           }
         ]
       },
-      "stroll-15": {
+      "stroll-lock-15": {
         "type": "can_be_locked_in_next_race",
         "entityId": "stroll",
         "position": 15,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "vettel",
-            "points": 10
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "raikkonen",
-            "points": 25
-          },
+            "points": 23
+          }
+        ]
+      },
+      "stroll-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "stroll",
+        "position": 12,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "vettel",
+            "points": 8
+          }
+        ]
+      },
+      "stroll-ruled-out-13": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "stroll",
+        "position": 13,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "tsunoda",
+            "points": 15
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "vettel",
+            "points": 8
+          }
+        ]
+      },
+      "stroll-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "stroll",
+        "position": 14,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
           {
             "opponentId": "russell",
             "points": 19
@@ -794,15 +802,18 @@
             "points": 15
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "vettel",
+            "points": 8
+          }
+        ]
       },
-      "stroll-16": {
-        "type": "can_be_locked_in_next_race",
+      "stroll-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "stroll",
-        "position": 16,
+        "position": 15,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "raikkonen",
@@ -822,10 +833,9 @@
             "opponentId": "vettel",
             "points": 8
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "tsunoda-12": {
+      "tsunoda-lock-12": {
         "type": "can_be_locked_in_next_race",
         "entityId": "tsunoda",
         "position": 12,
@@ -840,8 +850,6 @@
             "points": 15
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "russell",
@@ -873,28 +881,17 @@
           }
         ]
       },
-      "tsunoda-13": {
+      "tsunoda-lock-13": {
         "type": "can_be_locked_in_next_race",
         "entityId": "tsunoda",
         "position": 13,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "vettel",
-            "points": 24
-          },
-          {
             "opponentId": "stroll",
             "points": 15
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 21
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "russell",
@@ -913,6 +910,10 @@
             "points": 16
           },
           {
+            "opponentId": "mick_schumacher",
+            "points": 19
+          },
+          {
             "opponentId": "mazepin",
             "points": 19
           },
@@ -922,1038 +923,1022 @@
           }
         ]
       },
-      "tsunoda-14": {
+      "tsunoda-lock-14": {
         "type": "can_be_locked_in_next_race",
         "entityId": "tsunoda",
         "position": 14,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "vettel",
-            "points": 24
-          },
-          {
-            "opponentId": "stroll",
-            "points": 15
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 21
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 21
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "russell",
-            "points": 3
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 9
-          },
-          {
-            "opponentId": "latifi",
-            "points": 12
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 16
-          },
-          {
-            "opponentId": "kubica",
-            "points": 19
-          }
-        ]
-      },
-      "tsunoda-15": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "tsunoda",
-        "position": 15,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "vettel",
-            "points": 24
-          },
-          {
-            "opponentId": "stroll",
-            "points": 15
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 21
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 21
-          },
-          {
-            "opponentId": "kubica",
-            "points": 21
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "russell",
-            "points": 3
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 9
-          },
-          {
-            "opponentId": "latifi",
-            "points": 12
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 16
-          }
-        ]
-      },
-      "tsunoda-16": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "tsunoda",
-        "position": 16,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "vettel",
-            "points": 24
-          },
-          {
-            "opponentId": "stroll",
-            "points": 15
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 21
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 21
-          },
-          {
-            "opponentId": "kubica",
-            "points": 21
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 18
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "russell",
-            "points": 3
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 9
-          },
-          {
-            "opponentId": "latifi",
-            "points": 12
-          }
-        ]
-      },
-      "tsunoda-17": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "tsunoda",
-        "position": 17,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "vettel",
-            "points": 24
-          },
-          {
-            "opponentId": "stroll",
-            "points": 15
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 21
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 21
-          },
-          {
-            "opponentId": "kubica",
-            "points": 21
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 18
-          },
-          {
-            "opponentId": "latifi",
-            "points": 14
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "russell",
-            "points": 3
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 9
-          }
-        ]
-      },
-      "tsunoda-18": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "tsunoda",
-        "position": 18,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "vettel",
-            "points": 24
-          },
-          {
-            "opponentId": "stroll",
-            "points": 15
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 21
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 21
-          },
-          {
-            "opponentId": "kubica",
-            "points": 21
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 18
-          },
-          {
-            "opponentId": "latifi",
-            "points": 14
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 11
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "russell",
-            "points": 3
-          }
-        ]
-      },
-      "tsunoda-19": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "tsunoda",
-        "position": 19,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "vettel",
-            "points": 24
-          },
-          {
-            "opponentId": "stroll",
-            "points": 15
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 21
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 21
-          },
-          {
-            "opponentId": "kubica",
-            "points": 21
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 18
-          },
-          {
-            "opponentId": "latifi",
-            "points": 14
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 11
-          },
-          {
-            "opponentId": "russell",
-            "points": 5
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "russell-13": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "russell",
-        "position": 13,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 19
-          },
-          {
-            "opponentId": "tsunoda",
-            "points": 5
-          }
-        ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "raikkonen",
-            "points": 5
-          },
-          {
-            "opponentId": "latifi",
-            "points": 8
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 12
-          },
-          {
-            "opponentId": "mick_schumacher",
-            "points": 15
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 15
-          },
-          {
-            "opponentId": "kubica",
-            "points": 15
-          }
-        ]
-      },
-      "russell-14": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "russell",
-        "position": 14,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 19
-          },
-          {
-            "opponentId": "tsunoda",
-            "points": 5
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 17
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "raikkonen",
-            "points": 5
-          },
-          {
-            "opponentId": "latifi",
-            "points": 8
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 12
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 15
-          },
-          {
-            "opponentId": "kubica",
-            "points": 15
-          }
-        ]
-      },
-      "russell-15": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "russell",
-        "position": 15,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 19
-          },
-          {
-            "opponentId": "tsunoda",
-            "points": 5
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 17
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 17
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "raikkonen",
-            "points": 5
-          },
-          {
-            "opponentId": "latifi",
-            "points": 8
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 12
-          },
-          {
-            "opponentId": "kubica",
-            "points": 15
-          }
-        ]
-      },
-      "russell-16": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "russell",
-        "position": 16,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 19
-          },
-          {
-            "opponentId": "tsunoda",
-            "points": 5
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 17
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 17
-          },
-          {
-            "opponentId": "kubica",
-            "points": 17
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "raikkonen",
-            "points": 5
-          },
-          {
-            "opponentId": "latifi",
-            "points": 8
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 12
-          }
-        ]
-      },
-      "russell-17": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "russell",
-        "position": 17,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 19
-          },
-          {
-            "opponentId": "tsunoda",
-            "points": 5
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 17
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 17
-          },
-          {
-            "opponentId": "kubica",
-            "points": 17
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 14
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "raikkonen",
-            "points": 5
-          },
-          {
-            "opponentId": "latifi",
-            "points": 8
-          }
-        ]
-      },
-      "russell-18": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "russell",
-        "position": 18,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 19
-          },
-          {
-            "opponentId": "tsunoda",
-            "points": 5
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 17
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 17
-          },
-          {
-            "opponentId": "kubica",
-            "points": 17
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 14
-          },
-          {
-            "opponentId": "latifi",
-            "points": 10
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "raikkonen",
-            "points": 5
-          }
-        ]
-      },
-      "russell-19": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "russell",
-        "position": 19,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 19
-          },
-          {
-            "opponentId": "tsunoda",
-            "points": 5
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 17
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 17
-          },
-          {
-            "opponentId": "kubica",
-            "points": 17
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 14
-          },
-          {
-            "opponentId": "latifi",
-            "points": 10
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 7
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "russell-20": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "russell",
-        "position": 20,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 19
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 17
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 17
-          },
-          {
-            "opponentId": "kubica",
-            "points": 17
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 14
-          },
-          {
-            "opponentId": "latifi",
-            "points": 10
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 7
-          }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "tsunoda",
-            "points": 3
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "raikkonen-13": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "raikkonen",
-        "position": 13,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 25
-          },
-          {
-            "opponentId": "tsunoda",
-            "points": 11
-          },
-          {
-            "opponentId": "russell",
-            "points": 7
-          }
-        ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "latifi",
-            "points": 2
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 6
-          },
-          {
-            "opponentId": "mick_schumacher",
-            "points": 9
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 9
-          },
-          {
-            "opponentId": "kubica",
-            "points": 9
-          }
-        ]
-      },
-      "raikkonen-14": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "raikkonen",
-        "position": 14,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 25
-          },
-          {
-            "opponentId": "tsunoda",
-            "points": 11
-          },
-          {
-            "opponentId": "russell",
-            "points": 7
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 11
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "latifi",
-            "points": 2
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 6
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 9
-          },
-          {
-            "opponentId": "kubica",
-            "points": 9
-          }
-        ]
-      },
-      "raikkonen-15": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "raikkonen",
-        "position": 15,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 25
-          },
-          {
-            "opponentId": "tsunoda",
-            "points": 11
-          },
-          {
-            "opponentId": "russell",
-            "points": 7
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 11
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 11
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "latifi",
-            "points": 2
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 6
-          },
-          {
-            "opponentId": "kubica",
-            "points": 9
-          }
-        ]
-      },
-      "raikkonen-16": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "raikkonen",
-        "position": 16,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 25
-          },
-          {
-            "opponentId": "tsunoda",
-            "points": 11
-          },
-          {
-            "opponentId": "russell",
-            "points": 7
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 11
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 11
-          },
-          {
-            "opponentId": "kubica",
-            "points": 11
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "latifi",
-            "points": 2
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 6
-          }
-        ]
-      },
-      "raikkonen-17": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "raikkonen",
-        "position": 17,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 25
-          },
-          {
-            "opponentId": "tsunoda",
-            "points": 11
-          },
-          {
-            "opponentId": "russell",
-            "points": 7
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 11
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 11
-          },
-          {
-            "opponentId": "kubica",
-            "points": 11
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 8
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
-          {
-            "opponentId": "latifi",
-            "points": 2
-          }
-        ]
-      },
-      "raikkonen-18": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "raikkonen",
-        "position": 18,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 25
-          },
-          {
-            "opponentId": "tsunoda",
-            "points": 11
-          },
-          {
-            "opponentId": "russell",
-            "points": 7
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 11
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 11
-          },
-          {
-            "opponentId": "kubica",
-            "points": 11
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 8
-          },
-          {
-            "opponentId": "latifi",
-            "points": 4
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "raikkonen-19": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "raikkonen",
-        "position": 19,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 25
-          },
-          {
-            "opponentId": "tsunoda",
-            "points": 11
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 11
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 11
-          },
-          {
-            "opponentId": "kubica",
-            "points": 11
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 8
-          },
-          {
-            "opponentId": "latifi",
-            "points": 4
-          }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "russell",
-            "points": 5
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "raikkonen-20": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "raikkonen",
-        "position": 20,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "stroll",
-            "points": 25
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 11
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 11
-          },
-          {
-            "opponentId": "kubica",
-            "points": 11
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 8
-          },
-          {
-            "opponentId": "latifi",
-            "points": 4
-          }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "russell",
-            "points": 5
-          },
-          {
-            "opponentId": "tsunoda",
-            "points": 9
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "raikkonen-21": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "raikkonen",
-        "position": 21,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [
+        "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "mick_schumacher",
-            "points": 11
+            "opponentId": "russell",
+            "points": 3
           },
           {
-            "opponentId": "mazepin",
-            "points": 11
+            "opponentId": "raikkonen",
+            "points": 9
           },
           {
-            "opponentId": "kubica",
-            "points": 11
+            "opponentId": "latifi",
+            "points": 12
           },
           {
             "opponentId": "giovinazzi",
+            "points": 16
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 19
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 19
+          },
+          {
+            "opponentId": "kubica",
+            "points": 19
+          }
+        ]
+      },
+      "tsunoda-lock-15": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "tsunoda",
+        "position": 15,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "raikkonen",
+            "points": 9
+          },
+          {
+            "opponentId": "latifi",
+            "points": 12
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 16
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 19
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 19
+          },
+          {
+            "opponentId": "kubica",
+            "points": 19
+          }
+        ]
+      },
+      "tsunoda-lock-16": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "tsunoda",
+        "position": 16,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "latifi",
+            "points": 12
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 16
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 19
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 19
+          },
+          {
+            "opponentId": "kubica",
+            "points": 19
+          }
+        ]
+      },
+      "tsunoda-lock-17": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "tsunoda",
+        "position": 17,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "giovinazzi",
+            "points": 16
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 19
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 19
+          },
+          {
+            "opponentId": "kubica",
+            "points": 19
+          }
+        ]
+      },
+      "tsunoda-lock-18": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "tsunoda",
+        "position": 18,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 19
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 19
+          },
+          {
+            "opponentId": "kubica",
+            "points": 19
+          }
+        ]
+      },
+      "tsunoda-lock-19": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "tsunoda",
+        "position": 19,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 19
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 19
+          }
+        ]
+      },
+      "tsunoda-ruled-out-12": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "tsunoda",
+        "position": 12,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "vettel",
+            "points": 22
+          }
+        ]
+      },
+      "tsunoda-ruled-out-13": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "tsunoda",
+        "position": 13,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 13
+          },
+          {
+            "opponentId": "vettel",
+            "points": 22
+          }
+        ]
+      },
+      "tsunoda-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "tsunoda",
+        "position": 14,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "russell",
+            "points": 5
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 13
+          },
+          {
+            "opponentId": "vettel",
+            "points": 22
+          }
+        ]
+      },
+      "tsunoda-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "tsunoda",
+        "position": 15,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "raikkonen",
+            "points": 11
+          },
+          {
+            "opponentId": "russell",
+            "points": 5
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 13
+          },
+          {
+            "opponentId": "vettel",
+            "points": 22
+          }
+        ]
+      },
+      "tsunoda-ruled-out-16": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "tsunoda",
+        "position": 16,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "latifi",
+            "points": 14
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 11
+          },
+          {
+            "opponentId": "russell",
+            "points": 5
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 13
+          },
+          {
+            "opponentId": "vettel",
+            "points": 22
+          }
+        ]
+      },
+      "tsunoda-ruled-out-17": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "tsunoda",
+        "position": 17,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "giovinazzi",
+            "points": 18
+          },
+          {
+            "opponentId": "latifi",
+            "points": 14
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 11
+          },
+          {
+            "opponentId": "russell",
+            "points": 5
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 13
+          },
+          {
+            "opponentId": "vettel",
+            "points": 22
+          }
+        ]
+      },
+      "tsunoda-ruled-out-18": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "tsunoda",
+        "position": 18,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 21
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 18
+          },
+          {
+            "opponentId": "latifi",
+            "points": 14
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 11
+          },
+          {
+            "opponentId": "russell",
+            "points": 5
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 13
+          },
+          {
+            "opponentId": "vettel",
+            "points": 22
+          }
+        ]
+      },
+      "russell-lock-13": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "russell",
+        "position": 13,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "stroll",
+            "points": 19
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 5
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "raikkonen",
+            "points": 5
+          },
+          {
+            "opponentId": "latifi",
             "points": 8
           },
+          {
+            "opponentId": "giovinazzi",
+            "points": 12
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 15
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 15
+          },
+          {
+            "opponentId": "kubica",
+            "points": 15
+          }
+        ]
+      },
+      "russell-lock-14": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "russell",
+        "position": 14,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "tsunoda",
+            "points": 5
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "raikkonen",
+            "points": 5
+          },
+          {
+            "opponentId": "latifi",
+            "points": 8
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 12
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 15
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 15
+          },
+          {
+            "opponentId": "kubica",
+            "points": 15
+          }
+        ]
+      },
+      "russell-lock-15": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "russell",
+        "position": 15,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "raikkonen",
+            "points": 5
+          },
+          {
+            "opponentId": "latifi",
+            "points": 8
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 12
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 15
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 15
+          },
+          {
+            "opponentId": "kubica",
+            "points": 15
+          }
+        ]
+      },
+      "russell-lock-16": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "russell",
+        "position": 16,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "latifi",
+            "points": 8
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 12
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 15
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 15
+          },
+          {
+            "opponentId": "kubica",
+            "points": 15
+          }
+        ]
+      },
+      "russell-lock-17": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "russell",
+        "position": 17,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "giovinazzi",
+            "points": 12
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 15
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 15
+          },
+          {
+            "opponentId": "kubica",
+            "points": 15
+          }
+        ]
+      },
+      "russell-lock-18": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "russell",
+        "position": 18,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 15
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 15
+          },
+          {
+            "opponentId": "kubica",
+            "points": 15
+          }
+        ]
+      },
+      "russell-lock-19": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "russell",
+        "position": 19,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 15
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 15
+          }
+        ]
+      },
+      "russell-lock-20": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "russell",
+        "position": 20,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 15
+          }
+        ]
+      },
+      "russell-ruled-out-13": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "russell",
+        "position": 13,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 17
+          }
+        ]
+      },
+      "russell-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "russell",
+        "position": 14,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "tsunoda",
+            "points": 3
+          },
+          {
+            "opponentId": "stroll",
+            "points": 17
+          }
+        ]
+      },
+      "russell-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "russell",
+        "position": 15,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "raikkonen",
+            "points": 7
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "tsunoda",
+            "points": 3
+          },
+          {
+            "opponentId": "stroll",
+            "points": 17
+          }
+        ]
+      },
+      "russell-ruled-out-16": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "russell",
+        "position": 16,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "latifi",
+            "points": 10
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 7
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "tsunoda",
+            "points": 3
+          },
+          {
+            "opponentId": "stroll",
+            "points": 17
+          }
+        ]
+      },
+      "russell-ruled-out-17": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "russell",
+        "position": 17,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "giovinazzi",
+            "points": 14
+          },
+          {
+            "opponentId": "latifi",
+            "points": 10
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 7
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "tsunoda",
+            "points": 3
+          },
+          {
+            "opponentId": "stroll",
+            "points": 17
+          }
+        ]
+      },
+      "russell-ruled-out-18": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "russell",
+        "position": 18,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 17
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 14
+          },
+          {
+            "opponentId": "latifi",
+            "points": 10
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 7
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "tsunoda",
+            "points": 3
+          },
+          {
+            "opponentId": "stroll",
+            "points": 17
+          }
+        ]
+      },
+      "russell-ruled-out-19": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "russell",
+        "position": 19,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 17
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 17
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 14
+          },
+          {
+            "opponentId": "latifi",
+            "points": 10
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 7
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "tsunoda",
+            "points": 3
+          },
+          {
+            "opponentId": "stroll",
+            "points": 17
+          }
+        ]
+      },
+      "raikkonen-lock-13": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "raikkonen",
+        "position": 13,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "stroll",
+            "points": 25
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 11
+          },
+          {
+            "opponentId": "russell",
+            "points": 7
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "latifi",
+            "points": 2
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 6
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 9
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 9
+          },
+          {
+            "opponentId": "kubica",
+            "points": 9
+          }
+        ]
+      },
+      "raikkonen-lock-14": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "raikkonen",
+        "position": 14,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "tsunoda",
+            "points": 11
+          },
+          {
+            "opponentId": "russell",
+            "points": 7
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "latifi",
+            "points": 2
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 6
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 9
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 9
+          },
+          {
+            "opponentId": "kubica",
+            "points": 9
+          }
+        ]
+      },
+      "raikkonen-lock-15": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "raikkonen",
+        "position": 15,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "russell",
+            "points": 7
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "latifi",
+            "points": 2
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 6
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 9
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 9
+          },
+          {
+            "opponentId": "kubica",
+            "points": 9
+          }
+        ]
+      },
+      "raikkonen-lock-16": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "raikkonen",
+        "position": 16,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "latifi",
+            "points": 2
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 6
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 9
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 9
+          },
+          {
+            "opponentId": "kubica",
+            "points": 9
+          }
+        ]
+      },
+      "raikkonen-lock-17": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "raikkonen",
+        "position": 17,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "giovinazzi",
+            "points": 6
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 9
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 9
+          },
+          {
+            "opponentId": "kubica",
+            "points": 9
+          }
+        ]
+      },
+      "raikkonen-lock-18": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "raikkonen",
+        "position": 18,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 9
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 9
+          },
+          {
+            "opponentId": "kubica",
+            "points": 9
+          }
+        ]
+      },
+      "raikkonen-lock-19": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "raikkonen",
+        "position": 19,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 9
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 9
+          }
+        ]
+      },
+      "raikkonen-lock-20": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "raikkonen",
+        "position": 20,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 9
+          }
+        ]
+      },
+      "raikkonen-ruled-out-13": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "raikkonen",
+        "position": 13,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "stroll",
+            "points": 23
+          }
+        ]
+      },
+      "raikkonen-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "raikkonen",
+        "position": 14,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "tsunoda",
+            "points": 9
+          },
+          {
+            "opponentId": "stroll",
+            "points": 23
+          }
+        ]
+      },
+      "raikkonen-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "raikkonen",
+        "position": 15,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 5
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 9
+          },
+          {
+            "opponentId": "stroll",
+            "points": 23
+          }
+        ]
+      },
+      "raikkonen-ruled-out-16": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "raikkonen",
+        "position": 16,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
           {
             "opponentId": "latifi",
             "points": 4
@@ -1972,10 +1957,153 @@
             "opponentId": "stroll",
             "points": 23
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "latifi-14": {
+      "raikkonen-ruled-out-17": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "raikkonen",
+        "position": 17,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "giovinazzi",
+            "points": 8
+          },
+          {
+            "opponentId": "latifi",
+            "points": 4
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 5
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 9
+          },
+          {
+            "opponentId": "stroll",
+            "points": 23
+          }
+        ]
+      },
+      "raikkonen-ruled-out-18": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "raikkonen",
+        "position": 18,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 11
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 8
+          },
+          {
+            "opponentId": "latifi",
+            "points": 4
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 5
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 9
+          },
+          {
+            "opponentId": "stroll",
+            "points": 23
+          }
+        ]
+      },
+      "raikkonen-ruled-out-19": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "raikkonen",
+        "position": 19,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 11
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 11
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 8
+          },
+          {
+            "opponentId": "latifi",
+            "points": 4
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 5
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 9
+          },
+          {
+            "opponentId": "stroll",
+            "points": 23
+          }
+        ]
+      },
+      "raikkonen-ruled-out-20": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "raikkonen",
+        "position": 20,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 11
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 11
+          },
+          {
+            "opponentId": "kubica",
+            "points": 11
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 8
+          },
+          {
+            "opponentId": "latifi",
+            "points": 4
+          }
+        ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 5
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 9
+          },
+          {
+            "opponentId": "stroll",
+            "points": 23
+          }
+        ]
+      },
+      "latifi-lock-14": {
         "type": "can_be_locked_in_next_race",
         "entityId": "latifi",
         "position": 14,
@@ -1994,8 +2122,6 @@
             "points": 4
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "giovinazzi",
@@ -2015,17 +2141,13 @@
           }
         ]
       },
-      "latifi-15": {
+      "latifi-lock-15": {
         "type": "can_be_locked_in_next_race",
         "entityId": "latifi",
         "position": 15,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 14
-          },
-          {
             "opponentId": "russell",
             "points": 10
           },
@@ -2034,17 +2156,14 @@
             "points": 4
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 8
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "giovinazzi",
             "points": 3
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 6
           },
           {
             "opponentId": "mazepin",
@@ -2056,40 +2175,29 @@
           }
         ]
       },
-      "latifi-16": {
+      "latifi-lock-16": {
         "type": "can_be_locked_in_next_race",
         "entityId": "latifi",
         "position": 16,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 14
-          },
-          {
-            "opponentId": "russell",
-            "points": 10
-          },
-          {
             "opponentId": "raikkonen",
             "points": 4
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 8
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 8
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "giovinazzi",
             "points": 3
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 6
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 6
           },
           {
             "opponentId": "kubica",
@@ -2097,150 +2205,167 @@
           }
         ]
       },
-      "latifi-17": {
+      "latifi-lock-17": {
         "type": "can_be_locked_in_next_race",
         "entityId": "latifi",
         "position": 17,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "tsunoda",
-            "points": 14
-          },
-          {
-            "opponentId": "russell",
-            "points": 10
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 4
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 8
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 8
-          },
-          {
-            "opponentId": "kubica",
-            "points": 8
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
+        "mustOutscoreBy": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "giovinazzi",
             "points": 3
+          },
+          {
+            "opponentId": "mick_schumacher",
+            "points": 6
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 6
+          },
+          {
+            "opponentId": "kubica",
+            "points": 6
           }
         ]
       },
-      "latifi-18": {
+      "latifi-lock-18": {
         "type": "can_be_locked_in_next_race",
         "entityId": "latifi",
         "position": 18,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "tsunoda",
-            "points": 14
-          },
-          {
-            "opponentId": "russell",
-            "points": 10
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 4
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "mick_schumacher",
-            "points": 8
+            "points": 6
           },
           {
             "opponentId": "mazepin",
-            "points": 8
+            "points": 6
           },
           {
             "opponentId": "kubica",
-            "points": 8
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 5
+            "points": 6
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "latifi-19": {
+      "latifi-lock-19": {
         "type": "can_be_locked_in_next_race",
         "entityId": "latifi",
         "position": 19,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "tsunoda",
-            "points": 14
-          },
-          {
-            "opponentId": "russell",
-            "points": 10
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "mick_schumacher",
-            "points": 8
+            "points": 6
           },
           {
             "opponentId": "mazepin",
-            "points": 8
-          },
-          {
-            "opponentId": "kubica",
-            "points": 8
-          },
-          {
-            "opponentId": "giovinazzi",
-            "points": 5
+            "points": 6
           }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "raikkonen",
-            "points": 2
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "latifi-20": {
+      "latifi-lock-20": {
         "type": "can_be_locked_in_next_race",
         "entityId": "latifi",
         "position": 20,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 6
+          }
+        ]
+      },
+      "latifi-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "latifi",
+        "position": 14,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
           {
             "opponentId": "tsunoda",
-            "points": 14
+            "points": 12
+          }
+        ]
+      },
+      "latifi-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "latifi",
+        "position": 15,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 8
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 12
+          }
+        ]
+      },
+      "latifi-ruled-out-16": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "latifi",
+        "position": 16,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "raikkonen",
+            "points": 2
+          },
+          {
+            "opponentId": "russell",
+            "points": 8
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 12
+          }
+        ]
+      },
+      "latifi-ruled-out-17": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "latifi",
+        "position": 17,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "giovinazzi",
+            "points": 5
           }
         ],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "raikkonen",
+            "points": 2
+          },
+          {
+            "opponentId": "russell",
+            "points": 8
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 12
+          }
+        ]
+      },
+      "latifi-ruled-out-18": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "latifi",
+        "position": 18,
+        "nextSlotIndex": 24,
         "mustBeOutscoredBy": [
           {
             "opponentId": "mick_schumacher",
-            "points": 8
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 8
-          },
-          {
-            "opponentId": "kubica",
             "points": 8
           },
           {
@@ -2256,16 +2381,52 @@
           {
             "opponentId": "russell",
             "points": 8
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 12
+          }
+        ]
+      },
+      "latifi-ruled-out-19": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "latifi",
+        "position": 19,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 8
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 8
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 5
           }
         ],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "raikkonen",
+            "points": 2
+          },
+          {
+            "opponentId": "russell",
+            "points": 8
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 12
+          }
+        ]
       },
-      "latifi-21": {
-        "type": "can_be_locked_in_next_race",
+      "latifi-ruled-out-20": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "latifi",
-        "position": 21,
+        "position": 20,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "mick_schumacher",
@@ -2297,10 +2458,9 @@
             "opponentId": "tsunoda",
             "points": 12
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "giovinazzi-14": {
+      "giovinazzi-lock-14": {
         "type": "can_be_locked_in_next_race",
         "entityId": "giovinazzi",
         "position": 14,
@@ -2323,8 +2483,6 @@
             "points": 5
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "mick_schumacher",
@@ -2340,17 +2498,13 @@
           }
         ]
       },
-      "giovinazzi-15": {
+      "giovinazzi-lock-15": {
         "type": "can_be_locked_in_next_race",
         "entityId": "giovinazzi",
         "position": 15,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 18
-          },
-          {
             "opponentId": "russell",
             "points": 14
           },
@@ -2363,14 +2517,11 @@
             "points": 5
           }
         ],
-        "mustBeOutscoredBy": [
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "mick_schumacher",
-            "points": 4
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
+            "points": 2
+          },
           {
             "opponentId": "mazepin",
             "points": 2
@@ -2381,21 +2532,13 @@
           }
         ]
       },
-      "giovinazzi-16": {
+      "giovinazzi-lock-16": {
         "type": "can_be_locked_in_next_race",
         "entityId": "giovinazzi",
         "position": 16,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 18
-          },
-          {
-            "opponentId": "russell",
-            "points": 14
-          },
-          {
             "opponentId": "raikkonen",
             "points": 8
           },
@@ -2404,134 +2547,155 @@
             "points": 5
           }
         ],
-        "mustBeOutscoredBy": [
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "mick_schumacher",
-            "points": 4
+            "points": 2
           },
           {
             "opponentId": "mazepin",
-            "points": 4
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": [
+            "points": 2
+          },
           {
             "opponentId": "kubica",
             "points": 2
           }
         ]
       },
-      "giovinazzi-17": {
+      "giovinazzi-lock-17": {
         "type": "can_be_locked_in_next_race",
         "entityId": "giovinazzi",
         "position": 17,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 18
-          },
-          {
-            "opponentId": "russell",
-            "points": 14
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 8
-          },
-          {
             "opponentId": "latifi",
             "points": 5
           }
         ],
-        "mustBeOutscoredBy": [
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "mick_schumacher",
-            "points": 4
+            "points": 2
           },
           {
             "opponentId": "mazepin",
-            "points": 4
+            "points": 2
           },
           {
             "opponentId": "kubica",
-            "points": 4
+            "points": 2
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "giovinazzi-18": {
+      "giovinazzi-lock-18": {
         "type": "can_be_locked_in_next_race",
         "entityId": "giovinazzi",
         "position": 18,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "tsunoda",
-            "points": 18
-          },
-          {
-            "opponentId": "russell",
-            "points": 14
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 8
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "mick_schumacher",
-            "points": 4
+            "points": 2
           },
           {
             "opponentId": "mazepin",
-            "points": 4
+            "points": 2
           },
           {
             "opponentId": "kubica",
-            "points": 4
+            "points": 2
           }
-        ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "latifi",
-            "points": 3
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "giovinazzi-19": {
+      "giovinazzi-lock-19": {
         "type": "can_be_locked_in_next_race",
         "entityId": "giovinazzi",
         "position": 19,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "tsunoda",
-            "points": 18
-          },
-          {
-            "opponentId": "russell",
-            "points": 14
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "mick_schumacher",
-            "points": 4
+            "points": 2
           },
           {
             "opponentId": "mazepin",
-            "points": 4
+            "points": 2
+          }
+        ]
+      },
+      "giovinazzi-lock-20": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "giovinazzi",
+        "position": 20,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 2
+          }
+        ]
+      },
+      "giovinazzi-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "giovinazzi",
+        "position": 14,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "tsunoda",
+            "points": 16
+          }
+        ]
+      },
+      "giovinazzi-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "giovinazzi",
+        "position": 15,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 12
           },
           {
-            "opponentId": "kubica",
-            "points": 4
+            "opponentId": "tsunoda",
+            "points": 16
           }
-        ],
+        ]
+      },
+      "giovinazzi-ruled-out-16": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "giovinazzi",
+        "position": 16,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "raikkonen",
+            "points": 6
+          },
+          {
+            "opponentId": "russell",
+            "points": 12
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 16
+          }
+        ]
+      },
+      "giovinazzi-ruled-out-17": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "giovinazzi",
+        "position": 17,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
             "opponentId": "latifi",
@@ -2540,32 +2704,25 @@
           {
             "opponentId": "raikkonen",
             "points": 6
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "giovinazzi-20": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "giovinazzi",
-        "position": 20,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
+          },
+          {
+            "opponentId": "russell",
+            "points": 12
+          },
           {
             "opponentId": "tsunoda",
-            "points": 18
+            "points": 16
           }
-        ],
+        ]
+      },
+      "giovinazzi-ruled-out-18": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "giovinazzi",
+        "position": 18,
+        "nextSlotIndex": 24,
         "mustBeOutscoredBy": [
           {
             "opponentId": "mick_schumacher",
-            "points": 4
-          },
-          {
-            "opponentId": "mazepin",
-            "points": 4
-          },
-          {
-            "opponentId": "kubica",
             "points": 4
           }
         ],
@@ -2581,16 +2738,52 @@
           {
             "opponentId": "russell",
             "points": 12
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 16
+          }
+        ]
+      },
+      "giovinazzi-ruled-out-19": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "giovinazzi",
+        "position": 19,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 4
+          },
+          {
+            "opponentId": "mazepin",
+            "points": 4
           }
         ],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "latifi",
+            "points": 3
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 6
+          },
+          {
+            "opponentId": "russell",
+            "points": 12
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 16
+          }
+        ]
       },
-      "giovinazzi-21": {
-        "type": "can_be_locked_in_next_race",
+      "giovinazzi-ruled-out-20": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "giovinazzi",
-        "position": 21,
+        "position": 20,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "mick_schumacher",
@@ -2622,10 +2815,9 @@
             "opponentId": "tsunoda",
             "points": 16
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "mick_schumacher-14": {
+      "mick_schumacher-lock-14": {
         "type": "can_be_locked_in_next_race",
         "entityId": "mick_schumacher",
         "position": 14,
@@ -2660,21 +2852,15 @@
             "points": 1
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "mick_schumacher-15": {
+      "mick_schumacher-lock-15": {
         "type": "can_be_locked_in_next_race",
         "entityId": "mick_schumacher",
         "position": 15,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 21
-          },
-          {
             "opponentId": "russell",
             "points": 17
           },
@@ -2691,34 +2877,23 @@
             "points": 4
           },
           {
+            "opponentId": "mazepin",
+            "points": 1
+          },
+          {
             "opponentId": "kubica",
             "points": 1
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mazepin",
-            "points": 1
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "mick_schumacher-16": {
+      "mick_schumacher-lock-16": {
         "type": "can_be_locked_in_next_race",
         "entityId": "mick_schumacher",
         "position": 16,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 21
-          },
-          {
-            "opponentId": "russell",
-            "points": 17
-          },
-          {
             "opponentId": "raikkonen",
             "points": 11
           },
@@ -2729,9 +2904,7 @@
           {
             "opponentId": "giovinazzi",
             "points": 4
-          }
-        ],
-        "mustBeOutscoredBy": [
+          },
           {
             "opponentId": "mazepin",
             "points": 1
@@ -2741,33 +2914,22 @@
             "points": 1
           }
         ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "mick_schumacher-17": {
+      "mick_schumacher-lock-17": {
         "type": "can_be_locked_in_next_race",
         "entityId": "mick_schumacher",
         "position": 17,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 21
-          },
-          {
-            "opponentId": "russell",
-            "points": 17
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 11
-          },
-          {
             "opponentId": "latifi",
             "points": 8
-          }
-        ],
-        "mustBeOutscoredBy": [
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 4
+          },
           {
             "opponentId": "mazepin",
             "points": 1
@@ -2777,34 +2939,18 @@
             "points": 1
           }
         ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 2
-          }
-        ],
         "cannotBeOutscoredByMoreThan": []
       },
-      "mick_schumacher-18": {
+      "mick_schumacher-lock-18": {
         "type": "can_be_locked_in_next_race",
         "entityId": "mick_schumacher",
         "position": 18,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 21
+            "opponentId": "giovinazzi",
+            "points": 4
           },
-          {
-            "opponentId": "russell",
-            "points": 17
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 11
-          }
-        ],
-        "mustBeOutscoredBy": [
           {
             "opponentId": "mazepin",
             "points": 1
@@ -2814,35 +2960,15 @@
             "points": 1
           }
         ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 2
-          },
-          {
-            "opponentId": "latifi",
-            "points": 6
-          }
-        ],
         "cannotBeOutscoredByMoreThan": []
       },
-      "mick_schumacher-19": {
+      "mick_schumacher-lock-19": {
         "type": "can_be_locked_in_next_race",
         "entityId": "mick_schumacher",
         "position": 19,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 21
-          },
-          {
-            "opponentId": "russell",
-            "points": 17
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
             "opponentId": "mazepin",
             "points": 1
           },
@@ -2851,6 +2977,103 @@
             "points": 1
           }
         ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "mick_schumacher-lock-20": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "mick_schumacher",
+        "position": 20,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "mazepin",
+            "points": 1
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "mick_schumacher-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mick_schumacher",
+        "position": 14,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "tsunoda",
+            "points": 19
+          }
+        ]
+      },
+      "mick_schumacher-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mick_schumacher",
+        "position": 15,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 15
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 19
+          }
+        ]
+      },
+      "mick_schumacher-ruled-out-16": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mick_schumacher",
+        "position": 16,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "raikkonen",
+            "points": 9
+          },
+          {
+            "opponentId": "russell",
+            "points": 15
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 19
+          }
+        ]
+      },
+      "mick_schumacher-ruled-out-17": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mick_schumacher",
+        "position": 17,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "latifi",
+            "points": 6
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 9
+          },
+          {
+            "opponentId": "russell",
+            "points": 15
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 19
+          }
+        ]
+      },
+      "mick_schumacher-ruled-out-18": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mick_schumacher",
+        "position": 18,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
             "opponentId": "giovinazzi",
@@ -2863,28 +3086,25 @@
           {
             "opponentId": "raikkonen",
             "points": 9
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "mick_schumacher-20": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "mick_schumacher",
-        "position": 20,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
+          },
+          {
+            "opponentId": "russell",
+            "points": 15
+          },
           {
             "opponentId": "tsunoda",
-            "points": 21
+            "points": 19
           }
-        ],
+        ]
+      },
+      "mick_schumacher-ruled-out-19": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mick_schumacher",
+        "position": 19,
+        "nextSlotIndex": 24,
         "mustBeOutscoredBy": [
           {
             "opponentId": "mazepin",
-            "points": 1
-          },
-          {
-            "opponentId": "kubica",
             "points": 1
           }
         ],
@@ -2904,16 +3124,18 @@
           {
             "opponentId": "russell",
             "points": 15
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 19
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "mick_schumacher-21": {
-        "type": "can_be_locked_in_next_race",
+      "mick_schumacher-ruled-out-20": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "mick_schumacher",
-        "position": 21,
+        "position": 20,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "mazepin",
@@ -2945,10 +3167,9 @@
             "opponentId": "tsunoda",
             "points": 19
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "mazepin-14": {
+      "mazepin-lock-14": {
         "type": "can_be_locked_in_next_race",
         "entityId": "mazepin",
         "position": 14,
@@ -2983,21 +3204,15 @@
             "points": 1
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "mazepin-15": {
+      "mazepin-lock-15": {
         "type": "can_be_locked_in_next_race",
         "entityId": "mazepin",
         "position": 15,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 21
-          },
-          {
             "opponentId": "russell",
             "points": 17
           },
@@ -3014,34 +3229,23 @@
             "points": 4
           },
           {
+            "opponentId": "mick_schumacher",
+            "points": 1
+          },
+          {
             "opponentId": "kubica",
             "points": 1
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 1
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "mazepin-16": {
+      "mazepin-lock-16": {
         "type": "can_be_locked_in_next_race",
         "entityId": "mazepin",
         "position": 16,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 21
-          },
-          {
-            "opponentId": "russell",
-            "points": 17
-          },
-          {
             "opponentId": "raikkonen",
             "points": 11
           },
@@ -3052,9 +3256,7 @@
           {
             "opponentId": "giovinazzi",
             "points": 4
-          }
-        ],
-        "mustBeOutscoredBy": [
+          },
           {
             "opponentId": "mick_schumacher",
             "points": 1
@@ -3064,33 +3266,22 @@
             "points": 1
           }
         ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "mazepin-17": {
+      "mazepin-lock-17": {
         "type": "can_be_locked_in_next_race",
         "entityId": "mazepin",
         "position": 17,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 21
-          },
-          {
-            "opponentId": "russell",
-            "points": 17
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 11
-          },
-          {
             "opponentId": "latifi",
             "points": 8
-          }
-        ],
-        "mustBeOutscoredBy": [
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 4
+          },
           {
             "opponentId": "mick_schumacher",
             "points": 1
@@ -3100,34 +3291,18 @@
             "points": 1
           }
         ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 2
-          }
-        ],
         "cannotBeOutscoredByMoreThan": []
       },
-      "mazepin-18": {
+      "mazepin-lock-18": {
         "type": "can_be_locked_in_next_race",
         "entityId": "mazepin",
         "position": 18,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 21
+            "opponentId": "giovinazzi",
+            "points": 4
           },
-          {
-            "opponentId": "russell",
-            "points": 17
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 11
-          }
-        ],
-        "mustBeOutscoredBy": [
           {
             "opponentId": "mick_schumacher",
             "points": 1
@@ -3137,35 +3312,15 @@
             "points": 1
           }
         ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 2
-          },
-          {
-            "opponentId": "latifi",
-            "points": 6
-          }
-        ],
         "cannotBeOutscoredByMoreThan": []
       },
-      "mazepin-19": {
+      "mazepin-lock-19": {
         "type": "can_be_locked_in_next_race",
         "entityId": "mazepin",
         "position": 19,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 21
-          },
-          {
-            "opponentId": "russell",
-            "points": 17
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
             "opponentId": "mick_schumacher",
             "points": 1
           },
@@ -3174,6 +3329,103 @@
             "points": 1
           }
         ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "mazepin-lock-20": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "mazepin",
+        "position": 20,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 1
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "mazepin-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mazepin",
+        "position": 14,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "tsunoda",
+            "points": 19
+          }
+        ]
+      },
+      "mazepin-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mazepin",
+        "position": 15,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 15
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 19
+          }
+        ]
+      },
+      "mazepin-ruled-out-16": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mazepin",
+        "position": 16,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "raikkonen",
+            "points": 9
+          },
+          {
+            "opponentId": "russell",
+            "points": 15
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 19
+          }
+        ]
+      },
+      "mazepin-ruled-out-17": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mazepin",
+        "position": 17,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "latifi",
+            "points": 6
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 9
+          },
+          {
+            "opponentId": "russell",
+            "points": 15
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 19
+          }
+        ]
+      },
+      "mazepin-ruled-out-18": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mazepin",
+        "position": 18,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
             "opponentId": "giovinazzi",
@@ -3186,28 +3438,25 @@
           {
             "opponentId": "raikkonen",
             "points": 9
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "mazepin-20": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "mazepin",
-        "position": 20,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
+          },
+          {
+            "opponentId": "russell",
+            "points": 15
+          },
           {
             "opponentId": "tsunoda",
-            "points": 21
+            "points": 19
           }
-        ],
+        ]
+      },
+      "mazepin-ruled-out-19": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "mazepin",
+        "position": 19,
+        "nextSlotIndex": 24,
         "mustBeOutscoredBy": [
           {
             "opponentId": "mick_schumacher",
-            "points": 1
-          },
-          {
-            "opponentId": "kubica",
             "points": 1
           }
         ],
@@ -3227,16 +3476,18 @@
           {
             "opponentId": "russell",
             "points": 15
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 19
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "mazepin-21": {
-        "type": "can_be_locked_in_next_race",
+      "mazepin-ruled-out-20": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "mazepin",
-        "position": 21,
+        "position": 20,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "mick_schumacher",
@@ -3268,10 +3519,9 @@
             "opponentId": "tsunoda",
             "points": 19
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "kubica-14": {
+      "kubica-lock-14": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kubica",
         "position": 14,
@@ -3306,21 +3556,15 @@
             "points": 1
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "kubica-15": {
+      "kubica-lock-15": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kubica",
         "position": 15,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 21
-          },
-          {
             "opponentId": "russell",
             "points": 17
           },
@@ -3337,34 +3581,23 @@
             "points": 4
           },
           {
+            "opponentId": "mick_schumacher",
+            "points": 1
+          },
+          {
             "opponentId": "mazepin",
             "points": 1
           }
         ],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "mick_schumacher",
-            "points": 1
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "kubica-16": {
+      "kubica-lock-16": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kubica",
         "position": 16,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 21
-          },
-          {
-            "opponentId": "russell",
-            "points": 17
-          },
-          {
             "opponentId": "raikkonen",
             "points": 11
           },
@@ -3375,9 +3608,7 @@
           {
             "opponentId": "giovinazzi",
             "points": 4
-          }
-        ],
-        "mustBeOutscoredBy": [
+          },
           {
             "opponentId": "mick_schumacher",
             "points": 1
@@ -3387,33 +3618,22 @@
             "points": 1
           }
         ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "kubica-17": {
+      "kubica-lock-17": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kubica",
         "position": 17,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 21
-          },
-          {
-            "opponentId": "russell",
-            "points": 17
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 11
-          },
-          {
             "opponentId": "latifi",
             "points": 8
-          }
-        ],
-        "mustBeOutscoredBy": [
+          },
+          {
+            "opponentId": "giovinazzi",
+            "points": 4
+          },
           {
             "opponentId": "mick_schumacher",
             "points": 1
@@ -3423,34 +3643,18 @@
             "points": 1
           }
         ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 2
-          }
-        ],
         "cannotBeOutscoredByMoreThan": []
       },
-      "kubica-18": {
+      "kubica-lock-18": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kubica",
         "position": 18,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 21
+            "opponentId": "giovinazzi",
+            "points": 4
           },
-          {
-            "opponentId": "russell",
-            "points": 17
-          },
-          {
-            "opponentId": "raikkonen",
-            "points": 11
-          }
-        ],
-        "mustBeOutscoredBy": [
           {
             "opponentId": "mick_schumacher",
             "points": 1
@@ -3460,35 +3664,15 @@
             "points": 1
           }
         ],
-        "cannotOutscoreByMoreThan": [
-          {
-            "opponentId": "giovinazzi",
-            "points": 2
-          },
-          {
-            "opponentId": "latifi",
-            "points": 6
-          }
-        ],
         "cannotBeOutscoredByMoreThan": []
       },
-      "kubica-19": {
+      "kubica-lock-19": {
         "type": "can_be_locked_in_next_race",
         "entityId": "kubica",
         "position": 19,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "tsunoda",
-            "points": 21
-          },
-          {
-            "opponentId": "russell",
-            "points": 17
-          }
-        ],
-        "mustBeOutscoredBy": [
-          {
             "opponentId": "mick_schumacher",
             "points": 1
           },
@@ -3497,6 +3681,103 @@
             "points": 1
           }
         ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "kubica-lock-20": {
+        "type": "can_be_locked_in_next_race",
+        "entityId": "kubica",
+        "position": 20,
+        "nextSlotIndex": 24,
+        "mustOutscoreBy": [
+          {
+            "opponentId": "mick_schumacher",
+            "points": 1
+          }
+        ],
+        "cannotBeOutscoredByMoreThan": []
+      },
+      "kubica-ruled-out-14": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kubica",
+        "position": 14,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "tsunoda",
+            "points": 19
+          }
+        ]
+      },
+      "kubica-ruled-out-15": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kubica",
+        "position": 15,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "russell",
+            "points": 15
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 19
+          }
+        ]
+      },
+      "kubica-ruled-out-16": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kubica",
+        "position": 16,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "raikkonen",
+            "points": 9
+          },
+          {
+            "opponentId": "russell",
+            "points": 15
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 19
+          }
+        ]
+      },
+      "kubica-ruled-out-17": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kubica",
+        "position": 17,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "latifi",
+            "points": 6
+          },
+          {
+            "opponentId": "raikkonen",
+            "points": 9
+          },
+          {
+            "opponentId": "russell",
+            "points": 15
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 19
+          }
+        ]
+      },
+      "kubica-ruled-out-18": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kubica",
+        "position": 18,
+        "nextSlotIndex": 24,
+        "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
             "opponentId": "giovinazzi",
@@ -3509,28 +3790,25 @@
           {
             "opponentId": "raikkonen",
             "points": 9
-          }
-        ],
-        "cannotBeOutscoredByMoreThan": []
-      },
-      "kubica-20": {
-        "type": "can_be_locked_in_next_race",
-        "entityId": "kubica",
-        "position": 20,
-        "nextSlotIndex": 24,
-        "mustOutscoreBy": [
+          },
+          {
+            "opponentId": "russell",
+            "points": 15
+          },
           {
             "opponentId": "tsunoda",
-            "points": 21
+            "points": 19
           }
-        ],
+        ]
+      },
+      "kubica-ruled-out-19": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "kubica",
+        "position": 19,
+        "nextSlotIndex": 24,
         "mustBeOutscoredBy": [
           {
             "opponentId": "mick_schumacher",
-            "points": 1
-          },
-          {
-            "opponentId": "mazepin",
             "points": 1
           }
         ],
@@ -3550,16 +3828,18 @@
           {
             "opponentId": "russell",
             "points": 15
+          },
+          {
+            "opponentId": "tsunoda",
+            "points": 19
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "kubica-21": {
-        "type": "can_be_locked_in_next_race",
+      "kubica-ruled-out-20": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "kubica",
-        "position": 21,
+        "position": 20,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "mick_schumacher",
@@ -3591,21 +3871,18 @@
             "opponentId": "tsunoda",
             "points": 19
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       }
     }
   },
   "constructorLockInsights": {
     "23": {
-      "mercedes-1": {
+      "mercedes-lock-1": {
         "type": "can_be_locked_in_next_race",
         "entityId": "mercedes",
         "position": 1,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "red_bull",
@@ -3613,22 +3890,20 @@
           }
         ]
       },
-      "mercedes-2": {
-        "type": "can_be_locked_in_next_race",
+      "mercedes-ruled-out-1": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "mercedes",
-        "position": 2,
+        "position": 1,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "red_bull",
             "points": 29
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "red_bull-1": {
+      "red_bull-lock-1": {
         "type": "can_be_locked_in_next_race",
         "entityId": "red_bull",
         "position": 1,
@@ -3639,33 +3914,27 @@
             "points": 29
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "red_bull-2": {
-        "type": "can_be_locked_in_next_race",
+      "red_bull-ruled-out-1": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "red_bull",
-        "position": 2,
+        "position": 1,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
             "opponentId": "mercedes",
             "points": 27
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "ferrari-3": {
+      "ferrari-lock-3": {
         "type": "can_be_locked_in_next_race",
         "entityId": "ferrari",
         "position": 3,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "mclaren",
@@ -3673,22 +3942,20 @@
           }
         ]
       },
-      "ferrari-4": {
-        "type": "can_be_locked_in_next_race",
+      "ferrari-ruled-out-3": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "ferrari",
-        "position": 4,
+        "position": 3,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "mclaren",
             "points": 39.5
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "mclaren-3": {
+      "mclaren-lock-3": {
         "type": "can_be_locked_in_next_race",
         "entityId": "mclaren",
         "position": 3,
@@ -3699,33 +3966,27 @@
             "points": 39.5
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "mclaren-4": {
-        "type": "can_be_locked_in_next_race",
+      "mclaren-ruled-out-3": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "mclaren",
-        "position": 4,
+        "position": 3,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
             "opponentId": "ferrari",
             "points": 37.5
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "alpine-5": {
+      "alpine-lock-5": {
         "type": "can_be_locked_in_next_race",
         "entityId": "alpine",
         "position": 5,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "alphatauri",
@@ -3733,22 +3994,20 @@
           }
         ]
       },
-      "alpine-6": {
-        "type": "can_be_locked_in_next_race",
+      "alpine-ruled-out-5": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "alpine",
-        "position": 6,
+        "position": 5,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [
           {
             "opponentId": "alphatauri",
             "points": 30
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "alphatauri-5": {
+      "alphatauri-lock-5": {
         "type": "can_be_locked_in_next_race",
         "entityId": "alphatauri",
         "position": 5,
@@ -3759,8 +4018,6 @@
             "points": 30
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "aston_martin",
@@ -3768,32 +4025,37 @@
           }
         ]
       },
-      "alphatauri-6": {
+      "alphatauri-lock-6": {
         "type": "can_be_locked_in_next_race",
         "entityId": "alphatauri",
         "position": 6,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "alpine",
-            "points": 30
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "aston_martin",
-            "points": 44
+            "points": 42
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "alphatauri-7": {
-        "type": "can_be_locked_in_next_race",
+      "alphatauri-ruled-out-5": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "alphatauri",
-        "position": 7,
+        "position": 5,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "alpine",
+            "points": 28
+          }
+        ]
+      },
+      "alphatauri-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "alphatauri",
+        "position": 6,
+        "nextSlotIndex": 24,
         "mustBeOutscoredBy": [
           {
             "opponentId": "aston_martin",
@@ -3805,10 +4067,9 @@
             "opponentId": "alpine",
             "points": 28
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "aston_martin-6": {
+      "aston_martin-lock-6": {
         "type": "can_be_locked_in_next_race",
         "entityId": "aston_martin",
         "position": 6,
@@ -3819,33 +4080,27 @@
             "points": 44
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "aston_martin-7": {
-        "type": "can_be_locked_in_next_race",
+      "aston_martin-ruled-out-6": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "aston_martin",
-        "position": 7,
+        "position": 6,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
         "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
             "opponentId": "alphatauri",
             "points": 42
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "williams-8": {
+      "williams-lock-8": {
         "type": "can_be_locked_in_next_race",
         "entityId": "williams",
         "position": 8,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "alfa",
@@ -3857,32 +4112,37 @@
           }
         ]
       },
-      "williams-9": {
+      "williams-lock-9": {
         "type": "can_be_locked_in_next_race",
         "entityId": "williams",
         "position": 9,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [],
-        "mustBeOutscoredBy": [
-          {
-            "opponentId": "haas",
-            "points": 24
-          }
-        ],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
-            "opponentId": "alfa",
-            "points": 9
+            "opponentId": "haas",
+            "points": 22
           }
         ]
       },
-      "williams-10": {
-        "type": "can_be_locked_in_next_race",
+      "williams-ruled-out-8": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "williams",
-        "position": 10,
+        "position": 8,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
+        "mustBeOutscoredBy": [
+          {
+            "opponentId": "alfa",
+            "points": 11
+          }
+        ],
+        "cannotOutscoreByMoreThan": []
+      },
+      "williams-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "williams",
+        "position": 9,
+        "nextSlotIndex": 24,
         "mustBeOutscoredBy": [
           {
             "opponentId": "haas",
@@ -3893,10 +4153,9 @@
             "points": 11
           }
         ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        "cannotOutscoreByMoreThan": []
       },
-      "alfa-8": {
+      "alfa-lock-8": {
         "type": "can_be_locked_in_next_race",
         "entityId": "alfa",
         "position": 8,
@@ -3907,8 +4166,6 @@
             "points": 11
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "haas",
@@ -3916,32 +4173,37 @@
           }
         ]
       },
-      "alfa-9": {
+      "alfa-lock-9": {
         "type": "can_be_locked_in_next_race",
         "entityId": "alfa",
         "position": 9,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [
-          {
-            "opponentId": "williams",
-            "points": 11
-          }
-        ],
-        "mustBeOutscoredBy": [
+        "mustOutscoreBy": [],
+        "cannotBeOutscoredByMoreThan": [
           {
             "opponentId": "haas",
-            "points": 14
+            "points": 12
           }
-        ],
-        "cannotOutscoreByMoreThan": [],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "alfa-10": {
-        "type": "can_be_locked_in_next_race",
+      "alfa-ruled-out-8": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "alfa",
-        "position": 10,
+        "position": 8,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "williams",
+            "points": 9
+          }
+        ]
+      },
+      "alfa-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "alfa",
+        "position": 9,
+        "nextSlotIndex": 24,
         "mustBeOutscoredBy": [
           {
             "opponentId": "haas",
@@ -3953,10 +4215,9 @@
             "opponentId": "williams",
             "points": 9
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       },
-      "haas-8": {
+      "haas-lock-8": {
         "type": "can_be_locked_in_next_race",
         "entityId": "haas",
         "position": 8,
@@ -3971,36 +4232,39 @@
             "points": 14
           }
         ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [],
         "cannotBeOutscoredByMoreThan": []
       },
-      "haas-9": {
+      "haas-lock-9": {
         "type": "can_be_locked_in_next_race",
         "entityId": "haas",
         "position": 9,
         "nextSlotIndex": 24,
         "mustOutscoreBy": [
           {
-            "opponentId": "williams",
-            "points": 24
-          }
-        ],
-        "mustBeOutscoredBy": [],
-        "cannotOutscoreByMoreThan": [
-          {
             "opponentId": "alfa",
-            "points": 12
+            "points": 14
           }
         ],
         "cannotBeOutscoredByMoreThan": []
       },
-      "haas-10": {
-        "type": "can_be_locked_in_next_race",
+      "haas-ruled-out-8": {
+        "type": "can_be_ruled_out_next_race",
         "entityId": "haas",
-        "position": 10,
+        "position": 8,
         "nextSlotIndex": 24,
-        "mustOutscoreBy": [],
+        "mustBeOutscoredBy": [],
+        "cannotOutscoreByMoreThan": [
+          {
+            "opponentId": "williams",
+            "points": 22
+          }
+        ]
+      },
+      "haas-ruled-out-9": {
+        "type": "can_be_ruled_out_next_race",
+        "entityId": "haas",
+        "position": 9,
+        "nextSlotIndex": 24,
         "mustBeOutscoredBy": [],
         "cannotOutscoreByMoreThan": [
           {
@@ -4011,8 +4275,7 @@
             "opponentId": "williams",
             "points": 22
           }
-        ],
-        "cannotBeOutscoredByMoreThan": []
+        ]
       }
     }
   }
