@@ -269,14 +269,8 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
   }, [allEntities]);
 
   const insightItems = useMemo(() => {
-    const insights = Object.values(lockInsightsBySelectedIdx[String(selectedIdx)] ?? {});
-    return insights.sort((a, b) => {
-      const aName = entitiesById.get(a.entityId)?.name ?? a.entityId;
-      const bName = entitiesById.get(b.entityId)?.name ?? b.entityId;
-      if (aName !== bName) return aName.localeCompare(bName);
-      return a.position - b.position;
-    });
-  }, [lockInsightsBySelectedIdx, selectedIdx, entitiesById]);
+    return Object.values(lockInsightsBySelectedIdx[String(selectedIdx)] ?? {});
+  }, [lockInsightsBySelectedIdx, selectedIdx]);
 
   const { rows: lastSlotLegendRows, isProjected: isLastSlotProjected } = useMemo(
     () =>

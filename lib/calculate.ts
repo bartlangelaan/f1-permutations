@@ -297,7 +297,13 @@ export function computeLockInsightsForSelectedSlot(
   const endProjections = computeProjectionsForSelectedSlot(data, selectedIdx, isDriver)[lastSlotIdx];
   if (!endProjections) return insights;
 
-  for (const entity of entities) {
+  const orderedEntities = [...entities].sort((a, b) => {
+    const pointDelta = (basePts.get(b.id) ?? 0) - (basePts.get(a.id) ?? 0);
+    if (pointDelta !== 0) return pointDelta;
+    return a.name.localeCompare(b.name);
+  });
+
+  for (const entity of orderedEntities) {
     const endEntry = endProjections[entity.id];
     if (!endEntry) continue;
 
