@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getSeasons } from "@/lib/data";
@@ -66,8 +67,15 @@ export default async function ChartPage({ params }: Props) {
         </div>
 
       </div>
-
-      <SeasonChart data={data} />
+      <Suspense
+        fallback={
+          <div className="rounded-lg border border-zinc-800 bg-zinc-950/60 p-6 text-sm text-zinc-400">
+            Loading chart controls...
+          </div>
+        }
+      >
+        <SeasonChart data={data} />
+      </Suspense>
     </div>
   );
 }
