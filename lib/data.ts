@@ -82,20 +82,10 @@ export async function saveRaces(year: number, races: Race[]): Promise<void> {
   await fs.outputJson(racesFile(year), races, { spaces: 2 });
 }
 
-/**
- * Returns the index of the last completed slot based on which per-slot
- * calculation files exist, or -1 if none.
- */
-export function getLastCompletedSlotIndex(year: number): number {
+export function listSeasonFiles(year: number): string[] {
   const dir = seasonDir(year);
-  if (!fs.existsSync(dir)) return -1;
-  const files = fs.readdirSync(dir);
-  let max = -1;
-  for (const f of files) {
-    const m = f.match(/^calculation-results-(\d+)\.json$/);
-    if (m) max = Math.max(max, parseInt(m[1]) - 1);
-  }
-  return max;
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir);
 }
 
 /**
@@ -143,14 +133,10 @@ export async function saveCalculationResultsForSelectedSlot(
   await fs.outputJson(calculationResultsForSelectedSlotFile(year, selectedSlotIndex), data, { spaces: 2 });
 }
 
-export async function removeCalculationResultsForSeason(year: number): Promise<void> {
-  const yearDir = seasonDir(year);
-  await fs.ensureDir(yearDir);
+export async function removeSeasonFile(year: number, name: string): Promise<void> {
+  await fs.remove(path.join(seasonDir(year), name));
+}
 
-  const existingFiles = await fs.readdir(yearDir);
-  await Promise.all(
-    existingFiles
-      .filter((name) => /^calculation-results-\d+\.json$/.test(name))
-      .map((name) => fs.remove(path.join(yearDir, name)))
-  );
+export async function ensureSeasonDir(year: number): Promise<void> {
+  await fs.ensureDir(seasonDir(year));
 }

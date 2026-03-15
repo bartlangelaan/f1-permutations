@@ -1,13 +1,32 @@
 import type { CalculatedChartData, EntitySeries, LockInsight, ProjectionMap } from "./calculate";
 import { buildSlots } from "./calculate";
 import {
-  getLastCompletedSlotIndex,
+  ensureSeasonDir,
+  listSeasonFiles,
   readCalculationResultsForSelectedSlot,
   readParticipants,
-  removeCalculationResultsForSeason,
+  removeSeasonFile,
   saveCalculationResultsForSelectedSlot,
   saveParticipants,
 } from "./data";
+
+function getLastCompletedSlotIndex(year: number): number {
+  let max = -1;
+  for (const f of listSeasonFiles(year)) {
+    const m = f.match(/^calculation-results-(\d+)\.json$/);
+    if (m) max = Math.max(max, parseInt(m[1]) - 1);
+  }
+  return max;
+}
+
+async function removeCalculationResultsForSeason(year: number): Promise<void> {
+  await ensureSeasonDir(year);
+  await Promise.all(
+    listSeasonFiles(year)
+      .filter((name) => /^calculation-results-\d+\.json$/.test(name))
+      .map((name) => removeSeasonFile(year, name))
+  );
+}
 
 export function readCalculationResults(year: number): CalculatedChartData | null {
   const participants = readParticipants(year);
