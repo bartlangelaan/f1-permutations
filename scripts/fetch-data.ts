@@ -33,6 +33,10 @@ async function fetchJSON(urlPath: string) {
   return client.get(urlPath).json<any>();
 }
 
+function isValidRound(round: unknown): round is number {
+  return typeof round === "number" && Number.isFinite(round) && round > 0;
+}
+
 function mapResults(rawResults: any[]) {
   const nonFinishTexts = new Set(["R", "D", "E", "W", "F", "N"]);
   return rawResults.map((r: any) => ({
@@ -57,14 +61,15 @@ async function fetchSeason(year: number) {
 
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 
-  // Reuse cache if it already has normalized event entries.
   if (fs.existsSync(racesFile)) {
-    const cached = JSON.parse(fs.readFileSync(racesFile, "utf-8"));
-    if (cached[0]?.raceNumber !== undefined && cached[0]?.type !== undefined) {
-      console.log(`  [skip] ${year}/races.json already cached`);
-      return cached as { raceNumber: number; round: number; type: "race" | "sprint"; raceName: string; date: string }[];
-    }
-    console.log(`  [refresh] ${year}/races.json needs normalized event format`);
+    console.log(`  [skip] ${year}/races.json already cached`);
+    return JSON.parse(fs.readFileSync(racesFile, "utf-8")) as Array<{
+      raceNumber: number;
+      round: number;
+      type: "race" | "sprint";
+      raceName: string;
+      date: string;
+    }>;
   }
 
   console.log(`  [fetch] ${year} schedule`);
@@ -72,11 +77,17 @@ async function fetchSeason(year: number) {
   const rawRaces = data?.MRData?.RaceTable?.Races ?? [];
   let raceNumber = 1;
   const races = rawRaces.flatMap((r: any) => {
+    const round = Number(r.round);
+    if (!isValidRound(round)) {
+      console.log(`  [drop] skipping ${r.raceName} because it has no active championship round`);
+      return [];
+    }
+
     const entries: Array<{ raceNumber: number; round: number; type: "race" | "sprint"; raceName: string; date: string }> = [];
     if (r.Sprint) {
       entries.push({
         raceNumber: raceNumber++,
-        round: Number(r.round),
+        round,
         type: "sprint",
         raceName: r.raceName,
         date: r.Sprint.date ?? r.date,
@@ -85,7 +96,7 @@ async function fetchSeason(year: number) {
 
     entries.push({
       raceNumber: raceNumber++,
-      round: Number(r.round),
+      round,
       type: "race",
       raceName: r.raceName,
       date: r.date,
