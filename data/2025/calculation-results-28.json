@@ -7,15 +7,15 @@
         "bestPos": 1,
         "worstPos": 2
       },
-      "max_verstappen": {
-        "minPts": 371,
-        "maxPts": 396,
-        "bestPos": 1,
-        "worstPos": 3
-      },
       "piastri": {
         "minPts": 374,
         "maxPts": 399,
+        "bestPos": 1,
+        "worstPos": 3
+      },
+      "max_verstappen": {
+        "minPts": 371,
+        "maxPts": 396,
         "bestPos": 1,
         "worstPos": 3
       },
@@ -49,6 +49,18 @@
         "bestPos": 8,
         "worstPos": 9
       },
+      "hadjar": {
+        "minPts": 51,
+        "maxPts": 76,
+        "bestPos": 8,
+        "worstPos": 15
+      },
+      "hulkenberg": {
+        "minPts": 49,
+        "maxPts": 74,
+        "bestPos": 8,
+        "worstPos": 16
+      },
       "sainz": {
         "minPts": 49,
         "maxPts": 74,
@@ -61,29 +73,11 @@
         "bestPos": 9,
         "worstPos": 18
       },
-      "hulkenberg": {
-        "minPts": 49,
-        "maxPts": 74,
-        "bestPos": 8,
-        "worstPos": 16
-      },
-      "hadjar": {
-        "minPts": 51,
-        "maxPts": 76,
-        "bestPos": 8,
-        "worstPos": 15
-      },
       "bearman": {
         "minPts": 41,
         "maxPts": 66,
         "bestPos": 9,
         "worstPos": 18
-      },
-      "ocon": {
-        "minPts": 32,
-        "maxPts": 57,
-        "bestPos": 9,
-        "worstPos": 19
       },
       "lawson": {
         "minPts": 36,
@@ -98,6 +92,12 @@
         "worstPos": 19
       },
       "tsunoda": {
+        "minPts": 32,
+        "maxPts": 57,
+        "bestPos": 9,
+        "worstPos": 19
+      },
+      "ocon": {
         "minPts": 32,
         "maxPts": 57,
         "bestPos": 9,
@@ -135,15 +135,15 @@
         "bestPos": 1,
         "worstPos": 3
       },
-      "max_verstappen": {
-        "minPts": 371,
-        "maxPts": 421,
-        "bestPos": 1,
-        "worstPos": 3
-      },
       "piastri": {
         "minPts": 374,
         "maxPts": 424,
+        "bestPos": 1,
+        "worstPos": 3
+      },
+      "max_verstappen": {
+        "minPts": 371,
+        "maxPts": 421,
         "bestPos": 1,
         "worstPos": 3
       },
@@ -177,6 +177,18 @@
         "bestPos": 8,
         "worstPos": 17
       },
+      "hadjar": {
+        "minPts": 51,
+        "maxPts": 101,
+        "bestPos": 8,
+        "worstPos": 19
+      },
+      "hulkenberg": {
+        "minPts": 49,
+        "maxPts": 99,
+        "bestPos": 8,
+        "worstPos": null
+      },
       "sainz": {
         "minPts": 49,
         "maxPts": 99,
@@ -189,27 +201,9 @@
         "bestPos": 8,
         "worstPos": null
       },
-      "hulkenberg": {
-        "minPts": 49,
-        "maxPts": 99,
-        "bestPos": 8,
-        "worstPos": null
-      },
-      "hadjar": {
-        "minPts": 51,
-        "maxPts": 101,
-        "bestPos": 8,
-        "worstPos": 19
-      },
       "bearman": {
         "minPts": 41,
         "maxPts": 91,
-        "bestPos": 8,
-        "worstPos": null
-      },
-      "ocon": {
-        "minPts": 32,
-        "maxPts": 82,
         "bestPos": 8,
         "worstPos": null
       },
@@ -226,6 +220,12 @@
         "worstPos": null
       },
       "tsunoda": {
+        "minPts": 32,
+        "maxPts": 82,
+        "bestPos": 8,
+        "worstPos": null
+      },
+      "ocon": {
         "minPts": 32,
         "maxPts": 82,
         "bestPos": 8,
@@ -571,11 +571,11 @@
           "points": 4
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 2
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 2
         }
       ],
@@ -593,15 +593,15 @@
           "points": 11
         },
         {
-          "opponentId": "ocon",
-          "points": 15
-        },
-        {
           "opponentId": "stroll",
           "points": 15
         },
         {
           "opponentId": "tsunoda",
+          "points": 15
+        },
+        {
+          "opponentId": "ocon",
           "points": 15
         }
       ]
@@ -613,9 +613,47 @@
       "nextSlotIndex": 28,
       "mustOutscoreBy": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 2
         },
+        {
+          "opponentId": "sainz",
+          "points": 2
+        }
+      ],
+      "cannotBeOutscoredByMoreThan": [
+        {
+          "opponentId": "alonso",
+          "points": 5
+        },
+        {
+          "opponentId": "bearman",
+          "points": 6
+        },
+        {
+          "opponentId": "lawson",
+          "points": 11
+        },
+        {
+          "opponentId": "stroll",
+          "points": 15
+        },
+        {
+          "opponentId": "tsunoda",
+          "points": 15
+        },
+        {
+          "opponentId": "ocon",
+          "points": 15
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "albon",
+      "position": 10,
+      "nextSlotIndex": 28,
+      "mustOutscoreBy": [
         {
           "opponentId": "hulkenberg",
           "points": 2
@@ -635,53 +673,15 @@
           "points": 11
         },
         {
-          "opponentId": "ocon",
-          "points": 15
-        },
-        {
           "opponentId": "stroll",
           "points": 15
         },
         {
           "opponentId": "tsunoda",
           "points": 15
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "albon",
-      "position": 10,
-      "nextSlotIndex": 28,
-      "mustOutscoreBy": [
-        {
-          "opponentId": "sainz",
-          "points": 2
-        }
-      ],
-      "cannotBeOutscoredByMoreThan": [
-        {
-          "opponentId": "alonso",
-          "points": 5
-        },
-        {
-          "opponentId": "bearman",
-          "points": 6
-        },
-        {
-          "opponentId": "lawson",
-          "points": 11
         },
         {
           "opponentId": "ocon",
-          "points": 15
-        },
-        {
-          "opponentId": "stroll",
-          "points": 15
-        },
-        {
-          "opponentId": "tsunoda",
           "points": 15
         }
       ]
@@ -706,15 +706,15 @@
           "points": 11
         },
         {
-          "opponentId": "ocon",
-          "points": 15
-        },
-        {
           "opponentId": "stroll",
           "points": 15
         },
         {
           "opponentId": "tsunoda",
+          "points": 15
+        },
+        {
+          "opponentId": "ocon",
           "points": 15
         }
       ]
@@ -735,15 +735,15 @@
           "points": 11
         },
         {
-          "opponentId": "ocon",
-          "points": 15
-        },
-        {
           "opponentId": "stroll",
           "points": 15
         },
         {
           "opponentId": "tsunoda",
+          "points": 15
+        },
+        {
+          "opponentId": "ocon",
           "points": 15
         }
       ]
@@ -760,15 +760,15 @@
           "points": 11
         },
         {
-          "opponentId": "ocon",
-          "points": 15
-        },
-        {
           "opponentId": "stroll",
           "points": 15
         },
         {
           "opponentId": "tsunoda",
+          "points": 15
+        },
+        {
+          "opponentId": "ocon",
           "points": 15
         }
       ]
@@ -781,9 +781,26 @@
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
-          "opponentId": "ocon",
+          "opponentId": "stroll",
           "points": 15
         },
+        {
+          "opponentId": "tsunoda",
+          "points": 15
+        },
+        {
+          "opponentId": "ocon",
+          "points": 15
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "albon",
+      "position": 15,
+      "nextSlotIndex": 28,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [
         {
           "opponentId": "stroll",
           "points": 15
@@ -797,29 +814,12 @@
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "albon",
-      "position": 15,
-      "nextSlotIndex": 28,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [
-        {
-          "opponentId": "ocon",
-          "points": 15
-        },
-        {
-          "opponentId": "stroll",
-          "points": 15
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "albon",
       "position": 16,
       "nextSlotIndex": 28,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
-          "opponentId": "ocon",
+          "opponentId": "stroll",
           "points": 15
         }
       ]
@@ -837,11 +837,11 @@
       "nextSlotIndex": 28,
       "mustOutscoreBy": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 24
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 24
         },
         {
@@ -857,15 +857,15 @@
           "points": 11
         },
         {
-          "opponentId": "ocon",
-          "points": 7
-        },
-        {
           "opponentId": "stroll",
           "points": 7
         },
         {
           "opponentId": "tsunoda",
+          "points": 7
+        },
+        {
+          "opponentId": "ocon",
           "points": 7
         }
       ],
@@ -887,7 +887,7 @@
       "nextSlotIndex": 28,
       "mustOutscoreBy": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 24
         },
         {
@@ -903,15 +903,15 @@
           "points": 11
         },
         {
-          "opponentId": "ocon",
-          "points": 7
-        },
-        {
           "opponentId": "stroll",
           "points": 7
         },
         {
           "opponentId": "tsunoda",
+          "points": 7
+        },
+        {
+          "opponentId": "ocon",
           "points": 7
         }
       ],
@@ -945,15 +945,15 @@
           "points": 11
         },
         {
-          "opponentId": "ocon",
-          "points": 7
-        },
-        {
           "opponentId": "stroll",
           "points": 7
         },
         {
           "opponentId": "tsunoda",
+          "points": 7
+        },
+        {
+          "opponentId": "ocon",
           "points": 7
         }
       ],
@@ -983,15 +983,15 @@
           "points": 11
         },
         {
-          "opponentId": "ocon",
-          "points": 7
-        },
-        {
           "opponentId": "stroll",
           "points": 7
         },
         {
           "opponentId": "tsunoda",
+          "points": 7
+        },
+        {
+          "opponentId": "ocon",
           "points": 7
         }
       ],
@@ -1017,15 +1017,15 @@
           "points": 11
         },
         {
-          "opponentId": "ocon",
-          "points": 7
-        },
-        {
           "opponentId": "stroll",
           "points": 7
         },
         {
           "opponentId": "tsunoda",
+          "points": 7
+        },
+        {
+          "opponentId": "ocon",
           "points": 7
         }
       ],
@@ -1047,9 +1047,35 @@
       "nextSlotIndex": 28,
       "mustOutscoreBy": [
         {
-          "opponentId": "ocon",
+          "opponentId": "stroll",
           "points": 7
         },
+        {
+          "opponentId": "tsunoda",
+          "points": 7
+        },
+        {
+          "opponentId": "ocon",
+          "points": 7
+        }
+      ],
+      "cannotBeOutscoredByMoreThan": [
+        {
+          "opponentId": "gasly",
+          "points": 3
+        },
+        {
+          "opponentId": "bortoleto",
+          "points": 6
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "hadjar",
+      "position": 15,
+      "nextSlotIndex": 28,
+      "mustOutscoreBy": [
         {
           "opponentId": "stroll",
           "points": 7
@@ -1073,37 +1099,11 @@
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "hadjar",
-      "position": 15,
-      "nextSlotIndex": 28,
-      "mustOutscoreBy": [
-        {
-          "opponentId": "ocon",
-          "points": 7
-        },
-        {
-          "opponentId": "stroll",
-          "points": 7
-        }
-      ],
-      "cannotBeOutscoredByMoreThan": [
-        {
-          "opponentId": "gasly",
-          "points": 3
-        },
-        {
-          "opponentId": "bortoleto",
-          "points": 6
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "hadjar",
       "position": 16,
       "nextSlotIndex": 28,
       "mustOutscoreBy": [
         {
-          "opponentId": "ocon",
+          "opponentId": "stroll",
           "points": 7
         }
       ],
@@ -1192,15 +1192,15 @@
           "points": 13
         },
         {
-          "opponentId": "ocon",
-          "points": 9
-        },
-        {
           "opponentId": "stroll",
           "points": 9
         },
         {
           "opponentId": "tsunoda",
+          "points": 9
+        },
+        {
+          "opponentId": "ocon",
           "points": 9
         }
       ],
@@ -1238,15 +1238,15 @@
           "points": 13
         },
         {
-          "opponentId": "ocon",
-          "points": 9
-        },
-        {
           "opponentId": "stroll",
           "points": 9
         },
         {
           "opponentId": "tsunoda",
+          "points": 9
+        },
+        {
+          "opponentId": "ocon",
           "points": 9
         }
       ],
@@ -1280,15 +1280,15 @@
           "points": 13
         },
         {
-          "opponentId": "ocon",
-          "points": 9
-        },
-        {
           "opponentId": "stroll",
           "points": 9
         },
         {
           "opponentId": "tsunoda",
+          "points": 9
+        },
+        {
+          "opponentId": "ocon",
           "points": 9
         }
       ],
@@ -1318,9 +1318,43 @@
       "nextSlotIndex": 28,
       "mustOutscoreBy": [
         {
-          "opponentId": "ocon",
+          "opponentId": "stroll",
           "points": 9
         },
+        {
+          "opponentId": "tsunoda",
+          "points": 9
+        },
+        {
+          "opponentId": "ocon",
+          "points": 9
+        }
+      ],
+      "cannotBeOutscoredByMoreThan": [
+        {
+          "opponentId": "gasly",
+          "points": 1
+        },
+        {
+          "opponentId": "bortoleto",
+          "points": 4
+        },
+        {
+          "opponentId": "doohan",
+          "points": 23
+        },
+        {
+          "opponentId": "colapinto",
+          "points": 23
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "sainz",
+      "position": 15,
+      "nextSlotIndex": 28,
+      "mustOutscoreBy": [
         {
           "opponentId": "stroll",
           "points": 9
@@ -1352,45 +1386,11 @@
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "sainz",
-      "position": 15,
-      "nextSlotIndex": 28,
-      "mustOutscoreBy": [
-        {
-          "opponentId": "ocon",
-          "points": 9
-        },
-        {
-          "opponentId": "stroll",
-          "points": 9
-        }
-      ],
-      "cannotBeOutscoredByMoreThan": [
-        {
-          "opponentId": "gasly",
-          "points": 1
-        },
-        {
-          "opponentId": "bortoleto",
-          "points": 4
-        },
-        {
-          "opponentId": "doohan",
-          "points": 23
-        },
-        {
-          "opponentId": "colapinto",
-          "points": 23
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "sainz",
       "position": 16,
       "nextSlotIndex": 28,
       "mustOutscoreBy": [
         {
-          "opponentId": "ocon",
+          "opponentId": "stroll",
           "points": 9
         }
       ],
@@ -1562,15 +1562,15 @@
           "points": 13
         },
         {
-          "opponentId": "ocon",
-          "points": 9
-        },
-        {
           "opponentId": "stroll",
           "points": 9
         },
         {
           "opponentId": "tsunoda",
+          "points": 9
+        },
+        {
+          "opponentId": "ocon",
           "points": 9
         }
       ],
@@ -1608,15 +1608,15 @@
           "points": 13
         },
         {
-          "opponentId": "ocon",
-          "points": 9
-        },
-        {
           "opponentId": "stroll",
           "points": 9
         },
         {
           "opponentId": "tsunoda",
+          "points": 9
+        },
+        {
+          "opponentId": "ocon",
           "points": 9
         }
       ],
@@ -1650,15 +1650,15 @@
           "points": 13
         },
         {
-          "opponentId": "ocon",
-          "points": 9
-        },
-        {
           "opponentId": "stroll",
           "points": 9
         },
         {
           "opponentId": "tsunoda",
+          "points": 9
+        },
+        {
+          "opponentId": "ocon",
           "points": 9
         }
       ],
@@ -1688,9 +1688,43 @@
       "nextSlotIndex": 28,
       "mustOutscoreBy": [
         {
-          "opponentId": "ocon",
+          "opponentId": "stroll",
           "points": 9
         },
+        {
+          "opponentId": "tsunoda",
+          "points": 9
+        },
+        {
+          "opponentId": "ocon",
+          "points": 9
+        }
+      ],
+      "cannotBeOutscoredByMoreThan": [
+        {
+          "opponentId": "gasly",
+          "points": 1
+        },
+        {
+          "opponentId": "bortoleto",
+          "points": 4
+        },
+        {
+          "opponentId": "doohan",
+          "points": 23
+        },
+        {
+          "opponentId": "colapinto",
+          "points": 23
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "hulkenberg",
+      "position": 15,
+      "nextSlotIndex": 28,
+      "mustOutscoreBy": [
         {
           "opponentId": "stroll",
           "points": 9
@@ -1722,45 +1756,11 @@
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "hulkenberg",
-      "position": 15,
-      "nextSlotIndex": 28,
-      "mustOutscoreBy": [
-        {
-          "opponentId": "ocon",
-          "points": 9
-        },
-        {
-          "opponentId": "stroll",
-          "points": 9
-        }
-      ],
-      "cannotBeOutscoredByMoreThan": [
-        {
-          "opponentId": "gasly",
-          "points": 1
-        },
-        {
-          "opponentId": "bortoleto",
-          "points": 4
-        },
-        {
-          "opponentId": "doohan",
-          "points": 23
-        },
-        {
-          "opponentId": "colapinto",
-          "points": 23
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "hulkenberg",
       "position": 16,
       "nextSlotIndex": 28,
       "mustOutscoreBy": [
         {
-          "opponentId": "ocon",
+          "opponentId": "stroll",
           "points": 9
         }
       ],
@@ -1928,15 +1928,15 @@
           "points": 20
         },
         {
-          "opponentId": "ocon",
-          "points": 16
-        },
-        {
           "opponentId": "stroll",
           "points": 16
         },
         {
           "opponentId": "tsunoda",
+          "points": 16
+        },
+        {
+          "opponentId": "ocon",
           "points": 16
         },
         {
@@ -1970,15 +1970,15 @@
           "points": 20
         },
         {
-          "opponentId": "ocon",
-          "points": 16
-        },
-        {
           "opponentId": "stroll",
           "points": 16
         },
         {
           "opponentId": "tsunoda",
+          "points": 16
+        },
+        {
+          "opponentId": "ocon",
           "points": 16
         },
         {
@@ -2008,9 +2008,43 @@
       "nextSlotIndex": 28,
       "mustOutscoreBy": [
         {
+          "opponentId": "stroll",
+          "points": 16
+        },
+        {
+          "opponentId": "tsunoda",
+          "points": 16
+        },
+        {
           "opponentId": "ocon",
           "points": 16
         },
+        {
+          "opponentId": "gasly",
+          "points": 6
+        },
+        {
+          "opponentId": "bortoleto",
+          "points": 3
+        }
+      ],
+      "cannotBeOutscoredByMoreThan": [
+        {
+          "opponentId": "doohan",
+          "points": 16
+        },
+        {
+          "opponentId": "colapinto",
+          "points": 16
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "alonso",
+      "position": 15,
+      "nextSlotIndex": 28,
+      "mustOutscoreBy": [
         {
           "opponentId": "stroll",
           "points": 16
@@ -2042,45 +2076,11 @@
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "alonso",
-      "position": 15,
-      "nextSlotIndex": 28,
-      "mustOutscoreBy": [
-        {
-          "opponentId": "ocon",
-          "points": 16
-        },
-        {
-          "opponentId": "stroll",
-          "points": 16
-        },
-        {
-          "opponentId": "gasly",
-          "points": 6
-        },
-        {
-          "opponentId": "bortoleto",
-          "points": 3
-        }
-      ],
-      "cannotBeOutscoredByMoreThan": [
-        {
-          "opponentId": "doohan",
-          "points": 16
-        },
-        {
-          "opponentId": "colapinto",
-          "points": 16
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "alonso",
       "position": 16,
       "nextSlotIndex": 28,
       "mustOutscoreBy": [
         {
-          "opponentId": "ocon",
+          "opponentId": "stroll",
           "points": 16
         },
         {
@@ -2219,7 +2219,7 @@
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 19
         },
         {
@@ -2241,11 +2241,11 @@
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 19
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 19
         },
         {
@@ -2301,15 +2301,15 @@
           "points": 21
         },
         {
-          "opponentId": "ocon",
-          "points": 17
-        },
-        {
           "opponentId": "stroll",
           "points": 17
         },
         {
           "opponentId": "tsunoda",
+          "points": 17
+        },
+        {
+          "opponentId": "ocon",
           "points": 17
         },
         {
@@ -2339,9 +2339,43 @@
       "nextSlotIndex": 28,
       "mustOutscoreBy": [
         {
+          "opponentId": "stroll",
+          "points": 17
+        },
+        {
+          "opponentId": "tsunoda",
+          "points": 17
+        },
+        {
           "opponentId": "ocon",
           "points": 17
         },
+        {
+          "opponentId": "gasly",
+          "points": 7
+        },
+        {
+          "opponentId": "bortoleto",
+          "points": 4
+        }
+      ],
+      "cannotBeOutscoredByMoreThan": [
+        {
+          "opponentId": "doohan",
+          "points": 15
+        },
+        {
+          "opponentId": "colapinto",
+          "points": 15
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "bearman",
+      "position": 15,
+      "nextSlotIndex": 28,
+      "mustOutscoreBy": [
         {
           "opponentId": "stroll",
           "points": 17
@@ -2373,45 +2407,11 @@
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "bearman",
-      "position": 15,
-      "nextSlotIndex": 28,
-      "mustOutscoreBy": [
-        {
-          "opponentId": "ocon",
-          "points": 17
-        },
-        {
-          "opponentId": "stroll",
-          "points": 17
-        },
-        {
-          "opponentId": "gasly",
-          "points": 7
-        },
-        {
-          "opponentId": "bortoleto",
-          "points": 4
-        }
-      ],
-      "cannotBeOutscoredByMoreThan": [
-        {
-          "opponentId": "doohan",
-          "points": 15
-        },
-        {
-          "opponentId": "colapinto",
-          "points": 15
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "bearman",
       "position": 16,
       "nextSlotIndex": 28,
       "mustOutscoreBy": [
         {
-          "opponentId": "ocon",
+          "opponentId": "stroll",
           "points": 17
         },
         {
@@ -2550,7 +2550,7 @@
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 18
         },
         {
@@ -2572,11 +2572,11 @@
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 18
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 18
         },
         {
@@ -2602,11 +2602,11 @@
           "points": 25
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 18
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 18
         },
         {
@@ -2664,9 +2664,43 @@
       "nextSlotIndex": 28,
       "mustOutscoreBy": [
         {
+          "opponentId": "stroll",
+          "points": 22
+        },
+        {
+          "opponentId": "tsunoda",
+          "points": 22
+        },
+        {
           "opponentId": "ocon",
           "points": 22
         },
+        {
+          "opponentId": "gasly",
+          "points": 12
+        },
+        {
+          "opponentId": "bortoleto",
+          "points": 9
+        }
+      ],
+      "cannotBeOutscoredByMoreThan": [
+        {
+          "opponentId": "doohan",
+          "points": 10
+        },
+        {
+          "opponentId": "colapinto",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "lawson",
+      "position": 15,
+      "nextSlotIndex": 28,
+      "mustOutscoreBy": [
         {
           "opponentId": "stroll",
           "points": 22
@@ -2698,45 +2732,11 @@
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "lawson",
-      "position": 15,
-      "nextSlotIndex": 28,
-      "mustOutscoreBy": [
-        {
-          "opponentId": "ocon",
-          "points": 22
-        },
-        {
-          "opponentId": "stroll",
-          "points": 22
-        },
-        {
-          "opponentId": "gasly",
-          "points": 12
-        },
-        {
-          "opponentId": "bortoleto",
-          "points": 9
-        }
-      ],
-      "cannotBeOutscoredByMoreThan": [
-        {
-          "opponentId": "doohan",
-          "points": 10
-        },
-        {
-          "opponentId": "colapinto",
-          "points": 10
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "lawson",
       "position": 16,
       "nextSlotIndex": 28,
       "mustOutscoreBy": [
         {
-          "opponentId": "ocon",
+          "opponentId": "stroll",
           "points": 22
         },
         {
@@ -2875,7 +2875,7 @@
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 13
         },
         {
@@ -2897,11 +2897,11 @@
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 13
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 13
         },
         {
@@ -2927,11 +2927,11 @@
           "points": 20
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 13
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 13
         },
         {
@@ -2961,11 +2961,11 @@
           "points": 20
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 13
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 13
         },
         {
@@ -3138,7 +3138,7 @@
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 9
         },
         {
@@ -3160,11 +3160,11 @@
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 9
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 9
         },
         {
@@ -3190,11 +3190,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 9
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 9
         },
         {
@@ -3224,11 +3224,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 9
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 9
         },
         {
@@ -3262,11 +3262,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 9
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 9
         },
         {
@@ -3457,7 +3457,7 @@
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 9
         },
         {
@@ -3479,11 +3479,11 @@
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 9
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 9
         },
         {
@@ -3509,11 +3509,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 9
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 9
         },
         {
@@ -3543,11 +3543,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 9
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 9
         },
         {
@@ -3581,11 +3581,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 9
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 9
         },
         {
@@ -3776,7 +3776,7 @@
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 9
         },
         {
@@ -3798,11 +3798,11 @@
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 9
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 9
         },
         {
@@ -3828,11 +3828,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 9
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 9
         },
         {
@@ -3862,11 +3862,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 9
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 9
         },
         {
@@ -3900,11 +3900,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 9
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 9
         },
         {
@@ -4051,7 +4051,7 @@
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 1
         },
         {
@@ -4068,11 +4068,11 @@
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 1
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 1
         },
         {
@@ -4094,11 +4094,11 @@
       ],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 1
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 1
         },
         {
@@ -4124,11 +4124,11 @@
       ],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 1
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 1
         },
         {
@@ -4158,11 +4158,11 @@
       ],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 1
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 1
         },
         {
@@ -4177,48 +4177,6 @@
       "position": 15,
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
-        {
-          "opponentId": "ocon",
-          "points": 16
-        },
-        {
-          "opponentId": "lawson",
-          "points": 12
-        },
-        {
-          "opponentId": "bearman",
-          "points": 7
-        },
-        {
-          "opponentId": "alonso",
-          "points": 6
-        }
-      ],
-      "cannotOutscoreByMoreThan": [
-        {
-          "opponentId": "sainz",
-          "points": 1
-        },
-        {
-          "opponentId": "hulkenberg",
-          "points": 1
-        },
-        {
-          "opponentId": "hadjar",
-          "points": 3
-        }
-      ]
-    },
-    {
-      "type": "can_be_ruled_out_next_race",
-      "entityId": "gasly",
-      "position": 16,
-      "nextSlotIndex": 28,
-      "mustBeOutscoredBy": [
-        {
-          "opponentId": "ocon",
-          "points": 16
-        },
         {
           "opponentId": "stroll",
           "points": 16
@@ -4238,11 +4196,11 @@
       ],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 1
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 1
         },
         {
@@ -4254,13 +4212,9 @@
     {
       "type": "can_be_ruled_out_next_race",
       "entityId": "gasly",
-      "position": 17,
+      "position": 16,
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
-        {
-          "opponentId": "ocon",
-          "points": 16
-        },
         {
           "opponentId": "stroll",
           "points": 16
@@ -4284,11 +4238,57 @@
       ],
       "cannotOutscoreByMoreThan": [
         {
+          "opponentId": "hulkenberg",
+          "points": 1
+        },
+        {
           "opponentId": "sainz",
           "points": 1
         },
         {
+          "opponentId": "hadjar",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "type": "can_be_ruled_out_next_race",
+      "entityId": "gasly",
+      "position": 17,
+      "nextSlotIndex": 28,
+      "mustBeOutscoredBy": [
+        {
+          "opponentId": "stroll",
+          "points": 16
+        },
+        {
+          "opponentId": "tsunoda",
+          "points": 16
+        },
+        {
+          "opponentId": "ocon",
+          "points": 16
+        },
+        {
+          "opponentId": "lawson",
+          "points": 12
+        },
+        {
+          "opponentId": "bearman",
+          "points": 7
+        },
+        {
+          "opponentId": "alonso",
+          "points": 6
+        }
+      ],
+      "cannotOutscoreByMoreThan": [
+        {
           "opponentId": "hulkenberg",
+          "points": 1
+        },
+        {
+          "opponentId": "sainz",
           "points": 1
         },
         {
@@ -4408,7 +4408,7 @@
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 4
         },
         {
@@ -4425,11 +4425,11 @@
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 4
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 4
         },
         {
@@ -4451,11 +4451,11 @@
       ],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 4
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 4
         },
         {
@@ -4481,11 +4481,11 @@
       ],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 4
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 4
         },
         {
@@ -4515,11 +4515,11 @@
       ],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 4
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 4
         },
         {
@@ -4534,48 +4534,6 @@
       "position": 15,
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
-        {
-          "opponentId": "ocon",
-          "points": 13
-        },
-        {
-          "opponentId": "lawson",
-          "points": 9
-        },
-        {
-          "opponentId": "bearman",
-          "points": 4
-        },
-        {
-          "opponentId": "alonso",
-          "points": 3
-        }
-      ],
-      "cannotOutscoreByMoreThan": [
-        {
-          "opponentId": "sainz",
-          "points": 4
-        },
-        {
-          "opponentId": "hulkenberg",
-          "points": 4
-        },
-        {
-          "opponentId": "hadjar",
-          "points": 6
-        }
-      ]
-    },
-    {
-      "type": "can_be_ruled_out_next_race",
-      "entityId": "bortoleto",
-      "position": 16,
-      "nextSlotIndex": 28,
-      "mustBeOutscoredBy": [
-        {
-          "opponentId": "ocon",
-          "points": 13
-        },
         {
           "opponentId": "stroll",
           "points": 13
@@ -4595,11 +4553,11 @@
       ],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 4
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 4
         },
         {
@@ -4611,13 +4569,9 @@
     {
       "type": "can_be_ruled_out_next_race",
       "entityId": "bortoleto",
-      "position": 17,
+      "position": 16,
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [
-        {
-          "opponentId": "ocon",
-          "points": 13
-        },
         {
           "opponentId": "stroll",
           "points": 13
@@ -4641,11 +4595,57 @@
       ],
       "cannotOutscoreByMoreThan": [
         {
+          "opponentId": "hulkenberg",
+          "points": 4
+        },
+        {
           "opponentId": "sainz",
           "points": 4
         },
         {
+          "opponentId": "hadjar",
+          "points": 6
+        }
+      ]
+    },
+    {
+      "type": "can_be_ruled_out_next_race",
+      "entityId": "bortoleto",
+      "position": 17,
+      "nextSlotIndex": 28,
+      "mustBeOutscoredBy": [
+        {
+          "opponentId": "stroll",
+          "points": 13
+        },
+        {
+          "opponentId": "tsunoda",
+          "points": 13
+        },
+        {
+          "opponentId": "ocon",
+          "points": 13
+        },
+        {
+          "opponentId": "lawson",
+          "points": 9
+        },
+        {
+          "opponentId": "bearman",
+          "points": 4
+        },
+        {
+          "opponentId": "alonso",
+          "points": 3
+        }
+      ],
+      "cannotOutscoreByMoreThan": [
+        {
           "opponentId": "hulkenberg",
+          "points": 4
+        },
+        {
+          "opponentId": "sainz",
           "points": 4
         },
         {
@@ -4665,15 +4665,15 @@
           "points": 23
         },
         {
-          "opponentId": "ocon",
-          "points": 13
-        },
-        {
           "opponentId": "stroll",
           "points": 13
         },
         {
           "opponentId": "tsunoda",
+          "points": 13
+        },
+        {
+          "opponentId": "ocon",
           "points": 13
         },
         {
@@ -4691,11 +4691,11 @@
       ],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 4
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 4
         },
         {
@@ -4778,7 +4778,7 @@
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         }
       ]
@@ -4791,11 +4791,11 @@
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 23
         }
       ]
@@ -4812,11 +4812,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 23
         }
       ]
@@ -4837,11 +4837,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 23
         }
       ]
@@ -4866,11 +4866,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 23
         }
       ]
@@ -4882,43 +4882,6 @@
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
-        {
-          "opponentId": "ocon",
-          "points": 6
-        },
-        {
-          "opponentId": "lawson",
-          "points": 10
-        },
-        {
-          "opponentId": "bearman",
-          "points": 15
-        },
-        {
-          "opponentId": "alonso",
-          "points": 16
-        },
-        {
-          "opponentId": "sainz",
-          "points": 23
-        },
-        {
-          "opponentId": "hulkenberg",
-          "points": 23
-        }
-      ]
-    },
-    {
-      "type": "can_be_ruled_out_next_race",
-      "entityId": "colapinto",
-      "position": 16,
-      "nextSlotIndex": 28,
-      "mustBeOutscoredBy": [],
-      "cannotOutscoreByMoreThan": [
-        {
-          "opponentId": "ocon",
-          "points": 6
-        },
         {
           "opponentId": "stroll",
           "points": 6
@@ -4936,11 +4899,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 23
         }
       ]
@@ -4948,14 +4911,10 @@
     {
       "type": "can_be_ruled_out_next_race",
       "entityId": "colapinto",
-      "position": 17,
+      "position": 16,
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
-        {
-          "opponentId": "ocon",
-          "points": 6
-        },
         {
           "opponentId": "stroll",
           "points": 6
@@ -4977,11 +4936,52 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
+          "opponentId": "sainz",
+          "points": 23
+        }
+      ]
+    },
+    {
+      "type": "can_be_ruled_out_next_race",
+      "entityId": "colapinto",
+      "position": 17,
+      "nextSlotIndex": 28,
+      "mustBeOutscoredBy": [],
+      "cannotOutscoreByMoreThan": [
+        {
+          "opponentId": "stroll",
+          "points": 6
+        },
+        {
+          "opponentId": "tsunoda",
+          "points": 6
+        },
+        {
+          "opponentId": "ocon",
+          "points": 6
+        },
+        {
+          "opponentId": "lawson",
+          "points": 10
+        },
+        {
+          "opponentId": "bearman",
+          "points": 15
+        },
+        {
+          "opponentId": "alonso",
+          "points": 16
+        },
+        {
           "opponentId": "hulkenberg",
+          "points": 23
+        },
+        {
+          "opponentId": "sainz",
           "points": 23
         }
       ]
@@ -4999,15 +4999,15 @@
       ],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "ocon",
-          "points": 6
-        },
-        {
           "opponentId": "stroll",
           "points": 6
         },
         {
           "opponentId": "tsunoda",
+          "points": 6
+        },
+        {
+          "opponentId": "ocon",
           "points": 6
         },
         {
@@ -5023,11 +5023,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 23
         }
       ]
@@ -5049,15 +5049,15 @@
       ],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "ocon",
-          "points": 6
-        },
-        {
           "opponentId": "stroll",
           "points": 6
         },
         {
           "opponentId": "tsunoda",
+          "points": 6
+        },
+        {
+          "opponentId": "ocon",
           "points": 6
         },
         {
@@ -5073,11 +5073,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 23
         }
       ]
@@ -5162,7 +5162,7 @@
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         }
       ]
@@ -5175,11 +5175,11 @@
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 23
         }
       ]
@@ -5196,11 +5196,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 23
         }
       ]
@@ -5221,11 +5221,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 23
         }
       ]
@@ -5250,11 +5250,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 23
         }
       ]
@@ -5266,43 +5266,6 @@
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
-        {
-          "opponentId": "ocon",
-          "points": 6
-        },
-        {
-          "opponentId": "lawson",
-          "points": 10
-        },
-        {
-          "opponentId": "bearman",
-          "points": 15
-        },
-        {
-          "opponentId": "alonso",
-          "points": 16
-        },
-        {
-          "opponentId": "sainz",
-          "points": 23
-        },
-        {
-          "opponentId": "hulkenberg",
-          "points": 23
-        }
-      ]
-    },
-    {
-      "type": "can_be_ruled_out_next_race",
-      "entityId": "doohan",
-      "position": 16,
-      "nextSlotIndex": 28,
-      "mustBeOutscoredBy": [],
-      "cannotOutscoreByMoreThan": [
-        {
-          "opponentId": "ocon",
-          "points": 6
-        },
         {
           "opponentId": "stroll",
           "points": 6
@@ -5320,11 +5283,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 23
         }
       ]
@@ -5332,14 +5295,10 @@
     {
       "type": "can_be_ruled_out_next_race",
       "entityId": "doohan",
-      "position": 17,
+      "position": 16,
       "nextSlotIndex": 28,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
-        {
-          "opponentId": "ocon",
-          "points": 6
-        },
         {
           "opponentId": "stroll",
           "points": 6
@@ -5361,11 +5320,52 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
+          "opponentId": "sainz",
+          "points": 23
+        }
+      ]
+    },
+    {
+      "type": "can_be_ruled_out_next_race",
+      "entityId": "doohan",
+      "position": 17,
+      "nextSlotIndex": 28,
+      "mustBeOutscoredBy": [],
+      "cannotOutscoreByMoreThan": [
+        {
+          "opponentId": "stroll",
+          "points": 6
+        },
+        {
+          "opponentId": "tsunoda",
+          "points": 6
+        },
+        {
+          "opponentId": "ocon",
+          "points": 6
+        },
+        {
+          "opponentId": "lawson",
+          "points": 10
+        },
+        {
+          "opponentId": "bearman",
+          "points": 15
+        },
+        {
+          "opponentId": "alonso",
+          "points": 16
+        },
+        {
           "opponentId": "hulkenberg",
+          "points": 23
+        },
+        {
+          "opponentId": "sainz",
           "points": 23
         }
       ]
@@ -5383,15 +5383,15 @@
       ],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "ocon",
-          "points": 6
-        },
-        {
           "opponentId": "stroll",
           "points": 6
         },
         {
           "opponentId": "tsunoda",
+          "points": 6
+        },
+        {
+          "opponentId": "ocon",
           "points": 6
         },
         {
@@ -5407,11 +5407,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 23
         }
       ]
@@ -5433,15 +5433,15 @@
       ],
       "cannotOutscoreByMoreThan": [
         {
-          "opponentId": "ocon",
-          "points": 6
-        },
-        {
           "opponentId": "stroll",
           "points": 6
         },
         {
           "opponentId": "tsunoda",
+          "points": 6
+        },
+        {
+          "opponentId": "ocon",
           "points": 6
         },
         {
@@ -5457,11 +5457,11 @@
           "points": 16
         },
         {
-          "opponentId": "sainz",
+          "opponentId": "hulkenberg",
           "points": 23
         },
         {
-          "opponentId": "hulkenberg",
+          "opponentId": "sainz",
           "points": 23
         }
       ]

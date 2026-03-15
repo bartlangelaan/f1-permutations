@@ -492,7 +492,7 @@ export function computeLockInsightsForSelectedSlot(
   return insights;
 }
 
-export function buildSeasonChartData(year: number): SeasonChartData {
+export function buildSeasonChartData(year: number, upToSlotIdx?: number): SeasonChartData {
   const races = getRaces(year);
 
   // Build ordered event slots from normalized race data.
@@ -519,6 +519,11 @@ export function buildSeasonChartData(year: number): SeasonChartData {
     };
   });
 
+  // When upToSlotIdx is provided, only accumulate results up to that slot index.
+  // Slots beyond that cutoff are treated as not yet completed (null snapshots),
+  // ensuring that drivers/constructors from future races do not appear in earlier calculations.
+  const cutoff = upToSlotIdx !== undefined ? upToSlotIdx : slots.length - 1;
+
   // Accumulate cumulative points slot-by-slot
   const driverCum = new Map<string, number>();
   const constructorCum = new Map<string, number>();
@@ -533,20 +538,26 @@ export function buildSeasonChartData(year: number): SeasonChartData {
 
   for (let i = 0; i < slots.length; i++) {
     const slot = slots[i];
-    const results = getEventResults(year, i + 1);
 
-    if (results !== null && results.length > 0) {
-      slot.completed = true;
-      lastCompletedSlotIndex = i;
-      for (const r of results) {
-        driverCum.set(r.driverId, (driverCum.get(r.driverId) ?? 0) + r.points);
-        constructorCum.set(r.constructorId, (constructorCum.get(r.constructorId) ?? 0) + r.points);
-        driverNames.set(r.driverId, r.driverName);
-        constructorNames.set(r.constructorId, r.constructorName);
-        driverConstructor.set(r.driverId, r.constructorId);
+    if (i <= cutoff) {
+      const results = getEventResults(year, i + 1);
+
+      if (results !== null && results.length > 0) {
+        slot.completed = true;
+        lastCompletedSlotIndex = i;
+        for (const r of results) {
+          driverCum.set(r.driverId, (driverCum.get(r.driverId) ?? 0) + r.points);
+          constructorCum.set(r.constructorId, (constructorCum.get(r.constructorId) ?? 0) + r.points);
+          driverNames.set(r.driverId, r.driverName);
+          constructorNames.set(r.constructorId, r.constructorName);
+          driverConstructor.set(r.driverId, r.constructorId);
+        }
+        driverSnaps.push(new Map(driverCum));
+        constructorSnaps.push(new Map(constructorCum));
+      } else {
+        driverSnaps.push(null);
+        constructorSnaps.push(null);
       }
-      driverSnaps.push(new Map(driverCum));
-      constructorSnaps.push(new Map(constructorCum));
     } else {
       driverSnaps.push(null);
       constructorSnaps.push(null);

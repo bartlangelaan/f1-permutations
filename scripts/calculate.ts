@@ -14,20 +14,26 @@ console.log(`Processing ${seasons.length} seasons...`);
 
 for (const year of seasons.sort((a, b) => a - b)) {
   process.stdout.write(`  ${year}... `);
-  const data = buildSeasonChartData(year);
 
-  if (data.lastCompletedSlotIndex < 0) {
+  // Build full-season data for the base results file (slots, drivers, constructors sorted by final standings).
+  const fullData = buildSeasonChartData(year);
+
+  if (fullData.lastCompletedSlotIndex < 0) {
     console.log("skipped (no completed races)");
     continue;
   }
 
-  await writeCalculationResults(year, data);
+  await writeCalculationResults(year, fullData);
 
-  for (let selectedIdx = 0; selectedIdx <= data.lastCompletedSlotIndex; selectedIdx++) {
-    const driverProjections = computeProjectionsForSelectedSlot(data, selectedIdx, true);
-    const constructorProjections = computeProjectionsForSelectedSlot(data, selectedIdx, false);
-    const driverLockInsights = computeLockInsightsForSelectedSlot(data, selectedIdx, true);
-    const constructorLockInsights = computeLockInsightsForSelectedSlot(data, selectedIdx, false);
+  // For each completed slot, rebuild chart data up to that slot so that only drivers/constructors
+  // who have actually raced by then are included. This prevents future entrants from appearing
+  // with 0 points in earlier projections and corrupting those results.
+  for (let selectedIdx = 0; selectedIdx <= fullData.lastCompletedSlotIndex; selectedIdx++) {
+    const slotData = buildSeasonChartData(year, selectedIdx);
+    const driverProjections = computeProjectionsForSelectedSlot(slotData, selectedIdx, true);
+    const constructorProjections = computeProjectionsForSelectedSlot(slotData, selectedIdx, false);
+    const driverLockInsights = computeLockInsightsForSelectedSlot(slotData, selectedIdx, true);
+    const constructorLockInsights = computeLockInsightsForSelectedSlot(slotData, selectedIdx, false);
 
     await writeCalculationResultsForSelectedSlot(year, selectedIdx, {
       driverProjections,
