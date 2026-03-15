@@ -492,12 +492,15 @@ export function computeLockInsightsForSelectedSlot(
   return insights;
 }
 
-export function buildSeasonChartData(year: number, upToSlotIdx?: number): SeasonChartData {
+/**
+ * Builds the ordered event slots for a year from the race schedule.
+ * completed reflects whether result data exists for each slot.
+ */
+export function buildSlots(year: number): TimelineSlot[] {
   const races = getRaces(year);
-
-  // Build ordered event slots from normalized race data.
-  const slots: TimelineSlot[] = races.map((race, index) => {
+  return races.map((race, index) => {
     const shortName = race.raceName.replace(" Grand Prix", " GP");
+    const results = getEventResults(year, index + 1);
     return {
       round: race.round,
       type: race.type,
@@ -515,9 +518,15 @@ export function buildSeasonChartData(year: number, upToSlotIdx?: number): Season
           : race.type === "sprint"
             ? maxSprintPointsConstructor(year)
             : maxRacePointsConstructor(year),
-      completed: false,
+      completed: results !== null && results.length > 0,
     };
   });
+}
+
+export function buildSeasonChartData(year: number, upToSlotIdx?: number): SeasonChartData {
+  // Build ordered event slots from normalized race data; completed starts false
+  // and is set to true below as results are accumulated.
+  const slots: TimelineSlot[] = buildSlots(year).map((slot) => ({ ...slot, completed: false }));
 
   // When upToSlotIdx is provided, only accumulate results up to that slot index.
   // Slots beyond that cutoff are treated as not yet completed (null snapshots),

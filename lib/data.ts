@@ -1,6 +1,9 @@
+// This file is responsible only for reading and writing JSON files and listing
+// directories. It must not contain domain logic — keep it as simple I/O.
+
 import fs from "fs-extra";
 import path from "path";
-import type { CalculatedChartData, LockInsight, ProjectionEntry } from "./calculate";
+import type { CalculatedChartData, EntitySeries, LockInsight, ProjectionEntry } from "./calculate";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 
@@ -18,11 +21,6 @@ export interface RaceResult {
   constructorId: string;
   constructorName: string;
 }
-
-export type BaseCalculatedChartData = Omit<
-  CalculatedChartData,
-  "driverProjections" | "constructorProjections" | "driverLockInsights" | "constructorLockInsights"
->;
 
 interface CalculationResultsForSelectedSlot {
   driverProjections: Record<string, Record<string, ProjectionEntry>>;
@@ -43,8 +41,8 @@ function eventResultsFile(year: number, raceNumber: number): string {
   return path.join(seasonDir(year), `results-${raceNumber}.json`);
 }
 
-function calculationResultsFile(year: number): string {
-  return path.join(seasonDir(year), "calculation-results.json");
+function participantsFile(year: number): string {
+  return path.join(seasonDir(year), "participants.json");
 }
 
 function calculationResultsForSelectedSlotFile(year: number, selectedSlotIndex: number): string {
@@ -85,6 +83,22 @@ export async function saveRaces(year: number, races: Race[]): Promise<void> {
 }
 
 /**
+ * Returns the index of the last completed slot based on which per-slot
+ * calculation files exist, or -1 if none.
+ */
+export function getLastCompletedSlotIndex(year: number): number {
+  const dir = seasonDir(year);
+  if (!fs.existsSync(dir)) return -1;
+  const files = fs.readdirSync(dir);
+  let max = -1;
+  for (const f of files) {
+    const m = f.match(/^calculation-results-(\d+)\.json$/);
+    if (m) max = Math.max(max, parseInt(m[1]) - 1);
+  }
+  return max;
+}
+
+/**
  * Returns the results for a specific event raceNumber.
  */
 export function getEventResults(year: number, raceNumber: number): RaceResult[] | null {
@@ -97,15 +111,19 @@ export async function saveEventResults(year: number, raceNumber: number, results
   await fs.outputJson(eventResultsFile(year, raceNumber), results, { spaces: 2 });
 }
 
-
-export function readBaseCalculationResults(year: number): BaseCalculatedChartData | null {
-  const file = calculationResultsFile(year);
-  if (!fs.existsSync(file)) return null;
-  return readJsonFile<BaseCalculatedChartData>(file);
+interface Participants {
+  drivers: EntitySeries[];
+  constructors: EntitySeries[];
 }
 
-export async function saveBaseCalculationResults(year: number, data: BaseCalculatedChartData): Promise<void> {
-  await fs.outputJson(calculationResultsFile(year), data, { spaces: 2 });
+export function readParticipants(year: number): Participants | null {
+  const file = participantsFile(year);
+  if (!fs.existsSync(file)) return null;
+  return readJsonFile<Participants>(file);
+}
+
+export async function saveParticipants(year: number, drivers: EntitySeries[], constructors: EntitySeries[]): Promise<void> {
+  await fs.outputJson(participantsFile(year), { drivers, constructors }, { spaces: 2 });
 }
 
 export function readCalculationResultsForSelectedSlot(

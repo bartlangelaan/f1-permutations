@@ -23,7 +23,7 @@ for (const year of seasons.sort((a, b) => a - b)) {
     continue;
   }
 
-  await writeCalculationResults(year, fullData);
+  await writeCalculationResults(year, fullData.drivers, fullData.constructors);
 
   // For each completed slot, rebuild chart data up to that slot so that only drivers/constructors
   // who have actually raced by then are included. This prevents future entrants from appearing

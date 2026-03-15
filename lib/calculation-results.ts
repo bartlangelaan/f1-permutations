@@ -1,23 +1,27 @@
-import type { CalculatedChartData, LockInsight, ProjectionMap } from "./calculate";
+import type { CalculatedChartData, EntitySeries, LockInsight, ProjectionMap } from "./calculate";
+import { buildSlots } from "./calculate";
 import {
-  readBaseCalculationResults,
+  getLastCompletedSlotIndex,
   readCalculationResultsForSelectedSlot,
+  readParticipants,
   removeCalculationResultsForSeason,
-  saveBaseCalculationResults,
   saveCalculationResultsForSelectedSlot,
-  type BaseCalculatedChartData,
+  saveParticipants,
 } from "./data";
 
 export function readCalculationResults(year: number): CalculatedChartData | null {
-  const baseData = readBaseCalculationResults(year);
-  if (!baseData) return null;
+  const participants = readParticipants(year);
+  if (!participants) return null;
+
+  const slots = buildSlots(year);
+  const lastCompletedSlotIndex = getLastCompletedSlotIndex(year);
 
   const driverProjections: ProjectionMap = {};
   const constructorProjections: ProjectionMap = {};
   const driverLockInsights: Record<string, LockInsight[]> = {};
   const constructorLockInsights: Record<string, LockInsight[]> = {};
 
-  for (let selectedIdx = 0; selectedIdx <= baseData.lastCompletedSlotIndex; selectedIdx++) {
+  for (let selectedIdx = 0; selectedIdx <= lastCompletedSlotIndex; selectedIdx++) {
     const perSlotData = readCalculationResultsForSelectedSlot(year, selectedIdx);
     if (!perSlotData) continue;
 
@@ -28,7 +32,11 @@ export function readCalculationResults(year: number): CalculatedChartData | null
   }
 
   return {
-    ...baseData,
+    year,
+    slots,
+    lastCompletedSlotIndex,
+    drivers: participants.drivers,
+    constructors: participants.constructors,
     driverProjections,
     constructorProjections,
     driverLockInsights,
@@ -36,9 +44,13 @@ export function readCalculationResults(year: number): CalculatedChartData | null
   };
 }
 
-export async function writeCalculationResults(year: number, data: BaseCalculatedChartData): Promise<void> {
+export async function writeCalculationResults(
+  year: number,
+  drivers: EntitySeries[],
+  constructors: EntitySeries[]
+): Promise<void> {
   await removeCalculationResultsForSeason(year);
-  await saveBaseCalculationResults(year, data);
+  await saveParticipants(year, drivers, constructors);
 }
 
 export { saveCalculationResultsForSelectedSlot as writeCalculationResultsForSelectedSlot };
