@@ -49,7 +49,7 @@ function teamColor(constructorId: string, fallbackIdx: number): string {
 }
 
 
-function maxOvertakesSingleDriverSlot(basePts: Map<string, number>, targetId: string, targetMinPts: number, slotPoints: number[]): number {
+function maxOvertakesSingleDriverRace(basePts: Map<string, number>, targetId: string, targetMinPts: number, eventPoints: number[]): number {
   const threshold = targetMinPts + 1;
   const deficits: number[] = [];
   let alreadyAhead = 0;
@@ -59,13 +59,13 @@ function maxOvertakesSingleDriverSlot(basePts: Map<string, number>, targetId: st
     const need = threshold - pts;
     if (need <= 0) {
       alreadyAhead++;
-    } else if (need <= slotPoints[0]) {
+    } else if (need <= eventPoints[0]) {
       deficits.push(need);
     }
   }
 
   deficits.sort((a, b) => a - b);
-  const available = [...slotPoints].sort((a, b) => a - b);
+  const available = [...eventPoints].sort((a, b) => a - b);
 
   let additionalOvertakes = 0;
   let i = 0;
@@ -84,22 +84,22 @@ function maxOvertakesSingleDriverSlot(basePts: Map<string, number>, targetId: st
 }
 
 
-function driverPointsByPositionForSlot(year: number, slot: TimelineSlot): number[] {
-  if (slot.type === "sprint") {
+function driverPointsByPositionForRace(year: number, race: TimelineRace): number[] {
+  if (race.type === "sprint") {
     return sprintDriverPointsByPosition(year);
   }
 
   const baseRacePoints = raceDriverMaxPointsByPosition(year);
   const standardRaceMax = maxRacePointsDriver(year);
-  if (slot.maxDriverPoints === standardRaceMax) {
+  if (race.maxDriverPoints === standardRaceMax) {
     return baseRacePoints;
   }
 
-  const multiplier = slot.maxDriverPoints / standardRaceMax;
+  const multiplier = race.maxDriverPoints / standardRaceMax;
   return baseRacePoints.map((pts) => pts * multiplier);
 }
 
-export interface TimelineSlot {
+export interface TimelineRace {
   round: number;
   type: "sprint" | "race";
   /** Short x-axis label, e.g. "R1" or "S4" */
@@ -115,21 +115,21 @@ export interface EntitySeries {
   id: string;
   name: string;
   color: string;
-  /** cumulativePoints[i] = points after slot i; null if slot not yet run */
+  /** cumulativePoints[i] = points after race i+1 (0-indexed array); null if race not yet run */
   cumulativePoints: (number | null)[];
 }
 
 interface SeasonChartData {
   year: number;
-  slots: TimelineSlot[];
-  /** Index of the last completed slot, -1 if none */
-  lastCompletedSlotIndex: number;
+  races: TimelineRace[];
+  /** 1-based number of the last completed race, 0 if none */
+  lastCompletedRaceNum: number;
   drivers: EntitySeries[];
   constructors: EntitySeries[];
 }
 
 export type ProjectionEntry = { minPts: number; maxPts: number; bestPos: number; worstPos: number | null };
-/** projections[selectedIdx][futureSlotIdx][entityId] */
+/** projections[afterRaceNum][futureRaceNum][entityId] — all race numbers are 1-based */
 export type ProjectionMap = Record<string, Record<string, Record<string, ProjectionEntry>>>;
 
 type LockCondition = {
@@ -147,7 +147,7 @@ export type LockInsight =
       type: "can_be_locked_in_next_race";
       entityId: string;
       position: number;
-      nextSlotIndex: number;
+      nextRaceNum: number;
       mustOutscoreBy: LockCondition[];
       cannotBeOutscoredByMoreThan: LockCondition[];
     }
@@ -155,13 +155,13 @@ export type LockInsight =
       type: "can_be_locked_in_later";
       entityId: string;
       position: number;
-      earliestSlotIndex: number;
+      earliestRaceNum: number;
     }
   | {
       type: "can_be_ruled_out_next_race";
       entityId: string;
       position: number;
-      nextSlotIndex: number;
+      nextRaceNum: number;
       mustBeOutscoredBy: LockCondition[];
       cannotOutscoreByMoreThan: LockCondition[];
     }
@@ -169,10 +169,10 @@ export type LockInsight =
       type: "can_be_ruled_out_later";
       entityId: string;
       position: number;
-      earliestSlotIndex: number;
+      earliestRaceNum: number;
     };
 
-/** lockInsights[selectedIdx] */
+/** lockInsights[afterRaceNum] — race number is 1-based */
 export type LockInsightMap = Record<string, LockInsight[]>;
 
 export interface CalculatedChartData extends SeasonChartData {
@@ -182,15 +182,15 @@ export interface CalculatedChartData extends SeasonChartData {
   constructorLockInsights: LockInsightMap;
 }
 
-function slotMaxPoints(slot: TimelineSlot, isDriver: boolean): number {
-  return isDriver ? slot.maxDriverPoints : slot.maxConstructorPoints;
+function raceMaxPoints(race: TimelineRace, isDriver: boolean): number {
+  return isDriver ? race.maxDriverPoints : race.maxConstructorPoints;
 }
 
-function cumulativeMaxPoints(slots: TimelineSlot[], fromExclusive: number, toInclusive: number, isDriver: boolean): number {
-  if (toInclusive <= fromExclusive) return 0;
+function cumulativeMaxPoints(races: TimelineRace[], fromRaceNum: number, toRaceNum: number, isDriver: boolean): number {
+  if (toRaceNum <= fromRaceNum) return 0;
   let total = 0;
-  for (let i = fromExclusive + 1; i <= toInclusive; i++) {
-    total += slotMaxPoints(slots[i], isDriver);
+  for (let i = fromRaceNum + 1; i <= toRaceNum; i++) {
+    total += raceMaxPoints(races[i - 1], isDriver);
   }
   return total;
 }
@@ -323,23 +323,23 @@ function hasRuleOutConditions(plan: {
   return plan.mustBeOutscoredBy.length > 0 || plan.cannotOutscoreByMoreThan.length > 0;
 }
 
-export function computeLockInsightsForSelectedSlot(
+export function computeLockInsightsForSelectedRace(
   data: SeasonChartData,
-  selectedIdx: number,
+  afterRaceNum: number,
   isDriver: boolean
 ): LockInsight[] {
   const entities = isDriver ? data.drivers : data.constructors;
   const entityIds = entities.map((e) => e.id);
-  const lastSlotIdx = data.slots.length - 1;
-  const nextSlotIdx = selectedIdx + 1;
+  const lastRaceNum = data.races.length;
+  const nextRaceNum = afterRaceNum + 1;
   const insights: LockInsight[] = [];
 
   const basePts = new Map<string, number>();
   for (const entity of entities) {
-    basePts.set(entity.id, entity.cumulativePoints[selectedIdx] ?? 0);
+    basePts.set(entity.id, entity.cumulativePoints[afterRaceNum - 1] ?? 0);
   }
 
-  const endProjections = computeProjectionsForSelectedSlot(data, selectedIdx, isDriver)[lastSlotIdx];
+  const endProjections = computeProjectionsForSelectedRace(data, afterRaceNum, isDriver)[lastRaceNum];
   if (!endProjections) return insights;
 
   const orderedEntities = [...entities].sort((a, b) => {
@@ -366,9 +366,9 @@ export function computeLockInsightsForSelectedSlot(
       continue;
     }
 
-    if (nextSlotIdx <= lastSlotIdx) {
-      const nextHorizonMax = cumulativeMaxPoints(data.slots, selectedIdx, nextSlotIdx, isDriver);
-      const pointsRemainingAfterNext = cumulativeMaxPoints(data.slots, nextSlotIdx, lastSlotIdx, isDriver);
+    if (nextRaceNum <= lastRaceNum) {
+      const nextHorizonMax = cumulativeMaxPoints(data.races, afterRaceNum, nextRaceNum, isDriver);
+      const pointsRemainingAfterNext = cumulativeMaxPoints(data.races, nextRaceNum, lastRaceNum, isDriver);
 
       for (let position = endEntry.bestPos; position <= (endEntry.worstPos ?? entities.length); position++) {
         const nextPlan = findGuaranteePlanForPosition(
@@ -387,7 +387,7 @@ export function computeLockInsightsForSelectedSlot(
           type: "can_be_locked_in_next_race",
           entityId: entity.id,
           position,
-          nextSlotIndex: nextSlotIdx,
+          nextRaceNum,
           mustOutscoreBy: nextPlan.mustOutscoreBy,
           cannotBeOutscoredByMoreThan: nextPlan.cannotBeOutscoredByMoreThan,
         });
@@ -410,7 +410,7 @@ export function computeLockInsightsForSelectedSlot(
           type: "can_be_ruled_out_next_race",
           entityId: entity.id,
           position,
-          nextSlotIndex: nextSlotIdx,
+          nextRaceNum,
           mustBeOutscoredBy: ruleOutPlan.mustBeOutscoredBy,
           cannotOutscoreByMoreThan: ruleOutPlan.cannotOutscoreByMoreThan,
         });
@@ -420,10 +420,10 @@ export function computeLockInsightsForSelectedSlot(
     for (let position = endEntry.bestPos; position <= (endEntry.worstPos ?? entities.length); position++) {
       if (hasInsight(entity.id, position, "can_be_locked_in_next_race")) continue;
 
-      let earliestSlotIndex = -1;
-      for (let slotIdx = selectedIdx + 2; slotIdx <= lastSlotIdx; slotIdx++) {
-        const horizonMax = cumulativeMaxPoints(data.slots, selectedIdx, slotIdx, isDriver);
-        const pointsRemaining = cumulativeMaxPoints(data.slots, slotIdx, lastSlotIdx, isDriver);
+      let earliestRaceNum = 0;
+      for (let raceNum = afterRaceNum + 2; raceNum <= lastRaceNum; raceNum++) {
+        const horizonMax = cumulativeMaxPoints(data.races, afterRaceNum, raceNum, isDriver);
+        const pointsRemaining = cumulativeMaxPoints(data.races, raceNum, lastRaceNum, isDriver);
         const plan = findGuaranteePlanForPosition(
           entity.id,
           position,
@@ -433,20 +433,20 @@ export function computeLockInsightsForSelectedSlot(
           pointsRemaining
         );
         if (plan) {
-          const nextRoundStart = data.slots.findIndex(
-            (slot, idx) => idx > slotIdx && slot.round > data.slots[slotIdx].round
+          const nextRoundStart = data.races.findIndex(
+            (race, idx) => idx + 1 > raceNum && race.round > data.races[raceNum - 1].round
           );
-          earliestSlotIndex = nextRoundStart >= 0 ? nextRoundStart : slotIdx;
+          earliestRaceNum = nextRoundStart >= 0 ? nextRoundStart + 1 : raceNum;
           break;
         }
       }
 
-      if (earliestSlotIndex >= 0) {
+      if (earliestRaceNum > 0) {
         insights.push({
           type: "can_be_locked_in_later",
           entityId: entity.id,
           position,
-          earliestSlotIndex,
+          earliestRaceNum,
         });
       }
     }
@@ -456,10 +456,10 @@ export function computeLockInsightsForSelectedSlot(
       if (hasInsight(entity.id, position, "can_be_locked_in_later")) continue;
       if (hasInsight(entity.id, position, "can_be_ruled_out_next_race")) continue;
 
-      let earliestSlotIndex = -1;
-      for (let slotIdx = selectedIdx + 2; slotIdx <= lastSlotIdx; slotIdx++) {
-        const horizonMax = cumulativeMaxPoints(data.slots, selectedIdx, slotIdx, isDriver);
-        const pointsRemaining = cumulativeMaxPoints(data.slots, slotIdx, lastSlotIdx, isDriver);
+      let earliestRaceNum = 0;
+      for (let raceNum = afterRaceNum + 2; raceNum <= lastRaceNum; raceNum++) {
+        const horizonMax = cumulativeMaxPoints(data.races, afterRaceNum, raceNum, isDriver);
+        const pointsRemaining = cumulativeMaxPoints(data.races, raceNum, lastRaceNum, isDriver);
         const plan = findRuleOutPlanForPosition(
           entity.id,
           position,
@@ -471,19 +471,19 @@ export function computeLockInsightsForSelectedSlot(
         if (!plan) continue;
         if (!hasRuleOutConditions(plan)) continue;
 
-        const nextRoundStart = data.slots.findIndex(
-          (slot, idx) => idx > slotIdx && slot.round > data.slots[slotIdx].round
+        const nextRoundStart = data.races.findIndex(
+          (race, idx) => idx + 1 > raceNum && race.round > data.races[raceNum - 1].round
         );
-        earliestSlotIndex = nextRoundStart >= 0 ? nextRoundStart : slotIdx;
+        earliestRaceNum = nextRoundStart >= 0 ? nextRoundStart + 1 : raceNum;
         break;
       }
 
-      if (earliestSlotIndex >= 0) {
+      if (earliestRaceNum > 0) {
         insights.push({
           type: "can_be_ruled_out_later",
           entityId: entity.id,
           position,
-          earliestSlotIndex,
+          earliestRaceNum,
         });
       }
     }
@@ -493,10 +493,10 @@ export function computeLockInsightsForSelectedSlot(
 }
 
 /**
- * Builds the ordered event slots for a year from the race schedule.
- * completed reflects whether result data exists for each slot.
+ * Builds the ordered timeline races for a year from the race schedule.
+ * completed reflects whether result data exists for each race.
  */
-export function buildSlots(year: number): TimelineSlot[] {
+export function buildRaces(year: number): TimelineRace[] {
   const races = getRaces(year);
   return races.map((race, index) => {
     const shortName = race.raceName.replace(" Grand Prix", " GP");
@@ -523,17 +523,17 @@ export function buildSlots(year: number): TimelineSlot[] {
   });
 }
 
-export function buildSeasonChartData(year: number, upToSlotIdx?: number): SeasonChartData {
-  // Build ordered event slots from normalized race data; completed starts false
+export function buildSeasonChartData(year: number, upToRaceNum?: number): SeasonChartData {
+  // Build ordered timeline races from normalized race data; completed starts false
   // and is set to true below as results are accumulated.
-  const slots: TimelineSlot[] = buildSlots(year).map((slot) => ({ ...slot, completed: false }));
+  const races: TimelineRace[] = buildRaces(year).map((race) => ({ ...race, completed: false }));
 
-  // When upToSlotIdx is provided, only accumulate results up to that slot index.
-  // Slots beyond that cutoff are treated as not yet completed (null snapshots),
+  // When upToRaceNum is provided, only accumulate results up to that race number (1-based).
+  // Races beyond that cutoff are treated as not yet completed (null snapshots),
   // ensuring that drivers/constructors from future races do not appear in earlier calculations.
-  const cutoff = upToSlotIdx !== undefined ? upToSlotIdx : slots.length - 1;
+  const cutoff = upToRaceNum !== undefined ? upToRaceNum : races.length;
 
-  // Accumulate cumulative points slot-by-slot
+  // Accumulate cumulative points race-by-race
   const driverCum = new Map<string, number>();
   const constructorCum = new Map<string, number>();
   const driverNames = new Map<string, string>();
@@ -543,17 +543,18 @@ export function buildSeasonChartData(year: number, upToSlotIdx?: number): Season
 
   const driverSnaps: (Map<string, number> | null)[] = [];
   const constructorSnaps: (Map<string, number> | null)[] = [];
-  let lastCompletedSlotIndex = -1;
+  let lastCompletedRaceNum = 0;
 
-  for (let i = 0; i < slots.length; i++) {
-    const slot = slots[i];
+  for (let i = 0; i < races.length; i++) {
+    const raceNum = i + 1;
+    const race = races[i];
 
-    if (i <= cutoff) {
-      const results = getEventResults(year, i + 1);
+    if (raceNum <= cutoff) {
+      const results = getEventResults(year, raceNum);
 
       if (results !== null && results.length > 0) {
-        slot.completed = true;
-        lastCompletedSlotIndex = i;
+        race.completed = true;
+        lastCompletedRaceNum = raceNum;
         for (const r of results) {
           driverCum.set(r.driverId, (driverCum.get(r.driverId) ?? 0) + r.points);
           constructorCum.set(r.constructorId, (constructorCum.get(r.constructorId) ?? 0) + r.points);
@@ -603,27 +604,27 @@ export function buildSeasonChartData(year: number, upToSlotIdx?: number): Season
     cumulativePoints: constructorSnaps.map((snap) => snap?.get(id) ?? null),
   }));
 
-  return { year, slots, lastCompletedSlotIndex, drivers, constructors };
+  return { year, races, lastCompletedRaceNum, drivers, constructors };
 }
 
-export function computeProjectionsForSelectedSlot(
+export function computeProjectionsForSelectedRace(
   data: SeasonChartData,
-  selectedIdx: number,
+  afterRaceNum: number,
   isDriver: boolean
 ): Record<string, Record<string, ProjectionEntry>> {
-  const { slots } = data;
+  const { races } = data;
   const entities = isDriver ? data.drivers : data.constructors;
-  const projectionsForSelectedIdx: Record<string, Record<string, ProjectionEntry>> = {};
+  const projectionsForRaceNum: Record<string, Record<string, ProjectionEntry>> = {};
 
   const basePts = new Map<string, number>();
   for (const e of entities) {
-    basePts.set(e.id, e.cumulativePoints[selectedIdx] ?? 0);
+    basePts.set(e.id, e.cumulativePoints[afterRaceNum - 1] ?? 0);
   }
 
   let cumulativeMax = 0;
-  for (let j = selectedIdx + 1; j < slots.length; j++) {
-    const slot = slots[j];
-    cumulativeMax += isDriver ? slot.maxDriverPoints : slot.maxConstructorPoints;
+  for (let futureRaceNum = afterRaceNum + 1; futureRaceNum <= races.length; futureRaceNum++) {
+    const race = races[futureRaceNum - 1];
+    cumulativeMax += isDriver ? race.maxDriverPoints : race.maxConstructorPoints;
 
     const ranges = entities.map((e) => ({
       id: e.id,
@@ -631,25 +632,25 @@ export function computeProjectionsForSelectedSlot(
       maxPts: basePts.get(e.id)! + cumulativeMax,
     }));
 
-    const slotData: Record<string, ProjectionEntry> = {};
+    const raceData: Record<string, ProjectionEntry> = {};
     for (const e of ranges) {
       const bestPos = 1 + ranges.filter((o) => o.id !== e.id && o.minPts > e.maxPts).length;
       let worstPos = 1 + ranges.filter((o) => o.id !== e.id && o.maxPts > e.minPts).length;
 
-      if (isDriver && j === selectedIdx + 1) {
-        const slotPoints = driverPointsByPositionForSlot(data.year, slot);
-        const maxOvertakes = maxOvertakesSingleDriverSlot(basePts, e.id, e.minPts, slotPoints);
+      if (isDriver && futureRaceNum === afterRaceNum + 1) {
+        const eventPoints = driverPointsByPositionForRace(data.year, race);
+        const maxOvertakes = maxOvertakesSingleDriverRace(basePts, e.id, e.minPts, eventPoints);
         worstPos = 1 + maxOvertakes;
       }
 
       const worstPosValue: number | null =
         worstPos === ranges.length && worstPos !== bestPos ? null : worstPos;
 
-      slotData[e.id] = { minPts: e.minPts, maxPts: e.maxPts, bestPos, worstPos: worstPosValue };
+      raceData[e.id] = { minPts: e.minPts, maxPts: e.maxPts, bestPos, worstPos: worstPosValue };
     }
 
-    projectionsForSelectedIdx[j] = slotData;
+    projectionsForRaceNum[futureRaceNum] = raceData;
   }
 
-  return projectionsForSelectedIdx;
+  return projectionsForRaceNum;
 }

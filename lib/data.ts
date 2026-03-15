@@ -22,7 +22,7 @@ export interface RaceResult {
   constructorName: string;
 }
 
-interface CalculationResultsForSelectedSlot {
+interface CalculationResultsAfterRace {
   driverProjections: Record<string, Record<string, ProjectionEntry>>;
   constructorProjections: Record<string, Record<string, ProjectionEntry>>;
   driverLockInsights: LockInsight[];
@@ -45,8 +45,8 @@ function participantsFile(year: number): string {
   return path.join(seasonDir(year), "participants.json");
 }
 
-function calculationResultsForSelectedSlotFile(year: number, selectedSlotIndex: number): string {
-  return path.join(seasonDir(year), `calculation-results-${selectedSlotIndex + 1}.json`);
+function calculationResultsAfterRaceFile(year: number, raceNum: number): string {
+  return path.join(seasonDir(year), `calculation-results-${raceNum}.json`);
 }
 
 function readJsonFile<T>(file: string): T {
@@ -83,17 +83,17 @@ export async function saveRaces(year: number, races: Race[]): Promise<void> {
 }
 
 /**
- * Returns the index of the last completed slot based on which per-slot
- * calculation files exist, or -1 if none.
+ * Returns the 1-based number of the last completed race based on which
+ * calculation files exist, or 0 if none.
  */
-export function getLastCompletedSlotIndex(year: number): number {
+export function getLastCompletedRaceNum(year: number): number {
   const dir = seasonDir(year);
-  if (!fs.existsSync(dir)) return -1;
+  if (!fs.existsSync(dir)) return 0;
   const files = fs.readdirSync(dir);
-  let max = -1;
+  let max = 0;
   for (const f of files) {
     const m = f.match(/^calculation-results-(\d+)\.json$/);
-    if (m) max = Math.max(max, parseInt(m[1]) - 1);
+    if (m) max = Math.max(max, parseInt(m[1]));
   }
   return max;
 }
@@ -126,21 +126,21 @@ export async function saveParticipants(year: number, drivers: EntitySeries[], co
   await fs.outputJson(participantsFile(year), { drivers, constructors }, { spaces: 2 });
 }
 
-export function readCalculationResultsForSelectedSlot(
+export function readCalculationResultsAfterRace(
   year: number,
-  selectedSlotIndex: number
-): CalculationResultsForSelectedSlot | null {
-  const file = calculationResultsForSelectedSlotFile(year, selectedSlotIndex);
+  raceNum: number
+): CalculationResultsAfterRace | null {
+  const file = calculationResultsAfterRaceFile(year, raceNum);
   if (!fs.existsSync(file)) return null;
-  return readJsonFile<CalculationResultsForSelectedSlot>(file);
+  return readJsonFile<CalculationResultsAfterRace>(file);
 }
 
-export async function saveCalculationResultsForSelectedSlot(
+export async function saveCalculationResultsAfterRace(
   year: number,
-  selectedSlotIndex: number,
-  data: CalculationResultsForSelectedSlot
+  raceNum: number,
+  data: CalculationResultsAfterRace
 ): Promise<void> {
-  await fs.outputJson(calculationResultsForSelectedSlotFile(year, selectedSlotIndex), data, { spaces: 2 });
+  await fs.outputJson(calculationResultsAfterRaceFile(year, raceNum), data, { spaces: 2 });
 }
 
 export async function removeCalculationResultsForSeason(year: number): Promise<void> {

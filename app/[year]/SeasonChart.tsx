@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { createParser, parseAsIndex, useQueryState } from "nuqs";
+import { createParser, useQueryState } from "nuqs";
 import {
   ComposedChart,
   Line,
@@ -18,7 +18,7 @@ import type {
   EntitySeries,
   LockInsight,
   ProjectionMap,
-  TimelineSlot,
+  TimelineRace,
 } from "@/lib/calculate";
 
 type StandingsRow = {
@@ -76,23 +76,23 @@ function StandingsRows({
   });
 }
 
-function getStandingsRowsForSlot({
+function getStandingsRowsForRace({
   entities,
   projections,
-  selectedIdx,
-  slotIdx,
+  afterRaceNum,
+  raceNum,
 }: {
   entities: EntitySeries[];
   projections: ProjectionMap;
-  selectedIdx: number;
-  slotIdx: number;
+  afterRaceNum: number;
+  raceNum: number;
 }): { rows: StandingsRow[]; isProjected: boolean } {
-  if (slotIdx > selectedIdx) {
-    const slotData = projections?.[selectedIdx]?.[slotIdx];
-    if (!slotData) return { rows: [], isProjected: true };
+  if (raceNum > afterRaceNum) {
+    const raceData = projections?.[afterRaceNum]?.[raceNum];
+    if (!raceData) return { rows: [], isProjected: true };
 
     const projectedRows = entities.reduce<(StandingsRow & { sortPos: number; sortPts: number })[]>((acc, e) => {
-      const entry = slotData[e.id];
+      const entry = raceData[e.id];
       if (!entry) return acc;
       acc.push({
         id: e.id,
@@ -116,7 +116,7 @@ function getStandingsRowsForSlot({
   }
 
   const actualRows = entities.reduce<{ id: string; name: string; color: string; points: number }[]>((acc, e) => {
-    const points = e.cumulativePoints[slotIdx];
+    const points = e.cumulativePoints[raceNum - 1];
     if (points == null) return acc;
     acc.push({
       id: e.id,
@@ -148,20 +148,20 @@ function ChartTooltip({
   active,
   payload,
   label,
-  slots,
-  selectedIdx,
+  races,
+  afterRaceNum,
   projections,
   entities,
 }: any) {
   if (!active || !payload?.length) return null;
-  const slotIdx = payload[0]?.payload?.idx;
-  const slot = slots[slotIdx];
+  const raceNum = payload[0]?.payload?.raceNum;
+  const race = races[raceNum - 1];
 
-  const { rows, isProjected } = getStandingsRowsForSlot({
+  const { rows, isProjected } = getStandingsRowsForRace({
     entities,
     projections,
-    selectedIdx,
-    slotIdx,
+    afterRaceNum,
+    raceNum,
   });
 
   if (!rows.length) return null;
@@ -169,7 +169,7 @@ function ChartTooltip({
   return (
     <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-3 text-xs shadow-xl max-w-xs">
       <div className="font-semibold text-zinc-200 mb-2">
-        {slot?.fullLabel ?? label}
+        {race?.fullLabel ?? label}
         {isProjected && <span className="ml-2 text-zinc-500">(projected)</span>}
       </div>
       <div className="space-y-0.5">
@@ -180,26 +180,27 @@ function ChartTooltip({
 }
 
 function buildChartData(
-  slots: TimelineSlot[],
+  races: TimelineRace[],
   entities: EntitySeries[],
-  selectedIdx: number,
+  afterRaceNum: number,
   isDriverMode: boolean
 ) {
-  return slots.map((slot, i) => {
+  return races.map((race, i) => {
+    const raceNum = i + 1;
     const pt: Record<string, number | null | string> = {
-      idx: i,
-      label: slot.label,
+      raceNum,
+      label: race.label,
     };
 
     for (const e of entities) {
-      // Actual line: past slots only
-      pt[e.id] = i <= selectedIdx ? (e.cumulativePoints[i] ?? null) : null;
+      // Actual line: past races only
+      pt[e.id] = raceNum <= afterRaceNum ? (e.cumulativePoints[i] ?? null) : null;
 
-      // Cone: from the selected slot forward
-      if (i >= selectedIdx) {
-        const base = e.cumulativePoints[selectedIdx] ?? 0;
-        const additionalMax = slots
-          .slice(selectedIdx + 1, i + 1)
+      // Cone: from the selected race forward
+      if (raceNum >= afterRaceNum) {
+        const base = e.cumulativePoints[afterRaceNum - 1] ?? 0;
+        const additionalMax = races
+          .slice(afterRaceNum, raceNum)
           .reduce(
             (sum, s) =>
               sum + (isDriverMode ? s.maxDriverPoints : s.maxConstructorPoints),
@@ -216,8 +217,8 @@ function buildChartData(
 
 export function SeasonChart({ data }: { data: CalculatedChartData }) {
   const {
-    slots,
-    lastCompletedSlotIndex,
+    races,
+    lastCompletedRaceNum,
     drivers,
     constructors,
     driverProjections,
@@ -229,13 +230,13 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
     () =>
       createParser({
         parse: (value) => {
-          const idx = parseAsIndex.parse(value);
-          if (idx == null || idx < 0) return null;
-          return Math.min(idx, lastCompletedSlotIndex);
+          const num = parseInt(value);
+          if (!num || num < 1) return null;
+          return Math.min(num, lastCompletedRaceNum);
         },
-        serialize: parseAsIndex.serialize,
-      }).withDefault(lastCompletedSlotIndex),
-    [lastCompletedSlotIndex]
+        serialize: (value) => String(value),
+      }).withDefault(lastCompletedRaceNum),
+    [lastCompletedRaceNum]
   );
   const nextRaceOnlyParser = useMemo(
     () =>
@@ -249,7 +250,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
       }).withDefault(true),
     []
   );
-  const [selectedIdx, setSelectedIdx] = useQueryState("afterRace", afterRaceParser);
+  const [afterRaceNum, setAfterRaceNum] = useQueryState("afterRace", afterRaceParser);
   const [nextRaceOnly, setNextRaceOnly] = useQueryState("nextRaceOnly", nextRaceOnlyParser);
   const [mode, setMode] = useState<"drivers" | "constructors">("drivers");
   const [hiddenIds, setHiddenIds] = useState<Set<string>>(new Set());
@@ -258,16 +259,16 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
   const allEntities = isDriverMode ? drivers : constructors;
   const entities = allEntities.filter((e) => !hiddenIds.has(e.id));
   const projections: ProjectionMap = isDriverMode ? driverProjections : constructorProjections;
-  const lockInsightsBySelectedIdx = isDriverMode ? driverLockInsights : constructorLockInsights;
+  const lockInsightsByRaceNum = isDriverMode ? driverLockInsights : constructorLockInsights;
 
   const chartData = useMemo(
-    () => buildChartData(slots, entities, selectedIdx, isDriverMode),
-    [slots, entities, selectedIdx, isDriverMode]
+    () => buildChartData(races, entities, afterRaceNum, isDriverMode),
+    [races, entities, afterRaceNum, isDriverMode]
   );
 
-  const currentSlot = slots[selectedIdx];
-  const hasFuture = selectedIdx < slots.length - 1;
-  const lastSlotIdx = slots.length - 1;
+  const currentRace = races[afterRaceNum - 1];
+  const hasFuture = afterRaceNum < races.length;
+  const lastRaceNum = races.length;
 
   function toggleEntity(id: string) {
     setHiddenIds((prev) => {
@@ -278,14 +279,14 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
     });
   }
 
-  // Tick formatter: show full label at race slots, abbreviated at sprint slots
+  // Tick formatter: show full label at race events, abbreviated at sprint events
   function xTickFormatter(label: string, index: number) {
-    const s = slots[index];
-    if (!s) return label;
-    return s.type === "sprint" ? "·" : label;
+    const race = races[index];
+    if (!race) return label;
+    return race.type === "sprint" ? "·" : label;
   }
 
-  const lastSlot = slots[lastSlotIdx];
+  const lastRace = races[lastRaceNum - 1];
   const entitiesById = useMemo(() => {
     const map = new Map<string, EntitySeries>();
     for (const entity of allEntities) {
@@ -295,7 +296,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
   }, [allEntities]);
 
   const insightItems = useMemo(() => {
-    const items = lockInsightsBySelectedIdx[String(selectedIdx)] ?? [];
+    const items = lockInsightsByRaceNum[String(afterRaceNum)] ?? [];
     if (!nextRaceOnly) return items;
 
     return items.filter(
@@ -303,17 +304,17 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
         insight.type !== "can_be_locked_in_later" &&
         insight.type !== "can_be_ruled_out_later"
     );
-  }, [lockInsightsBySelectedIdx, nextRaceOnly, selectedIdx]);
+  }, [lockInsightsByRaceNum, nextRaceOnly, afterRaceNum]);
 
-  const { rows: lastSlotLegendRows, isProjected: isLastSlotProjected } = useMemo(
+  const { rows: lastRaceLegendRows, isProjected: isLastRaceProjected } = useMemo(
     () =>
-      getStandingsRowsForSlot({
+      getStandingsRowsForRace({
         entities: allEntities,
         projections,
-        selectedIdx,
-        slotIdx: lastSlotIdx,
+        afterRaceNum,
+        raceNum: lastRaceNum,
       }),
-    [allEntities, projections, selectedIdx, lastSlotIdx]
+    [allEntities, projections, afterRaceNum, lastRaceNum]
   );
 
   function renderInsightText(insight: LockInsight): string {
@@ -331,16 +332,16 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
     }
 
     if (insight.type === "can_be_locked_in_later") {
-      const slot = slots[insight.earliestSlotIndex];
-      return `${entityName} can first guarantee at least ${positionLabel} after ${slot?.fullLabel ?? `slot ${insight.earliestSlotIndex + 1}`}.`;
+      const race = races[insight.earliestRaceNum - 1];
+      return `${entityName} can first guarantee at least ${positionLabel} after ${race?.fullLabel ?? `race ${insight.earliestRaceNum}`}.`;
     }
 
     if (insight.type === "can_be_ruled_out_later") {
-      const slot = slots[insight.earliestSlotIndex];
-      return `${entityName} could first lose the ability to finish ${positionLabel} after ${slot?.fullLabel ?? `slot ${insight.earliestSlotIndex + 1}`}.`;
+      const race = races[insight.earliestRaceNum - 1];
+      return `${entityName} could first lose the ability to finish ${positionLabel} after ${race?.fullLabel ?? `race ${insight.earliestRaceNum}`}.`;
     }
 
-    const slot = slots[insight.nextSlotIndex];
+    const race = races[insight.nextRaceNum - 1];
     const details: string[] = [];
 
     if (insight.type === "can_be_locked_in_next_race") {
@@ -360,7 +361,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
       }
 
       const detailText = details.length ? ` if ${details.join(" and ")}` : " regardless of the result there";
-      return `${entityName} can guarantee at least ${positionLabel} in ${slot?.fullLabel ?? "the next event"}${detailText}.`;
+      return `${entityName} can guarantee at least ${positionLabel} in ${race?.fullLabel ?? "the next event"}${detailText}.`;
     }
 
     if (insight.mustBeOutscoredBy.length) {
@@ -379,12 +380,12 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
     }
 
     const detailText = details.length ? ` if ${details.join(" and ")}` : "";
-    return `${positionLabel} is no longer possible for ${entityName} in ${slot?.fullLabel ?? "the next event"}${detailText}.`;
+    return `${positionLabel} is no longer possible for ${entityName} in ${race?.fullLabel ?? "the next event"}${detailText}.`;
   }
 
   return (
     <div className="space-y-4">
-      {/* Mode toggle + slot info */}
+      {/* Mode toggle + race info */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex gap-1 rounded-lg border border-zinc-700 p-0.5">
           {(["drivers", "constructors"] as const).map((m) => (
@@ -404,11 +405,11 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
         </div>
 
         <div className="text-sm text-zinc-400">
-          <span className="text-zinc-200 font-medium">{currentSlot?.fullLabel}</span>
+          <span className="text-zinc-200 font-medium">{currentRace?.fullLabel}</span>
           {hasFuture && (
             <span className="ml-2 text-zinc-600">
-              · {slots.length - 1 - selectedIdx} event
-              {slots.length - 1 - selectedIdx !== 1 ? "s" : ""} remaining
+              · {races.length - afterRaceNum} event
+              {races.length - afterRaceNum !== 1 ? "s" : ""} remaining
             </span>
           )}
         </div>
@@ -418,15 +419,15 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
       <div className="space-y-1">
         <input
           type="range"
-          min={0}
-          max={lastCompletedSlotIndex}
-          value={selectedIdx}
-          onChange={(e) => setSelectedIdx(Number(e.target.value))}
+          min={1}
+          max={lastCompletedRaceNum}
+          value={afterRaceNum}
+          onChange={(e) => setAfterRaceNum(Number(e.target.value))}
           className="w-full accent-red-500 cursor-pointer"
         />
         <div className="flex justify-between text-xs text-zinc-600">
-          <span>{slots[0]?.fullLabel}</span>
-          <span>{slots[lastCompletedSlotIndex]?.fullLabel}</span>
+          <span>{races[0]?.fullLabel}</span>
+          <span>{races[lastCompletedRaceNum - 1]?.fullLabel}</span>
         </div>
       </div>
 
@@ -456,8 +457,8 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
               <Tooltip
                 content={
                   <ChartTooltip
-                    slots={slots}
-                    selectedIdx={selectedIdx}
+                    races={races}
+                    afterRaceNum={afterRaceNum}
                     projections={projections}
                     entities={entities}
                   />
@@ -468,7 +469,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
               {/* Future zone shading */}
               {hasFuture && (
                 <ReferenceLine
-                  x={currentSlot?.label}
+                  x={currentRace?.label}
                   stroke="#52525b"
                   strokeDasharray="4 2"
                   label={{
@@ -521,10 +522,10 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
                   stroke={e.color}
                   strokeWidth={2}
                   dot={(props: any) => {
-                    const s = slots[props.index];
-                    if (!s || props.value == null) return <g key={props.index} />;
+                    const race = races[props.index];
+                    if (!race || props.value == null) return <g key={props.index} />;
                     // Different dot shape for sprint vs race
-                    return s.type === "sprint" ? (
+                    return race.type === "sprint" ? (
                       <polygon
                         key={props.index}
                         points={`${props.cx},${props.cy - 4} ${props.cx + 3.5},${props.cy + 2} ${props.cx - 3.5},${props.cy + 2}`}
@@ -556,16 +557,16 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
           <div className="space-y-2">
             <div className="text-xs font-semibold text-zinc-400">
               Legend
-              {lastSlot && (
+              {lastRace && (
                 <span className="ml-1 font-normal text-zinc-600">
-                  · {isLastSlotProjected ? "Projected " : ""}
-                  {lastSlot.fullLabel}
+                  · {isLastRaceProjected ? "Projected " : ""}
+                  {lastRace.fullLabel}
                 </span>
               )}
             </div>
             <div className="space-y-1">
               <StandingsRows
-                rows={lastSlotLegendRows}
+                rows={lastRaceLegendRows}
                 getInteraction={(row) => ({
                   hidden: hiddenIds.has(row.id),
                   onClick: () => toggleEntity(row.id),
