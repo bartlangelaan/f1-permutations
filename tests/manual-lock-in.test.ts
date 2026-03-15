@@ -119,27 +119,44 @@ test('Lock-in insight: next-race ruled-out positions are exposed', () => {
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/2024-drivers-championship-max-verstappen-lando-norris-red-bull-points-permutations.6BHWvf0q6MikIuW1IHEOyw
-// Standings before Las Vegas 2024: Verstappen leads Norris by 62 points; Leclerc 3rd, Piastri 4th (mathematically eliminated)
+// Standings before Las Vegas 2024: Verstappen leads Norris by 62 points; Leclerc 3rd, Piastri 4th (eliminated)
+// 86 points available across final three rounds (Las Vegas, Qatar sprint+race, Abu Dhabi)
 //
-// Max Verstappen:
-//   - Can clinch the title at Las Vegas with victory (title guaranteed regardless of rivals)
-//   - More precisely: guaranteed champion if not outscored by Norris by more than 1 point
-//     and not outscored by Leclerc by more than 25 points
+// Max Verstappen (blog position-based conditions):
+//   - Wins Las Vegas → title clinched regardless of Norris result
+//   - Finishes 2nd  → Norris must finish 1st to stay alive
+//   - Finishes 3rd  → Norris must finish 2nd (or 1st if Verstappen takes fastest lap)
+//   - Finishes 4th  → Norris must finish 3rd (or 2nd if Verstappen takes fastest lap)
+//   - Finishes 5th  → Norris must finish 4th with fastest lap, or 3rd
+//   - Finishes 6th  → Norris must finish 5th with fastest lap, or 4th
+//   - Finishes 7th  → Norris must finish 6th with fastest lap, or 5th
+//   - Finishes 8th  → Norris must finish 7th with fastest lap, or 6th
+//   - Finishes 9th  → Norris must finish 8th with fastest lap, or 7th
+//   - Finishes 10th → Norris must finish 9th with fastest lap, or 8th
+//   - Finishes 11th or lower → Norris must finish 9th with fastest lap, or 8th
+//   (Our system equivalent: Verstappen guarantees P1 if not outscored by Norris by more than 1 pt
+//    and not outscored by Leclerc by more than 25 pts)
 //
-// Lando Norris:
+// Lando Norris (blog conditions):
 //   - Cannot clinch the title at Las Vegas; earliest possible is after Abu Dhabi GP
-//   - P1 is ruled out at Las Vegas if he fails to outscore Verstappen by at least 2 points
+//   - Must outscore Verstappen at every remaining race to keep title hopes alive
+//   - Needs minimum 3-point advantage at Las Vegas to keep the fight going
+//   (TODO: our system does not yet generate position-based conditions like "Norris needs to finish
+//    at least Xth to keep the title fight alive depending on Verstappen's result")
 //
-// Charles Leclerc:
-//   - Mathematically alive but P1 ruled out at Las Vegas unless he outscores Verstappen by 26+ points
-//   - Can first guarantee P2 only after Abu Dhabi GP
+// Charles Leclerc (blog conditions):
+//   - Mathematically alive: 86 pts behind with 86 pts remaining, but only if Verstappen scores zero
+//     AND Leclerc wins every race/sprint with fastest laps — even then they'd tie and Verstappen
+//     wins on tie-breaker (more race wins)
+//   (Our system equivalent: P1 no longer possible at Las Vegas unless outscores Verstappen by 26+ pts)
 //
-// Oscar Piastri:
-//   - Has already been eliminated from the title fight ("can no longer take the title")
-//   - No P1 lock-in possible; earliest P2 guarantee is after Abu Dhabi GP
+// Oscar Piastri (blog conditions):
+//   - "Can no longer take the title" after Brazil (131 pts down with only 86 remaining)
+//   (Our system equivalent: no P1 lock-in insight exists; earliest P2 guarantee is after Abu Dhabi)
 //
-// NOTE: The blog expresses conditions as race finishing positions (e.g. "win guarantees title"),
-// while our system expresses them as points margins. These are equivalent but not directly comparable.
+// TODO: Our system does not yet generate position-based clinch/elimination scenarios
+// (e.g. "Verstappen wins → title over" or "Norris needs Xth place if Verstappen finishes Yth").
+// These require translating race finishing positions into points margins per race.
 test('Las Vegas 2024 blog: championship permutation insights for Verstappen, Norris, Leclerc, Piastri', () => {
   const data = readCalculationResults(2024)!;
   const lasVegasIdx = data.races.findIndex((r) => r.round === 22 && r.type === 'race');
@@ -166,20 +183,28 @@ test('Las Vegas 2024 blog: championship permutation insights for Verstappen, Nor
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/points-permutations-where-and-when-verstappen-can-become-the-2023-f1-world.412HcLWdfHinODX0u0sIub
-// Standings before Qatar 2023: Verstappen 400 pts, Pérez 223 pts (177-point gap); Hamilton and others far behind
+// Standings before Qatar 2023: Verstappen 400 pts, Pérez 223 pts (177-point gap); Hamilton 190 pts
+// 180 points available across final 6 rounds; Verstappen clinches if he leaves Qatar with ≥146-pt lead
 //
-// Max Verstappen:
-//   - Can clinch his third consecutive championship at the Qatar Sprint
-//   - Guaranteed champion in the Sprint if not outscored by Pérez by more than 4 points
-//   - If Pérez wins Sprint (8 pts) and Verstappen finishes 5th (4 pts): gap = 4, clinches
-//   - If Pérez wins Sprint and Verstappen finishes 6th or lower (≤3 pts): gap ≥ 5, does not clinch in Sprint
-//   - Verstappen actually clinched the title at the Qatar Sprint
+// Qatar Sprint (blog position-based conditions):
+//   - If Pérez wins Sprint (8 pts): Verstappen clinches by finishing 6th or better in the Sprint
+//   - If Verstappen finishes outside the Sprint points AND Pérez wins: Verstappen needs 8th in the GP
+//   (Our system equivalent: Verstappen guarantees P1 in Sprint if not outscored by Pérez by more than 4 pts)
+//   (TODO: our system does not yet generate "if Pérez finishes Xth in Sprint then Verstappen needs
+//    Yth in the GP" cross-event scenarios)
 //
-// Sergio Pérez:
-//   - P1 (championship) no longer possible at Qatar Sprint if he fails to outscore Verstappen by 5+ points
-//   - Mathematically still alive before the Sprint by a very slim margin
+// Qatar GP race (blog conditions):
+//   - Verstappen clinches if he leaves Qatar with ≥146-pt lead over Pérez
+//   - Pérez can only stay mathematically alive by winning the GP and reducing the gap to 145 pts
+//   (Our system equivalent: after the Sprint, Verstappen has already locked in P1 — he clinched there)
+//   (TODO: cross-event "Sprint result + GP result" combined scenarios not yet generated)
 //
-// NOTE: The blog expresses clinch conditions as race finishing positions; our system uses points margins.
+// Sergio Pérez (blog conditions):
+//   - Only path to keep title alive: win the GP, reducing Verstappen's lead to 145 pts
+//   (Our system equivalent: P1 no longer possible at Sprint if doesn't outscore Verstappen by 5+ pts)
+//
+// TODO: Our system does not yet generate position-based scenarios (e.g. "if Pérez finishes Xth in
+// Sprint, Verstappen needs Yth in the GP to clinch"). Cross-event combined scenarios also not generated.
 test('Qatar 2023 blog: Verstappen clinches championship at Qatar Sprint', () => {
   const data = readCalculationResults(2023)!;
 
@@ -201,26 +226,30 @@ test('Qatar 2023 blog: Verstappen clinches championship at Qatar Sprint', () => 
 
 // Insights from: https://www.formula1.com/en/latest/article/points-permutations-what-verstappen-needs-to-do-to-secure-the-f1-title-in.2YMQSetyej7cmdDtsDJZnC
 // Standings before Singapore 2022: Verstappen 335 pts, Leclerc 219 pts (116-point gap), Pérez 210 pts (125-point gap)
+// Singapore is Verstappen's first opportunity to clinch; must outscore Leclerc by 22 pts to eliminate him
 //
-// Max Verstappen:
-//   - Singapore is his first opportunity to clinch the 2022 championship
-//   - To guarantee at Singapore: outscores Leclerc by 23 pts, Pérez by 14 pts, Russell by 7 pts
-//     and is not outscored by Sainz by more than 9 pts
-//   - In race positions: wins (25 pts) while Leclerc finishes 9th or lower AND Pérez 4th or lower
-//   - Or: wins with fastest lap (26 pts) while Leclerc 8th or lower AND Pérez 4th or lower
+// Verstappen clinches at Singapore (blog position-based conditions):
+//   - Wins (no fastest lap):  Leclerc 9th or lower  AND  Pérez 4th or lower (no FL) or 5th or lower (with FL)
+//   - Wins (with fastest lap): Leclerc 8th or lower  AND  Pérez 4th or lower
+//   - Any other Verstappen result → no clinch at Singapore; title fight rolls on to Japan
+//   (Our system equivalent: Verstappen guarantees P1 if outscores Leclerc by 23 pts, Pérez by 14 pts,
+//    Russell by 7 pts, and is not outscored by Sainz by more than 9 pts)
 //
-// Charles Leclerc:
+// Charles Leclerc (blog conditions):
 //   - Title becomes impossible at Singapore if outscored by Verstappen by 23 points
+//   (Covered by our system)
 //
-// Sergio Pérez:
+// Sergio Pérez (blog conditions):
 //   - Title becomes impossible at Singapore if outscored by Verstappen by 14 points
+//   (Covered by our system)
 //
 // George Russell / Carlos Sainz:
-//   - Russell P1 ruled out if Verstappen outscores him by 7 points
-//   - Sainz P1 ruled out unless he outscores Verstappen by more than 9 points
+//   - Russell P1 ruled out if outscored by Verstappen by 7 points (covered)
+//   - Sainz P1 ruled out unless he outscores Verstappen by more than 9 points (covered)
 //
-// NOTE: The blog expresses title-clinching conditions as race finishing positions;
-// our system expresses them as points margins. These are equivalent but not directly comparable.
+// TODO: Our system does not yet generate position-based clinch conditions
+// (e.g. "Verstappen wins + Leclerc 9th or lower + Pérez 4th or lower → title clinched").
+// The Pérez with/without fastest lap distinction is also not yet captured.
 test('Singapore 2022 blog: Verstappen first title clinch opportunity', () => {
   const data = readCalculationResults(2022)!;
   const singaporeIdx = data.races.findIndex((r) => r.round === 17 && r.type === 'race');
@@ -244,25 +273,41 @@ test('Singapore 2022 blog: Verstappen first title clinch opportunity', () => {
 
 // Insights from: https://www.formula1.com/en/latest/article/points-permutations-what-verstappen-needs-to-do-to-win-his-second-drivers.2y2rFRR2d2o6LRHPijDzLP
 // Standings before Japan 2022: Verstappen 341 pts, Leclerc 237 pts (104-point gap), Pérez 235 pts (106-point gap)
+// Verstappen needs a 112-point lead to mathematically clinch; Japan is where he can reach that
 //
-// Max Verstappen:
-//   - Can clinch his second championship at the Japanese GP
-//   - Guaranteed title if: outscores Leclerc by 9 pts AND Pérez by 7 pts AND not outscored by Russell by more than 25 pts
-//   - In race positions: 1st place (25 pts) while Leclerc finishes 3rd or lower AND Pérez 4th or lower (with/without fastest lap)
-//   - 2nd place with fastest lap (19 pts): Leclerc 5th or lower AND Pérez 4th or lower
-//   - 6th place with fastest lap (9 pts): Leclerc 10th or lower AND Pérez 9th or lower
+// Verstappen clinches at Japan (blog position-based conditions, full table):
+//   - 1st + fastest lap:  title regardless of Leclerc and Pérez positions
+//   - 1st (no FL):        Leclerc 3rd or lower  (Pérez position irrelevant)
+//   - 2nd + fastest lap:  Leclerc 5th or lower   AND  Pérez 4th or lower
+//   - 2nd (no FL):        Leclerc 5th or lower (no FL)  AND  Pérez 4th or lower (no FL)
+//   - 3rd + fastest lap:  Leclerc 6th or lower   AND  Pérez 5th or lower
+//   - 3rd (no FL):        Leclerc 7th or lower   AND  Pérez 6th or lower
+//   - 4th + fastest lap:  Leclerc 8th or lower   AND  Pérez 7th or lower
+//   - 4th (no FL):        Leclerc 8th or lower (no FL)  AND  Pérez 7th or lower (no FL)
+//   - 5th + fastest lap:  Leclerc 9th or lower   AND  Pérez 8th or lower
+//   - 5th (no FL):        Leclerc 9th (no FL) or lower  AND  Pérez 8th or lower (no FL)
+//   - 6th + fastest lap:  Leclerc 10th or lower  AND  Pérez 9th or lower
+//   - 6th (no FL):        Leclerc out of points  AND  Pérez 9th or lower (no FL)
+//   (Our system equivalent: Verstappen guarantees P1 if outscores Leclerc by 9 pts, Pérez by 7 pts,
+//    and is not outscored by Russell by more than 25 pts)
 //
-// Charles Leclerc:
-//   - Title becomes impossible at Japan if outscored by Verstappen by 9 points
+// Title fight stays alive if (blog):
+//   - Leclerc wins
+//   - Pérez wins
+//   - Verstappen wins (no FL) but Leclerc finishes 2nd with fastest lap
 //
-// Sergio Pérez:
-//   - Title becomes impossible at Japan if outscored by Verstappen by 7 points
+// Charles Leclerc (blog conditions):
+//   - Title becomes impossible at Japan if outscored by Verstappen by 9 points (covered by our system)
+//
+// Sergio Pérez (blog conditions):
+//   - Title becomes impossible at Japan if outscored by Verstappen by 7 points (covered by our system)
 //
 // George Russell:
-//   - P1 (title) ruled out unless he outscores Verstappen by more than 25 points
+//   - P1 ruled out unless he outscores Verstappen by more than 25 points (covered by our system)
 //
-// NOTE: The blog expresses title-clinching conditions as race finishing positions;
-// our system expresses them as points margins. These are equivalent but not directly comparable.
+// TODO: Our system does not yet generate position-based clinch conditions with fastest lap distinctions
+// (e.g. "1st + FL → title regardless" or "1st no FL → Leclerc must be 3rd or lower").
+// The interaction between fastest lap bonus and rival finishing positions is not yet captured.
 test('Japan 2022 blog: Verstappen clinches second championship', () => {
   const data = readCalculationResults(2022)!;
   const japanIdx = data.races.findIndex((r) => r.round === 18 && r.type === 'race');
