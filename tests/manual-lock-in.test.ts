@@ -78,8 +78,7 @@ test('Lock-in insight: later guarantees are emitted per position instead of stop
 //   - Finishes P2 + Norris finishes P10 or worse + Verstappen finishes P4 or worse → wins
 test('Abu Dhabi 2025 blog: championship permutation insights for Norris, Verstappen, and Piastri', () => {
   const data2025 = readCalculationResults(2025)!;
-  const abuDhabiRaceNum = data2025.races.findIndex((r) => r.fullLabel === 'Abu Dhabi GP' && r.type === 'race') + 1;
-  const afterRaceNum = abuDhabiRaceNum - 1;
+  const afterRaceNum = data2025.races.findIndex((r) => r.fullLabel === 'Abu Dhabi GP' && r.type === 'race');
   const texts = renderInsights(data2025.driverLockInsights[String(afterRaceNum)], data2025);
 
   // Norris can guarantee P1 (championship win) with conditions on Verstappen and Piastri
