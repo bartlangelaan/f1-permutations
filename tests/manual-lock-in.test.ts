@@ -10,15 +10,15 @@ function renderInsights(insights: LockInsight[] | undefined, data: CalculatedCha
 }
 
 test('Lock-in insight: Norris cannot lock P1 in the next race after Mexico 2025', () => {
-  const data2025 = readCalculationResults(2025)!;
-  const mexicoRaceNum = data2025.races.findIndex((r) => r.round === 20 && r.type === 'race') + 1;
+  const data = readCalculationResults(2025)!;
+  const mexicoRaceNum = data.races.findIndex((r) => r.round === 20 && r.type === 'race') + 1;
 
-  const norrisNextRaceInsights = (data2025.driverLockInsights[String(mexicoRaceNum)] ?? []).filter(
+  const norrisNextRaceInsights = (data.driverLockInsights[String(mexicoRaceNum)] ?? []).filter(
     (insight) => insight.entityId === 'norris' && insight.type === 'can_be_locked_in_next_race'
   );
   assert.equal(norrisNextRaceInsights.length, 0, 'Expected no next-race guarantee insight for Norris after Mexico 2025');
 
-  const texts = renderInsights(data2025.driverLockInsights[String(mexicoRaceNum)], data2025);
+  const texts = renderInsights(data.driverLockInsights[String(mexicoRaceNum)], data);
   assert.ok(texts.includes('Lando Norris can first guarantee at least P1 after R28 Qatar GP Sprint.'));
 });
 
@@ -34,9 +34,9 @@ test('Lock-in insight: Verstappen exposes every next-race minimum lock from P1 t
 });
 
 test('Lock-in insight: 2025 title contenders show every lockable minimum position in the finale', () => {
-  const data2025 = readCalculationResults(2025)!;
-  const qatarRaceNum = data2025.races.findIndex((r) => r.round === 23 && r.type === 'race') + 1;
-  const texts = renderInsights(data2025.driverLockInsights[String(qatarRaceNum)], data2025);
+  const data = readCalculationResults(2025)!;
+  const qatarRaceNum = data.races.findIndex((r) => r.round === 23 && r.type === 'race') + 1;
+  const texts = renderInsights(data.driverLockInsights[String(qatarRaceNum)], data);
 
   assert.ok(texts.some(t => t.startsWith('Lando Norris can guarantee at least P1 in')));
   assert.ok(texts.some(t => t.startsWith('Lando Norris can guarantee at least P2 in')));
@@ -47,9 +47,9 @@ test('Lock-in insight: 2025 title contenders show every lockable minimum positio
 });
 
 test('Lock-in insight: later guarantees are emitted per position instead of stopping at the first one', () => {
-  const data2025 = readCalculationResults(2025)!;
-  const mexicoRaceNum = data2025.races.findIndex((r) => r.round === 20 && r.type === 'race') + 1;
-  const texts = renderInsights(data2025.driverLockInsights[String(mexicoRaceNum)], data2025);
+  const data = readCalculationResults(2025)!;
+  const mexicoRaceNum = data.races.findIndex((r) => r.round === 20 && r.type === 'race') + 1;
+  const texts = renderInsights(data.driverLockInsights[String(mexicoRaceNum)], data);
 
   assert.ok(texts.includes('Lando Norris can first guarantee at least P1 after R28 Qatar GP Sprint.'));
   assert.ok(texts.includes('Lando Norris can first guarantee at least P2 after R28 Qatar GP Sprint.'));
@@ -77,9 +77,9 @@ test('Lock-in insight: later guarantees are emitted per position instead of stop
 //   - Finishes P1 + Norris finishes P6 or worse → wins championship
 //   - Finishes P2 + Norris finishes P10 or worse + Verstappen finishes P4 or worse → wins
 test('Abu Dhabi 2025 blog: championship permutation insights for Norris, Verstappen, and Piastri', () => {
-  const data2025 = readCalculationResults(2025)!;
-  const afterRaceNum = data2025.races.findIndex((r) => r.fullLabel === 'Abu Dhabi GP' && r.type === 'race');
-  const texts = renderInsights(data2025.driverLockInsights[String(afterRaceNum)], data2025);
+  const data = readCalculationResults(2025)!;
+  const afterRaceNum = data.races.findIndex((r) => r.fullLabel === 'Abu Dhabi GP' && r.type === 'race');
+  const texts = renderInsights(data.driverLockInsights[String(afterRaceNum)], data);
 
   // Norris can guarantee P1 (championship win) with conditions on Verstappen and Piastri
   assert.ok(texts.includes('Lando Norris can guarantee at least P1 in Abu Dhabi GP if is not outscored by Max Verstappen by more than 11 points, Oscar Piastri by more than 15 points.'));
@@ -111,9 +111,9 @@ test('Abu Dhabi 2025 blog: championship permutation insights for Norris, Verstap
 });
 
 test('Lock-in insight: next-race ruled-out positions are exposed', () => {
-  const data2025 = readCalculationResults(2025)!;
-  const mexicoRaceNum = data2025.races.findIndex((r) => r.round === 20 && r.type === 'race') + 1;
-  const texts = renderInsights(data2025.driverLockInsights[String(mexicoRaceNum)], data2025);
+  const data = readCalculationResults(2025)!;
+  const mexicoRaceNum = data.races.findIndex((r) => r.round === 20 && r.type === 'race') + 1;
+  const texts = renderInsights(data.driverLockInsights[String(mexicoRaceNum)], data);
 
   assert.ok(texts.includes('P3 is no longer possible for Charles Leclerc in R25 São Paulo GP Sprint if Charles Leclerc does not outscore Max Verstappen by more than 2 points.'));
 });
