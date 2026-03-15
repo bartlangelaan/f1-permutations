@@ -46,17 +46,6 @@ function validateProjectionAgainstActual(
   }
 }
 
-function actualPositionAtRace(
-  entities: { id: string; cumulativePoints: (number | null)[] }[],
-  raceNum: number,
-  entityId: string
-): number {
-  const pointsAtRace = new Map<string, number>();
-  for (const entity of entities) {
-    pointsAtRace.set(entity.id, entity.cumulativePoints[raceNum - 1] ?? 0);
-  }
-  return positionAtRace(pointsAtRace, entityId);
-}
 
 test('All projections contain actual future points and positions for completed races across all seasons', () => {
   for (let year = 2010; year <= 2026; year++) {
@@ -217,7 +206,8 @@ test('All already_locked_in insights match a single exact end-of-season projecte
             data.races.length,
             `${year} afterRaceNum=${afterRaceNum} is missing end-of-season projections before the final race`
           );
-          const actualPosition = actualPositionAtRace(entities, afterRaceNumNum, insight.entityId);
+          const entity = entities.find((e) => e.id === insight.entityId)!;
+          const actualPosition = entity.currentPos[afterRaceNumNum - 1];
           assert.equal(
             actualPosition,
             insight.position,
