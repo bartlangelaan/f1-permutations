@@ -1,8 +1,46 @@
-import fs from "fs";
+import fs from "fs-extra";
 import path from "path";
-import type { Race, RaceResult } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "data");
+
+export interface Race {
+  raceNumber: number;
+  round: number;
+  type: "race" | "sprint";
+  raceName: string;
+  date: string;
+}
+
+export interface RaceResult {
+  position: number | null;
+  positionText: string;
+  points: number;
+  driverId: string;
+  driverCode: string;
+  driverName: string;
+  constructorId: string;
+  constructorName: string;
+  grid: number;
+  laps: number;
+  status: string;
+  fastestLap: boolean;
+}
+
+function seasonDir(year: number): string {
+  return path.join(DATA_DIR, String(year));
+}
+
+function racesFile(year: number): string {
+  return path.join(seasonDir(year), "races.json");
+}
+
+function eventResultsFile(year: number, raceNumber: number): string {
+  return path.join(seasonDir(year), `results-${raceNumber}.json`);
+}
+
+function readJsonFile<T>(file: string): T {
+  return fs.readJsonSync(file) as T;
+}
 
 /**
  * Returns all years for which data has been cached.
@@ -20,16 +58,32 @@ export function getSeasons(): number[] {
  * Returns the race schedule for a given year.
  */
 export function getRaces(year: number): Race[] {
-  const file = path.join(DATA_DIR, String(year), "races.json");
+  const file = racesFile(year);
   if (!fs.existsSync(file)) return [];
-  return JSON.parse(fs.readFileSync(file, "utf-8")) as Race[];
+  return readJsonFile<Race[]>(file);
+}
+
+export function hasRaces(year: number): boolean {
+  return fs.existsSync(racesFile(year));
+}
+
+export async function saveRaces(year: number, races: Race[]): Promise<void> {
+  await fs.outputJson(racesFile(year), races, { spaces: 2 });
 }
 
 /**
  * Returns the results for a specific event raceNumber.
  */
 export function getEventResults(year: number, raceNumber: number): RaceResult[] | null {
-  const file = path.join(DATA_DIR, String(year), `results-${raceNumber}.json`);
+  const file = eventResultsFile(year, raceNumber);
   if (!fs.existsSync(file)) return null;
-  return JSON.parse(fs.readFileSync(file, "utf-8")) as RaceResult[];
+  return readJsonFile<RaceResult[]>(file);
+}
+
+export function hasEventResults(year: number, raceNumber: number): boolean {
+  return fs.existsSync(eventResultsFile(year, raceNumber));
+}
+
+export async function saveEventResults(year: number, raceNumber: number, results: RaceResult[]): Promise<void> {
+  await fs.outputJson(eventResultsFile(year, raceNumber), results, { spaces: 2 });
 }

@@ -1,9 +1,14 @@
-import fs from "fs";
-import path from "path";
 import ky from "ky";
+import {
+  getRaces,
+  hasEventResults,
+  hasRaces,
+  saveEventResults,
+  saveRaces,
+} from "../lib/data";
+import type { Race, RaceResult } from "../lib/data";
 
 const BASE_URL = "https://api.jolpi.ca/ergast/f1";
-const DATA_DIR = path.join(process.cwd(), "data");
 const START_YEAR = 2010;
 const CURRENT_YEAR = new Date().getFullYear();
 const DELAY_MS = 300;
@@ -37,7 +42,7 @@ function isValidRound(round: unknown): round is number {
   return typeof round === "number" && Number.isFinite(round) && round > 0;
 }
 
-function mapResults(rawResults: any[]) {
+function mapResults(rawResults: any[]): RaceResult[] {
   const nonFinishTexts = new Set(["R", "D", "E", "W", "F", "N"]);
   return rawResults.map((r: any) => ({
     position: nonFinishTexts.has(r.positionText) ? null : Number(r.position),
@@ -55,21 +60,10 @@ function mapResults(rawResults: any[]) {
   }));
 }
 
-async function fetchSeason(year: number) {
-  const dir = path.join(DATA_DIR, String(year));
-  const racesFile = path.join(dir, "races.json");
-
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-
-  if (fs.existsSync(racesFile)) {
+async function fetchSeason(year: number): Promise<Race[]> {
+  if (hasRaces(year)) {
     console.log(`  [skip] ${year}/races.json already cached`);
-    return JSON.parse(fs.readFileSync(racesFile, "utf-8")) as Array<{
-      raceNumber: number;
-      round: number;
-      type: "race" | "sprint";
-      raceName: string;
-      date: string;
-    }>;
+    return getRaces(year);
   }
 
   console.log(`  [fetch] ${year} schedule`);
@@ -104,18 +98,16 @@ async function fetchSeason(year: number) {
 
     return entries;
   });
-  fs.writeFileSync(racesFile, JSON.stringify(races, null, 2));
+  await saveRaces(year, races);
   await sleep(DELAY_MS);
   return races;
 }
 
 async function fetchEventResults(year: number, raceNumber: number, round: number, type: "race" | "sprint") {
-  const dir = path.join(DATA_DIR, String(year));
-  const file = path.join(dir, `results-${raceNumber}.json`);
   const endpoint = type === "sprint" ? "sprint" : "results";
   const resultPath = type === "sprint" ? "SprintResults" : "Results";
 
-  if (fs.existsSync(file)) {
+  if (hasEventResults(year, raceNumber)) {
     console.log(`  [skip] ${year}/results-${raceNumber}.json already cached`);
     return true;
   }
@@ -128,7 +120,7 @@ async function fetchEventResults(year: number, raceNumber: number, round: number
     return false;
   }
 
-  fs.writeFileSync(file, JSON.stringify(mapResults(rawResults), null, 2));
+  await saveEventResults(year, raceNumber, mapResults(rawResults));
   await sleep(DELAY_MS);
   return true;
 }
