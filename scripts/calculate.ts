@@ -5,14 +5,14 @@ import {
   computeProjectionsForSelectedSlot,
 } from "../lib/calculate";
 import {
-  writeCalculationResults,
-  writeCalculationResultsForSelectedSlot,
-} from "../lib/calculation-results";
+  saveCalculationResults as writeCalculationResults,
+  saveCalculationResultsForSelectedSlot as writeCalculationResultsForSelectedSlot,
+} from "../lib/data";
 
 const seasons = getSeasons();
 console.log(`Processing ${seasons.length} seasons...`);
 
-for (const year of seasons) {
+for (const year of seasons.sort((a, b) => a - b)) {
   process.stdout.write(`  ${year}... `);
   const data = buildSeasonChartData(year);
 
@@ -21,17 +21,15 @@ for (const year of seasons) {
     continue;
   }
 
-  writeCalculationResults(year, data);
+  await writeCalculationResults(year, data);
 
   for (let selectedIdx = 0; selectedIdx <= data.lastCompletedSlotIndex; selectedIdx++) {
-    const slot = data.slots[selectedIdx];
-
     const driverProjections = computeProjectionsForSelectedSlot(data, selectedIdx, true);
     const constructorProjections = computeProjectionsForSelectedSlot(data, selectedIdx, false);
     const driverLockInsights = computeLockInsightsForSelectedSlot(data, selectedIdx, true);
     const constructorLockInsights = computeLockInsightsForSelectedSlot(data, selectedIdx, false);
 
-    writeCalculationResultsForSelectedSlot(year, slot.raceNumber, {
+    await writeCalculationResultsForSelectedSlot(year, selectedIdx, {
       driverProjections,
       constructorProjections,
       driverLockInsights,

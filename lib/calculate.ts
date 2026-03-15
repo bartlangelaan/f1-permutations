@@ -100,8 +100,6 @@ function driverPointsByPositionForSlot(year: number, slot: TimelineSlot): number
 }
 
 export interface TimelineSlot {
-  key: string;
-  raceNumber: number;
   round: number;
   type: "sprint" | "race";
   /** Short x-axis label, e.g. "R1" or "S4" */
@@ -498,15 +496,13 @@ export function buildSeasonChartData(year: number): SeasonChartData {
   const races = getRaces(year);
 
   // Build ordered event slots from normalized race data.
-  const slots: TimelineSlot[] = races.map((race) => {
+  const slots: TimelineSlot[] = races.map((race, index) => {
     const shortName = race.raceName.replace(" Grand Prix", " GP");
     return {
-      key: `${race.raceNumber}-${race.type}`,
-      raceNumber: race.raceNumber,
       round: race.round,
       type: race.type,
-      label: `R${race.raceNumber}`,
-      fullLabel: race.type === "sprint" ? `R${race.raceNumber} ${shortName} Sprint` : shortName,
+      label: `R${index + 1}`,
+      fullLabel: race.type === "sprint" ? `R${index + 1} ${shortName} Sprint` : shortName,
       maxDriverPoints:
         year === 2014 && race.type === "race" && race.round === 19
           ? 50
@@ -537,7 +533,7 @@ export function buildSeasonChartData(year: number): SeasonChartData {
 
   for (let i = 0; i < slots.length; i++) {
     const slot = slots[i];
-    const results = getEventResults(year, slot.raceNumber);
+    const results = getEventResults(year, i + 1);
 
     if (results !== null && results.length > 0) {
       slot.completed = true;
@@ -588,18 +584,6 @@ export function buildSeasonChartData(year: number): SeasonChartData {
   }));
 
   return { year, slots, lastCompletedSlotIndex, drivers, constructors };
-}
-
-function computeProjections(data: SeasonChartData, isDriver: boolean): ProjectionMap {
-  const { slots, lastCompletedSlotIndex } = data;
-  const entities = isDriver ? data.drivers : data.constructors;
-  const projections: ProjectionMap = {};
-
-  for (let selectedIdx = 0; selectedIdx <= lastCompletedSlotIndex; selectedIdx++) {
-    projections[selectedIdx] = computeProjectionsForSelectedSlot(data, selectedIdx, isDriver);
-  }
-
-  return projections;
 }
 
 export function computeProjectionsForSelectedSlot(
