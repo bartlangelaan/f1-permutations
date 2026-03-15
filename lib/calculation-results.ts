@@ -3,19 +3,15 @@ import {
   getLastCompletedSlotIndex,
   getSlots,
   readCalculationResultsForSelectedSlot,
-  readConstructors,
-  readDrivers,
+  readParticipants,
   removeCalculationResultsForSeason,
   saveCalculationResultsForSelectedSlot,
-  saveConstructors,
-  saveDrivers,
+  saveParticipants,
 } from "./data";
 
 export function readCalculationResults(year: number): CalculatedChartData | null {
-  const drivers = readDrivers(year);
-  if (!drivers) return null;
-  const constructors = readConstructors(year);
-  if (!constructors) return null;
+  const participants = readParticipants(year);
+  if (!participants) return null;
 
   const slots = getSlots(year);
   const lastCompletedSlotIndex = getLastCompletedSlotIndex(year);
@@ -39,8 +35,8 @@ export function readCalculationResults(year: number): CalculatedChartData | null
     year,
     slots,
     lastCompletedSlotIndex,
-    drivers,
-    constructors,
+    drivers: participants.drivers,
+    constructors: participants.constructors,
     driverProjections,
     constructorProjections,
     driverLockInsights,
@@ -54,8 +50,7 @@ export async function writeCalculationResults(
   constructors: EntitySeries[]
 ): Promise<void> {
   await removeCalculationResultsForSeason(year);
-  await saveDrivers(year, drivers);
-  await saveConstructors(year, constructors);
+  await saveParticipants(year, drivers, constructors);
 }
 
 export { saveCalculationResultsForSelectedSlot as writeCalculationResultsForSelectedSlot };

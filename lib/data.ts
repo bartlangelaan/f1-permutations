@@ -44,12 +44,8 @@ function eventResultsFile(year: number, raceNumber: number): string {
   return path.join(seasonDir(year), `results-${raceNumber}.json`);
 }
 
-function driversFile(year: number): string {
-  return path.join(seasonDir(year), "drivers.json");
-}
-
-function constructorsFile(year: number): string {
-  return path.join(seasonDir(year), "constructors.json");
+function participantsFile(year: number): string {
+  return path.join(seasonDir(year), "participants.json");
 }
 
 function calculationResultsForSelectedSlotFile(year: number, selectedSlotIndex: number): string {
@@ -148,24 +144,19 @@ export async function saveEventResults(year: number, raceNumber: number, results
   await fs.outputJson(eventResultsFile(year, raceNumber), results, { spaces: 2 });
 }
 
-export function readDrivers(year: number): EntitySeries[] | null {
-  const file = driversFile(year);
+interface Participants {
+  drivers: EntitySeries[];
+  constructors: EntitySeries[];
+}
+
+export function readParticipants(year: number): Participants | null {
+  const file = participantsFile(year);
   if (!fs.existsSync(file)) return null;
-  return readJsonFile<EntitySeries[]>(file);
+  return readJsonFile<Participants>(file);
 }
 
-export async function saveDrivers(year: number, drivers: EntitySeries[]): Promise<void> {
-  await fs.outputJson(driversFile(year), drivers, { spaces: 2 });
-}
-
-export function readConstructors(year: number): EntitySeries[] | null {
-  const file = constructorsFile(year);
-  if (!fs.existsSync(file)) return null;
-  return readJsonFile<EntitySeries[]>(file);
-}
-
-export async function saveConstructors(year: number, constructors: EntitySeries[]): Promise<void> {
-  await fs.outputJson(constructorsFile(year), constructors, { spaces: 2 });
+export async function saveParticipants(year: number, drivers: EntitySeries[], constructors: EntitySeries[]): Promise<void> {
+  await fs.outputJson(participantsFile(year), { drivers, constructors }, { spaces: 2 });
 }
 
 export function readCalculationResultsForSelectedSlot(
