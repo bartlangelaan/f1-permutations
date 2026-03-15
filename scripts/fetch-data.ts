@@ -1,6 +1,7 @@
+import { groupBy } from "es-toolkit";
 import {
   getRaces,
-  hasEventResults,
+  getEventResults,
   hasRaces,
   saveEventResults,
   saveRaces,
@@ -51,30 +52,24 @@ function mapSeasonSchedule(rawRaces: Awaited<ReturnType<typeof fetchSeasonSchedu
 
 function mapEventResults(rawResults: RawEventResult[]): RaceResult[] {
   return rawResults.map((result) => ({
-      points: result.points,
-      driverId: result.Driver.driverId,
-      driverName: `${result.Driver.givenName} ${result.Driver.familyName}`,
-      constructorId: result.Constructor.constructorId,
-      constructorName: result.Constructor.name,
-    }));
+    points: result.points,
+    driverId: result.Driver.driverId,
+    driverName: `${result.Driver.givenName} ${result.Driver.familyName}`,
+    constructorId: result.Constructor.constructorId,
+    constructorName: result.Constructor.name,
+  }));
 }
 
-function mapSeasonEventResults(rawRaces: RawSeasonEventResults): Map<number, RaceResult[]> {
-  const resultsByRound = new Map<number, RaceResult[]>();
+function groupSeasonEventResults(rawResults: RawSeasonEventResults): Map<number, RawEventResult[]> {
+  const grouped = groupBy(rawResults, ({ round }) => round);
 
-  for (const race of rawRaces) {
-    const round = Number(race.round);
-    const existing = resultsByRound.get(round) ?? [];
-    resultsByRound.set(round, [...existing, ...mapEventResults(race.results)]);
+  const resultsByRound = new Map<number, RawEventResult[]>();
+  for (const [round, results] of Object.entries(grouped)) {
+    const roundNumber = Number(round);  
+    resultsByRound.set(roundNumber,  results.map(({ result }) => result));
   }
 
   return resultsByRound;
-}
-
-function getMissingRounds(races: Race[], type: EventType, year: number): number[] {
-  return races
-    .filter((race) => race.type === type && !hasEventResults(year, race.raceNumber))
-    .map((race) => race.round);
 }
 
 async function fetchSeason(year: number): Promise<Race[]> {
@@ -88,26 +83,34 @@ async function fetchSeason(year: number): Promise<Race[]> {
   return races;
 }
 
-async function fetchEventResultsForRace(
+function isSeasonComplete(year: number, races: Race[]): boolean {
+  return races.every((race) => {
+    const results = getEventResults(year, race.raceNumber);
+    return Array.isArray(results) && results.length > 0;
+  });
+}
+
+async function saveSeasonEventResults(
   year: number,
-  raceNumber: number,
-  round: number,
-  type: EventType,
-  seasonResults: Map<number, RaceResult[]>
-) {
-  if (hasEventResults(year, raceNumber)) {
-    console.log(`  [skip] ${year}/results-${raceNumber}.json already cached`);
-    return true;
+  races: Race[],
+  type: EventType
+): Promise<void> {
+  const typedRaces = races.filter((race) => race.type === type);
+  if (typedRaces.length === 0) {
+    return;
   }
 
-  const results = seasonResults.get(round) ?? [];
-  if (results.length === 0) {
-    console.log(`  [stop] no ${type} results available for ${year} round ${round}; stopping this season`);
-    return false;
-  }
+  const raceNumbersByRound = new Map(typedRaces.map((race) => [race.round, race.raceNumber]));
+  const seasonResults = groupSeasonEventResults(await fetchEventResults(year, type));
 
-  await saveEventResults(year, raceNumber, results);
-  return true;
+  for (const [round, rawResults] of seasonResults) {
+    const raceNumber = raceNumbersByRound.get(round);
+    if (raceNumber === undefined) {
+      continue;
+    }
+
+    await saveEventResults(year, raceNumber, mapEventResults(rawResults));
+  }
 }
 
 async function main() {
@@ -116,27 +119,13 @@ async function main() {
   for (let year = START_YEAR; year <= CURRENT_YEAR; year++) {
     console.log(`\n=== ${year} ===`);
     const races = await fetchSeason(year);
-    const missingRaceRounds = getMissingRounds(races, "race", year);
-    const missingSprintRounds = getMissingRounds(races, "sprint", year);
-    const raceResultsByRound =
-      missingRaceRounds.length > 0
-        ? mapSeasonEventResults(await fetchEventResults(year, "race"))
-        : new Map<number, RaceResult[]>();
-    const sprintResultsByRound =
-      missingSprintRounds.length > 0
-        ? mapSeasonEventResults(await fetchEventResults(year, "sprint"))
-        : new Map<number, RaceResult[]>();
+    if (isSeasonComplete(year, races)) {
+      console.log(`  [skip] ${year} season already complete`);
+      continue;
+    }
 
-    for (const race of races) {
-      const seasonResults = race.type === "sprint" ? sprintResultsByRound : raceResultsByRound;
-      const hasResults = await fetchEventResultsForRace(
-        year,
-        race.raceNumber,
-        race.round,
-        race.type,
-        seasonResults
-      );
-      if (!hasResults) break;
+    for (const type of ["race", "sprint"] as const) {
+      await saveSeasonEventResults(year, races, type);
     }
   }
 
@@ -148,4 +137,4 @@ main().catch((err) => {
   process.exit(1);
 });
 type RawSeasonEventResults = Awaited<ReturnType<typeof fetchEventResults>>;
-type RawEventResult = RawSeasonEventResults[number]["results"][number];
+type RawEventResult = RawSeasonEventResults[number]["result"];

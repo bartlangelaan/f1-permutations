@@ -97,9 +97,9 @@ export async function fetchSeasonSchedule(year: number): Promise<z.infer<typeof 
 export async function fetchEventResults(
   year: number,
   type: EventType
-): Promise<Array<{ round: string; results: z.infer<typeof rawEventResultSchema>[] }>> {
+): Promise<Array<{ round: string; result: z.infer<typeof rawEventResultSchema> }>> {
   const endpoint = type === "sprint" ? "sprint" : "results";
-  const races: Array<{ round: string; results: z.infer<typeof rawEventResultSchema>[] }> = [];
+  const results: Array<{ round: string; result: z.infer<typeof rawEventResultSchema> }> = [];
   let offset = 0;
   let total = Infinity;
 
@@ -111,12 +111,14 @@ export async function fetchEventResults(
 
       total = response.MRData.total;
       offset = response.MRData.offset + response.MRData.limit;
-      races.push(
-        ...response.MRData.RaceTable.Races.map((race) => ({
-          round: race.round,
-          results: race.SprintResults ?? [],
-        }))
-      );
+      for (const race of response.MRData.RaceTable.Races) {
+        for (const result of race.SprintResults ?? []) {
+          results.push({
+            round: race.round,
+            result,
+          });
+        }
+      }
       continue;
     }
 
@@ -126,13 +128,15 @@ export async function fetchEventResults(
 
     total = response.MRData.total;
     offset = response.MRData.offset + response.MRData.limit;
-    races.push(
-      ...response.MRData.RaceTable.Races.map((race) => ({
-        round: race.round,
-        results: race.Results ?? [],
-      }))
-    );
+    for (const race of response.MRData.RaceTable.Races) {
+      for (const result of race.Results ?? []) {
+        results.push({
+          round: race.round,
+          result,
+        });
+      }
+    }
   }
 
-  return races;
+  return results;
 }

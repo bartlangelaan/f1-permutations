@@ -72,10 +72,6 @@ export function getEventResults(year: number, raceNumber: number): RaceResult[] 
   return readJsonFile<RaceResult[]>(file);
 }
 
-export function hasEventResults(year: number, raceNumber: number): boolean {
-  return fs.existsSync(eventResultsFile(year, raceNumber));
-}
-
 export async function saveEventResults(year: number, raceNumber: number, results: RaceResult[]): Promise<void> {
   await fs.outputJson(eventResultsFile(year, raceNumber), results, { spaces: 2 });
 }
