@@ -1,12 +1,9 @@
+// This file is responsible only for reading and writing JSON files and listing
+// directories. It must not contain domain logic — keep it as simple I/O.
+
 import fs from "fs-extra";
 import path from "path";
-import type { CalculatedChartData, EntitySeries, LockInsight, ProjectionEntry, TimelineSlot } from "./calculate";
-import {
-  maxRacePointsDriver,
-  maxRacePointsConstructor,
-  maxSprintPointsDriver,
-  maxSprintPointsConstructor,
-} from "./points";
+import type { CalculatedChartData, EntitySeries, LockInsight, ProjectionEntry } from "./calculate";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 
@@ -83,36 +80,6 @@ export function hasRaces(year: number): boolean {
 
 export async function saveRaces(year: number, races: Race[]): Promise<void> {
   await fs.outputJson(racesFile(year), races, { spaces: 2 });
-}
-
-/**
- * Derives the ordered event slots for a year from races.json and results files.
- */
-export function getSlots(year: number): TimelineSlot[] {
-  const races = getRaces(year);
-  return races.map((race, index) => {
-    const shortName = race.raceName.replace(" Grand Prix", " GP");
-    const results = getEventResults(year, index + 1);
-    return {
-      round: race.round,
-      type: race.type,
-      label: `R${index + 1}`,
-      fullLabel: race.type === "sprint" ? `R${index + 1} ${shortName} Sprint` : shortName,
-      maxDriverPoints:
-        year === 2014 && race.type === "race" && race.round === 19
-          ? 50
-          : race.type === "sprint"
-            ? maxSprintPointsDriver(year)
-            : maxRacePointsDriver(year),
-      maxConstructorPoints:
-        year === 2014 && race.type === "race" && race.round === 19
-          ? 86
-          : race.type === "sprint"
-            ? maxSprintPointsConstructor(year)
-            : maxRacePointsConstructor(year),
-      completed: results !== null && results.length > 0,
-    };
-  });
 }
 
 /**

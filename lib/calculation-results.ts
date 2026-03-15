@@ -1,7 +1,7 @@
 import type { CalculatedChartData, EntitySeries, LockInsight, ProjectionMap } from "./calculate";
+import { buildSlots } from "./calculate";
 import {
   getLastCompletedSlotIndex,
-  getSlots,
   readCalculationResultsForSelectedSlot,
   readParticipants,
   removeCalculationResultsForSeason,
@@ -13,7 +13,7 @@ export function readCalculationResults(year: number): CalculatedChartData | null
   const participants = readParticipants(year);
   if (!participants) return null;
 
-  const slots = getSlots(year);
+  const slots = buildSlots(year);
   const lastCompletedSlotIndex = getLastCompletedSlotIndex(year);
 
   const driverProjections: ProjectionMap = {};
