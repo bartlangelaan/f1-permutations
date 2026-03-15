@@ -1,5 +1,6 @@
 import fs from "fs-extra";
 import path from "path";
+import type { CalculatedChartData, LockInsight, ProjectionEntry } from "./calculate";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 
@@ -18,6 +19,18 @@ export interface RaceResult {
   constructorName: string;
 }
 
+export type BaseCalculatedChartData = Omit<
+  CalculatedChartData,
+  "driverProjections" | "constructorProjections" | "driverLockInsights" | "constructorLockInsights"
+>;
+
+interface CalculationResultsForSelectedSlot {
+  driverProjections: Record<string, Record<string, ProjectionEntry>>;
+  constructorProjections: Record<string, Record<string, ProjectionEntry>>;
+  driverLockInsights: LockInsight[];
+  constructorLockInsights: LockInsight[];
+}
+
 function seasonDir(year: number): string {
   return path.join(DATA_DIR, String(year));
 }
@@ -28,6 +41,14 @@ function racesFile(year: number): string {
 
 function eventResultsFile(year: number, raceNumber: number): string {
   return path.join(seasonDir(year), `results-${raceNumber}.json`);
+}
+
+function calculationResultsFile(year: number): string {
+  return path.join(seasonDir(year), "calculation-results.json");
+}
+
+function calculationResultsForSelectedSlotFile(year: number, selectedSlotIndex: number): string {
+  return path.join(seasonDir(year), `calculation-results-${selectedSlotIndex + 1}.json`);
 }
 
 function readJsonFile<T>(file: string): T {
@@ -74,4 +95,44 @@ export function getEventResults(year: number, raceNumber: number): RaceResult[] 
 
 export async function saveEventResults(year: number, raceNumber: number, results: RaceResult[]): Promise<void> {
   await fs.outputJson(eventResultsFile(year, raceNumber), results, { spaces: 2 });
+}
+
+
+export function readBaseCalculationResults(year: number): BaseCalculatedChartData | null {
+  const file = calculationResultsFile(year);
+  if (!fs.existsSync(file)) return null;
+  return readJsonFile<BaseCalculatedChartData>(file);
+}
+
+export async function saveBaseCalculationResults(year: number, data: BaseCalculatedChartData): Promise<void> {
+  await fs.outputJson(calculationResultsFile(year), data, { spaces: 2 });
+}
+
+export function readCalculationResultsForSelectedSlot(
+  year: number,
+  selectedSlotIndex: number
+): CalculationResultsForSelectedSlot | null {
+  const file = calculationResultsForSelectedSlotFile(year, selectedSlotIndex);
+  if (!fs.existsSync(file)) return null;
+  return readJsonFile<CalculationResultsForSelectedSlot>(file);
+}
+
+export async function saveCalculationResultsForSelectedSlot(
+  year: number,
+  selectedSlotIndex: number,
+  data: CalculationResultsForSelectedSlot
+): Promise<void> {
+  await fs.outputJson(calculationResultsForSelectedSlotFile(year, selectedSlotIndex), data, { spaces: 2 });
+}
+
+export async function removeCalculationResultsForSeason(year: number): Promise<void> {
+  const yearDir = seasonDir(year);
+  await fs.ensureDir(yearDir);
+
+  const existingFiles = await fs.readdir(yearDir);
+  await Promise.all(
+    existingFiles
+      .filter((name) => /^calculation-results-\d+\.json$/.test(name))
+      .map((name) => fs.remove(path.join(yearDir, name)))
+  );
 }
