@@ -1,6 +1,12 @@
 import fs from "fs-extra";
 import path from "path";
-import type { CalculatedChartData, LockInsight, ProjectionEntry } from "./calculate";
+import type { CalculatedChartData, EntitySeries, LockInsight, ProjectionEntry, TimelineSlot } from "./calculate";
+import {
+  maxRacePointsDriver,
+  maxRacePointsConstructor,
+  maxSprintPointsDriver,
+  maxSprintPointsConstructor,
+} from "./points";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 
@@ -18,11 +24,6 @@ export interface RaceResult {
   constructorId: string;
   constructorName: string;
 }
-
-export type BaseCalculatedChartData = Omit<
-  CalculatedChartData,
-  "driverProjections" | "constructorProjections" | "driverLockInsights" | "constructorLockInsights"
->;
 
 interface CalculationResultsForSelectedSlot {
   driverProjections: Record<string, Record<string, ProjectionEntry>>;
@@ -43,8 +44,12 @@ function eventResultsFile(year: number, raceNumber: number): string {
   return path.join(seasonDir(year), `results-${raceNumber}.json`);
 }
 
-function calculationResultsFile(year: number): string {
-  return path.join(seasonDir(year), "calculation-results.json");
+function driversFile(year: number): string {
+  return path.join(seasonDir(year), "drivers.json");
+}
+
+function constructorsFile(year: number): string {
+  return path.join(seasonDir(year), "constructors.json");
 }
 
 function calculationResultsForSelectedSlotFile(year: number, selectedSlotIndex: number): string {
@@ -85,6 +90,52 @@ export async function saveRaces(year: number, races: Race[]): Promise<void> {
 }
 
 /**
+ * Derives the ordered event slots for a year from races.json and results files.
+ */
+export function getSlots(year: number): TimelineSlot[] {
+  const races = getRaces(year);
+  return races.map((race, index) => {
+    const shortName = race.raceName.replace(" Grand Prix", " GP");
+    const results = getEventResults(year, index + 1);
+    return {
+      round: race.round,
+      type: race.type,
+      label: `R${index + 1}`,
+      fullLabel: race.type === "sprint" ? `R${index + 1} ${shortName} Sprint` : shortName,
+      maxDriverPoints:
+        year === 2014 && race.type === "race" && race.round === 19
+          ? 50
+          : race.type === "sprint"
+            ? maxSprintPointsDriver(year)
+            : maxRacePointsDriver(year),
+      maxConstructorPoints:
+        year === 2014 && race.type === "race" && race.round === 19
+          ? 86
+          : race.type === "sprint"
+            ? maxSprintPointsConstructor(year)
+            : maxRacePointsConstructor(year),
+      completed: results !== null && results.length > 0,
+    };
+  });
+}
+
+/**
+ * Returns the index of the last completed slot based on which per-slot
+ * calculation files exist, or -1 if none.
+ */
+export function getLastCompletedSlotIndex(year: number): number {
+  const dir = seasonDir(year);
+  if (!fs.existsSync(dir)) return -1;
+  const files = fs.readdirSync(dir);
+  let max = -1;
+  for (const f of files) {
+    const m = f.match(/^calculation-results-(\d+)\.json$/);
+    if (m) max = Math.max(max, parseInt(m[1]) - 1);
+  }
+  return max;
+}
+
+/**
  * Returns the results for a specific event raceNumber.
  */
 export function getEventResults(year: number, raceNumber: number): RaceResult[] | null {
@@ -97,15 +148,24 @@ export async function saveEventResults(year: number, raceNumber: number, results
   await fs.outputJson(eventResultsFile(year, raceNumber), results, { spaces: 2 });
 }
 
-
-export function readBaseCalculationResults(year: number): BaseCalculatedChartData | null {
-  const file = calculationResultsFile(year);
+export function readDrivers(year: number): EntitySeries[] | null {
+  const file = driversFile(year);
   if (!fs.existsSync(file)) return null;
-  return readJsonFile<BaseCalculatedChartData>(file);
+  return readJsonFile<EntitySeries[]>(file);
 }
 
-export async function saveBaseCalculationResults(year: number, data: BaseCalculatedChartData): Promise<void> {
-  await fs.outputJson(calculationResultsFile(year), data, { spaces: 2 });
+export async function saveDrivers(year: number, drivers: EntitySeries[]): Promise<void> {
+  await fs.outputJson(driversFile(year), drivers, { spaces: 2 });
+}
+
+export function readConstructors(year: number): EntitySeries[] | null {
+  const file = constructorsFile(year);
+  if (!fs.existsSync(file)) return null;
+  return readJsonFile<EntitySeries[]>(file);
+}
+
+export async function saveConstructors(year: number, constructors: EntitySeries[]): Promise<void> {
+  await fs.outputJson(constructorsFile(year), constructors, { spaces: 2 });
 }
 
 export function readCalculationResultsForSelectedSlot(
