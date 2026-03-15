@@ -99,7 +99,7 @@ function getStandingsRowsForSlot({
         name: e.name,
         color: e.color,
         minPos: entry.bestPos,
-        maxPos: entry.worstPos,
+        maxPos: entry.worstPos ?? entities.length,
         minPoints: entry.minPts,
         maxPoints: entry.maxPts,
         sortPos: entry.bestPos,

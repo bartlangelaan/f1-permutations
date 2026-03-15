@@ -128,7 +128,7 @@ interface SeasonChartData {
   constructors: EntitySeries[];
 }
 
-export type ProjectionEntry = { minPts: number; maxPts: number; bestPos: number; worstPos: number };
+export type ProjectionEntry = { minPts: number; maxPts: number; bestPos: number; worstPos: number | null };
 /** projections[selectedIdx][futureSlotIdx][entityId] */
 export type ProjectionMap = Record<string, Record<string, Record<string, ProjectionEntry>>>;
 
@@ -370,7 +370,7 @@ export function computeLockInsightsForSelectedSlot(
       const nextHorizonMax = cumulativeMaxPoints(data.slots, selectedIdx, nextSlotIdx, isDriver);
       const pointsRemainingAfterNext = cumulativeMaxPoints(data.slots, nextSlotIdx, lastSlotIdx, isDriver);
 
-      for (let position = endEntry.bestPos; position <= endEntry.worstPos; position++) {
+      for (let position = endEntry.bestPos; position <= (endEntry.worstPos ?? entities.length); position++) {
         const nextPlan = findGuaranteePlanForPosition(
           entity.id,
           position,
@@ -393,7 +393,7 @@ export function computeLockInsightsForSelectedSlot(
         });
       }
 
-      for (let position = endEntry.bestPos; position < endEntry.worstPos; position++) {
+      for (let position = endEntry.bestPos; position < (endEntry.worstPos ?? entities.length); position++) {
         const ruleOutPlan = findRuleOutPlanForPosition(
           entity.id,
           position,
@@ -417,7 +417,7 @@ export function computeLockInsightsForSelectedSlot(
       }
     }
 
-    for (let position = endEntry.bestPos; position <= endEntry.worstPos; position++) {
+    for (let position = endEntry.bestPos; position <= (endEntry.worstPos ?? entities.length); position++) {
       if (hasInsight(entity.id, position, "can_be_locked_in_next_race")) continue;
 
       let earliestSlotIndex = -1;
@@ -451,7 +451,7 @@ export function computeLockInsightsForSelectedSlot(
       }
     }
 
-    for (let position = endEntry.bestPos; position < endEntry.worstPos; position++) {
+    for (let position = endEntry.bestPos; position < (endEntry.worstPos ?? entities.length); position++) {
       if (hasInsight(entity.id, position, "can_be_locked_in_next_race")) continue;
       if (hasInsight(entity.id, position, "can_be_locked_in_later")) continue;
       if (hasInsight(entity.id, position, "can_be_ruled_out_next_race")) continue;
@@ -622,7 +622,10 @@ export function computeProjectionsForSelectedSlot(
         worstPos = 1 + maxOvertakes;
       }
 
-      slotData[e.id] = { minPts: e.minPts, maxPts: e.maxPts, bestPos, worstPos };
+      const worstPosValue: number | null =
+        worstPos === ranges.length && worstPos !== bestPos ? null : worstPos;
+
+      slotData[e.id] = { minPts: e.minPts, maxPts: e.maxPts, bestPos, worstPos: worstPosValue };
     }
 
     projectionsForSelectedIdx[j] = slotData;
