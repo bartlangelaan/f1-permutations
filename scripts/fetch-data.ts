@@ -1,63 +1,80 @@
-import ky from "ky";
 import {
   getRaces,
   hasEventResults,
   hasRaces,
   saveEventResults,
   saveRaces,
+  type Race,
+  type RaceResult,
 } from "../lib/data";
-import type { Race, RaceResult } from "../lib/data";
+import {
+  fetchEventResults,
+  fetchSeasonSchedule,
+  type EventType,
+} from "../lib/jolpica";
 
-const BASE_URL = "https://api.jolpi.ca/ergast/f1";
 const START_YEAR = 2010;
 const CURRENT_YEAR = new Date().getFullYear();
-const DELAY_MS = 300;
 
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+function mapSeasonSchedule(rawRaces: Awaited<ReturnType<typeof fetchSeasonSchedule>>): Race[] {
+  let raceNumber = 1;
+
+  return rawRaces.flatMap((race) => {
+    if (!race.round) {
+      console.log(`  [drop] skipping ${race.raceName} because it has no active championship round`);
+      return [];
+    }
+
+    const round = Number(race.round);
+
+    const entries: Race[] = [];
+
+    if (race.Sprint) {
+      entries.push({
+        raceNumber: raceNumber++,
+        round,
+        type: "sprint",
+        raceName: race.raceName,
+      });
+    }
+
+    entries.push({
+      raceNumber: raceNumber++,
+      round,
+      type: "race",
+      raceName: race.raceName,
+    });
+
+    return entries;
+  });
 }
 
-const client = ky.create({
-  prefixUrl: BASE_URL,
-  retry: {
-    limit: 5,
-    methods: ["get"],
-    statusCodes: [429, 500, 502, 503, 504],
-    backoffLimit: 30_000,
-  },
-  hooks: {
-    beforeRetry: [
-      ({ retryCount }) => {
-        console.log(`  [retry ${retryCount}] waiting before next attempt...`);
-      },
-    ],
-  },
-});
-
-async function fetchJSON(urlPath: string) {
-  return client.get(urlPath).json<any>();
+function mapEventResults(rawResults: RawEventResult[]): RaceResult[] {
+  return rawResults.map((result) => ({
+      points: result.points,
+      driverId: result.Driver.driverId,
+      driverName: `${result.Driver.givenName} ${result.Driver.familyName}`,
+      constructorId: result.Constructor.constructorId,
+      constructorName: result.Constructor.name,
+    }));
 }
 
-function isValidRound(round: unknown): round is number {
-  return typeof round === "number" && Number.isFinite(round) && round > 0;
+function mapSeasonEventResults(rawRaces: RawSeasonEventResults): Map<number, RaceResult[]> {
+  const resultsByRound = new Map<number, RaceResult[]>();
+
+  for (const race of rawRaces) {
+    const round = Number(race.round);
+    const existing = resultsByRound.get(round) ?? [];
+    resultsByRound.set(round, [...existing, ...mapEventResults(race.results)]);
+  }
+
+  return resultsByRound;
 }
 
-function mapResults(rawResults: any[]): RaceResult[] {
-  const nonFinishTexts = new Set(["R", "D", "E", "W", "F", "N"]);
-  return rawResults.map((r: any) => ({
-    position: nonFinishTexts.has(r.positionText) ? null : Number(r.position),
-    positionText: r.positionText,
-    points: Number(r.points),
-    driverId: r.Driver?.driverId,
-    driverCode: r.Driver?.code ?? r.Driver?.driverId,
-    driverName: `${r.Driver?.givenName} ${r.Driver?.familyName}`,
-    constructorId: r.Constructor?.constructorId,
-    constructorName: r.Constructor?.name,
-    grid: Number(r.grid),
-    laps: Number(r.laps),
-    status: r.status ?? "",
-    fastestLap: r.FastestLap?.rank === "1",
-  }));
+function getMissingRounds(races: Race[], type: EventType, year: number): number[] {
+  return races
+    .filter((race) => race.type === type && !hasEventResults(year, race.raceNumber))
+    .map((race) => race.round);
 }
 
 async function fetchSeason(year: number): Promise<Race[]> {
@@ -66,62 +83,30 @@ async function fetchSeason(year: number): Promise<Race[]> {
     return getRaces(year);
   }
 
-  console.log(`  [fetch] ${year} schedule`);
-  const data = await fetchJSON(`${year}.json?limit=100`);
-  const rawRaces = data?.MRData?.RaceTable?.Races ?? [];
-  let raceNumber = 1;
-  const races = rawRaces.flatMap((r: any) => {
-    const round = Number(r.round);
-    if (!isValidRound(round)) {
-      console.log(`  [drop] skipping ${r.raceName} because it has no active championship round`);
-      return [];
-    }
-
-    const entries: Array<{ raceNumber: number; round: number; type: "race" | "sprint"; raceName: string; date: string }> = [];
-    if (r.Sprint) {
-      entries.push({
-        raceNumber: raceNumber++,
-        round,
-        type: "sprint",
-        raceName: r.raceName,
-        date: r.Sprint.date ?? r.date,
-      });
-    }
-
-    entries.push({
-      raceNumber: raceNumber++,
-      round,
-      type: "race",
-      raceName: r.raceName,
-      date: r.date,
-    });
-
-    return entries;
-  });
+  const races = mapSeasonSchedule(await fetchSeasonSchedule(year));
   await saveRaces(year, races);
-  await sleep(DELAY_MS);
   return races;
 }
 
-async function fetchEventResults(year: number, raceNumber: number, round: number, type: "race" | "sprint") {
-  const endpoint = type === "sprint" ? "sprint" : "results";
-  const resultPath = type === "sprint" ? "SprintResults" : "Results";
-
+async function fetchEventResultsForRace(
+  year: number,
+  raceNumber: number,
+  round: number,
+  type: EventType,
+  seasonResults: Map<number, RaceResult[]>
+) {
   if (hasEventResults(year, raceNumber)) {
     console.log(`  [skip] ${year}/results-${raceNumber}.json already cached`);
     return true;
   }
 
-  console.log(`  [fetch] ${year} race ${raceNumber} (${type}, round ${round}) results`);
-  const data = await fetchJSON(`${year}/${round}/${endpoint}.json?limit=100`);
-  const rawResults = data?.MRData?.RaceTable?.Races?.[0]?.[resultPath] ?? [];
-  if (rawResults.length === 0) {
+  const results = seasonResults.get(round) ?? [];
+  if (results.length === 0) {
     console.log(`  [stop] no ${type} results available for ${year} round ${round}; stopping this season`);
     return false;
   }
 
-  await saveEventResults(year, raceNumber, mapResults(rawResults));
-  await sleep(DELAY_MS);
+  await saveEventResults(year, raceNumber, results);
   return true;
 }
 
@@ -131,9 +116,26 @@ async function main() {
   for (let year = START_YEAR; year <= CURRENT_YEAR; year++) {
     console.log(`\n=== ${year} ===`);
     const races = await fetchSeason(year);
+    const missingRaceRounds = getMissingRounds(races, "race", year);
+    const missingSprintRounds = getMissingRounds(races, "sprint", year);
+    const raceResultsByRound =
+      missingRaceRounds.length > 0
+        ? mapSeasonEventResults(await fetchEventResults(year, "race"))
+        : new Map<number, RaceResult[]>();
+    const sprintResultsByRound =
+      missingSprintRounds.length > 0
+        ? mapSeasonEventResults(await fetchEventResults(year, "sprint"))
+        : new Map<number, RaceResult[]>();
 
     for (const race of races) {
-      const hasResults = await fetchEventResults(year, race.raceNumber, race.round, race.type);
+      const seasonResults = race.type === "sprint" ? sprintResultsByRound : raceResultsByRound;
+      const hasResults = await fetchEventResultsForRace(
+        year,
+        race.raceNumber,
+        race.round,
+        race.type,
+        seasonResults
+      );
       if (!hasResults) break;
     }
   }
@@ -145,3 +147,5 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+type RawSeasonEventResults = Awaited<ReturnType<typeof fetchEventResults>>;
+type RawEventResult = RawSeasonEventResults[number]["results"][number];
