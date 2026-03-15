@@ -13,9 +13,7 @@ test('Check the calculation result of 2025 after race 23', () => {
   // Current points after race 23 are 22
   assert.equal(gaslyCurrentPts, 22);
   // Current position after race 23 is P18
-  const gaslyCurrentPos = 1 + data.drivers.filter(
-    d => d.id !== gasly.id && (d.cumulativePoints[round23RaceNum - 1] ?? 0) > gaslyCurrentPts!
-  ).length;
+  const gaslyCurrentPos = gasly.currentPos[round23RaceNum - 1];
   assert.equal(gaslyCurrentPos, 18);
 
   // Check end-of-season projection from race 23

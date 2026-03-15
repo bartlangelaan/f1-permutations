@@ -117,6 +117,8 @@ export interface EntitySeries {
   color: string;
   /** cumulativePoints[i] = points after race i+1 (0-indexed array); null if race not yet run */
   cumulativePoints: (number | null)[];
+  /** currentPos[i] = championship position after race i+1 (0-indexed array); null if race not yet run */
+  currentPos: (number | null)[];
 }
 
 interface SeasonChartData {
@@ -586,6 +588,12 @@ export function buildSeasonChartData(year: number, upToRaceNum?: number): Season
   const constructorColorIndex = new Map<string, number>();
   constructorIds.forEach((id, idx) => constructorColorIndex.set(id, idx));
 
+  function computePos(snap: Map<string, number> | null, id: string): number | null {
+    if (snap === null || !snap.has(id)) return null;
+    const pts = snap.get(id)!;
+    return 1 + [...snap.entries()].filter(([otherId, otherPts]) => otherId !== id && otherPts > pts).length;
+  }
+
   const drivers: EntitySeries[] = driverIds.map((id) => {
     const constructorId = driverConstructor.get(id) ?? "";
     const fallbackIdx = constructorColorIndex.get(constructorId) ?? 0;
@@ -594,6 +602,7 @@ export function buildSeasonChartData(year: number, upToRaceNum?: number): Season
       name: driverNames.get(id)!,
       color: teamColor(constructorId, fallbackIdx),
       cumulativePoints: driverSnaps.map((snap) => snap?.get(id) ?? null),
+      currentPos: driverSnaps.map((snap) => computePos(snap, id)),
     };
   });
 
@@ -602,6 +611,7 @@ export function buildSeasonChartData(year: number, upToRaceNum?: number): Season
     name: constructorNames.get(id)!,
     color: teamColor(id, idx),
     cumulativePoints: constructorSnaps.map((snap) => snap?.get(id) ?? null),
+    currentPos: constructorSnaps.map((snap) => computePos(snap, id)),
   }));
 
   return { year, races, lastCompletedRaceNum, drivers, constructors };

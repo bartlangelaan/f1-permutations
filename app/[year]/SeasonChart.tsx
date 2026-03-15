@@ -116,28 +116,30 @@ function getStandingsRowsForRace({
     };
   }
 
-  const actualRows = entities.reduce<{ id: string; name: string; color: string; points: number }[]>((acc, e) => {
+  const actualRows = entities.reduce<{ id: string; name: string; color: string; points: number; pos: number }[]>((acc, e) => {
     const points = e.cumulativePoints[raceNum - 1];
-    if (points == null) return acc;
+    const pos = e.currentPos[raceNum - 1];
+    if (points == null || pos == null) return acc;
     acc.push({
       id: e.id,
       name: e.name,
       color: e.color,
       points,
+      pos,
     });
     return acc;
   }, []);
 
-  actualRows.sort((a, b) => b.points - a.points);
+  actualRows.sort((a, b) => a.pos - b.pos);
 
   return {
     isProjected: false,
-    rows: actualRows.map((e, i) => ({
+    rows: actualRows.map((e) => ({
       id: e.id,
       name: e.name,
       color: e.color,
-      minPos: i + 1,
-      maxPos: i + 1,
+      minPos: e.pos,
+      maxPos: e.pos,
       minPoints: e.points,
       maxPoints: e.points,
     })),
