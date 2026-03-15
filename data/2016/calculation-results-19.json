@@ -1,6 +1,6 @@
 {
   "driverProjections": {
-    "19": {
+    "20": {
       "rosberg": {
         "minPts": 349,
         "maxPts": 374,
@@ -146,7 +146,7 @@
         "worstPos": null
       }
     },
-    "20": {
+    "21": {
       "rosberg": {
         "minPts": 349,
         "maxPts": 399,
@@ -294,7 +294,7 @@
     }
   },
   "constructorProjections": {
-    "19": {
+    "20": {
       "mercedes": {
         "minPts": 679,
         "maxPts": 722,
@@ -362,7 +362,7 @@
         "worstPos": null
       }
     },
-    "20": {
+    "21": {
       "mercedes": {
         "minPts": 679,
         "maxPts": 765,
@@ -436,7 +436,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "rosberg",
       "position": 1,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "hamilton",
@@ -449,13 +449,13 @@
       "type": "can_be_locked_in_later",
       "entityId": "rosberg",
       "position": 2,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_ruled_out_next_race",
       "entityId": "hamilton",
       "position": 1,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "rosberg",
@@ -468,13 +468,13 @@
       "type": "can_be_locked_in_later",
       "entityId": "hamilton",
       "position": 1,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "hamilton",
       "position": 2,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "already_locked_in",
@@ -485,7 +485,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "vettel",
       "position": 4,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "raikkonen",
@@ -502,7 +502,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "vettel",
       "position": 5,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "max_verstappen",
@@ -515,13 +515,13 @@
       "type": "can_be_locked_in_later",
       "entityId": "vettel",
       "position": 6,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "raikkonen",
       "position": 5,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "max_verstappen",
@@ -534,7 +534,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "raikkonen",
       "position": 4,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "vettel",
@@ -547,19 +547,19 @@
       "type": "can_be_locked_in_later",
       "entityId": "raikkonen",
       "position": 4,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "raikkonen",
       "position": 6,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_ruled_out_next_race",
       "entityId": "max_verstappen",
       "position": 4,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "vettel",
@@ -572,7 +572,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "max_verstappen",
       "position": 5,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "raikkonen",
@@ -589,25 +589,25 @@
       "type": "can_be_locked_in_later",
       "entityId": "max_verstappen",
       "position": 4,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "max_verstappen",
       "position": 5,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "max_verstappen",
       "position": 6,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "perez",
       "position": 8,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "hulkenberg",
@@ -633,7 +633,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "perez",
       "position": 9,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -654,7 +654,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "perez",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -671,7 +671,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "perez",
       "position": 11,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -684,19 +684,19 @@
       "type": "can_be_locked_in_later",
       "entityId": "perez",
       "position": 7,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "perez",
       "position": 12,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "bottas",
       "position": 8,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "hulkenberg",
@@ -722,7 +722,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "bottas",
       "position": 9,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -743,7 +743,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "bottas",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -760,7 +760,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "bottas",
       "position": 11,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -773,19 +773,19 @@
       "type": "can_be_locked_in_later",
       "entityId": "bottas",
       "position": 7,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "bottas",
       "position": 12,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "hulkenberg",
       "position": 9,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "alonso",
@@ -819,7 +819,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "hulkenberg",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "massa",
@@ -849,7 +849,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "hulkenberg",
       "position": 11,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "sainz",
@@ -875,7 +875,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "hulkenberg",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -896,7 +896,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "hulkenberg",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -913,7 +913,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "hulkenberg",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -926,7 +926,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "hulkenberg",
       "position": 7,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "bottas",
@@ -939,7 +939,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "hulkenberg",
       "position": 8,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "bottas",
@@ -956,25 +956,25 @@
       "type": "can_be_locked_in_later",
       "entityId": "hulkenberg",
       "position": 7,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "hulkenberg",
       "position": 8,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "hulkenberg",
       "position": 15,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "alonso",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "massa",
@@ -1008,7 +1008,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "alonso",
       "position": 11,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "sainz",
@@ -1038,7 +1038,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "alonso",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "grosjean",
@@ -1064,7 +1064,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "alonso",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1085,7 +1085,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "alonso",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1102,7 +1102,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "alonso",
       "position": 15,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1115,7 +1115,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "alonso",
       "position": 7,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -1128,7 +1128,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "alonso",
       "position": 8,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -1145,7 +1145,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "alonso",
       "position": 9,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "hulkenberg",
@@ -1167,31 +1167,31 @@
       "type": "can_be_locked_in_later",
       "entityId": "alonso",
       "position": 7,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "alonso",
       "position": 8,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "alonso",
       "position": 9,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "alonso",
       "position": 16,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "massa",
       "position": 11,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "sainz",
@@ -1233,7 +1233,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "massa",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "grosjean",
@@ -1271,7 +1271,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "massa",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1304,7 +1304,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "massa",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1333,7 +1333,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "massa",
       "position": 15,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1358,7 +1358,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "massa",
       "position": 16,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1379,7 +1379,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "massa",
       "position": 7,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -1392,7 +1392,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "massa",
       "position": 8,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -1409,7 +1409,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "massa",
       "position": 9,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "hulkenberg",
@@ -1431,7 +1431,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "massa",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "alonso",
@@ -1457,31 +1457,31 @@
       "type": "can_be_locked_in_later",
       "entityId": "massa",
       "position": 7,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "massa",
       "position": 8,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "massa",
       "position": 9,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "massa",
       "position": 10,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "sainz",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "grosjean",
@@ -1539,7 +1539,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "sainz",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "kvyat",
@@ -1593,7 +1593,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "sainz",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "button",
@@ -1643,7 +1643,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "sainz",
       "position": 15,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1688,7 +1688,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "sainz",
       "position": 16,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1729,7 +1729,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "sainz",
       "position": 17,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1766,7 +1766,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "sainz",
       "position": 18,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1799,7 +1799,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "sainz",
       "position": 19,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1828,7 +1828,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "sainz",
       "position": 20,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1853,7 +1853,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "sainz",
       "position": 21,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1874,7 +1874,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "sainz",
       "position": 22,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1891,7 +1891,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "sainz",
       "position": 23,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -1904,7 +1904,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "sainz",
       "position": 7,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -1917,7 +1917,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "sainz",
       "position": 8,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -1934,7 +1934,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "sainz",
       "position": 9,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "hulkenberg",
@@ -1956,7 +1956,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "sainz",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "alonso",
@@ -1982,7 +1982,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "sainz",
       "position": 11,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "massa",
@@ -2012,43 +2012,43 @@
       "type": "can_be_locked_in_later",
       "entityId": "sainz",
       "position": 7,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "sainz",
       "position": 8,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "sainz",
       "position": 9,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "sainz",
       "position": 10,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "sainz",
       "position": 11,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "sainz",
       "position": 24,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "grosjean",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "kvyat",
@@ -2102,7 +2102,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "grosjean",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "button",
@@ -2152,7 +2152,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "grosjean",
       "position": 15,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "kevin_magnussen",
@@ -2198,7 +2198,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "grosjean",
       "position": 16,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -2239,7 +2239,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "grosjean",
       "position": 17,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -2276,7 +2276,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "grosjean",
       "position": 18,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -2309,7 +2309,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "grosjean",
       "position": 19,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -2338,7 +2338,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "grosjean",
       "position": 20,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -2363,7 +2363,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "grosjean",
       "position": 21,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -2384,7 +2384,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "grosjean",
       "position": 22,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -2401,7 +2401,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "grosjean",
       "position": 23,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -2414,7 +2414,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "grosjean",
       "position": 9,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -2427,7 +2427,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "grosjean",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "alonso",
@@ -2445,7 +2445,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "grosjean",
       "position": 11,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "massa",
@@ -2467,7 +2467,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "grosjean",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "sainz",
@@ -2493,37 +2493,37 @@
       "type": "can_be_locked_in_later",
       "entityId": "grosjean",
       "position": 9,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "grosjean",
       "position": 10,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "grosjean",
       "position": 11,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "grosjean",
       "position": 12,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "grosjean",
       "position": 24,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "kvyat",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "button",
@@ -2572,7 +2572,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kvyat",
       "position": 15,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "kevin_magnussen",
@@ -2617,7 +2617,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kvyat",
       "position": 16,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -2658,7 +2658,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kvyat",
       "position": 17,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -2695,7 +2695,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kvyat",
       "position": 18,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -2728,7 +2728,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kvyat",
       "position": 19,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -2757,7 +2757,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kvyat",
       "position": 20,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -2782,7 +2782,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kvyat",
       "position": 21,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -2803,7 +2803,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kvyat",
       "position": 22,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -2820,7 +2820,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kvyat",
       "position": 23,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -2833,7 +2833,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "kvyat",
       "position": 9,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -2846,7 +2846,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "kvyat",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -2863,7 +2863,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "kvyat",
       "position": 11,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -2884,7 +2884,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "kvyat",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "sainz",
@@ -2910,7 +2910,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "kvyat",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "grosjean",
@@ -2940,43 +2940,43 @@
       "type": "can_be_locked_in_later",
       "entityId": "kvyat",
       "position": 9,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "kvyat",
       "position": 10,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "kvyat",
       "position": 11,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "kvyat",
       "position": 12,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "kvyat",
       "position": 13,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "kvyat",
       "position": 24,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "button",
       "position": 15,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "kevin_magnussen",
@@ -3021,7 +3021,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "button",
       "position": 16,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -3062,7 +3062,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "button",
       "position": 17,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -3099,7 +3099,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "button",
       "position": 18,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -3132,7 +3132,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "button",
       "position": 19,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -3161,7 +3161,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "button",
       "position": 20,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -3186,7 +3186,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "button",
       "position": 21,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -3207,7 +3207,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "button",
       "position": 22,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -3224,7 +3224,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "button",
       "position": 23,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -3237,7 +3237,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "button",
       "position": 9,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -3250,7 +3250,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "button",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -3267,7 +3267,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "button",
       "position": 11,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -3288,7 +3288,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "button",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "sainz",
@@ -3314,7 +3314,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "button",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "grosjean",
@@ -3344,7 +3344,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "button",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kvyat",
@@ -3378,49 +3378,49 @@
       "type": "can_be_locked_in_later",
       "entityId": "button",
       "position": 9,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "button",
       "position": 10,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "button",
       "position": 11,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "button",
       "position": 12,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "button",
       "position": 13,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "button",
       "position": 14,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "button",
       "position": 24,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "kevin_magnussen",
       "position": 16,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -3461,7 +3461,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kevin_magnussen",
       "position": 17,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -3498,7 +3498,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kevin_magnussen",
       "position": 18,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -3531,7 +3531,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kevin_magnussen",
       "position": 19,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -3560,7 +3560,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kevin_magnussen",
       "position": 20,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -3585,7 +3585,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kevin_magnussen",
       "position": 21,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -3606,7 +3606,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kevin_magnussen",
       "position": 22,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -3623,7 +3623,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "kevin_magnussen",
       "position": 23,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -3636,7 +3636,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "kevin_magnussen",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -3649,7 +3649,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "kevin_magnussen",
       "position": 11,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -3666,7 +3666,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "kevin_magnussen",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -3687,7 +3687,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "kevin_magnussen",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "grosjean",
@@ -3713,7 +3713,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "kevin_magnussen",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kvyat",
@@ -3743,7 +3743,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "kevin_magnussen",
       "position": 15,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "button",
@@ -3777,49 +3777,49 @@
       "type": "can_be_locked_in_later",
       "entityId": "kevin_magnussen",
       "position": 10,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "kevin_magnussen",
       "position": 11,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "kevin_magnussen",
       "position": 12,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "kevin_magnussen",
       "position": 13,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "kevin_magnussen",
       "position": 14,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "kevin_magnussen",
       "position": 15,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "kevin_magnussen",
       "position": 24,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "jolyon_palmer",
       "position": 19,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -3848,7 +3848,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "jolyon_palmer",
       "position": 20,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -3873,7 +3873,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "jolyon_palmer",
       "position": 21,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -3894,7 +3894,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "jolyon_palmer",
       "position": 22,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -3911,7 +3911,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "jolyon_palmer",
       "position": 23,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -3924,7 +3924,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "jolyon_palmer",
       "position": 11,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -3937,7 +3937,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "jolyon_palmer",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -3954,7 +3954,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "jolyon_palmer",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -3975,7 +3975,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "jolyon_palmer",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kvyat",
@@ -4001,7 +4001,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "jolyon_palmer",
       "position": 15,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "button",
@@ -4031,7 +4031,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "jolyon_palmer",
       "position": 16,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kevin_magnussen",
@@ -4065,55 +4065,55 @@
       "type": "can_be_locked_in_later",
       "entityId": "jolyon_palmer",
       "position": 12,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "jolyon_palmer",
       "position": 13,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "jolyon_palmer",
       "position": 14,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "jolyon_palmer",
       "position": 15,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "jolyon_palmer",
       "position": 16,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "jolyon_palmer",
       "position": 17,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "jolyon_palmer",
       "position": 18,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "jolyon_palmer",
       "position": 24,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "wehrlein",
       "position": 19,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -4142,7 +4142,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "wehrlein",
       "position": 20,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -4167,7 +4167,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "wehrlein",
       "position": 21,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -4188,7 +4188,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "wehrlein",
       "position": 22,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -4205,7 +4205,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "wehrlein",
       "position": 23,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -4218,7 +4218,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "wehrlein",
       "position": 11,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -4231,7 +4231,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "wehrlein",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -4248,7 +4248,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "wehrlein",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -4269,7 +4269,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "wehrlein",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kvyat",
@@ -4295,7 +4295,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "wehrlein",
       "position": 15,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "button",
@@ -4325,7 +4325,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "wehrlein",
       "position": 16,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kevin_magnussen",
@@ -4359,55 +4359,55 @@
       "type": "can_be_locked_in_later",
       "entityId": "wehrlein",
       "position": 12,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "wehrlein",
       "position": 13,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "wehrlein",
       "position": 14,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "wehrlein",
       "position": 15,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "wehrlein",
       "position": 16,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "wehrlein",
       "position": 17,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "wehrlein",
       "position": 18,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "wehrlein",
       "position": 24,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "vandoorne",
       "position": 19,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -4436,7 +4436,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "vandoorne",
       "position": 20,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -4461,7 +4461,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "vandoorne",
       "position": 21,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -4482,7 +4482,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "vandoorne",
       "position": 22,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -4499,7 +4499,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "vandoorne",
       "position": 23,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "nasr",
@@ -4512,7 +4512,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "vandoorne",
       "position": 11,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -4525,7 +4525,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "vandoorne",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -4542,7 +4542,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "vandoorne",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -4563,7 +4563,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "vandoorne",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kvyat",
@@ -4589,7 +4589,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "vandoorne",
       "position": 15,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "button",
@@ -4619,7 +4619,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "vandoorne",
       "position": 16,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kevin_magnussen",
@@ -4653,55 +4653,55 @@
       "type": "can_be_locked_in_later",
       "entityId": "vandoorne",
       "position": 12,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "vandoorne",
       "position": 13,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "vandoorne",
       "position": 14,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "vandoorne",
       "position": 15,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "vandoorne",
       "position": 16,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "vandoorne",
       "position": 17,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "vandoorne",
       "position": 18,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "vandoorne",
       "position": 24,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_ruled_out_next_race",
       "entityId": "gutierrez",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -4714,7 +4714,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "gutierrez",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -4731,7 +4731,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "gutierrez",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kvyat",
@@ -4753,7 +4753,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "gutierrez",
       "position": 15,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "button",
@@ -4779,7 +4779,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "gutierrez",
       "position": 16,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kevin_magnussen",
@@ -4809,7 +4809,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "gutierrez",
       "position": 17,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -4843,7 +4843,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "gutierrez",
       "position": 18,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -4881,7 +4881,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "gutierrez",
       "position": 19,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -4923,85 +4923,85 @@
       "type": "can_be_locked_in_later",
       "entityId": "gutierrez",
       "position": 12,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "gutierrez",
       "position": 13,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "gutierrez",
       "position": 14,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "gutierrez",
       "position": 15,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "gutierrez",
       "position": 16,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "gutierrez",
       "position": 17,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "gutierrez",
       "position": 18,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "gutierrez",
       "position": 19,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "gutierrez",
       "position": 20,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "gutierrez",
       "position": 21,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "gutierrez",
       "position": 22,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "gutierrez",
       "position": 23,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "gutierrez",
       "position": 24,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_ruled_out_next_race",
       "entityId": "ocon",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -5014,7 +5014,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "ocon",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -5031,7 +5031,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "ocon",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kvyat",
@@ -5053,7 +5053,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "ocon",
       "position": 15,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "button",
@@ -5079,7 +5079,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "ocon",
       "position": 16,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kevin_magnussen",
@@ -5109,7 +5109,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "ocon",
       "position": 17,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -5143,7 +5143,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "ocon",
       "position": 18,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -5181,7 +5181,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "ocon",
       "position": 19,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -5223,85 +5223,85 @@
       "type": "can_be_locked_in_later",
       "entityId": "ocon",
       "position": 12,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ocon",
       "position": 13,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ocon",
       "position": 14,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ocon",
       "position": 15,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ocon",
       "position": 16,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ocon",
       "position": 17,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ocon",
       "position": 18,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ocon",
       "position": 19,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ocon",
       "position": 20,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ocon",
       "position": 21,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ocon",
       "position": 22,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ocon",
       "position": 23,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ocon",
       "position": 24,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_ruled_out_next_race",
       "entityId": "nasr",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -5314,7 +5314,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "nasr",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -5331,7 +5331,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "nasr",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kvyat",
@@ -5353,7 +5353,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "nasr",
       "position": 15,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "button",
@@ -5379,7 +5379,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "nasr",
       "position": 16,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kevin_magnussen",
@@ -5409,7 +5409,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "nasr",
       "position": 17,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -5443,7 +5443,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "nasr",
       "position": 18,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -5481,7 +5481,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "nasr",
       "position": 19,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -5523,85 +5523,85 @@
       "type": "can_be_locked_in_later",
       "entityId": "nasr",
       "position": 12,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "nasr",
       "position": 13,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "nasr",
       "position": 14,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "nasr",
       "position": 15,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "nasr",
       "position": 16,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "nasr",
       "position": 17,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "nasr",
       "position": 18,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "nasr",
       "position": 19,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "nasr",
       "position": 20,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "nasr",
       "position": 21,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "nasr",
       "position": 22,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "nasr",
       "position": 23,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "nasr",
       "position": 24,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_ruled_out_next_race",
       "entityId": "ericsson",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -5614,7 +5614,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "ericsson",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -5631,7 +5631,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "ericsson",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kvyat",
@@ -5653,7 +5653,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "ericsson",
       "position": 15,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "button",
@@ -5679,7 +5679,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "ericsson",
       "position": 16,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kevin_magnussen",
@@ -5709,7 +5709,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "ericsson",
       "position": 17,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -5743,7 +5743,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "ericsson",
       "position": 18,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -5781,7 +5781,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "ericsson",
       "position": 19,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -5823,85 +5823,85 @@
       "type": "can_be_locked_in_later",
       "entityId": "ericsson",
       "position": 12,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ericsson",
       "position": 13,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ericsson",
       "position": 14,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ericsson",
       "position": 15,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ericsson",
       "position": 16,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ericsson",
       "position": 17,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ericsson",
       "position": 18,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ericsson",
       "position": 19,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ericsson",
       "position": 20,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ericsson",
       "position": 21,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ericsson",
       "position": 22,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ericsson",
       "position": 23,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ericsson",
       "position": 24,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_ruled_out_next_race",
       "entityId": "haryanto",
       "position": 12,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -5914,7 +5914,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "haryanto",
       "position": 13,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -5931,7 +5931,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "haryanto",
       "position": 14,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kvyat",
@@ -5953,7 +5953,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "haryanto",
       "position": 15,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "button",
@@ -5979,7 +5979,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "haryanto",
       "position": 16,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "kevin_magnussen",
@@ -6009,7 +6009,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "haryanto",
       "position": 17,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -6043,7 +6043,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "haryanto",
       "position": 18,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -6081,7 +6081,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "haryanto",
       "position": 19,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "jolyon_palmer",
@@ -6123,79 +6123,79 @@
       "type": "can_be_locked_in_later",
       "entityId": "haryanto",
       "position": 12,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "haryanto",
       "position": 13,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "haryanto",
       "position": 14,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "haryanto",
       "position": 15,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "haryanto",
       "position": 16,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "haryanto",
       "position": 17,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "haryanto",
       "position": 18,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "haryanto",
       "position": 19,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "haryanto",
       "position": 20,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "haryanto",
       "position": 21,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "haryanto",
       "position": 22,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "haryanto",
       "position": 23,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "haryanto",
       "position": 24,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     }
   ],
   "constructorLockInsights": [
@@ -6208,7 +6208,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "red_bull",
       "position": 2,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -6221,13 +6221,13 @@
       "type": "can_be_locked_in_later",
       "entityId": "red_bull",
       "position": 3,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_ruled_out_next_race",
       "entityId": "ferrari",
       "position": 2,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -6240,19 +6240,19 @@
       "type": "can_be_locked_in_later",
       "entityId": "ferrari",
       "position": 2,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "ferrari",
       "position": 3,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "force_india",
       "position": 4,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "williams",
@@ -6270,7 +6270,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "force_india",
       "position": 5,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -6283,13 +6283,13 @@
       "type": "can_be_locked_in_later",
       "entityId": "force_india",
       "position": 6,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "williams",
       "position": 5,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -6306,7 +6306,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "williams",
       "position": 6,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -6319,7 +6319,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "williams",
       "position": 4,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "force_india",
@@ -6332,19 +6332,19 @@
       "type": "can_be_locked_in_later",
       "entityId": "williams",
       "position": 4,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "williams",
       "position": 7,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "mclaren",
       "position": 6,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "toro_rosso",
@@ -6374,7 +6374,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "mclaren",
       "position": 7,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -6399,7 +6399,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "mclaren",
       "position": 8,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -6420,7 +6420,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "mclaren",
       "position": 9,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -6437,7 +6437,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "mclaren",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -6450,7 +6450,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "mclaren",
       "position": 4,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -6463,7 +6463,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "mclaren",
       "position": 5,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -6480,25 +6480,25 @@
       "type": "can_be_locked_in_later",
       "entityId": "mclaren",
       "position": 4,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "mclaren",
       "position": 5,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "mclaren",
       "position": 11,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "toro_rosso",
       "position": 7,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "haas",
@@ -6524,7 +6524,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "toro_rosso",
       "position": 8,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -6545,7 +6545,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "toro_rosso",
       "position": 9,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -6562,7 +6562,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "toro_rosso",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [
         {
@@ -6575,7 +6575,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "toro_rosso",
       "position": 5,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -6588,7 +6588,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "toro_rosso",
       "position": 6,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "mclaren",
@@ -6606,25 +6606,25 @@
       "type": "can_be_locked_in_later",
       "entityId": "toro_rosso",
       "position": 5,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "toro_rosso",
       "position": 6,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "toro_rosso",
       "position": 11,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "haas",
       "position": 8,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "renault",
@@ -6645,7 +6645,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "haas",
       "position": 9,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "manor",
@@ -6662,7 +6662,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "haas",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "sauber",
@@ -6675,7 +6675,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "haas",
       "position": 6,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -6688,7 +6688,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "haas",
       "position": 7,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "toro_rosso",
@@ -6706,25 +6706,25 @@
       "type": "can_be_locked_in_later",
       "entityId": "haas",
       "position": 6,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "haas",
       "position": 7,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "haas",
       "position": 11,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "renault",
       "position": 9,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "manor",
@@ -6741,7 +6741,7 @@
       "type": "can_be_locked_in_next_race",
       "entityId": "renault",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "sauber",
@@ -6754,7 +6754,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "renault",
       "position": 6,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -6767,7 +6767,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "renault",
       "position": 7,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -6784,7 +6784,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "renault",
       "position": 8,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "haas",
@@ -6806,31 +6806,31 @@
       "type": "can_be_locked_in_later",
       "entityId": "renault",
       "position": 6,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "renault",
       "position": 7,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "renault",
       "position": 8,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "renault",
       "position": 11,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_next_race",
       "entityId": "manor",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustOutscoreBy": [
         {
           "opponentId": "sauber",
@@ -6843,7 +6843,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "manor",
       "position": 6,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -6856,7 +6856,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "manor",
       "position": 7,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -6873,7 +6873,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "manor",
       "position": 8,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "haas",
@@ -6895,7 +6895,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "manor",
       "position": 9,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "renault",
@@ -6921,37 +6921,37 @@
       "type": "can_be_locked_in_later",
       "entityId": "manor",
       "position": 6,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "manor",
       "position": 7,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "manor",
       "position": 8,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "manor",
       "position": 9,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "manor",
       "position": 11,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_ruled_out_next_race",
       "entityId": "sauber",
       "position": 6,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -6964,7 +6964,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "sauber",
       "position": 7,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [],
       "cannotOutscoreByMoreThan": [
         {
@@ -6981,7 +6981,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "sauber",
       "position": 8,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "haas",
@@ -7003,7 +7003,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "sauber",
       "position": 9,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "renault",
@@ -7029,7 +7029,7 @@
       "type": "can_be_ruled_out_next_race",
       "entityId": "sauber",
       "position": 10,
-      "nextSlotIndex": 19,
+      "nextRaceNum": 20,
       "mustBeOutscoredBy": [
         {
           "opponentId": "manor",
@@ -7059,37 +7059,37 @@
       "type": "can_be_locked_in_later",
       "entityId": "sauber",
       "position": 6,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "sauber",
       "position": 7,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "sauber",
       "position": 8,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "sauber",
       "position": 9,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "sauber",
       "position": 10,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     },
     {
       "type": "can_be_locked_in_later",
       "entityId": "sauber",
       "position": 11,
-      "earliestSlotIndex": 20
+      "earliestRaceNum": 21
     }
   ]
 }
