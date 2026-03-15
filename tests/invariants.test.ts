@@ -60,8 +60,7 @@ function actualPositionAtRace(
 
 test('All projections contain actual future points and positions for completed races across all seasons', () => {
   for (let year = 2010; year <= 2026; year++) {
-    const data = readCalculationResults(year);
-    assert.ok(data, `No calculation results found for ${year}. Run pnpm calculate first.`);
+    const data = readCalculationResults(year)!;
 
     for (let afterRaceNum = 1; afterRaceNum <= data.lastCompletedRaceNum; afterRaceNum++) {
       for (let futureRaceNum = afterRaceNum + 1; futureRaceNum <= data.lastCompletedRaceNum; futureRaceNum++) {
@@ -75,8 +74,7 @@ test('All projections contain actual future points and positions for completed r
 
 test('Lock-in insight: impossible next-event margins are omitted from upper-bound conditions', () => {
   for (let year = 2010; year <= 2026; year++) {
-    const data = readCalculationResults(year);
-    assert.ok(data, `No calculation results found for ${year}. Run pnpm calculate first.`);
+    const data = readCalculationResults(year)!;
 
     for (const [insightMap, races] of [
       [data.driverLockInsights, data.races],
@@ -115,8 +113,7 @@ test('Lock-in insight: impossible next-event margins are omitted from upper-boun
 
 test('All explicit lock margins are positive', () => {
   for (let year = 2010; year <= 2026; year++) {
-    const data = readCalculationResults(year);
-    assert.ok(data, `No calculation results found for ${year}. Run pnpm calculate first.`);
+    const data = readCalculationResults(year)!;
 
     for (const insightMap of [data.driverLockInsights, data.constructorLockInsights]) {
       for (const insights of Object.values(insightMap)) {
@@ -146,8 +143,7 @@ test('All explicit lock margins are positive', () => {
 
 test('All can_be_locked_in_next_race insights include at least one lock condition', () => {
   for (let year = 2010; year <= 2026; year++) {
-    const data = readCalculationResults(year);
-    assert.ok(data, `No calculation results found for ${year}. Run pnpm calculate first.`);
+    const data = readCalculationResults(year)!;
 
     for (const insightMap of [data.driverLockInsights, data.constructorLockInsights]) {
       for (const [afterRaceNum, insights] of Object.entries(insightMap)) {
@@ -181,8 +177,7 @@ test('All can_be_locked_in_next_race insights include at least one lock conditio
 
 test('All already_locked_in insights match a single exact end-of-season projected position', () => {
   for (let year = 2010; year <= 2026; year++) {
-    const data = readCalculationResults(year);
-    assert.ok(data, `No calculation results found for ${year}. Run pnpm calculate first.`);
+    const data = readCalculationResults(year)!;
 
     for (const [insightMap, projectionMap] of [
       [data.driverLockInsights, data.driverProjections],

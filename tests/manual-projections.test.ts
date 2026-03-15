@@ -4,17 +4,9 @@ import { readCalculationResults } from '../lib/calculation-results.ts';
 import { getEndOfSeasonProjections } from '../lib/projections.ts';
 
 test('Check the calculation result of 2025 after race 23', () => {
-  const year = 2025;
-  const round = 23;
-
-  const data = readCalculationResults(year);
-  assert.ok(data, `No calculation results found for ${year}. Run pnpm calculate first.`);
-
-  const round23RaceNum = data.races.findIndex(r => r.round === round && r.type === 'race') + 1;
-  assert.ok(round23RaceNum > 0, `Round ${round} race not found`);
-
-  const gasly = data.drivers.find(d => d.name.toLowerCase().includes('gasly'));
-  assert.ok(gasly, 'Pierre Gasly not found in drivers');
+  const data = readCalculationResults(2025)!;
+  const round23RaceNum = data.races.findIndex(r => r.round === 23 && r.type === 'race') + 1;
+  const gasly = data.drivers.find(d => d.name.toLowerCase().includes('gasly'))!;
 
   // Check current state at round 23
   const gaslyCurrentPts = gasly.cumulativePoints[round23RaceNum - 1];
@@ -27,11 +19,7 @@ test('Check the calculation result of 2025 after race 23', () => {
   assert.equal(gaslyCurrentPos, 18);
 
   // Check end-of-season projection from race 23
-  const endProjections = getEndOfSeasonProjections(data, round23RaceNum, true);
-  assert.ok(endProjections, 'No end-of-season projections found');
-
-  const gaslyProjection = endProjections[gasly.id];
-  assert.ok(gaslyProjection, 'Gasly end-of-season projection not found');
+  const gaslyProjection = getEndOfSeasonProjections(data, round23RaceNum, true)![gasly.id];
   // Pierre Gasly has a minimum of 22 points (current points after round 23)
   assert.equal(gaslyProjection.minPts, 22);
   // Pierre Gasly has a maximum of 47 points (22 + 25 from Abu Dhabi)
