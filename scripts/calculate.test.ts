@@ -40,6 +40,7 @@ test('Check the calculation result of 2025 after race 23', () => {
   // Pierre Gasly has P13 as best possible position (12 drivers have > 47 pts guaranteed above him)
   assert.equal(gaslyProjection.bestPos, 13);
   // Pierre Gasly has P20 as worst possible position (only 2 of the 3 drivers below can overtake in one race)
+  // Not null because P20 is not last place (there are 21 drivers in 2025, so last is P21)
   assert.equal(gaslyProjection.worstPos, 20);
 });
 
@@ -77,8 +78,8 @@ function validateProjectionAgainstActual(
 
     const actualPos = positionAtSlot(pointsAtFuture, entity.id);
     assert.ok(
-      actualPos >= entry.bestPos && actualPos <= entry.worstPos,
-      `${label}: ${entity.id} position ${actualPos} not in [${entry.bestPos}, ${entry.worstPos}] for selected=${selectedIdx}, future=${futureIdx}`
+      actualPos >= entry.bestPos && (entry.worstPos === null || actualPos <= entry.worstPos),
+      `${label}: ${entity.id} position ${actualPos} not in [${entry.bestPos}, ${entry.worstPos ?? 'last'}] for selected=${selectedIdx}, future=${futureIdx}`
     );
   }
 }
