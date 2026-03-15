@@ -185,7 +185,19 @@ function buildChartData(
   afterRaceNum: number,
   isDriverMode: boolean
 ) {
-  return races.map((race, i) => {
+  const startPt: Record<string, number | null | string> = {
+    raceNum: 0,
+    label: "Start",
+  };
+  for (const e of entities) {
+    startPt[e.id] = 0;
+    if (afterRaceNum === 0) {
+      startPt[`${e.id}_floor`] = 0;
+      startPt[`${e.id}_delta`] = 0;
+    }
+  }
+
+  const racePts = races.map((race, i) => {
     const raceNum = i + 1;
     const pt: Record<string, number | null | string> = {
       raceNum,
@@ -213,6 +225,8 @@ function buildChartData(
 
     return pt;
   });
+
+  return [startPt, ...racePts];
 }
 
 export function SeasonChart({ data }: { data: CalculatedChartData }) {
@@ -279,9 +293,10 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
     });
   }
 
-  // Tick formatter: show full label at race events, abbreviated at sprint events
+  // Tick formatter: index 0 is the "Start" point; races start at index 1
   function xTickFormatter(label: string, index: number) {
-    const race = races[index];
+    if (index === 0) return label;
+    const race = races[index - 1];
     if (!race) return label;
     return race.type === "sprint" ? "·" : label;
   }
