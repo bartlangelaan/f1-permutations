@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readCalculationResults } from '../lib/data.ts';
+import { readCalculationResults } from '../lib/calculation-results.ts';
 import type { LockInsight, ProjectionEntry, ProjectionMap } from '../lib/calculate.ts';
 import { getEndOfSeasonProjections } from '../lib/projections.ts';
 

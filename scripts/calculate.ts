@@ -5,9 +5,9 @@ import {
   computeProjectionsForSelectedSlot,
 } from "../lib/calculate";
 import {
-  saveCalculationResults as writeCalculationResults,
-  saveCalculationResultsForSelectedSlot as writeCalculationResultsForSelectedSlot,
-} from "../lib/data";
+  writeCalculationResults,
+  writeCalculationResultsForSelectedSlot,
+} from "../lib/calculation-results";
 
 const seasons = getSeasons();
 console.log(`Processing ${seasons.length} seasons...`);

@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getSeasons } from "@/lib/data";
-import { readCalculationResults } from "@/lib/data";
+import { readCalculationResults } from "@/lib/calculation-results";
 import { SeasonChart } from "./SeasonChart";
 
 export const dynamicParams = false;

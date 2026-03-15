@@ -1,11 +1,6 @@
 import fs from "fs-extra";
 import path from "path";
-import type {
-  CalculatedChartData,
-  LockInsight,
-  ProjectionEntry,
-  ProjectionMap,
-} from "./calculate";
+import type { CalculatedChartData, LockInsight, ProjectionEntry } from "./calculate";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 
@@ -24,7 +19,7 @@ export interface RaceResult {
   constructorName: string;
 }
 
-type BaseCalculatedChartData = Omit<
+export type BaseCalculatedChartData = Omit<
   CalculatedChartData,
   "driverProjections" | "constructorProjections" | "driverLockInsights" | "constructorLockInsights"
 >;
@@ -102,37 +97,35 @@ export async function saveEventResults(year: number, raceNumber: number, results
   await fs.outputJson(eventResultsFile(year, raceNumber), results, { spaces: 2 });
 }
 
-export function readCalculationResults(year: number): CalculatedChartData | null {
+
+export function readBaseCalculationResults(year: number): BaseCalculatedChartData | null {
   const file = calculationResultsFile(year);
   if (!fs.existsSync(file)) return null;
-
-  const baseData = readJsonFile<BaseCalculatedChartData>(file);
-  const driverProjections: ProjectionMap = {};
-  const constructorProjections: ProjectionMap = {};
-  const driverLockInsights: Record<string, LockInsight[]> = {};
-  const constructorLockInsights: Record<string, LockInsight[]> = {};
-
-  for (let selectedIdx = 0; selectedIdx <= baseData.lastCompletedSlotIndex; selectedIdx++) {
-    const perSlotFile = calculationResultsForSelectedSlotFile(year, selectedIdx);
-    if (!fs.existsSync(perSlotFile)) continue;
-
-    const perSlotData = readJsonFile<CalculationResultsForSelectedSlot>(perSlotFile);
-    driverProjections[selectedIdx] = perSlotData.driverProjections;
-    constructorProjections[selectedIdx] = perSlotData.constructorProjections;
-    driverLockInsights[selectedIdx] = perSlotData.driverLockInsights;
-    constructorLockInsights[selectedIdx] = perSlotData.constructorLockInsights;
-  }
-
-  return {
-    ...baseData,
-    driverProjections,
-    constructorProjections,
-    driverLockInsights,
-    constructorLockInsights,
-  };
+  return readJsonFile<BaseCalculatedChartData>(file);
 }
 
-export async function saveCalculationResults(year: number, data: BaseCalculatedChartData): Promise<void> {
+export async function saveBaseCalculationResults(year: number, data: BaseCalculatedChartData): Promise<void> {
+  await fs.outputJson(calculationResultsFile(year), data, { spaces: 2 });
+}
+
+export function readCalculationResultsForSelectedSlot(
+  year: number,
+  selectedSlotIndex: number
+): CalculationResultsForSelectedSlot | null {
+  const file = calculationResultsForSelectedSlotFile(year, selectedSlotIndex);
+  if (!fs.existsSync(file)) return null;
+  return readJsonFile<CalculationResultsForSelectedSlot>(file);
+}
+
+export async function saveCalculationResultsForSelectedSlot(
+  year: number,
+  selectedSlotIndex: number,
+  data: CalculationResultsForSelectedSlot
+): Promise<void> {
+  await fs.outputJson(calculationResultsForSelectedSlotFile(year, selectedSlotIndex), data, { spaces: 2 });
+}
+
+export async function removeCalculationResultsForSeason(year: number): Promise<void> {
   const yearDir = seasonDir(year);
   await fs.ensureDir(yearDir);
 
@@ -142,14 +135,4 @@ export async function saveCalculationResults(year: number, data: BaseCalculatedC
       .filter((name) => /^calculation-results-\d+\.json$/.test(name))
       .map((name) => fs.remove(path.join(yearDir, name)))
   );
-
-  await fs.outputJson(calculationResultsFile(year), data, { spaces: 2 });
-}
-
-export async function saveCalculationResultsForSelectedSlot(
-  year: number,
-  selectedSlotIndex: number,
-  data: CalculationResultsForSelectedSlot
-): Promise<void> {
-  await fs.outputJson(calculationResultsForSelectedSlotFile(year, selectedSlotIndex), data, { spaces: 2 });
 }
