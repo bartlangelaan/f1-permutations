@@ -31,7 +31,7 @@ export default async function ChartPage({ params }: Props) {
       </div>
     );
   }
-  if (data.lastCompletedSlotIndex < 0) notFound();
+  if (data.lastCompletedRaceNum === 0) notFound();
 
   const currentIdx = seasons.indexOf(year);
   const prevYear = seasons[currentIdx + 1] ?? null;

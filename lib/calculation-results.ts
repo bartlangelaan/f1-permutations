@@ -1,11 +1,11 @@
 import type { CalculatedChartData, EntitySeries, LockInsight, ProjectionMap } from "./calculate";
-import { buildSlots } from "./calculate";
+import { buildRaces } from "./calculate";
 import {
-  getLastCompletedSlotIndex,
-  readCalculationResultsForSelectedSlot,
+  getLastCompletedRaceNum,
+  readCalculationResultsAfterRace,
   readParticipants,
   removeCalculationResultsForSeason,
-  saveCalculationResultsForSelectedSlot,
+  saveCalculationResultsAfterRace,
   saveParticipants,
 } from "./data";
 
@@ -13,28 +13,28 @@ export function readCalculationResults(year: number): CalculatedChartData | null
   const participants = readParticipants(year);
   if (!participants) return null;
 
-  const slots = buildSlots(year);
-  const lastCompletedSlotIndex = getLastCompletedSlotIndex(year);
+  const races = buildRaces(year);
+  const lastCompletedRaceNum = getLastCompletedRaceNum(year);
 
   const driverProjections: ProjectionMap = {};
   const constructorProjections: ProjectionMap = {};
   const driverLockInsights: Record<string, LockInsight[]> = {};
   const constructorLockInsights: Record<string, LockInsight[]> = {};
 
-  for (let selectedIdx = 0; selectedIdx <= lastCompletedSlotIndex; selectedIdx++) {
-    const perSlotData = readCalculationResultsForSelectedSlot(year, selectedIdx);
-    if (!perSlotData) continue;
+  for (let raceNum = 1; raceNum <= lastCompletedRaceNum; raceNum++) {
+    const perRaceData = readCalculationResultsAfterRace(year, raceNum);
+    if (!perRaceData) continue;
 
-    driverProjections[selectedIdx] = perSlotData.driverProjections;
-    constructorProjections[selectedIdx] = perSlotData.constructorProjections;
-    driverLockInsights[selectedIdx] = perSlotData.driverLockInsights;
-    constructorLockInsights[selectedIdx] = perSlotData.constructorLockInsights;
+    driverProjections[raceNum] = perRaceData.driverProjections;
+    constructorProjections[raceNum] = perRaceData.constructorProjections;
+    driverLockInsights[raceNum] = perRaceData.driverLockInsights;
+    constructorLockInsights[raceNum] = perRaceData.constructorLockInsights;
   }
 
   return {
     year,
-    slots,
-    lastCompletedSlotIndex,
+    races,
+    lastCompletedRaceNum,
     drivers: participants.drivers,
     constructors: participants.constructors,
     driverProjections,
@@ -53,4 +53,4 @@ export async function writeCalculationResults(
   await saveParticipants(year, drivers, constructors);
 }
 
-export { saveCalculationResultsForSelectedSlot as writeCalculationResultsForSelectedSlot };
+export { saveCalculationResultsAfterRace as writeCalculationResultsAfterRace };
