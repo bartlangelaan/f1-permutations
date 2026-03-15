@@ -9,29 +9,36 @@
  * COMMENT BLOCK ABOVE EACH TEST
  * ------------------------------
  * The block comment directly above each test contains only what the blog
- * itself says: the URL, the standings context, and every position-based
- * scenario described per driver. Nothing about our system belongs there.
+ * itself says: the URL, the standings context, and every scenario described.
+ * This covers drivers and constructors alike — whatever the post talks about.
+ * Include any detail an F1 nerd would find interesting: position-based clinch
+ * tables, fastest-lap variants, tiebreaker rules, cross-event conditions, etc.
+ * The examples below are illustrative, not exhaustive. Nothing about our
+ * system belongs in the block comment.
  *
  * INSIDE EACH TEST
  * ----------------
- * assert.ok() calls cover every blog condition our system currently produces.
- * Any blog condition not yet generated ends up as a TODO comment at the
- * bottom of the test body, explaining what kind of insight is missing.
+ * assert.ok() calls cover every blog condition our system currently produces,
+ * for both drivers and constructors. Any blog condition not yet generated ends
+ * up as a TODO comment at the bottom of the test body, explaining what kind
+ * of insight is missing.
  *
  * HOW TO ADD A NEW BLOG TEST
  * --------------------------
  * 1. Fetch the article and extract every championship scenario it mentions:
- *    - Standings before the race weekend (driver, points, gap to leader)
- *    - For each driver: every finishing-position combination that clinches or
- *      eliminates the title, including fastest-lap variants
+ *    - Standings before the race weekend (drivers and constructors, points, gaps)
+ *    - For each driver/constructor: every finishing-position combination that
+ *      clinches or eliminates the title, including fastest-lap variants
  *    - Any cross-event scenarios (e.g. "if X wins the Sprint then Y needs Z
  *      in the race")
  *    - Any tiebreaker rules cited
+ *    - Any other insight that would interest an F1 fan
  *
  * 2. Write the block comment above the test with only the above content.
  *    No references to our system, no "(Covered)" or "(TODO)" annotations.
  *
- * 3. Write assert.ok() calls for every blog condition our system produces.
+ * 3. Write assert.ok() calls for every blog condition our system produces,
+ *    for both driver and constructor insights.
  *    Use renderInsights() and match the exact string from renderInsightText().
  *
  * 4. At the end of the test body, add TODO comments for any blog conditions
@@ -143,10 +150,16 @@ test('Abu Dhabi 2025 blog: championship permutation insights for Norris, Verstap
 //
 // Oscar Piastri:
 //   - "Can no longer take the title" after Brazil (131 pts down with only 86 remaining)
+//
+// Constructors' championship:
+//   - McLaren leads Ferrari by 36 pts, Red Bull a further 13 pts behind Ferrari; 147 pts available
+//   - Nobody can clinch the constructors' title at Las Vegas; earliest opportunity is Abu Dhabi
+//   - Mercedes are already eliminated from the top 3
 test('Las Vegas 2024 blog: championship permutation insights for Verstappen, Norris, Leclerc, Piastri', () => {
   const data = readCalculationResults(2024)!;
   const lasVegasIdx = data.races.findIndex((r) => r.round === 22 && r.type === 'race');
   const texts = renderInsights(data.driverLockInsights[String(lasVegasIdx)], data);
+  const constructorTexts = renderInsights(data.constructorLockInsights[String(lasVegasIdx)], data);
 
   // Verstappen can guarantee P1 (championship) in Las Vegas with conditions on Norris and Leclerc
   assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Las Vegas GP if is not outscored by Lando Norris by more than 1 points, Charles Leclerc by more than 25 points.'));
@@ -166,6 +179,14 @@ test('Las Vegas 2024 blog: championship permutation insights for Verstappen, Nor
   // Piastri is eliminated: earliest P2 is Abu Dhabi, no P1 possible at all
   assert.ok(texts.includes('Oscar Piastri can first guarantee at least P2 after Abu Dhabi GP.'));
   assert.ok(!texts.some((t) => t.startsWith('Oscar Piastri can guarantee at least P1')));
+
+  // Nobody can clinch the constructors' title at Las Vegas; all top teams' earliest guarantee is Abu Dhabi
+  assert.ok(constructorTexts.includes('McLaren can first guarantee at least P1 after Abu Dhabi GP.'));
+  assert.ok(constructorTexts.includes('Ferrari can first guarantee at least P1 after Abu Dhabi GP.'));
+  assert.ok(constructorTexts.includes('Red Bull can first guarantee at least P1 after Abu Dhabi GP.'));
+
+  // Mercedes is already locked into P4 — eliminated from the top 3
+  assert.ok(constructorTexts.includes('Mercedes has already locked in P4.'));
 
   // TODO: The blog provides a full position-based table ("Verstappen finishes Xth → Norris needs Yth
   // to stay alive", including fastest-lap variants). Our system does not yet generate position-based
@@ -227,10 +248,16 @@ test('Qatar 2023 blog: Verstappen clinches championship at Qatar Sprint', () => 
 //
 // Carlos Sainz:
 //   - Title becomes impossible at Singapore unless he outscores Verstappen by more than 9 points
+//
+// Constructors' championship:
+//   - Red Bull cannot clinch the constructors' title at Singapore; earliest opportunity is after United States GP
+//   - Red Bull would need a 191-pt lead after Japan; currently 139 pts up with only 88 pts available
+//     across Singapore and Japan combined
 test('Singapore 2022 blog: Verstappen first title clinch opportunity', () => {
   const data = readCalculationResults(2022)!;
   const singaporeIdx = data.races.findIndex((r) => r.round === 17 && r.type === 'race');
   const texts = renderInsights(data.driverLockInsights[String(singaporeIdx)], data);
+  const constructorTexts = renderInsights(data.constructorLockInsights[String(singaporeIdx)], data);
 
   // Verstappen can guarantee P1 (title) in Singapore GP with conditions on all top rivals
   assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Singapore GP if outscores Charles Leclerc by 23 points, Sergio Pérez by 14 points, George Russell by 7 points and is not outscored by Carlos Sainz by more than 9 points.'));
@@ -247,10 +274,16 @@ test('Singapore 2022 blog: Verstappen first title clinch opportunity', () => {
   // Sainz P1 ruled out unless he outscores Verstappen by more than 9 points
   assert.ok(texts.includes('P1 is no longer possible for Carlos Sainz in Singapore GP if Carlos Sainz does not outscore Max Verstappen by more than 9 points.'));
 
+  // Red Bull cannot clinch constructors' at Singapore; earliest is after United States GP
+  assert.ok(constructorTexts.includes('Red Bull can first guarantee at least P1 after United States GP.'));
+
   // TODO: The blog expresses Verstappen's clinch as specific finishing-position combinations
   // ("wins + Leclerc 9th or lower + Pérez 4th or lower"), including a fastest-lap variant for Pérez
   // ("Pérez 5th or lower with FL"). Position-based clinch conditions and the fastest-lap distinction
   // are not yet generated.
+  // TODO: The blog describes the constructors' gap in terms of what Red Bull would need to clinch
+  // (a 191-pt lead) versus what is achievable (139 pts up with 88 remaining). Insight types for
+  // "cannot clinch this weekend due to insufficient points available" are not yet generated.
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/points-permutations-what-verstappen-needs-to-do-to-win-his-second-drivers.2y2rFRR2d2o6LRHPijDzLP
@@ -284,10 +317,16 @@ test('Singapore 2022 blog: Verstappen first title clinch opportunity', () => {
 //
 // George Russell:
 //   - Title becomes impossible at Japan unless he outscores Verstappen by more than 25 points
+//
+// Constructors' championship:
+//   - Red Bull leads Ferrari by 137 pts with 235 pts remaining across the final 8 rounds
+//   - Even a Red Bull 1-2 with fastest lap at Japan does not clinch the constructors' title;
+//     Ferrari's Singapore double podium kept them alive and the fight continues at least to USA
 test('Japan 2022 blog: Verstappen clinches second championship', () => {
   const data = readCalculationResults(2022)!;
   const japanIdx = data.races.findIndex((r) => r.round === 18 && r.type === 'race');
   const texts = renderInsights(data.driverLockInsights[String(japanIdx)], data);
+  const constructorTexts = renderInsights(data.constructorLockInsights[String(japanIdx)], data);
 
   // Verstappen can guarantee P1 (title) in Japanese GP with conditions on Leclerc, Pérez, and Russell
   assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Japanese GP if outscores Charles Leclerc by 9 points, Sergio Pérez by 7 points and is not outscored by George Russell by more than 25 points.'));
@@ -307,9 +346,18 @@ test('Japan 2022 blog: Verstappen clinches second championship', () => {
   // Russell P1 ruled out unless he outscores Verstappen by more than 25 points
   assert.ok(texts.includes('P1 is no longer possible for George Russell in Japanese GP if George Russell does not outscore Max Verstappen by more than 25 points.'));
 
+  // Red Bull cannot clinch constructors' at Japan; earliest is after Mexico City GP
+  assert.ok(constructorTexts.includes('Red Bull can first guarantee at least P1 after Mexico City GP.'));
+
+  // Red Bull can guarantee constructors' P2 in Japan (locking out Mercedes) with a small margin condition
+  assert.ok(constructorTexts.includes('Red Bull can guarantee at least P2 in Japanese GP if is not outscored by Mercedes by more than 11 points.'));
+
   // TODO: The blog provides a full position-based table with fastest-lap variants for every finishing
   // position (e.g. "1st + FL → title regardless", "1st no FL → Leclerc must be 3rd or lower",
   // "2nd + FL → Leclerc 5th or lower AND Pérez 4th or lower"). It also lists conditions under which
   // the title fight stays alive. Position-based clinch conditions and fastest-lap distinctions
   // are not yet generated.
+  // TODO: The blog explains that even a Red Bull 1-2 + fastest lap cannot clinch the constructors'
+  // title at Japan. Insight types that describe "insufficient points available to clinch this
+  // weekend" are not yet generated.
 });
