@@ -163,12 +163,6 @@ type LockCondition = {
   points: number;
 };
 
-export type PositionComboRival = {
-  opponentId: string;
-  /** Opponent must finish at this position or worse for entity to guarantee its target position. */
-  maxFinishPos: number;
-};
-
 export type LockInsight =
   | {
       type: "already_locked_in";
@@ -183,6 +177,16 @@ export type LockInsight =
       mustOutscoreBy: LockCondition[];
       cannotBeOutscoredByMoreThan: LockCondition[];
       minFinishPos?: number;
+      /**
+       * When present, this insight represents a specific race-finishing-position combination
+       * rather than a points-margin condition. `entityFinishPos` is the finishing position
+       * the entity takes in the next race; `rivalConstraints` lists the worst position each
+       * relevant rival can occupy while the entity still guarantees `position`. An empty
+       * array means the entity wins regardless of rivals' finishing positions.
+       * One insight is emitted per valid combination so each renders as a standalone sentence.
+       */
+      entityFinishPos?: number;
+      rivalConstraints?: Array<{ opponentId: string; maxFinishPos: number }>;
     }
   | {
       type: "can_be_locked_in_later";
@@ -203,26 +207,6 @@ export type LockInsight =
       entityId: string;
       position: number;
       earliestRaceNum: number;
-    }
-  | {
-      /**
-       * A specific race-finishing-position combination that guarantees the entity a target
-       * championship position. One insight is emitted per valid (entityFinishPos, rivalConstraints)
-       * combination so each can be rendered as a standalone sentence.
-       */
-      type: "position_combo_lock_in";
-      entityId: string;
-      /** Championship position being guaranteed (typically 1). */
-      position: number;
-      nextRaceNum: number;
-      /** The finishing position the entity takes in the next race. */
-      entityFinishPos: number;
-      /**
-       * For each rival whose finishing position matters, the worst position they can be at
-       * (inclusive) while the entity still guarantees `position`. Empty means no constraints
-       * — the entity wins regardless of rivals' finishing positions.
-       */
-      rivalConstraints: PositionComboRival[];
     };
 
 /** lockInsights[afterRaceNum] — race number is 1-based */
@@ -408,21 +392,27 @@ function computePositionCombinations(
   basePts: Map<string, number>,
   racePoints: number[],
   pointsRemainingAfterNext: number,
-): Array<{ entityFinishPos: number; rivalConstraints: PositionComboRival[] }> {
+): Array<{
+  entityFinishPos: number;
+  rivalConstraints: { opponentId: string; maxFinishPos: number }[];
+}> {
   const opponents = entityIds.filter((id) => id !== entityId);
   // For targetPosition = 1 the entity must be guaranteed above ALL opponents.
   // (Generalising to other positions would require choosing a subset; for now only P1 is used.)
   const requiredBelowCount = entityIds.length - targetPosition;
   if (requiredBelowCount !== opponents.length) return [];
 
-  const results: Array<{ entityFinishPos: number; rivalConstraints: PositionComboRival[] }> = [];
+  const results: Array<{
+    entityFinishPos: number;
+    rivalConstraints: { opponentId: string; maxFinishPos: number }[];
+  }> = [];
 
   for (let i = 0; i < racePoints.length; i++) {
     const entityFinishPos = i + 1;
     const entityRacePoints = racePoints[i] ?? 0;
     const entityFinalPts = (basePts.get(entityId) ?? 0) + entityRacePoints;
 
-    const rivalConstraints: PositionComboRival[] = [];
+    const rivalConstraints: { opponentId: string; maxFinishPos: number }[] = [];
     let feasible = true;
 
     for (const opponentId of opponents) {
@@ -737,10 +727,12 @@ export function computeLockInsightsForSelectedRace(
 
         for (const combo of combinations) {
           insights.push({
-            type: "position_combo_lock_in",
+            type: "can_be_locked_in_next_race",
             entityId: entity.id,
             position: 1,
             nextRaceNum,
+            mustOutscoreBy: [],
+            cannotBeOutscoredByMoreThan: [],
             entityFinishPos: combo.entityFinishPos,
             rivalConstraints: combo.rivalConstraints,
           });

@@ -32,6 +32,25 @@ export function renderInsightText(
   const details: string[] = [];
 
   if (insight.type === "can_be_locked_in_next_race") {
+    const raceLabel = race?.fullLabel ?? "the next event";
+
+    // Position-combination variant: entityFinishPos is set.
+    if (insight.entityFinishPos !== undefined) {
+      const byLine = `by finishing P${insight.entityFinishPos}`;
+      const rivals = insight.rivalConstraints ?? [];
+      if (rivals.length === 0) {
+        return `${entityName} can guarantee ${positionLabel} in ${raceLabel} ${byLine} regardless of rivals.`;
+      }
+      const rivalText = rivals
+        .map(
+          (r) =>
+            `${entitiesById.get(r.opponentId)?.name ?? r.opponentId} finishes P${r.maxFinishPos} or worse`,
+        )
+        .join(" and ");
+      return `${entityName} can guarantee ${positionLabel} in ${raceLabel} ${byLine} if ${rivalText}.`;
+    }
+
+    // Points-margin variant.
     if (insight.mustOutscoreBy.length) {
       details.push(
         `outscores ${insight.mustOutscoreBy
@@ -57,22 +76,7 @@ export function renderInsightText(
     const practicalText = insight.minFinishPos
       ? ` In practice, that means finishing P${insight.minFinishPos} or better.`
       : "";
-    return `${entityName} can guarantee at least ${positionLabel} in ${race?.fullLabel ?? "the next event"}${detailText}.${practicalText}`;
-  }
-
-  if (insight.type === "position_combo_lock_in") {
-    const raceLabel = race?.fullLabel ?? "the next event";
-    const byLine = `by finishing P${insight.entityFinishPos}`;
-    if (insight.rivalConstraints.length === 0) {
-      return `${entityName} can guarantee P${insight.position} in ${raceLabel} ${byLine} regardless of rivals.`;
-    }
-    const rivalText = insight.rivalConstraints
-      .map(
-        (r) =>
-          `${entitiesById.get(r.opponentId)?.name ?? r.opponentId} finishes P${r.maxFinishPos} or worse`,
-      )
-      .join(" and ");
-    return `${entityName} can guarantee P${insight.position} in ${raceLabel} ${byLine} if ${rivalText}.`;
+    return `${entityName} can guarantee at least ${positionLabel} in ${raceLabel}${detailText}.${practicalText}`;
   }
 
   if (insight.mustBeOutscoredBy.length) {
