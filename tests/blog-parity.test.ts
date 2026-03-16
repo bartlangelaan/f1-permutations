@@ -37,11 +37,15 @@
  * 2. Write the block comment above the test with only the above content.
  *    No references to our system, no "(Covered)" or "(TODO)" annotations.
  *
- * 3. Write assert.ok() calls for every blog condition our system produces,
+ * 3. Add the test in chronological order with the test title formatted as:
+ *    YYYY-MM-DD | exact F1.com article title
+ *    Use the publication date and exact article title as posted on F1.com.
+ *
+ * 4. Write assert.ok() calls for every blog condition our system produces,
  *    for both driver and constructor insights.
  *    Use renderInsights() and match the exact string from renderInsightText().
  *
- * 4. At the end of the test body, add TODO comments for any blog conditions
+ * 5. At the end of the test body, add TODO comments for any blog conditions
  *    our system does not yet generate.
  *
  * HOW TO FIND THE RIGHT raceIdx
