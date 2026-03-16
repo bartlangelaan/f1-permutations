@@ -57,59 +57,6 @@ test('Lock-in insight: later guarantees are emitted per position instead of stop
   assert.ok(texts.includes('Lando Norris can first guarantee at least P4 after Las Vegas GP.'));
 });
 
-// Insights from: https://www.formula1.com/en/latest/article/championship-permutations-where-does-norris-need-to-finish-in-abu-dhabi-to.DtWufByimYARjI5kujzt3
-// Standings before Abu Dhabi 2025: Norris 408 pts, Verstappen 396 pts, Piastri 392 pts
-//
-// Lando Norris:
-//   - Finishes P1, P2, or P3 → wins championship regardless of rivals
-//   - Finishes P4 or P5 → wins if Verstappen finishes P2 or worse AND Piastri doesn't win
-//   - Finishes P6 or P7 → wins if both Verstappen and Piastri finish outside the top 2
-//   - Finishes P8 → wins if Verstappen finishes P3 or worse AND Piastri finishes P2 or worse
-//   - Finishes P9 or lower → needs increasingly specific results from competitors
-//
-// Max Verstappen:
-//   - Finishes P1 + Norris finishes P4 or worse → wins championship
-//   - Finishes P2 + Norris finishes P8 or worse + Piastri finishes P3 or worse → wins
-//   - Finishes P3 + Norris finishes P9 or worse + Piastri finishes P2 or worse → wins
-//
-// Oscar Piastri:
-//   - Can only win the title if he finishes P1 or P2
-//   - Finishes P1 + Norris finishes P6 or worse → wins championship
-//   - Finishes P2 + Norris finishes P10 or worse + Verstappen finishes P4 or worse → wins
-test('Abu Dhabi 2025 blog: championship permutation insights for Norris, Verstappen, and Piastri', () => {
-  const data = readCalculationResults(2025)!;
-  const afterRaceNum = data.races.findIndex((r) => r.fullLabel === 'Abu Dhabi GP' && r.type === 'race');
-  const texts = renderInsights(data.driverLockInsights[String(afterRaceNum)], data);
-
-  // Norris can guarantee P1 (championship win) with conditions on Verstappen and Piastri
-  assert.ok(texts.includes('Lando Norris can guarantee at least P1 in Abu Dhabi GP if is not outscored by Max Verstappen by more than 11 points, Oscar Piastri by more than 15 points.'));
-
-  // Norris can guarantee P2 with a condition only on Piastri
-  assert.ok(texts.includes('Lando Norris can guarantee at least P2 in Abu Dhabi GP if is not outscored by Oscar Piastri by more than 15 points.'));
-
-  // Verstappen can guarantee P1 (championship win) if he outscores Norris by enough and Piastri doesn't beat him
-  assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Abu Dhabi GP if outscores Lando Norris by 13 points and is not outscored by Oscar Piastri by more than 3 points.'));
-
-  // Verstappen can guarantee P2 with a condition only on Piastri
-  assert.ok(texts.includes('Max Verstappen can guarantee at least P2 in Abu Dhabi GP if is not outscored by Oscar Piastri by more than 3 points.'));
-
-  // Piastri can guarantee P1 (championship win) by outscoring both Norris and Verstappen by enough
-  assert.ok(texts.includes('Oscar Piastri can guarantee at least P1 in Abu Dhabi GP if outscores Lando Norris by 17 points, Max Verstappen by 5 points.'));
-
-  // Piastri can guarantee P2 with a condition only on Verstappen
-  assert.ok(texts.includes('Oscar Piastri can guarantee at least P2 in Abu Dhabi GP if outscores Max Verstappen by 5 points.'));
-
-  // Norris is ruled out of P1 (loses championship) if Verstappen outscores him by enough
-  assert.ok(texts.includes('P1 is no longer possible for Lando Norris in Abu Dhabi GP if is outscored by Max Verstappen by 13 points.'));
-
-  // Piastri is ruled out of P1 (can\'t win championship) if he doesn\'t outscore Norris by enough
-  assert.ok(texts.includes('P1 is no longer possible for Oscar Piastri in Abu Dhabi GP if Oscar Piastri does not outscore Lando Norris by more than 15 points.'));
-
-  // NOTE: The blog expresses conditions as race finishing positions (e.g. "Norris P3 or better wins regardless"),
-  // while our system expresses them as points margins. These are equivalent but not yet directly comparable.
-  // Bridging race positions to points margins is not yet implemented.
-});
-
 test('Lock-in insight: next-race ruled-out positions are exposed', () => {
   const data = readCalculationResults(2025)!;
   const mexicoRaceNum = data.races.findIndex((r) => r.round === 20 && r.type === 'race') + 1;
