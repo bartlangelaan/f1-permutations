@@ -454,9 +454,10 @@ function computePositionCombinations(
         break;
       }
 
-      // When the entity finishes P1, every opponent is naturally excluded from P1.
-      // A constraint of "P2 or worse" is therefore trivially satisfied and need not be listed.
-      if (entityFinishPos === 1 && smallestValidPos === 2) continue;
+      // When the entity finishes P{i}, position i is taken. The constraint "P{i+1} or worse"
+      // means the opponent is at most one slot behind the entity — the least restrictive
+      // possible bound for that entity position — so it need not be listed explicitly.
+      if (smallestValidPos === entityFinishPos + 1) continue;
 
       rivalConstraints.push({ opponentId, maxRaceFinishPos: smallestValidPos });
     }

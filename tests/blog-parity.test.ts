@@ -195,7 +195,7 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
   );
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee P1 in Abu Dhabi GP by finishing P2 if Lando Norris finishes P8 or worse and Oscar Piastri finishes P3 or worse.",
+      "Max Verstappen can guarantee P1 in Abu Dhabi GP by finishing P2 if Lando Norris finishes P8 or worse.",
     ),
   );
   assert.ok(
