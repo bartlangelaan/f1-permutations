@@ -5,7 +5,7 @@ This project computes and surfaces mathematical championship permutations for Fo
 F1 officially publishes "championship permutations" articles when a title is about to be decided, but only for P1. This project aims to go further:
 
 - **All positions, not just P1**: show which drivers/constructors can still mathematically reach P1, P2, P3, etc., and which have already been eliminated from each position.
-- **Gaining and losing possibilities**: highlight both when a driver first becomes mathematically able to reach a certain position, and when they are eliminated from it.
+- **Gaining and losing possibilities**: highlight both when a driver can no longer finish lower than a certain position (i.e. that position is mathematically guaranteed), and when they are eliminated from finishing that high.
 - **Prioritised by relevance**: P1 championship outcomes are the most important insight and should stand out most prominently. Deeper position analysis (P2, P3, lower) is also available for the enthusiast.
 - **Next-race focus**: the most important insights are about what can be decided or changed at the very next race. Lookahead across the next few races is also valuable context.
 - **Drivers and constructors**: both championships are covered.
