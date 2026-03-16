@@ -1227,7 +1227,63 @@
           "points": 2
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_later",
@@ -1287,6 +1343,66 @@
         {
           "opponentId": "russell",
           "points": 1
+        }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "russell",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "russell",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "russell",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "russell",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "russell",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "russell",
+              "maxRaceFinishPos": 7
+            }
+          ]
         }
       ]
     },
@@ -1476,6 +1592,57 @@
           "opponentId": "alonso",
           "points": 2
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        }
       ]
     },
     {
@@ -1537,6 +1704,21 @@
         {
           "opponentId": "hulkenberg",
           "points": 6
+        }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 2
+            }
+          ]
         }
       ]
     },
@@ -2969,6 +3151,328 @@
       "entityId": "bottas",
       "position": 23,
       "earliestRaceNum": 27
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "max_verstappen",
+      "position": 4,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "norris",
+      "position": 5,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "leclerc",
+      "position": 7,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "piastri",
+      "position": 8,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "sainz",
+      "position": 8,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "hamilton",
+      "position": 8,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "russell",
+      "position": 9,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "perez",
+      "position": 10,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "alonso",
+      "position": 23,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "hulkenberg",
+      "position": 23,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "stroll",
+      "position": 23,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "tsunoda",
+      "position": 23,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "kevin_magnussen",
+      "position": 23,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "albon",
+      "position": 23,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "ricciardo",
+      "position": 23,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "gasly",
+      "position": 23,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "bearman",
+      "position": 23,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "ocon",
+      "position": 23,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "colapinto",
+      "position": 23,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "lawson",
+      "position": 23,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "zhou",
+      "position": 23,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "sargeant",
+      "position": 23,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "bottas",
+      "position": 23,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
     }
   ],
   "constructorLockInsights": [

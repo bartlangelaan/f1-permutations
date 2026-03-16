@@ -398,10 +398,14 @@ function computePositionCombinations(
   rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[];
 }> {
   const opponents = entityIds.filter((id) => id !== entityId);
-  // For targetPosition = 1 the entity must be guaranteed above ALL opponents.
-  // (Generalising to other positions would require choosing a subset; for now only P1 is used.)
-  const requiredBelowCount = entityIds.length - targetPosition;
-  if (requiredBelowCount !== opponents.length) return [];
+
+  // For targetPosition N the entity must be guaranteed above all opponents EXCEPT the
+  // top N-1 (by base points). Those top N-1 may legitimately finish ahead of the entity
+  // — we only constrain the rest.
+  const sortedOpponents = [...opponents].sort(
+    (a, b) => (basePts.get(b) ?? 0) - (basePts.get(a) ?? 0),
+  );
+  const mustBeBelowOpponents = sortedOpponents.slice(targetPosition - 1);
 
   const raw: Array<{
     minRaceFinishPos: number;
@@ -416,7 +420,7 @@ function computePositionCombinations(
     const rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[] = [];
     let feasible = true;
 
-    for (const opponentId of opponents) {
+    for (const opponentId of mustBeBelowOpponents) {
       const opponentBasePts = basePts.get(opponentId) ?? 0;
       // Entity is guaranteed strictly above opponent iff:
       //   entityFinalPts > opponentBasePts + opponentRacePoints + pointsRemainingAfterNext
@@ -677,10 +681,9 @@ export function computeLockInsightsForSelectedRace(
     }
   }
 
-  // Generate multi-driver position-combination permutations for P1 (championship win).
-  // For each driver whose season-end best position is P1, enumerate all race finishing
-  // positions and the corresponding rival finishing-position constraints required for that
-  // driver to guarantee the championship.
+  // Generate multi-driver position-combination permutations for every achievable position.
+  // For each driver and each position they can still reach, enumerate all race finishing
+  // positions and the rival finishing-position constraints required to guarantee that position.
   if (isDriver && nextRaceNum <= lastRaceNum) {
     const nextRace = data.races[nextRaceNum - 1];
     if (nextRace) {
@@ -694,39 +697,45 @@ export function computeLockInsightsForSelectedRace(
 
       for (const entity of orderedEntities) {
         const endEntry = endProjections[entity.id];
-        if (!endEntry || endEntry.bestPos !== 1) continue;
+        if (!endEntry) continue;
         if (endEntry.bestPos === endEntry.worstPos) continue; // already locked in
 
-        const combinations = computePositionCombinations(
-          entity.id,
-          1,
-          entityIds,
-          basePts,
-          racePoints,
-          pointsRemainingAfterNext,
-        );
-
-        if (combinations.length > 0) {
-          // Attach to the existing points-margin insight for this entity at P1, if one was
-          // already emitted, so both representations live on the same insight object.
-          const existing = insights.find(
-            (ins): ins is Extract<LockInsight, { type: "can_be_locked_in_next_race" }> =>
-              ins.type === "can_be_locked_in_next_race" &&
-              ins.entityId === entity.id &&
-              ins.position === 1,
+        for (
+          let position = endEntry.bestPos;
+          position <= (endEntry.worstPos ?? entities.length);
+          position++
+        ) {
+          const combinations = computePositionCombinations(
+            entity.id,
+            position,
+            entityIds,
+            basePts,
+            racePoints,
+            pointsRemainingAfterNext,
           );
-          if (existing) {
-            existing.racePositionCombinations = combinations;
-          } else {
-            insights.push({
-              type: "can_be_locked_in_next_race",
-              entityId: entity.id,
-              position: 1,
-              nextRaceNum,
-              mustOutscoreBy: [],
-              cannotBeOutscoredByMoreThan: [],
-              racePositionCombinations: combinations,
-            });
+
+          if (combinations.length > 0) {
+            // Attach to the existing points-margin insight for this entity/position, if one
+            // was already emitted, so both representations live on the same insight object.
+            const existing = insights.find(
+              (ins): ins is Extract<LockInsight, { type: "can_be_locked_in_next_race" }> =>
+                ins.type === "can_be_locked_in_next_race" &&
+                ins.entityId === entity.id &&
+                ins.position === position,
+            );
+            if (existing) {
+              existing.racePositionCombinations = combinations;
+            } else {
+              insights.push({
+                type: "can_be_locked_in_next_race",
+                entityId: entity.id,
+                position,
+                nextRaceNum,
+                mustOutscoreBy: [],
+                cannotBeOutscoredByMoreThan: [],
+                racePositionCombinations: combinations,
+              });
+            }
           }
         }
       }

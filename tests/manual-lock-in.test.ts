@@ -15,13 +15,16 @@ test("Lock-in insight: Norris cannot lock P1 in the next race after Mexico 2025"
   const data = readCalculationResults(2025)!;
   const mexicoRaceNum = data.races.findIndex((r) => r.round === 20 && r.type === "race") + 1;
 
-  const norrisNextRaceInsights = (data.driverLockInsights[String(mexicoRaceNum)] ?? []).filter(
-    (insight) => insight.entityId === "norris" && insight.type === "can_be_locked_in_next_race",
+  const norrisNextRaceP1Insights = (data.driverLockInsights[String(mexicoRaceNum)] ?? []).filter(
+    (insight) =>
+      insight.entityId === "norris" &&
+      insight.type === "can_be_locked_in_next_race" &&
+      insight.position === 1,
   );
   assert.equal(
-    norrisNextRaceInsights.length,
+    norrisNextRaceP1Insights.length,
     0,
-    "Expected no next-race guarantee insight for Norris after Mexico 2025",
+    "Expected no P1 next-race guarantee insight for Norris after Mexico 2025",
   );
 
   const texts = renderInsights(data.driverLockInsights[String(mexicoRaceNum)], data);

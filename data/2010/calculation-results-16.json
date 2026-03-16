@@ -733,7 +733,22 @@
           "points": 20
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "hamilton",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "button",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -746,7 +761,18 @@
           "points": 20
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "button",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_later",
@@ -841,6 +867,47 @@
           "opponentId": "rosberg",
           "points": 19
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "massa",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "massa",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "rosberg",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "massa",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "rosberg",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        }
       ]
     },
     {
@@ -853,6 +920,21 @@
         {
           "opponentId": "rosberg",
           "points": 19
+        }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosberg",
+              "maxRaceFinishPos": 2
+            }
+          ]
         }
       ]
     },
@@ -918,6 +1000,73 @@
           "opponentId": "kubica",
           "points": 24
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "massa",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "massa",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "rosberg",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "massa",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "rosberg",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "massa",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "rosberg",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "massa",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "rosberg",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        }
       ]
     },
     {
@@ -935,6 +1084,30 @@
           "opponentId": "kubica",
           "points": 24
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosberg",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosberg",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        }
       ]
     },
     {
@@ -947,6 +1120,12 @@
         {
           "opponentId": "kubica",
           "points": 24
+        }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
         }
       ]
     },
@@ -997,6 +1176,21 @@
         {
           "opponentId": "michael_schumacher",
           "points": 23
+        }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "michael_schumacher",
+              "maxRaceFinishPos": 2
+            }
+          ]
         }
       ]
     },
@@ -1075,6 +1269,21 @@
           "opponentId": "sutil",
           "points": 24
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "michael_schumacher",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        }
       ]
     },
     {
@@ -1087,6 +1296,12 @@
         {
           "opponentId": "sutil",
           "points": 24
+        }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
         }
       ]
     },
@@ -1163,6 +1378,81 @@
           "opponentId": "barrichello",
           "points": 22
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "michael_schumacher",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "michael_schumacher",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sutil",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "michael_schumacher",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sutil",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "michael_schumacher",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "sutil",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "barrichello",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "michael_schumacher",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "sutil",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "barrichello",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        }
       ]
     },
     {
@@ -1180,6 +1470,47 @@
           "opponentId": "barrichello",
           "points": 22
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "sutil",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "sutil",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "barrichello",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "sutil",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "barrichello",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        }
       ]
     },
     {
@@ -1192,6 +1523,21 @@
         {
           "opponentId": "barrichello",
           "points": 22
+        }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "barrichello",
+              "maxRaceFinishPos": 2
+            }
+          ]
         }
       ]
     },
@@ -1298,6 +1644,29 @@
           "opponentId": "klien",
           "points": 3
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "kobayashi",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "petrov",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "liuzzi",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        }
       ]
     },
     {
@@ -1368,6 +1737,46 @@
           "opponentId": "klien",
           "points": 3
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "petrov",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "liuzzi",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "petrov",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "liuzzi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        }
       ]
     },
     {
@@ -1434,6 +1843,87 @@
           "opponentId": "klien",
           "points": 3
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "liuzzi",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "liuzzi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "liuzzi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        }
       ]
     },
     {
@@ -1496,6 +1986,124 @@
           "opponentId": "klien",
           "points": 3
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "liuzzi",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "liuzzi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "liuzzi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "liuzzi",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        }
       ]
     },
     {
@@ -1554,6 +2162,242 @@
           "opponentId": "klien",
           "points": 3
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        }
       ]
     },
     {
@@ -1608,6 +2452,254 @@
           "opponentId": "klien",
           "points": 3
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        }
       ]
     },
     {
@@ -1658,6 +2750,271 @@
           "opponentId": "klien",
           "points": 3
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
       ]
     },
     {
@@ -1703,6 +3060,271 @@
           "opponentId": "klien",
           "points": 3
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
       ]
     },
     {
@@ -1744,6 +3366,271 @@
           "opponentId": "klien",
           "points": 3
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
       ]
     },
     {
@@ -1781,6 +3668,243 @@
           "opponentId": "yamamoto",
           "points": 3
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
       ]
     },
     {
@@ -1814,6 +3938,215 @@
           "opponentId": "chandhok",
           "points": 3
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
       ]
     },
     {
@@ -1843,6 +4176,187 @@
           "opponentId": "grassi",
           "points": 3
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
       ]
     },
     {
@@ -1868,6 +4382,159 @@
           "opponentId": "glock",
           "points": 3
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
       ]
     },
     {
@@ -1889,6 +4556,131 @@
           "opponentId": "bruno_senna",
           "points": 3
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
       ]
     },
     {
@@ -1906,6 +4698,103 @@
           "opponentId": "trulli",
           "points": 3
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
       ]
     },
     {
@@ -1918,6 +4807,75 @@
         {
           "opponentId": "kovalainen",
           "points": 3
+        }
+      ],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
         }
       ]
     },
@@ -2075,7 +5033,38 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "petrov",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "liuzzi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2140,7 +5129,34 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "liuzzi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2201,7 +5217,87 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "liuzzi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "liuzzi",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2258,7 +5354,132 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2311,7 +5532,169 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2360,7 +5743,198 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2405,7 +5979,218 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2446,7 +6231,235 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2483,7 +6496,211 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2516,7 +6733,187 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2545,7 +6942,163 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2570,7 +7123,139 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2591,7 +7276,115 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2608,7 +7401,91 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2621,7 +7498,67 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -2742,7 +7679,66 @@
           "points": 10
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "liuzzi",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2799,7 +7795,62 @@
           "points": 10
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "buemi",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2852,7 +7903,107 @@
           "points": 10
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosa",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2901,7 +8052,144 @@
           "points": 10
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "heidfeld",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2946,7 +8234,132 @@
           "points": 10
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "alguersuari",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2987,7 +8400,157 @@
           "points": 10
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3024,7 +8587,141 @@
           "points": 10
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3057,7 +8754,125 @@
           "points": 10
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3086,7 +8901,109 @@
           "points": 10
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3111,7 +9028,93 @@
           "points": 10
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3132,7 +9135,77 @@
           "points": 10
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3149,7 +9222,61 @@
           "points": 10
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3162,7 +9289,45 @@
           "points": 10
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "minRaceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -3258,7 +9423,46 @@
           "points": 24
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "kovalainen",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 10
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3295,7 +9499,42 @@
           "points": 24
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "trulli",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 10
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3328,7 +9567,38 @@
           "points": 24
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "bruno_senna",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 10
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3357,7 +9627,34 @@
           "points": 24
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "glock",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 10
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3382,7 +9679,30 @@
           "points": 24
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "grassi",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 10
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3403,7 +9723,26 @@
           "points": 24
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "chandhok",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 10
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3420,7 +9759,22 @@
           "points": 24
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "yamamoto",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 10
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3433,7 +9787,18 @@
           "points": 24
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "klien",
+              "maxRaceFinishPos": 10
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -6172,6 +12537,356 @@
       "entityId": "glock",
       "position": 27,
       "earliestRaceNum": 19
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "webber",
+      "position": 5,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "alonso",
+      "position": 5,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "vettel",
+      "position": 5,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "hamilton",
+      "position": 7,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "massa",
+      "position": 9,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "kubica",
+      "position": 11,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "michael_schumacher",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "sutil",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "barrichello",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "kobayashi",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "petrov",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "hulkenberg",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "liuzzi",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "buemi",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "rosa",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "heidfeld",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "alguersuari",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "bruno_senna",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "klien",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "kovalainen",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "trulli",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "chandhok",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "grassi",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "yamamoto",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "glock",
+      "position": 27,
+      "nextRaceNum": 17,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "minRaceFinishPos": 1,
+          "rivalConstraints": []
+        }
+      ]
     }
   ],
   "constructorLockInsights": [
