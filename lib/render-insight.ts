@@ -59,22 +59,19 @@ export function renderInsightTexts(
           .join(", ")}`,
       );
     }
-    if (details.length > 0 || !insight.positionCombinations) {
+    if (details.length > 0 || !insight.racePositionCombinations) {
       const detailText = details.length
         ? ` if ${details.join(" and ")}`
         : " regardless of the result there";
-      const practicalText = insight.minFinishPos
-        ? ` In practice, that means finishing P${insight.minFinishPos} or better.`
-        : "";
       sentences.push(
-        `${entityName} can guarantee at least ${positionLabel} in ${raceLabel}${detailText}.${practicalText}`,
+        `${entityName} can guarantee at least ${positionLabel} in ${raceLabel}${detailText}.`,
       );
     }
 
     // Position-combination sentences: one per entry in the table.
-    if (insight.positionCombinations) {
-      for (const combo of insight.positionCombinations) {
-        const byLine = `by finishing P${combo.entityFinishPos}`;
+    if (insight.racePositionCombinations) {
+      for (const combo of insight.racePositionCombinations) {
+        const byLine = `by finishing P${combo.minRaceFinishPos}`;
         if (combo.rivalConstraints.length === 0) {
           sentences.push(
             `${entityName} can guarantee ${positionLabel} in ${raceLabel} ${byLine} regardless of rivals.`,
@@ -83,7 +80,7 @@ export function renderInsightTexts(
           const rivalText = combo.rivalConstraints
             .map(
               (r) =>
-                `${entitiesById.get(r.opponentId)?.name ?? r.opponentId} finishes P${r.maxFinishPos} or worse`,
+                `${entitiesById.get(r.opponentId)?.name ?? r.opponentId} finishes P${r.maxRaceFinishPos} or worse`,
             )
             .join(" and ");
           sentences.push(

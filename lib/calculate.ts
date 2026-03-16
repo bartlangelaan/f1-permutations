@@ -176,16 +176,17 @@ export type LockInsight =
       nextRaceNum: number;
       mustOutscoreBy: LockCondition[];
       cannotBeOutscoredByMoreThan: LockCondition[];
-      minFinishPos?: number;
       /**
        * When present, lists every race-finishing-position combination that guarantees
-       * `position`. Each entry pairs the entity's own race finishing position with the
+       * `position`. Each entry pairs the entity's minimum race finishing position with the
        * rival constraints that must hold simultaneously. An empty `rivalConstraints`
        * array means the entity wins regardless of where rivals finish.
+       * Entries with identical rivalConstraints are deduplicated — only the lowest
+       * (best) minRaceFinishPos is kept.
        */
-      positionCombinations?: Array<{
-        entityFinishPos: number;
-        rivalConstraints: Array<{ opponentId: string; maxFinishPos: number }>;
+      racePositionCombinations?: Array<{
+        minRaceFinishPos: number;
+        rivalConstraints: Array<{ opponentId: string; maxRaceFinishPos: number }>;
       }>;
     }
   | {
@@ -393,8 +394,8 @@ function computePositionCombinations(
   racePoints: number[],
   pointsRemainingAfterNext: number,
 ): Array<{
-  entityFinishPos: number;
-  rivalConstraints: { opponentId: string; maxFinishPos: number }[];
+  minRaceFinishPos: number;
+  rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[];
 }> {
   const opponents = entityIds.filter((id) => id !== entityId);
   // For targetPosition = 1 the entity must be guaranteed above ALL opponents.
@@ -402,9 +403,9 @@ function computePositionCombinations(
   const requiredBelowCount = entityIds.length - targetPosition;
   if (requiredBelowCount !== opponents.length) return [];
 
-  const results: Array<{
-    entityFinishPos: number;
-    rivalConstraints: { opponentId: string; maxFinishPos: number }[];
+  const raw: Array<{
+    minRaceFinishPos: number;
+    rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[];
   }> = [];
 
   for (let i = 0; i < racePoints.length; i++) {
@@ -412,7 +413,7 @@ function computePositionCombinations(
     const entityRacePoints = racePoints[i] ?? 0;
     const entityFinalPts = (basePts.get(entityId) ?? 0) + entityRacePoints;
 
-    const rivalConstraints: { opponentId: string; maxFinishPos: number }[] = [];
+    const rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[] = [];
     let feasible = true;
 
     for (const opponentId of opponents) {
@@ -457,12 +458,30 @@ function computePositionCombinations(
       // A constraint of "P2 or worse" is therefore trivially satisfied and need not be listed.
       if (entityFinishPos === 1 && smallestValidPos === 2) continue;
 
-      rivalConstraints.push({ opponentId, maxFinishPos: smallestValidPos });
+      rivalConstraints.push({ opponentId, maxRaceFinishPos: smallestValidPos });
     }
 
     if (feasible) {
-      results.push({ entityFinishPos, rivalConstraints });
+      raw.push({ minRaceFinishPos: entityFinishPos, rivalConstraints });
     }
+  }
+
+  // Deduplicate: for rows with identical rivalConstraints (same opponents + same bounds),
+  // keep only the one with the lowest (best) minRaceFinishPos.
+  const seen = new Map<string, number>();
+  const results: Array<{
+    minRaceFinishPos: number;
+    rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[];
+  }> = [];
+  for (const entry of raw) {
+    const key = JSON.stringify(
+      entry.rivalConstraints.map((r) => `${r.opponentId}:${r.maxRaceFinishPos}`),
+    );
+    if (!seen.has(key)) {
+      seen.set(key, results.length);
+      results.push(entry);
+    }
+    // Earlier entries always have a lower (better) minRaceFinishPos, so no update needed.
   }
 
   return results;
@@ -499,41 +518,6 @@ export function computeLockInsightsForSelectedRace(
       (insight) =>
         insight.entityId === entityId && insight.position === position && insight.type === type,
     );
-
-  const practicalFinishForGuaranteedLock = (
-    nextPlan: {
-      mustOutscoreBy: LockCondition[];
-      cannotBeOutscoredByMoreThan: LockCondition[];
-    },
-    nextRace: TimelineRace,
-  ): number | null => {
-    if (!isDriver) return null;
-
-    const pointsByPosition = driverPointsByPositionForRace(data.year, nextRace);
-    if (pointsByPosition.length < 2) return null;
-
-    const maxFinishPos = Math.min(pointsByPosition.length, entities.length);
-    let bestKnown: number | null = null;
-
-    for (let finishPos = 1; finishPos <= maxFinishPos; finishPos++) {
-      const ownPoints = pointsByPosition[finishPos - 1] ?? 0;
-      const maxOpponentPoints = pointsByPosition[finishPos === 1 ? 1 : 0] ?? 0;
-
-      const satisfiesMustOutscore = nextPlan.mustOutscoreBy.every(
-        (condition) => ownPoints - maxOpponentPoints >= condition.points,
-      );
-      if (!satisfiesMustOutscore) continue;
-
-      const satisfiesOutscoreCap = nextPlan.cannotBeOutscoredByMoreThan.every(
-        (condition) => maxOpponentPoints - ownPoints <= condition.points,
-      );
-      if (!satisfiesOutscoreCap) continue;
-
-      bestKnown = finishPos;
-    }
-
-    return bestKnown;
-  };
 
   for (const entity of orderedEntities) {
     const endEntry = endProjections[entity.id];
@@ -574,9 +558,6 @@ export function computeLockInsightsForSelectedRace(
         if (!nextPlan) continue;
         if (!hasGuaranteeConditions(nextPlan)) continue;
 
-        const nextRace = data.races[nextRaceNum - 1];
-        const minFinishPos = nextRace ? practicalFinishForGuaranteedLock(nextPlan, nextRace) : null;
-
         insights.push({
           type: "can_be_locked_in_next_race",
           entityId: entity.id,
@@ -584,7 +565,6 @@ export function computeLockInsightsForSelectedRace(
           nextRaceNum,
           mustOutscoreBy: nextPlan.mustOutscoreBy,
           cannotBeOutscoredByMoreThan: nextPlan.cannotBeOutscoredByMoreThan,
-          ...(minFinishPos !== null ? { minFinishPos } : {}),
         });
       }
 
@@ -735,7 +715,7 @@ export function computeLockInsightsForSelectedRace(
               ins.position === 1,
           );
           if (existing) {
-            existing.positionCombinations = combinations;
+            existing.racePositionCombinations = combinations;
           } else {
             insights.push({
               type: "can_be_locked_in_next_race",
@@ -744,7 +724,7 @@ export function computeLockInsightsForSelectedRace(
               nextRaceNum,
               mustOutscoreBy: [],
               cannotBeOutscoredByMoreThan: [],
-              positionCombinations: combinations,
+              racePositionCombinations: combinations,
             });
           }
         }

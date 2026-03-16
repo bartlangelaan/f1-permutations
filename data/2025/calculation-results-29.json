@@ -210,100 +210,56 @@
           "points": 15
         }
       ],
-      "minFinishPos": 3,
-      "positionCombinations": [
+      "racePositionCombinations": [
         {
-          "entityFinishPos": 1,
+          "minRaceFinishPos": 1,
           "rivalConstraints": []
         },
         {
-          "entityFinishPos": 2,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 3,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 4,
+          "minRaceFinishPos": 4,
           "rivalConstraints": [
             {
               "opponentId": "max_verstappen",
-              "maxFinishPos": 2
+              "maxRaceFinishPos": 2
             }
           ]
         },
         {
-          "entityFinishPos": 5,
+          "minRaceFinishPos": 6,
           "rivalConstraints": [
             {
               "opponentId": "max_verstappen",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 6,
-          "rivalConstraints": [
-            {
-              "opponentId": "max_verstappen",
-              "maxFinishPos": 2
+              "maxRaceFinishPos": 2
             },
             {
               "opponentId": "piastri",
-              "maxFinishPos": 2
+              "maxRaceFinishPos": 2
             }
           ]
         },
         {
-          "entityFinishPos": 7,
+          "minRaceFinishPos": 7,
           "rivalConstraints": [
             {
               "opponentId": "max_verstappen",
-              "maxFinishPos": 3
+              "maxRaceFinishPos": 3
             },
             {
               "opponentId": "piastri",
-              "maxFinishPos": 2
+              "maxRaceFinishPos": 2
             }
           ]
         },
         {
-          "entityFinishPos": 8,
+          "minRaceFinishPos": 9,
           "rivalConstraints": [
             {
               "opponentId": "max_verstappen",
-              "maxFinishPos": 3
+              "maxRaceFinishPos": 4
             },
             {
               "opponentId": "piastri",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 9,
-          "rivalConstraints": [
-            {
-              "opponentId": "max_verstappen",
-              "maxFinishPos": 4
-            },
-            {
-              "opponentId": "piastri",
-              "maxFinishPos": 3
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 10,
-          "rivalConstraints": [
-            {
-              "opponentId": "max_verstappen",
-              "maxFinishPos": 4
-            },
-            {
-              "opponentId": "piastri",
-              "maxFinishPos": 3
+              "maxRaceFinishPos": 3
             }
           ]
         }
@@ -320,8 +276,7 @@
           "opponentId": "piastri",
           "points": 15
         }
-      ],
-      "minFinishPos": 5
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -370,39 +325,39 @@
           "points": 3
         }
       ],
-      "positionCombinations": [
+      "racePositionCombinations": [
         {
-          "entityFinishPos": 1,
+          "minRaceFinishPos": 1,
           "rivalConstraints": [
             {
               "opponentId": "norris",
-              "maxFinishPos": 4
+              "maxRaceFinishPos": 4
             }
           ]
         },
         {
-          "entityFinishPos": 2,
+          "minRaceFinishPos": 2,
           "rivalConstraints": [
             {
               "opponentId": "norris",
-              "maxFinishPos": 8
+              "maxRaceFinishPos": 8
             },
             {
               "opponentId": "piastri",
-              "maxFinishPos": 3
+              "maxRaceFinishPos": 3
             }
           ]
         },
         {
-          "entityFinishPos": 3,
+          "minRaceFinishPos": 3,
           "rivalConstraints": [
             {
               "opponentId": "norris",
-              "maxFinishPos": 9
+              "maxRaceFinishPos": 9
             },
             {
               "opponentId": "piastri",
-              "maxFinishPos": 2
+              "maxRaceFinishPos": 2
             }
           ]
         }
@@ -419,8 +374,7 @@
           "opponentId": "piastri",
           "points": 3
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -469,26 +423,26 @@
         }
       ],
       "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
+      "racePositionCombinations": [
         {
-          "entityFinishPos": 1,
+          "minRaceFinishPos": 1,
           "rivalConstraints": [
             {
               "opponentId": "norris",
-              "maxFinishPos": 6
+              "maxRaceFinishPos": 6
             }
           ]
         },
         {
-          "entityFinishPos": 2,
+          "minRaceFinishPos": 2,
           "rivalConstraints": [
             {
               "opponentId": "norris",
-              "maxFinishPos": 10
+              "maxRaceFinishPos": 10
             },
             {
               "opponentId": "max_verstappen",
-              "maxFinishPos": 4
+              "maxRaceFinishPos": 4
             }
           ]
         }
@@ -505,8 +459,7 @@
           "points": 5
         }
       ],
-      "cannotBeOutscoredByMoreThan": [],
-      "minFinishPos": 1
+      "cannotBeOutscoredByMoreThan": []
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -559,8 +512,7 @@
           "opponentId": "antonelli",
           "points": 1
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -586,8 +538,7 @@
           "points": 3
         }
       ],
-      "cannotBeOutscoredByMoreThan": [],
-      "minFinishPos": 1
+      "cannotBeOutscoredByMoreThan": []
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -625,8 +576,7 @@
           "opponentId": "alonso",
           "points": 24
         }
-      ],
-      "minFinishPos": 2
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -647,8 +597,7 @@
           "opponentId": "alonso",
           "points": 24
         }
-      ],
-      "minFinishPos": 8
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -665,8 +614,7 @@
           "opponentId": "alonso",
           "points": 24
         }
-      ],
-      "minFinishPos": 9
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -751,8 +699,7 @@
           "opponentId": "bearman",
           "points": 22
         }
-      ],
-      "minFinishPos": 3
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -773,8 +720,7 @@
           "opponentId": "bearman",
           "points": 22
         }
-      ],
-      "minFinishPos": 4
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -791,8 +737,7 @@
           "opponentId": "bearman",
           "points": 22
         }
-      ],
-      "minFinishPos": 5
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -805,8 +750,7 @@
           "opponentId": "bearman",
           "points": 22
         }
-      ],
-      "minFinishPos": 8
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -1010,8 +954,7 @@
           "opponentId": "ocon",
           "points": 18
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1044,8 +987,7 @@
           "opponentId": "ocon",
           "points": 18
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1074,8 +1016,7 @@
           "opponentId": "ocon",
           "points": 18
         }
-      ],
-      "minFinishPos": 2
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1100,8 +1041,7 @@
           "opponentId": "ocon",
           "points": 18
         }
-      ],
-      "minFinishPos": 3
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1122,8 +1062,7 @@
           "opponentId": "ocon",
           "points": 18
         }
-      ],
-      "minFinishPos": 6
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1140,8 +1079,7 @@
           "opponentId": "ocon",
           "points": 18
         }
-      ],
-      "minFinishPos": 6
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -1447,8 +1385,7 @@
           "opponentId": "ocon",
           "points": 16
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1481,8 +1418,7 @@
           "opponentId": "ocon",
           "points": 16
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1511,8 +1447,7 @@
           "opponentId": "ocon",
           "points": 16
         }
-      ],
-      "minFinishPos": 2
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1537,8 +1472,7 @@
           "opponentId": "ocon",
           "points": 16
         }
-      ],
-      "minFinishPos": 3
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1559,8 +1493,7 @@
           "opponentId": "ocon",
           "points": 16
         }
-      ],
-      "minFinishPos": 5
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1577,8 +1510,7 @@
           "opponentId": "ocon",
           "points": 16
         }
-      ],
-      "minFinishPos": 5
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1591,8 +1523,7 @@
           "opponentId": "stroll",
           "points": 16
         }
-      ],
-      "minFinishPos": 5
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -1893,8 +1824,7 @@
           "opponentId": "ocon",
           "points": 15
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1928,8 +1858,7 @@
           "opponentId": "ocon",
           "points": 15
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1958,8 +1887,7 @@
           "opponentId": "ocon",
           "points": 15
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1984,8 +1912,7 @@
           "opponentId": "ocon",
           "points": 15
         }
-      ],
-      "minFinishPos": 2
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2006,8 +1933,7 @@
           "opponentId": "ocon",
           "points": 15
         }
-      ],
-      "minFinishPos": 4
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2024,8 +1950,7 @@
           "opponentId": "ocon",
           "points": 15
         }
-      ],
-      "minFinishPos": 5
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2038,8 +1963,7 @@
           "opponentId": "stroll",
           "points": 15
         }
-      ],
-      "minFinishPos": 5
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -2468,8 +2392,7 @@
           "opponentId": "bortoleto",
           "points": 21
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2498,8 +2421,7 @@
           "opponentId": "bortoleto",
           "points": 21
         }
-      ],
-      "minFinishPos": 2
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2524,8 +2446,7 @@
           "opponentId": "bortoleto",
           "points": 21
         }
-      ],
-      "minFinishPos": 2
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2546,8 +2467,7 @@
           "opponentId": "bortoleto",
           "points": 21
         }
-      ],
-      "minFinishPos": 2
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2564,8 +2484,7 @@
           "opponentId": "bortoleto",
           "points": 21
         }
-      ],
-      "minFinishPos": 6
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2578,8 +2497,7 @@
           "opponentId": "bortoleto",
           "points": 21
         }
-      ],
-      "minFinishPos": 8
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -3005,8 +2923,7 @@
           "opponentId": "bortoleto",
           "points": 18
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3035,8 +2952,7 @@
           "opponentId": "bortoleto",
           "points": 18
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3061,8 +2977,7 @@
           "opponentId": "bortoleto",
           "points": 18
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3083,8 +2998,7 @@
           "opponentId": "bortoleto",
           "points": 18
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3101,8 +3015,7 @@
           "opponentId": "bortoleto",
           "points": 18
         }
-      ],
-      "minFinishPos": 5
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3115,8 +3028,7 @@
           "opponentId": "bortoleto",
           "points": 18
         }
-      ],
-      "minFinishPos": 6
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -3572,8 +3484,7 @@
           "opponentId": "bortoleto",
           "points": 13
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3598,8 +3509,7 @@
           "opponentId": "bortoleto",
           "points": 13
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3620,8 +3530,7 @@
           "opponentId": "bortoleto",
           "points": 13
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3638,8 +3547,7 @@
           "opponentId": "bortoleto",
           "points": 13
         }
-      ],
-      "minFinishPos": 3
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -3652,8 +3560,7 @@
           "opponentId": "bortoleto",
           "points": 13
         }
-      ],
-      "minFinishPos": 4
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -4108,8 +4015,7 @@
           "opponentId": "bortoleto",
           "points": 12
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -4135,8 +4041,7 @@
           "opponentId": "bortoleto",
           "points": 12
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -4158,8 +4063,7 @@
           "opponentId": "bortoleto",
           "points": 12
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -4176,8 +4080,7 @@
           "opponentId": "bortoleto",
           "points": 12
         }
-      ],
-      "minFinishPos": 2
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -4190,8 +4093,7 @@
           "opponentId": "bortoleto",
           "points": 12
         }
-      ],
-      "minFinishPos": 3
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -4645,8 +4547,7 @@
           "opponentId": "bortoleto",
           "points": 12
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -4672,8 +4573,7 @@
           "opponentId": "bortoleto",
           "points": 12
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -4695,8 +4595,7 @@
           "opponentId": "bortoleto",
           "points": 12
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -4713,8 +4612,7 @@
           "opponentId": "bortoleto",
           "points": 12
         }
-      ],
-      "minFinishPos": 2
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -4727,8 +4625,7 @@
           "opponentId": "bortoleto",
           "points": 12
         }
-      ],
-      "minFinishPos": 3
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -5183,8 +5080,7 @@
           "opponentId": "colapinto",
           "points": 21
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -5201,8 +5097,7 @@
           "opponentId": "colapinto",
           "points": 21
         }
-      ],
-      "minFinishPos": 8
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -5215,8 +5110,7 @@
           "opponentId": "doohan",
           "points": 21
         }
-      ],
-      "minFinishPos": 8
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -5585,8 +5479,7 @@
           "opponentId": "colapinto",
           "points": 18
         }
-      ],
-      "minFinishPos": 1
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -5603,8 +5496,7 @@
           "opponentId": "colapinto",
           "points": 18
         }
-      ],
-      "minFinishPos": 6
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -5617,8 +5509,7 @@
           "opponentId": "doohan",
           "points": 18
         }
-      ],
-      "minFinishPos": 6
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -5845,8 +5736,7 @@
           "points": 1
         }
       ],
-      "cannotBeOutscoredByMoreThan": [],
-      "minFinishPos": 1
+      "cannotBeOutscoredByMoreThan": []
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -5949,8 +5839,7 @@
           "points": 1
         }
       ],
-      "cannotBeOutscoredByMoreThan": [],
-      "minFinishPos": 1
+      "cannotBeOutscoredByMoreThan": []
     },
     {
       "type": "can_be_ruled_out_next_race",

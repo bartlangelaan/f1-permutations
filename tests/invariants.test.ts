@@ -166,7 +166,7 @@ test("All can_be_locked_in_next_race insights include at least one lock conditio
         for (const insight of insights) {
           if (
             insight.type === "can_be_locked_in_next_race" &&
-            insight.positionCombinations === undefined
+            insight.racePositionCombinations === undefined
           ) {
             const conditionCount =
               insight.mustOutscoreBy.length + insight.cannotBeOutscoredByMoreThan.length;
