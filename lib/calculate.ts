@@ -178,14 +178,14 @@ export type LockInsight =
       cannotBeOutscoredByMoreThan: LockCondition[];
       /**
        * When present, lists every race-finishing-position combination that guarantees
-       * `position`. Each entry pairs the entity's minimum race finishing position with the
-       * rival constraints that must hold simultaneously. An empty `rivalConstraints`
-       * array means the entity wins regardless of where rivals finish.
-       * Entries with identical rivalConstraints are deduplicated — only the lowest
-       * (best) minRaceFinishPos is kept.
+       * `position`. Each entry's `raceFinishPos` is the threshold: finishing at that
+       * position *or better* guarantees `position` given the stated rival constraints.
+       * An empty `rivalConstraints` array means the entity wins regardless of where rivals finish.
+       * Entries with identical rivalConstraints are deduplicated — only the highest
+       * (worst) raceFinishPos is kept, so the threshold represents the full range.
        */
       racePositionCombinations?: Array<{
-        minRaceFinishPos: number;
+        raceFinishPos: number;
         rivalConstraints: Array<{ opponentId: string; maxRaceFinishPos: number }>;
       }>;
     }
@@ -394,7 +394,7 @@ function computePositionCombinations(
   racePoints: number[],
   pointsRemainingAfterNext: number,
 ): Array<{
-  minRaceFinishPos: number;
+  raceFinishPos: number;
   rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[];
 }> {
   const opponents = entityIds.filter((id) => id !== entityId);
@@ -408,7 +408,7 @@ function computePositionCombinations(
   const mustBeBelowOpponents = sortedOpponents.slice(targetPosition - 1);
 
   const raw: Array<{
-    minRaceFinishPos: number;
+    raceFinishPos: number;
     rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[];
   }> = [];
 
@@ -458,35 +458,38 @@ function computePositionCombinations(
         break;
       }
 
-      // When the entity finishes P{i}, position i is taken. The constraint "P{i+1} or worse"
-      // means the opponent is at most one slot behind the entity — the least restrictive
-      // possible bound for that entity position — so it need not be listed explicitly.
-      if (smallestValidPos === entityFinishPos + 1) continue;
+      // When the entity finishes P1, every opponent is naturally excluded from P1.
+      // A constraint of "P2 or worse" is therefore trivially satisfied and need not be listed.
+      if (entityFinishPos === 1 && smallestValidPos === 2) continue;
 
       rivalConstraints.push({ opponentId, maxRaceFinishPos: smallestValidPos });
     }
 
     if (feasible) {
-      raw.push({ minRaceFinishPos: entityFinishPos, rivalConstraints });
+      raw.push({ raceFinishPos: entityFinishPos, rivalConstraints });
     }
   }
 
   // Deduplicate: for rows with identical rivalConstraints (same opponents + same bounds),
-  // keep only the one with the lowest (best) minRaceFinishPos.
+  // keep only the one with the highest (worst) raceFinishPos — this is the threshold,
+  // meaning the entity can finish at that position *or better* with those constraints.
   const seen = new Map<string, number>();
   const results: Array<{
-    minRaceFinishPos: number;
+    raceFinishPos: number;
     rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[];
   }> = [];
   for (const entry of raw) {
     const key = JSON.stringify(
       entry.rivalConstraints.map((r) => `${r.opponentId}:${r.maxRaceFinishPos}`),
     );
-    if (!seen.has(key)) {
+    const existingIdx = seen.get(key);
+    if (existingIdx === undefined) {
       seen.set(key, results.length);
       results.push(entry);
+    } else {
+      // Later entries have a higher (worse) raceFinishPos — update to extend the threshold.
+      results[existingIdx] = entry;
     }
-    // Earlier entries always have a lower (better) minRaceFinishPos, so no update needed.
   }
 
   return results;

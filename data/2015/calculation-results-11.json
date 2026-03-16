@@ -1547,42 +1547,58 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 1,
           "rivalConstraints": []
         },
         {
-          "minRaceFinishPos": 2,
+          "raceFinishPos": 2,
           "rivalConstraints": [
             {
               "opponentId": "kvyat",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "kvyat",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "ricciardo",
               "maxRaceFinishPos": 4
             }
           ]
         },
         {
-          "minRaceFinishPos": 3,
-          "rivalConstraints": [
-            {
-              "opponentId": "kvyat",
-              "maxRaceFinishPos": 6
-            }
-          ]
-        },
-        {
-          "minRaceFinishPos": 4,
+          "raceFinishPos": 4,
           "rivalConstraints": [
             {
               "opponentId": "kvyat",
               "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 5
             }
           ]
         },
         {
-          "minRaceFinishPos": 5,
+          "raceFinishPos": 5,
           "rivalConstraints": [
             {
               "opponentId": "kvyat",
               "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 6
             },
             {
               "opponentId": "grosjean",
@@ -1591,11 +1607,15 @@
           ]
         },
         {
-          "minRaceFinishPos": 6,
+          "raceFinishPos": 6,
           "rivalConstraints": [
             {
               "opponentId": "kvyat",
               "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 7
             },
             {
               "opponentId": "grosjean",
@@ -1623,12 +1643,43 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 1,
           "rivalConstraints": []
         },
         {
-          "minRaceFinishPos": 5,
+          "raceFinishPos": 2,
           "rivalConstraints": [
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 6
+            },
             {
               "opponentId": "grosjean",
               "maxRaceFinishPos": 2
@@ -1636,8 +1687,51 @@
           ]
         },
         {
-          "minRaceFinishPos": 8,
+          "raceFinishPos": 6,
           "rivalConstraints": [
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "grosjean",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grosjean",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "grosjean",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 10
+            },
             {
               "opponentId": "grosjean",
               "maxRaceFinishPos": 3
@@ -1660,11 +1754,11 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 4,
           "rivalConstraints": []
         },
         {
-          "minRaceFinishPos": 5,
+          "raceFinishPos": 7,
           "rivalConstraints": [
             {
               "opponentId": "grosjean",
@@ -1673,7 +1767,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 8,
+          "raceFinishPos": 9,
           "rivalConstraints": [
             {
               "opponentId": "grosjean",
@@ -1682,7 +1776,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 10,
+          "raceFinishPos": 10,
           "rivalConstraints": [
             {
               "opponentId": "grosjean",
@@ -1791,7 +1885,7 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 1,
           "rivalConstraints": [
             {
               "opponentId": "grosjean",
@@ -1800,11 +1894,23 @@
           ]
         },
         {
-          "minRaceFinishPos": 2,
+          "raceFinishPos": 2,
           "rivalConstraints": [
             {
               "opponentId": "grosjean",
               "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "max_verstappen",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "perez",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 3
             }
           ]
         }
@@ -1869,12 +1975,41 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 1,
           "rivalConstraints": []
         },
         {
-          "minRaceFinishPos": 3,
+          "raceFinishPos": 2,
           "rivalConstraints": [
+            {
+              "opponentId": "max_verstappen",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "perez",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "max_verstappen",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "perez",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 4
+            },
             {
               "opponentId": "nasr",
               "maxRaceFinishPos": 2
@@ -1882,11 +2017,19 @@
           ]
         },
         {
-          "minRaceFinishPos": 4,
+          "raceFinishPos": 4,
           "rivalConstraints": [
             {
               "opponentId": "max_verstappen",
               "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "perez",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 5
             },
             {
               "opponentId": "nasr",
@@ -1903,11 +2046,19 @@
           ]
         },
         {
-          "minRaceFinishPos": 5,
+          "raceFinishPos": 5,
           "rivalConstraints": [
             {
               "opponentId": "max_verstappen",
               "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "perez",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 6
             },
             {
               "opponentId": "nasr",
@@ -1928,11 +2079,19 @@
           ]
         },
         {
-          "minRaceFinishPos": 6,
+          "raceFinishPos": 6,
           "rivalConstraints": [
             {
               "opponentId": "max_verstappen",
               "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "perez",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 7
             },
             {
               "opponentId": "nasr",
@@ -1957,11 +2116,19 @@
           ]
         },
         {
-          "minRaceFinishPos": 7,
+          "raceFinishPos": 7,
           "rivalConstraints": [
             {
               "opponentId": "max_verstappen",
               "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "perez",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 8
             },
             {
               "opponentId": "nasr",
@@ -1990,11 +2157,19 @@
           ]
         },
         {
-          "minRaceFinishPos": 8,
+          "raceFinishPos": 8,
           "rivalConstraints": [
             {
               "opponentId": "max_verstappen",
               "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "perez",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 9
             },
             {
               "opponentId": "nasr",
@@ -2079,12 +2254,33 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 1,
           "rivalConstraints": []
         },
         {
-          "minRaceFinishPos": 3,
+          "raceFinishPos": 2,
           "rivalConstraints": [
+            {
+              "opponentId": "perez",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "perez",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 4
+            },
             {
               "opponentId": "nasr",
               "maxRaceFinishPos": 2
@@ -2092,8 +2288,16 @@
           ]
         },
         {
-          "minRaceFinishPos": 4,
+          "raceFinishPos": 4,
           "rivalConstraints": [
+            {
+              "opponentId": "perez",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 5
+            },
             {
               "opponentId": "nasr",
               "maxRaceFinishPos": 2
@@ -2109,8 +2313,16 @@
           ]
         },
         {
-          "minRaceFinishPos": 5,
+          "raceFinishPos": 5,
           "rivalConstraints": [
+            {
+              "opponentId": "perez",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 6
+            },
             {
               "opponentId": "nasr",
               "maxRaceFinishPos": 3
@@ -2130,8 +2342,16 @@
           ]
         },
         {
-          "minRaceFinishPos": 6,
+          "raceFinishPos": 6,
           "rivalConstraints": [
+            {
+              "opponentId": "perez",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 7
+            },
             {
               "opponentId": "nasr",
               "maxRaceFinishPos": 3
@@ -2155,8 +2375,16 @@
           ]
         },
         {
-          "minRaceFinishPos": 7,
+          "raceFinishPos": 7,
           "rivalConstraints": [
+            {
+              "opponentId": "perez",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 8
+            },
             {
               "opponentId": "nasr",
               "maxRaceFinishPos": 4
@@ -2184,8 +2412,16 @@
           ]
         },
         {
-          "minRaceFinishPos": 8,
+          "raceFinishPos": 8,
           "rivalConstraints": [
+            {
+              "opponentId": "perez",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 9
+            },
             {
               "opponentId": "nasr",
               "maxRaceFinishPos": 5
@@ -2265,12 +2501,25 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 1,
           "rivalConstraints": []
         },
         {
-          "minRaceFinishPos": 3,
+          "raceFinishPos": 2,
           "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 4
+            },
             {
               "opponentId": "nasr",
               "maxRaceFinishPos": 2
@@ -2278,8 +2527,12 @@
           ]
         },
         {
-          "minRaceFinishPos": 4,
+          "raceFinishPos": 4,
           "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 5
+            },
             {
               "opponentId": "nasr",
               "maxRaceFinishPos": 2
@@ -2295,8 +2548,12 @@
           ]
         },
         {
-          "minRaceFinishPos": 5,
+          "raceFinishPos": 5,
           "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 6
+            },
             {
               "opponentId": "nasr",
               "maxRaceFinishPos": 3
@@ -2316,8 +2573,12 @@
           ]
         },
         {
-          "minRaceFinishPos": 6,
+          "raceFinishPos": 6,
           "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 7
+            },
             {
               "opponentId": "nasr",
               "maxRaceFinishPos": 3
@@ -2341,8 +2602,12 @@
           ]
         },
         {
-          "minRaceFinishPos": 7,
+          "raceFinishPos": 7,
           "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 8
+            },
             {
               "opponentId": "nasr",
               "maxRaceFinishPos": 4
@@ -2370,8 +2635,12 @@
           ]
         },
         {
-          "minRaceFinishPos": 8,
+          "raceFinishPos": 8,
           "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 9
+            },
             {
               "opponentId": "nasr",
               "maxRaceFinishPos": 5
@@ -2399,8 +2668,12 @@
           ]
         },
         {
-          "minRaceFinishPos": 9,
+          "raceFinishPos": 9,
           "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 10
+            },
             {
               "opponentId": "nasr",
               "maxRaceFinishPos": 6
@@ -2475,11 +2748,11 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 2,
           "rivalConstraints": []
         },
         {
-          "minRaceFinishPos": 3,
+          "raceFinishPos": 3,
           "rivalConstraints": [
             {
               "opponentId": "nasr",
@@ -2488,7 +2761,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 4,
+          "raceFinishPos": 4,
           "rivalConstraints": [
             {
               "opponentId": "nasr",
@@ -2505,7 +2778,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 5,
+          "raceFinishPos": 5,
           "rivalConstraints": [
             {
               "opponentId": "nasr",
@@ -2526,7 +2799,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 6,
+          "raceFinishPos": 6,
           "rivalConstraints": [
             {
               "opponentId": "nasr",
@@ -2551,7 +2824,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 7,
+          "raceFinishPos": 7,
           "rivalConstraints": [
             {
               "opponentId": "nasr",
@@ -2580,7 +2853,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 8,
+          "raceFinishPos": 8,
           "rivalConstraints": [
             {
               "opponentId": "nasr",
@@ -2609,7 +2882,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 9,
+          "raceFinishPos": 9,
           "rivalConstraints": [
             {
               "opponentId": "nasr",
@@ -2638,7 +2911,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 10,
+          "raceFinishPos": 10,
           "rivalConstraints": [
             {
               "opponentId": "nasr",
@@ -2722,11 +2995,11 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 3,
           "rivalConstraints": []
         },
         {
-          "minRaceFinishPos": 4,
+          "raceFinishPos": 4,
           "rivalConstraints": [
             {
               "opponentId": "maldonado",
@@ -2739,7 +3012,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 5,
+          "raceFinishPos": 5,
           "rivalConstraints": [
             {
               "opponentId": "maldonado",
@@ -2756,7 +3029,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 6,
+          "raceFinishPos": 6,
           "rivalConstraints": [
             {
               "opponentId": "maldonado",
@@ -2777,7 +3050,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 7,
+          "raceFinishPos": 7,
           "rivalConstraints": [
             {
               "opponentId": "maldonado",
@@ -2802,7 +3075,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 8,
+          "raceFinishPos": 8,
           "rivalConstraints": [
             {
               "opponentId": "maldonado",
@@ -2827,7 +3100,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 9,
+          "raceFinishPos": 9,
           "rivalConstraints": [
             {
               "opponentId": "maldonado",
@@ -2852,7 +3125,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 10,
+          "raceFinishPos": 10,
           "rivalConstraints": [
             {
               "opponentId": "maldonado",
@@ -2928,11 +3201,11 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 3,
           "rivalConstraints": []
         },
         {
-          "minRaceFinishPos": 4,
+          "raceFinishPos": 4,
           "rivalConstraints": [
             {
               "opponentId": "alonso",
@@ -2941,7 +3214,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 5,
+          "raceFinishPos": 5,
           "rivalConstraints": [
             {
               "opponentId": "alonso",
@@ -2954,7 +3227,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 6,
+          "raceFinishPos": 6,
           "rivalConstraints": [
             {
               "opponentId": "alonso",
@@ -2971,7 +3244,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 7,
+          "raceFinishPos": 7,
           "rivalConstraints": [
             {
               "opponentId": "alonso",
@@ -2992,7 +3265,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 8,
+          "raceFinishPos": 8,
           "rivalConstraints": [
             {
               "opponentId": "alonso",
@@ -3013,7 +3286,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 9,
+          "raceFinishPos": 9,
           "rivalConstraints": [
             {
               "opponentId": "alonso",
@@ -3034,7 +3307,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 10,
+          "raceFinishPos": 10,
           "rivalConstraints": [
             {
               "opponentId": "alonso",
@@ -3102,11 +3375,11 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 4,
           "rivalConstraints": []
         },
         {
-          "minRaceFinishPos": 5,
+          "raceFinishPos": 5,
           "rivalConstraints": [
             {
               "opponentId": "sainz",
@@ -3115,7 +3388,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 6,
+          "raceFinishPos": 6,
           "rivalConstraints": [
             {
               "opponentId": "sainz",
@@ -3128,7 +3401,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 7,
+          "raceFinishPos": 8,
           "rivalConstraints": [
             {
               "opponentId": "sainz",
@@ -3145,7 +3418,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 9,
+          "raceFinishPos": 9,
           "rivalConstraints": [
             {
               "opponentId": "sainz",
@@ -3162,7 +3435,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 10,
+          "raceFinishPos": 10,
           "rivalConstraints": [
             {
               "opponentId": "sainz",
@@ -3222,11 +3495,11 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 5,
           "rivalConstraints": []
         },
         {
-          "minRaceFinishPos": 6,
+          "raceFinishPos": 6,
           "rivalConstraints": [
             {
               "opponentId": "ericsson",
@@ -3235,7 +3508,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 7,
+          "raceFinishPos": 9,
           "rivalConstraints": [
             {
               "opponentId": "ericsson",
@@ -3248,7 +3521,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 10,
+          "raceFinishPos": 10,
           "rivalConstraints": [
             {
               "opponentId": "ericsson",
@@ -3300,11 +3573,11 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 6,
           "rivalConstraints": []
         },
         {
-          "minRaceFinishPos": 7,
+          "raceFinishPos": 9,
           "rivalConstraints": [
             {
               "opponentId": "button",
@@ -3313,7 +3586,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 10,
+          "raceFinishPos": 10,
           "rivalConstraints": [
             {
               "opponentId": "button",
@@ -3357,11 +3630,11 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 9,
           "rivalConstraints": []
         },
         {
-          "minRaceFinishPos": 10,
+          "raceFinishPos": 10,
           "rivalConstraints": [
             {
               "opponentId": "kevin_magnussen",
@@ -3397,11 +3670,11 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 9,
           "rivalConstraints": []
         },
         {
-          "minRaceFinishPos": 10,
+          "raceFinishPos": 10,
           "rivalConstraints": [
             {
               "opponentId": "merhi",
@@ -3429,11 +3702,11 @@
       ],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 9,
           "rivalConstraints": []
         },
         {
-          "minRaceFinishPos": 10,
+          "raceFinishPos": 10,
           "rivalConstraints": [
             {
               "opponentId": "stevens",
@@ -3554,7 +3827,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 1,
           "rivalConstraints": [
             {
               "opponentId": "ericsson",
@@ -3606,7 +3879,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 1,
           "rivalConstraints": [
             {
               "opponentId": "button",
@@ -3650,7 +3923,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 1,
           "rivalConstraints": [
             {
               "opponentId": "kevin_magnussen",
@@ -3667,7 +3940,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 2,
+          "raceFinishPos": 2,
           "rivalConstraints": [
             {
               "opponentId": "kevin_magnussen",
@@ -3703,7 +3976,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 1,
           "rivalConstraints": [
             {
               "opponentId": "merhi",
@@ -3716,7 +3989,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 2,
+          "raceFinishPos": 2,
           "rivalConstraints": [
             {
               "opponentId": "merhi",
@@ -3744,7 +4017,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 1,
           "rivalConstraints": [
             {
               "opponentId": "stevens",
@@ -3753,7 +4026,7 @@
           ]
         },
         {
-          "minRaceFinishPos": 2,
+          "raceFinishPos": 2,
           "rivalConstraints": [
             {
               "opponentId": "stevens",
@@ -6379,7 +6652,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6393,7 +6666,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6407,7 +6680,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6421,7 +6694,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6435,7 +6708,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6449,7 +6722,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6463,7 +6736,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6477,7 +6750,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6491,7 +6764,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6505,7 +6778,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6519,7 +6792,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6533,7 +6806,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6547,7 +6820,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6561,7 +6834,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6575,7 +6848,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6589,7 +6862,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6603,7 +6876,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6617,7 +6890,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6631,7 +6904,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6645,7 +6918,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]
@@ -6659,7 +6932,7 @@
       "cannotBeOutscoredByMoreThan": [],
       "racePositionCombinations": [
         {
-          "minRaceFinishPos": 1,
+          "raceFinishPos": 10,
           "rivalConstraints": []
         }
       ]

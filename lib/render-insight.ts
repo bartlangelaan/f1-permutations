@@ -71,7 +71,7 @@ export function renderInsightTexts(
     // Position-combination sentences: one per entry in the table.
     if (insight.racePositionCombinations) {
       for (const combo of insight.racePositionCombinations) {
-        const byLine = `by finishing P${combo.minRaceFinishPos}`;
+        const byLine = `by finishing P${combo.raceFinishPos} or better`;
         if (combo.rivalConstraints.length === 0) {
           sentences.push(
             `${entityName} can guarantee ${positionLabel} in ${raceLabel} ${byLine} regardless of rivals.`,
