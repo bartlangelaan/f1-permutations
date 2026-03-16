@@ -1,4 +1,3 @@
-import { getSeasons } from "../lib/data";
 import {
   buildSeasonChartData,
   computeLockInsightsForSelectedRace,
@@ -8,6 +7,7 @@ import {
   writeCalculationResults,
   writeCalculationResultsAfterRace,
 } from "../lib/calculation-results";
+import { getSeasons } from "../lib/data";
 
 const seasons = getSeasons();
 console.log(`Processing ${seasons.length} seasons...`);

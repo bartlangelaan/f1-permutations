@@ -8,11 +8,7 @@ import {
   type Race,
   type RaceResult,
 } from "../lib/data";
-import {
-  fetchEventResults,
-  fetchSeasonSchedule,
-  type EventType,
-} from "../lib/jolpica";
+import { fetchEventResults, fetchSeasonSchedule, type EventType } from "../lib/jolpica";
 
 const START_YEAR = 2010;
 const CURRENT_YEAR = new Date().getFullYear();
@@ -65,8 +61,11 @@ function groupSeasonEventResults(rawResults: RawSeasonEventResults): Map<number,
 
   const resultsByRound = new Map<number, RawEventResult[]>();
   for (const [round, results] of Object.entries(grouped)) {
-    const roundNumber = Number(round);  
-    resultsByRound.set(roundNumber,  results.map(({ result }) => result));
+    const roundNumber = Number(round);
+    resultsByRound.set(
+      roundNumber,
+      results.map(({ result }) => result),
+    );
   }
 
   return resultsByRound;
@@ -90,11 +89,7 @@ function isSeasonComplete(year: number, races: Race[]): boolean {
   });
 }
 
-async function saveSeasonEventResults(
-  year: number,
-  races: Race[],
-  type: EventType
-): Promise<void> {
+async function saveSeasonEventResults(year: number, races: Race[], type: EventType): Promise<void> {
   const typedRaces = races.filter((race) => race.type === type);
   if (typedRaces.length === 0) {
     return;

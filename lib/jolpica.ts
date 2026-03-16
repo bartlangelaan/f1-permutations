@@ -42,7 +42,7 @@ const seasonRaceResultsResponseSchema = z.object({
         z.object({
           round: z.string(),
           Results: z.array(rawEventResultSchema).optional(),
-        })
+        }),
       ),
     }),
   }),
@@ -58,7 +58,7 @@ const seasonSprintResultsResponseSchema = z.object({
         z.object({
           round: z.string(),
           SprintResults: z.array(rawEventResultSchema).optional(),
-        })
+        }),
       ),
     }),
   }),
@@ -78,7 +78,7 @@ const client = ky.create({
     ],
     beforeRetry: [
       ({ retryCount, error }) => {
-        console.log(`  ${error.message}`)
+        console.log(`  ${error.message}`);
         console.log(`  [retry ${retryCount}] waiting before next attempt...`);
       },
     ],
@@ -89,14 +89,16 @@ async function fetchJson(path: string): Promise<unknown> {
   return client.get(path).json<unknown>();
 }
 
-export async function fetchSeasonSchedule(year: number): Promise<z.infer<typeof scheduleRaceSchema>[]> {
+export async function fetchSeasonSchedule(
+  year: number,
+): Promise<z.infer<typeof scheduleRaceSchema>[]> {
   const response = seasonResponseSchema.parse(await fetchJson(`${year}.json?limit=100`));
   return response.MRData.RaceTable.Races;
 }
 
 export async function fetchEventResults(
   year: number,
-  type: EventType
+  type: EventType,
 ): Promise<Array<{ round: string; result: z.infer<typeof rawEventResultSchema> }>> {
   const endpoint = type === "sprint" ? "sprint" : "results";
   const results: Array<{ round: string; result: z.infer<typeof rawEventResultSchema> }> = [];
@@ -106,7 +108,7 @@ export async function fetchEventResults(
   while (offset < total) {
     if (type === "sprint") {
       const response = seasonSprintResultsResponseSchema.parse(
-        await fetchJson(`${year}/${endpoint}.json?limit=100&offset=${offset}`)
+        await fetchJson(`${year}/${endpoint}.json?limit=100&offset=${offset}`),
       );
 
       total = response.MRData.total;
@@ -123,7 +125,7 @@ export async function fetchEventResults(
     }
 
     const response = seasonRaceResultsResponseSchema.parse(
-      await fetchJson(`${year}/${endpoint}.json?limit=100&offset=${offset}`)
+      await fetchJson(`${year}/${endpoint}.json?limit=100&offset=${offset}`),
     );
 
     total = response.MRData.total;

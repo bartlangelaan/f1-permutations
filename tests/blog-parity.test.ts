@@ -61,15 +61,17 @@
  * about the target race are stored.
  */
 
-import test from 'node:test';
-import assert from 'node:assert/strict';
-import { readCalculationResults } from '../lib/calculation-results.ts';
-import type { CalculatedChartData, LockInsight } from '../lib/calculate.ts';
-import { renderInsightText } from '../lib/render-insight.ts';
+import assert from "node:assert/strict";
+import test from "node:test";
+import type { CalculatedChartData, LockInsight } from "../lib/calculate.ts";
+import { readCalculationResults } from "../lib/calculation-results.ts";
+import { renderInsightText } from "../lib/render-insight.ts";
 
 function renderInsights(insights: LockInsight[] | undefined, data: CalculatedChartData): string[] {
-  const entitiesById = new Map([...data.drivers, ...data.constructors].map(e => [e.id, { name: e.name }]));
-  return (insights ?? []).map(i => renderInsightText(i, data.races, entitiesById));
+  const entitiesById = new Map(
+    [...data.drivers, ...data.constructors].map((e) => [e.id, { name: e.name }]),
+  );
+  return (insights ?? []).map((i) => renderInsightText(i, data.races, entitiesById));
 }
 
 // Insights from: https://www.formula1.com/en/latest/article/championship-permutations-where-does-norris-need-to-finish-in-abu-dhabi-to.DtWufByimYARjI5kujzt3
@@ -91,34 +93,68 @@ function renderInsights(insights: LockInsight[] | undefined, data: CalculatedCha
 //   - Can only win the title if he finishes P1 or P2
 //   - Finishes P1 + Norris finishes P6 or worse → wins championship
 //   - Finishes P2 + Norris finishes P10 or worse + Verstappen finishes P4 or worse → wins
-test('2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish in Abu Dhabi to seal the title?', () => {
+test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish in Abu Dhabi to seal the title?", () => {
   const data = readCalculationResults(2025)!;
-  const afterRaceNum = data.races.findIndex((r) => r.fullLabel === 'Abu Dhabi GP' && r.type === 'race');
+  const afterRaceNum = data.races.findIndex(
+    (r) => r.fullLabel === "Abu Dhabi GP" && r.type === "race",
+  );
   const texts = renderInsights(data.driverLockInsights[String(afterRaceNum)], data);
 
   // Norris can guarantee P1 (championship win) with conditions on Verstappen and Piastri
-  assert.ok(texts.includes('Lando Norris can guarantee at least P1 in Abu Dhabi GP if is not outscored by Max Verstappen by more than 11 points, Oscar Piastri by more than 15 points.'));
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee at least P1 in Abu Dhabi GP if is not outscored by Max Verstappen by more than 11 points, Oscar Piastri by more than 15 points.",
+    ),
+  );
 
   // Norris can guarantee P2 with a condition only on Piastri
-  assert.ok(texts.includes('Lando Norris can guarantee at least P2 in Abu Dhabi GP if is not outscored by Oscar Piastri by more than 15 points.'));
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee at least P2 in Abu Dhabi GP if is not outscored by Oscar Piastri by more than 15 points.",
+    ),
+  );
 
   // Verstappen can guarantee P1 (championship win) if he outscores Norris by enough and Piastri doesn't beat him
-  assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Abu Dhabi GP if outscores Lando Norris by 13 points and is not outscored by Oscar Piastri by more than 3 points.'));
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee at least P1 in Abu Dhabi GP if outscores Lando Norris by 13 points and is not outscored by Oscar Piastri by more than 3 points.",
+    ),
+  );
 
   // Verstappen can guarantee P2 with a condition only on Piastri
-  assert.ok(texts.includes('Max Verstappen can guarantee at least P2 in Abu Dhabi GP if is not outscored by Oscar Piastri by more than 3 points.'));
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee at least P2 in Abu Dhabi GP if is not outscored by Oscar Piastri by more than 3 points.",
+    ),
+  );
 
   // Piastri can guarantee P1 (championship win) by outscoring both Norris and Verstappen by enough
-  assert.ok(texts.includes('Oscar Piastri can guarantee at least P1 in Abu Dhabi GP if outscores Lando Norris by 17 points, Max Verstappen by 5 points.'));
+  assert.ok(
+    texts.includes(
+      "Oscar Piastri can guarantee at least P1 in Abu Dhabi GP if outscores Lando Norris by 17 points, Max Verstappen by 5 points.",
+    ),
+  );
 
   // Piastri can guarantee P2 with a condition only on Verstappen
-  assert.ok(texts.includes('Oscar Piastri can guarantee at least P2 in Abu Dhabi GP if outscores Max Verstappen by 5 points.'));
+  assert.ok(
+    texts.includes(
+      "Oscar Piastri can guarantee at least P2 in Abu Dhabi GP if outscores Max Verstappen by 5 points.",
+    ),
+  );
 
   // Norris is ruled out of P1 (loses championship) if Verstappen outscores him by enough
-  assert.ok(texts.includes('P1 is no longer possible for Lando Norris in Abu Dhabi GP if is outscored by Max Verstappen by 13 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Lando Norris in Abu Dhabi GP if is outscored by Max Verstappen by 13 points.",
+    ),
+  );
 
   // Piastri is ruled out of P1 (can't win championship) if he doesn't outscore Norris by enough
-  assert.ok(texts.includes('P1 is no longer possible for Oscar Piastri in Abu Dhabi GP if Oscar Piastri does not outscore Lando Norris by more than 15 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Oscar Piastri in Abu Dhabi GP if Oscar Piastri does not outscore Lando Norris by more than 15 points.",
+    ),
+  );
 
   // TODO: The blog expresses all conditions as finishing positions (e.g. "Norris P3 or better wins
   // regardless", "Verstappen P1 + Norris P4 or worse → Verstappen wins"). Our system expresses them
@@ -138,23 +174,39 @@ test('2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
 //
 // Oscar Piastri:
 //   - "Must not be outscored by four or more points" to keep title hopes alive
-test('2025-11-25 | CHAMPIONSHIP PERMUTATIONS: Can Norris still win the title in Qatar after the Sprint?', () => {
+test("2025-11-25 | CHAMPIONSHIP PERMUTATIONS: Can Norris still win the title in Qatar after the Sprint?", () => {
   const data = readCalculationResults(2025)!;
-  const qatarIdx = data.races.findIndex((r) => r.round === 23 && r.type === 'race');
+  const qatarIdx = data.races.findIndex((r) => r.round === 23 && r.type === "race");
   const texts = renderInsights(data.driverLockInsights[String(qatarIdx)], data);
 
   // Norris can guarantee P1 (title) by outscoring Piastri by 4 and Verstappen by 1
   // (Norris wins = 25 pts; need 25 > Piastri's score + 3 and 25 > Verstappen's score)
-  assert.ok(texts.includes('Lando Norris can guarantee at least P1 in Qatar GP if outscores Oscar Piastri by 4 points, Max Verstappen by 1 points.'));
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee at least P1 in Qatar GP if outscores Oscar Piastri by 4 points, Max Verstappen by 1 points.",
+    ),
+  );
 
   // Norris can guarantee P2 with only the Verstappen condition
-  assert.ok(texts.includes('Lando Norris can guarantee at least P2 in Qatar GP if outscores Max Verstappen by 1 points.'));
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee at least P2 in Qatar GP if outscores Max Verstappen by 1 points.",
+    ),
+  );
 
   // Piastri P1 eliminated if Norris outscores him by 4 points
-  assert.ok(texts.includes('P1 is no longer possible for Oscar Piastri in Qatar GP if is outscored by Lando Norris by 4 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Oscar Piastri in Qatar GP if is outscored by Lando Norris by 4 points.",
+    ),
+  );
 
   // Verstappen P1 eliminated if Norris outscores him by 1 point (= Norris finishes ahead of Verstappen)
-  assert.ok(texts.includes('P1 is no longer possible for Max Verstappen in Qatar GP if is outscored by Lando Norris by 1 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Max Verstappen in Qatar GP if is outscored by Lando Norris by 1 points.",
+    ),
+  );
 
   // TODO: The blog says "if Norris wins, he's champion regardless." Our system expresses this
   // as points-margin conditions rather than position-based finishing scenarios.
@@ -172,30 +224,38 @@ test('2025-11-25 | CHAMPIONSHIP PERMUTATIONS: Can Norris still win the title in 
 //
 // Constructors' championship:
 //   - McLaren have already clinched the constructors' title before Las Vegas
-test('2025-11-13 | POINTS PERMUTATIONS: When is the earliest Norris could claim the World Championship?', () => {
+test("2025-11-13 | POINTS PERMUTATIONS: When is the earliest Norris could claim the World Championship?", () => {
   const data = readCalculationResults(2025)!;
-  const lasVegasIdx = data.races.findIndex((r) => r.round === 22 && r.type === 'race');
+  const lasVegasIdx = data.races.findIndex((r) => r.round === 22 && r.type === "race");
   const texts = renderInsights(data.driverLockInsights[String(lasVegasIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(lasVegasIdx)], data);
 
   // Norris can guarantee P2 at Las Vegas by outscoring Verstappen by 10 points
   // (49-pt lead + 10 more = 59 > 58 remaining max → Verstappen can't catch Norris)
-  assert.ok(texts.includes('Lando Norris can guarantee at least P2 in Las Vegas GP if outscores Max Verstappen by 10 points.'));
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee at least P2 in Las Vegas GP if outscores Max Verstappen by 10 points.",
+    ),
+  );
 
   // Norris cannot clinch P1 at Las Vegas; earliest is Abu Dhabi GP
-  assert.ok(texts.includes('Lando Norris can first guarantee at least P1 after Abu Dhabi GP.'));
+  assert.ok(texts.includes("Lando Norris can first guarantee at least P1 after Abu Dhabi GP."));
 
   // Piastri also cannot clinch at Las Vegas; earliest is Abu Dhabi GP
-  assert.ok(texts.includes('Oscar Piastri can first guarantee at least P1 after Abu Dhabi GP.'));
+  assert.ok(texts.includes("Oscar Piastri can first guarantee at least P1 after Abu Dhabi GP."));
 
   // Verstappen P1 eliminated at Las Vegas if outscored by Norris by 10 points
-  assert.ok(texts.includes('P1 is no longer possible for Max Verstappen in Las Vegas GP if is outscored by Lando Norris by 10 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Max Verstappen in Las Vegas GP if is outscored by Lando Norris by 10 points.",
+    ),
+  );
 
   // Verstappen also cannot clinch at Las Vegas; earliest is Abu Dhabi GP
-  assert.ok(texts.includes('Max Verstappen can first guarantee at least P1 after Abu Dhabi GP.'));
+  assert.ok(texts.includes("Max Verstappen can first guarantee at least P1 after Abu Dhabi GP."));
 
   // McLaren have already locked in the constructors' title
-  assert.ok(constructorTexts.includes('McLaren has already locked in P1.'));
+  assert.ok(constructorTexts.includes("McLaren has already locked in P1."));
 
   // TODO: The blog identifies the Qatar Sprint as the earliest clinch opportunity under the
   // best-case scenario ("Norris wins Las Vegas + rivals score zero → needs P7 in Sprint").
@@ -220,26 +280,46 @@ test('2025-11-13 | POINTS PERMUTATIONS: When is the earliest Norris could claim 
 //
 // Red Bull:
 //   - Already eliminated from the constructors' title after the Azerbaijan Grand Prix
-test('2025-09-17 | What do McLaren need to do to win the 2024 constructors\' championship in Abu Dhabi?', () => {
+test("2025-09-17 | What do McLaren need to do to win the 2024 constructors' championship in Abu Dhabi?", () => {
   const data = readCalculationResults(2025)!;
-  const singaporeIdx = data.races.findIndex((r) => r.round === 18 && r.type === 'race');
+  const singaporeIdx = data.races.findIndex((r) => r.round === 18 && r.type === "race");
   const constructorTexts = renderInsights(data.constructorLockInsights[String(singaporeIdx)], data);
 
   // McLaren can guarantee constructors' P1 at Singapore with conditions on both Mercedes and Ferrari
-  assert.ok(constructorTexts.includes('McLaren can guarantee at least P1 in Singapore GP if is not outscored by Mercedes by more than 29 points, Ferrari by more than 33 points.'));
+  assert.ok(
+    constructorTexts.includes(
+      "McLaren can guarantee at least P1 in Singapore GP if is not outscored by Mercedes by more than 29 points, Ferrari by more than 33 points.",
+    ),
+  );
 
   // McLaren can guarantee P2 with only the Ferrari condition
-  assert.ok(constructorTexts.includes('McLaren can guarantee at least P2 in Singapore GP if is not outscored by Ferrari by more than 33 points.'));
+  assert.ok(
+    constructorTexts.includes(
+      "McLaren can guarantee at least P2 in Singapore GP if is not outscored by Ferrari by more than 33 points.",
+    ),
+  );
 
   // Mercedes P1 eliminated at Singapore unless they outscore McLaren by more than 29 pts
-  assert.ok(constructorTexts.includes('P1 is no longer possible for Mercedes in Singapore GP if Mercedes does not outscore McLaren by more than 29 points.'));
+  assert.ok(
+    constructorTexts.includes(
+      "P1 is no longer possible for Mercedes in Singapore GP if Mercedes does not outscore McLaren by more than 29 points.",
+    ),
+  );
 
   // Ferrari P1 eliminated at Singapore unless they outscore McLaren by more than 33 pts
-  assert.ok(constructorTexts.includes('P1 is no longer possible for Ferrari in Singapore GP if Ferrari does not outscore McLaren by more than 33 points.'));
+  assert.ok(
+    constructorTexts.includes(
+      "P1 is no longer possible for Ferrari in Singapore GP if Ferrari does not outscore McLaren by more than 33 points.",
+    ),
+  );
 
   // Red Bull already eliminated from P1 before Singapore — no P1 insight appears for them
-  assert.ok(!constructorTexts.some((t) => t.startsWith('Red Bull can guarantee at least P1')));
-  assert.ok(!constructorTexts.some((t) => t.startsWith('P1 is no longer possible for Red Bull in Singapore')));
+  assert.ok(!constructorTexts.some((t) => t.startsWith("Red Bull can guarantee at least P1")));
+  assert.ok(
+    !constructorTexts.some((t) =>
+      t.startsWith("P1 is no longer possible for Red Bull in Singapore"),
+    ),
+  );
 
   // TODO: The blog expresses McLaren's clinch as "just 13 points = one car on the podium".
   // Position-based clinch conditions ("finish P3 or better") are not yet generated.
@@ -260,29 +340,45 @@ test('2025-09-17 | What do McLaren need to do to win the 2024 constructors\' cha
 // Constructors already decided:
 //   - Red Bull can no longer win the title (eliminated after Qatar Sprint)
 //   - Mercedes has already locked in P4
-test('2024-11-29 | Abu Dhabi 2024 blog: McLaren win constructors\' championship', () => {
+test("2024-11-29 | Abu Dhabi 2024 blog: McLaren win constructors' championship", () => {
   const data = readCalculationResults(2024)!;
-  const abuDhabiIdx = data.races.findIndex((r) => r.round === 24 && r.type === 'race');
+  const abuDhabiIdx = data.races.findIndex((r) => r.round === 24 && r.type === "race");
   const driverTexts = renderInsights(data.driverLockInsights[String(abuDhabiIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(abuDhabiIdx)], data);
 
   // Verstappen has already locked in P1 (drivers' champion)
-  assert.ok(driverTexts.includes('Max Verstappen has already locked in P1.'));
+  assert.ok(driverTexts.includes("Max Verstappen has already locked in P1."));
 
   // McLaren can guarantee constructors' P1 if not outscored by Ferrari by more than 20 pts
-  assert.ok(constructorTexts.includes('McLaren can guarantee at least P1 in Abu Dhabi GP if is not outscored by Ferrari by more than 20 points.'));
+  assert.ok(
+    constructorTexts.includes(
+      "McLaren can guarantee at least P1 in Abu Dhabi GP if is not outscored by Ferrari by more than 20 points.",
+    ),
+  );
 
   // Ferrari can guarantee constructors' P1 only by outscoring McLaren by 22 pts
-  assert.ok(constructorTexts.includes('Ferrari can guarantee at least P1 in Abu Dhabi GP if outscores McLaren by 22 points and is not outscored by Red Bull by more than 37 points.'));
+  assert.ok(
+    constructorTexts.includes(
+      "Ferrari can guarantee at least P1 in Abu Dhabi GP if outscores McLaren by 22 points and is not outscored by Red Bull by more than 37 points.",
+    ),
+  );
 
   // McLaren P1 eliminated if outscored by Ferrari by 22 pts
-  assert.ok(constructorTexts.includes('P1 is no longer possible for McLaren in Abu Dhabi GP if is outscored by Ferrari by 22 points.'));
+  assert.ok(
+    constructorTexts.includes(
+      "P1 is no longer possible for McLaren in Abu Dhabi GP if is outscored by Ferrari by 22 points.",
+    ),
+  );
 
   // Ferrari P1 eliminated if they don't outscore McLaren by more than 20 pts
-  assert.ok(constructorTexts.includes('P1 is no longer possible for Ferrari in Abu Dhabi GP if Ferrari does not outscore McLaren by more than 20 points.'));
+  assert.ok(
+    constructorTexts.includes(
+      "P1 is no longer possible for Ferrari in Abu Dhabi GP if Ferrari does not outscore McLaren by more than 20 points.",
+    ),
+  );
 
   // Mercedes has already secured P4 in the constructors' standings
-  assert.ok(constructorTexts.includes('Mercedes has already locked in P4.'));
+  assert.ok(constructorTexts.includes("Mercedes has already locked in P4."));
 
   // TODO: The blog provides specific race-result combinations ("a win alone is enough for McLaren",
   // "McLaren needs 24 pts or 23 if Ferrari doesn't win"). Position-based clinch conditions and
@@ -323,38 +419,60 @@ test('2024-11-29 | Abu Dhabi 2024 blog: McLaren win constructors\' championship'
 //   - McLaren leads Ferrari by 36 pts, Red Bull a further 13 pts behind Ferrari; 147 pts available
 //   - Nobody can clinch the constructors' title at Las Vegas; earliest opportunity is Abu Dhabi
 //   - Mercedes are already eliminated from the top 3
-test('2024-11-01 | What Verstappen needs to do to take his fourth title in Las Vegas', () => {
+test("2024-11-01 | What Verstappen needs to do to take his fourth title in Las Vegas", () => {
   const data = readCalculationResults(2024)!;
-  const lasVegasIdx = data.races.findIndex((r) => r.round === 22 && r.type === 'race');
+  const lasVegasIdx = data.races.findIndex((r) => r.round === 22 && r.type === "race");
   const texts = renderInsights(data.driverLockInsights[String(lasVegasIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(lasVegasIdx)], data);
 
   // Verstappen can guarantee P1 (championship) in Las Vegas with conditions on Norris and Leclerc
-  assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Las Vegas GP if is not outscored by Lando Norris by more than 1 points, Charles Leclerc by more than 25 points.'));
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee at least P1 in Las Vegas GP if is not outscored by Lando Norris by more than 1 points, Charles Leclerc by more than 25 points.",
+    ),
+  );
 
   // Verstappen can guarantee P2 with only a Leclerc condition
-  assert.ok(texts.includes('Max Verstappen can guarantee at least P2 in Las Vegas GP if is not outscored by Charles Leclerc by more than 25 points.'));
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee at least P2 in Las Vegas GP if is not outscored by Charles Leclerc by more than 25 points.",
+    ),
+  );
 
   // Norris cannot clinch the title at Las Vegas; earliest is Abu Dhabi
-  assert.ok(texts.includes('Lando Norris can first guarantee at least P1 after Abu Dhabi GP.'));
+  assert.ok(texts.includes("Lando Norris can first guarantee at least P1 after Abu Dhabi GP."));
 
   // Norris P1 ruled out at Las Vegas if he fails to outscore Verstappen by 2+ points
-  assert.ok(texts.includes('P1 is no longer possible for Lando Norris in Las Vegas GP if Lando Norris does not outscore Max Verstappen by more than 1 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Lando Norris in Las Vegas GP if Lando Norris does not outscore Max Verstappen by more than 1 points.",
+    ),
+  );
 
   // Leclerc P1 ruled out at Las Vegas unless he outscores Verstappen by 26+ points
-  assert.ok(texts.includes('P1 is no longer possible for Charles Leclerc in Las Vegas GP if Charles Leclerc does not outscore Max Verstappen by more than 25 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Charles Leclerc in Las Vegas GP if Charles Leclerc does not outscore Max Verstappen by more than 25 points.",
+    ),
+  );
 
   // Piastri is eliminated: earliest P2 is Abu Dhabi, no P1 possible at all
-  assert.ok(texts.includes('Oscar Piastri can first guarantee at least P2 after Abu Dhabi GP.'));
-  assert.ok(!texts.some((t) => t.startsWith('Oscar Piastri can guarantee at least P1')));
+  assert.ok(texts.includes("Oscar Piastri can first guarantee at least P2 after Abu Dhabi GP."));
+  assert.ok(!texts.some((t) => t.startsWith("Oscar Piastri can guarantee at least P1")));
 
   // Nobody can clinch the constructors' title at Las Vegas; all top teams' earliest guarantee is Abu Dhabi
-  assert.ok(constructorTexts.includes('McLaren can first guarantee at least P1 after Abu Dhabi GP.'));
-  assert.ok(constructorTexts.includes('Ferrari can first guarantee at least P1 after Abu Dhabi GP.'));
-  assert.ok(constructorTexts.includes('Red Bull can first guarantee at least P1 after Abu Dhabi GP.'));
+  assert.ok(
+    constructorTexts.includes("McLaren can first guarantee at least P1 after Abu Dhabi GP."),
+  );
+  assert.ok(
+    constructorTexts.includes("Ferrari can first guarantee at least P1 after Abu Dhabi GP."),
+  );
+  assert.ok(
+    constructorTexts.includes("Red Bull can first guarantee at least P1 after Abu Dhabi GP."),
+  );
 
   // Mercedes is already locked into P4 — eliminated from the top 3
-  assert.ok(constructorTexts.includes('Mercedes has already locked in P4.'));
+  assert.ok(constructorTexts.includes("Mercedes has already locked in P4."));
 
   // TODO: The blog provides a full position-based table ("Verstappen finishes Xth → Norris needs Yth
   // to stay alive", including fastest-lap variants). Our system does not yet generate position-based
@@ -372,23 +490,31 @@ test('2024-11-01 | What Verstappen needs to do to take his fourth title in Las V
 // Qatar GP race:
 //   - Verstappen clinches if he leaves Qatar with ≥146-pt lead over Pérez
 //   - Pérez can only stay mathematically alive by winning the GP and reducing the gap to 145 pts
-test('2023-09-12 | POINTS PERMUTATIONS: How Verstappen can become the 2023 F1 world champion in Qatar', () => {
+test("2023-09-12 | POINTS PERMUTATIONS: How Verstappen can become the 2023 F1 world champion in Qatar", () => {
   const data = readCalculationResults(2023)!;
 
   // Before Qatar Sprint: what can happen in the Sprint
-  const qatarSprintIdx = data.races.findIndex((r) => r.round === 17 && r.type === 'sprint');
+  const qatarSprintIdx = data.races.findIndex((r) => r.round === 17 && r.type === "sprint");
   const sprintTexts = renderInsights(data.driverLockInsights[String(qatarSprintIdx)], data);
 
   // Verstappen can guarantee P1 (title) in Qatar Sprint if not outscored by Pérez by more than 4 points
-  assert.ok(sprintTexts.includes('Max Verstappen can guarantee at least P1 in R20 Qatar GP Sprint if is not outscored by Sergio Pérez by more than 4 points.'));
+  assert.ok(
+    sprintTexts.includes(
+      "Max Verstappen can guarantee at least P1 in R20 Qatar GP Sprint if is not outscored by Sergio Pérez by more than 4 points.",
+    ),
+  );
 
   // Pérez P1 ruled out at Sprint if he fails to outscore Verstappen by 5+ points
-  assert.ok(sprintTexts.includes('P1 is no longer possible for Sergio Pérez in R20 Qatar GP Sprint if Sergio Pérez does not outscore Max Verstappen by more than 4 points.'));
+  assert.ok(
+    sprintTexts.includes(
+      "P1 is no longer possible for Sergio Pérez in R20 Qatar GP Sprint if Sergio Pérez does not outscore Max Verstappen by more than 4 points.",
+    ),
+  );
 
   // After Qatar Sprint: Verstappen has already locked in P1 (he clinched the title there)
-  const qatarRaceIdx = data.races.findIndex((r) => r.round === 17 && r.type === 'race');
+  const qatarRaceIdx = data.races.findIndex((r) => r.round === 17 && r.type === "race");
   const raceTexts = renderInsights(data.driverLockInsights[String(qatarRaceIdx)], data);
-  assert.ok(raceTexts.includes('Max Verstappen has already locked in P1.'));
+  assert.ok(raceTexts.includes("Max Verstappen has already locked in P1."));
 
   // TODO: The blog describes position-based Sprint scenarios ("Verstappen finishes 6th or better →
   // clinches if Pérez wins") and cross-event conditions ("if Verstappen scores nothing in Sprint,
@@ -407,20 +533,28 @@ test('2023-09-12 | POINTS PERMUTATIONS: How Verstappen can become the 2023 F1 wo
 //
 // Ferrari:
 //   - Must outscore Red Bull by 19 pts to stay alive, requiring a 1-2 finish with fastest lap
-test('2022-10-14 | POINTS PERMUTATIONS: How Red Bull can seal their first constructors\' title since 2013 at the United States GP', () => {
+test("2022-10-14 | POINTS PERMUTATIONS: How Red Bull can seal their first constructors' title since 2013 at the United States GP", () => {
   const data = readCalculationResults(2022)!;
-  const usIdx = data.races.findIndex((r) => r.round === 19 && r.type === 'race');
+  const usIdx = data.races.findIndex((r) => r.round === 19 && r.type === "race");
   const texts = renderInsights(data.driverLockInsights[String(usIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(usIdx)], data);
 
   // Verstappen already locked in P1 (drivers' champion)
-  assert.ok(texts.includes('Max Verstappen has already locked in P1.'));
+  assert.ok(texts.includes("Max Verstappen has already locked in P1."));
 
   // Red Bull can guarantee constructors' P1 at Austin if not outscored by Ferrari by more than 17 pts
-  assert.ok(constructorTexts.includes('Red Bull can guarantee at least P1 in United States GP if is not outscored by Ferrari by more than 17 points.'));
+  assert.ok(
+    constructorTexts.includes(
+      "Red Bull can guarantee at least P1 in United States GP if is not outscored by Ferrari by more than 17 points.",
+    ),
+  );
 
   // Ferrari P1 eliminated if they don't outscore Red Bull by more than 17 points
-  assert.ok(constructorTexts.includes('P1 is no longer possible for Ferrari in United States GP if Ferrari does not outscore Red Bull by more than 17 points.'));
+  assert.ok(
+    constructorTexts.includes(
+      "P1 is no longer possible for Ferrari in United States GP if Ferrari does not outscore Red Bull by more than 17 points.",
+    ),
+  );
 
   // TODO: The blog provides the exact "147-point threshold" and specific race-result combinations
   // (e.g., "Red Bull 1-2 clinches", "Ferrari 1-2 + fastest lap required to stay alive").
@@ -463,35 +597,65 @@ test('2022-10-14 | POINTS PERMUTATIONS: How Red Bull can seal their first constr
 //   - Red Bull leads Ferrari by 137 pts with 235 pts remaining across the final 8 rounds
 //   - Even a Red Bull 1-2 with fastest lap at Japan does not clinch the constructors' title;
 //     Ferrari's Singapore double podium kept them alive and the fight continues at least to USA
-test('2022-10-03 | POINTS PERMUTATIONS: What Verstappen needs to do to win his second drivers\' crown in Japan', () => {
+test("2022-10-03 | POINTS PERMUTATIONS: What Verstappen needs to do to win his second drivers' crown in Japan", () => {
   const data = readCalculationResults(2022)!;
-  const japanIdx = data.races.findIndex((r) => r.round === 18 && r.type === 'race');
+  const japanIdx = data.races.findIndex((r) => r.round === 18 && r.type === "race");
   const texts = renderInsights(data.driverLockInsights[String(japanIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(japanIdx)], data);
 
   // Verstappen can guarantee P1 (title) in Japanese GP with conditions on Leclerc, Pérez, and Russell
-  assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Japanese GP if outscores Charles Leclerc by 9 points, Sergio Pérez by 7 points and is not outscored by George Russell by more than 25 points.'));
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee at least P1 in Japanese GP if outscores Charles Leclerc by 9 points, Sergio Pérez by 7 points and is not outscored by George Russell by more than 25 points.",
+    ),
+  );
 
   // Verstappen can guarantee at least P2 with Pérez and Russell conditions
-  assert.ok(texts.includes('Max Verstappen can guarantee at least P2 in Japanese GP if outscores Sergio Pérez by 7 points and is not outscored by George Russell by more than 25 points.'));
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee at least P2 in Japanese GP if outscores Sergio Pérez by 7 points and is not outscored by George Russell by more than 25 points.",
+    ),
+  );
 
   // Verstappen can guarantee at least P3 with only the Russell condition
-  assert.ok(texts.includes('Max Verstappen can guarantee at least P3 in Japanese GP if is not outscored by George Russell by more than 25 points.'));
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee at least P3 in Japanese GP if is not outscored by George Russell by more than 25 points.",
+    ),
+  );
 
   // Leclerc P1 ruled out at Japan if outscored by Verstappen by 9 points
-  assert.ok(texts.includes('P1 is no longer possible for Charles Leclerc in Japanese GP if is outscored by Max Verstappen by 9 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Charles Leclerc in Japanese GP if is outscored by Max Verstappen by 9 points.",
+    ),
+  );
 
   // Pérez P1 ruled out at Japan if outscored by Verstappen by 7 points
-  assert.ok(texts.includes('P1 is no longer possible for Sergio Pérez in Japanese GP if is outscored by Max Verstappen by 7 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Sergio Pérez in Japanese GP if is outscored by Max Verstappen by 7 points.",
+    ),
+  );
 
   // Russell P1 ruled out unless he outscores Verstappen by more than 25 points
-  assert.ok(texts.includes('P1 is no longer possible for George Russell in Japanese GP if George Russell does not outscore Max Verstappen by more than 25 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for George Russell in Japanese GP if George Russell does not outscore Max Verstappen by more than 25 points.",
+    ),
+  );
 
   // Red Bull cannot clinch constructors' at Japan; earliest is after Mexico City GP
-  assert.ok(constructorTexts.includes('Red Bull can first guarantee at least P1 after Mexico City GP.'));
+  assert.ok(
+    constructorTexts.includes("Red Bull can first guarantee at least P1 after Mexico City GP."),
+  );
 
   // Red Bull can guarantee constructors' P2 in Japan (locking out Mercedes) with a small margin condition
-  assert.ok(constructorTexts.includes('Red Bull can guarantee at least P2 in Japanese GP if is not outscored by Mercedes by more than 11 points.'));
+  assert.ok(
+    constructorTexts.includes(
+      "Red Bull can guarantee at least P2 in Japanese GP if is not outscored by Mercedes by more than 11 points.",
+    ),
+  );
 
   // TODO: The blog provides a full position-based table with fastest-lap variants for every finishing
   // position (e.g. "1st + FL → title regardless", "1st no FL → Leclerc must be 3rd or lower",
@@ -528,29 +692,51 @@ test('2022-10-03 | POINTS PERMUTATIONS: What Verstappen needs to do to win his s
 //   - Red Bull cannot clinch the constructors' title at Singapore; earliest opportunity is after United States GP
 //   - Red Bull would need a 191-pt lead after Japan; currently 139 pts up with only 88 pts available
 //     across Singapore and Japan combined
-test('2022-09-15 | POINTS PERMUTATIONS: What Verstappen needs to do to secure the F1 title in Singapore', () => {
+test("2022-09-15 | POINTS PERMUTATIONS: What Verstappen needs to do to secure the F1 title in Singapore", () => {
   const data = readCalculationResults(2022)!;
-  const singaporeIdx = data.races.findIndex((r) => r.round === 17 && r.type === 'race');
+  const singaporeIdx = data.races.findIndex((r) => r.round === 17 && r.type === "race");
   const texts = renderInsights(data.driverLockInsights[String(singaporeIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(singaporeIdx)], data);
 
   // Verstappen can guarantee P1 (title) in Singapore GP with conditions on all top rivals
-  assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Singapore GP if outscores Charles Leclerc by 23 points, Sergio Pérez by 14 points, George Russell by 7 points and is not outscored by Carlos Sainz by more than 9 points.'));
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee at least P1 in Singapore GP if outscores Charles Leclerc by 23 points, Sergio Pérez by 14 points, George Russell by 7 points and is not outscored by Carlos Sainz by more than 9 points.",
+    ),
+  );
 
   // Leclerc P1 ruled out at Singapore if outscored by Verstappen by 23 points
-  assert.ok(texts.includes('P1 is no longer possible for Charles Leclerc in Singapore GP if is outscored by Max Verstappen by 23 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Charles Leclerc in Singapore GP if is outscored by Max Verstappen by 23 points.",
+    ),
+  );
 
   // Pérez P1 ruled out at Singapore if outscored by Verstappen by 14 points
-  assert.ok(texts.includes('P1 is no longer possible for Sergio Pérez in Singapore GP if is outscored by Max Verstappen by 14 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Sergio Pérez in Singapore GP if is outscored by Max Verstappen by 14 points.",
+    ),
+  );
 
   // Russell P1 ruled out if outscored by Verstappen by 7 points
-  assert.ok(texts.includes('P1 is no longer possible for George Russell in Singapore GP if is outscored by Max Verstappen by 7 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for George Russell in Singapore GP if is outscored by Max Verstappen by 7 points.",
+    ),
+  );
 
   // Sainz P1 ruled out unless he outscores Verstappen by more than 9 points
-  assert.ok(texts.includes('P1 is no longer possible for Carlos Sainz in Singapore GP if Carlos Sainz does not outscore Max Verstappen by more than 9 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Carlos Sainz in Singapore GP if Carlos Sainz does not outscore Max Verstappen by more than 9 points.",
+    ),
+  );
 
   // Red Bull cannot clinch constructors' at Singapore; earliest is after United States GP
-  assert.ok(constructorTexts.includes('Red Bull can first guarantee at least P1 after United States GP.'));
+  assert.ok(
+    constructorTexts.includes("Red Bull can first guarantee at least P1 after United States GP."),
+  );
 
   // TODO: The blog expresses Verstappen's clinch as specific finishing-position combinations
   // ("wins + Leclerc 9th or lower + Pérez 4th or lower"), including a fastest-lap variant for Pérez
@@ -573,29 +759,53 @@ test('2022-09-15 | POINTS PERMUTATIONS: What Verstappen needs to do to secure th
 // Constructors' championship:
 //   - Mercedes 587.5 pts, Red Bull 559.5 pts (Mercedes leads by 28 pts)
 //   - Red Bull must outscore Mercedes by 28 pts to clinch; blog says 28, system requires 29
-test('2021-12-11 | What To Watch For in the Abu Dhabi GP: The championship decider, \'nervous\' Norris & other scores to be settled', () => {
+test("2021-12-11 | What To Watch For in the Abu Dhabi GP: The championship decider, 'nervous' Norris & other scores to be settled", () => {
   const data = readCalculationResults(2021)!;
-  const abuDhabiIdx = data.races.findIndex((r) => r.round === 22 && r.type === 'race');
+  const abuDhabiIdx = data.races.findIndex((r) => r.round === 22 && r.type === "race");
   const texts = renderInsights(data.driverLockInsights[String(abuDhabiIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(abuDhabiIdx)], data);
 
   // Both drivers need only 1 point margin to lock in P1 (tied on points entering the race)
-  assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Abu Dhabi GP if outscores Lewis Hamilton by 1 points.'));
-  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P1 in Abu Dhabi GP if outscores Max Verstappen by 1 points.'));
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee at least P1 in Abu Dhabi GP if outscores Lewis Hamilton by 1 points.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee at least P1 in Abu Dhabi GP if outscores Max Verstappen by 1 points.",
+    ),
+  );
 
   // Each driver's P1 is eliminated if outscored by the other by 1 point
-  assert.ok(texts.includes('P1 is no longer possible for Max Verstappen in Abu Dhabi GP if is outscored by Lewis Hamilton by 1 points.'));
-  assert.ok(texts.includes('P1 is no longer possible for Lewis Hamilton in Abu Dhabi GP if is outscored by Max Verstappen by 1 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Max Verstappen in Abu Dhabi GP if is outscored by Lewis Hamilton by 1 points.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Lewis Hamilton in Abu Dhabi GP if is outscored by Max Verstappen by 1 points.",
+    ),
+  );
 
   // Bottas and Pérez have already locked in P3 and P4 respectively
-  assert.ok(texts.includes('Valtteri Bottas has already locked in P3.'));
-  assert.ok(texts.includes('Sergio Pérez has already locked in P4.'));
+  assert.ok(texts.includes("Valtteri Bottas has already locked in P3."));
+  assert.ok(texts.includes("Sergio Pérez has already locked in P4."));
 
   // Red Bull constructors: need to outscore Mercedes by 29 to win (blog says 28)
-  assert.ok(constructorTexts.includes('Red Bull can guarantee at least P1 in Abu Dhabi GP if outscores Mercedes by 29 points.'));
+  assert.ok(
+    constructorTexts.includes(
+      "Red Bull can guarantee at least P1 in Abu Dhabi GP if outscores Mercedes by 29 points.",
+    ),
+  );
 
   // Mercedes constructors: guaranteed P1 if not outscored by Red Bull by more than 27
-  assert.ok(constructorTexts.includes('Mercedes can guarantee at least P1 in Abu Dhabi GP if is not outscored by Red Bull by more than 27 points.'));
+  assert.ok(
+    constructorTexts.includes(
+      "Mercedes can guarantee at least P1 in Abu Dhabi GP if is not outscored by Red Bull by more than 27 points.",
+    ),
+  );
 
   // TODO: The blog describes the tiebreaker rule ("tied on points → Verstappen wins via wins count")
   // and edge-case tie scenarios (both DNF, or Hamilton 9th + Verstappen 10th + FL). Tiebreaker
@@ -614,20 +824,28 @@ test('2021-12-11 | What To Watch For in the Abu Dhabi GP: The championship decid
 //
 // Lewis Hamilton:
 //   - Cannot clinch at Saudi; earliest is Abu Dhabi
-test('2021-11-25 | What does Verstappen need to do to win the title over Hamilton in Saudi Arabia?', () => {
+test("2021-11-25 | What does Verstappen need to do to win the title over Hamilton in Saudi Arabia?", () => {
   const data = readCalculationResults(2021)!;
-  const saudiIdx = data.races.findIndex((r) => r.round === 21 && r.type === 'race');
+  const saudiIdx = data.races.findIndex((r) => r.round === 21 && r.type === "race");
   const texts = renderInsights(data.driverLockInsights[String(saudiIdx)], data);
 
   // Verstappen can guarantee P1 (title) by outscoring Hamilton by 19 points
   // Blog's top scenario: Verstappen wins (25) + Hamilton 7th or lower (≤6 pts) = 19+ margin
-  assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Saudi Arabian GP if outscores Lewis Hamilton by 19 points.'));
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee at least P1 in Saudi Arabian GP if outscores Lewis Hamilton by 19 points.",
+    ),
+  );
 
   // Hamilton P1 eliminated if outscored by Verstappen by 19 points
-  assert.ok(texts.includes('P1 is no longer possible for Lewis Hamilton in Saudi Arabian GP if is outscored by Max Verstappen by 19 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Lewis Hamilton in Saudi Arabian GP if is outscored by Max Verstappen by 19 points.",
+    ),
+  );
 
   // Hamilton cannot clinch at Saudi; earliest opportunity is Abu Dhabi
-  assert.ok(texts.includes('Lewis Hamilton can first guarantee at least P1 after Abu Dhabi GP.'));
+  assert.ok(texts.includes("Lewis Hamilton can first guarantee at least P1 after Abu Dhabi GP."));
 
   // TODO: The blog provides a full position-by-position table with fastest-lap variants
   // (e.g., "1st + FL → Hamilton 6th or lower", "2nd + FL → Hamilton outside points").
@@ -647,27 +865,43 @@ test('2021-11-25 | What does Verstappen need to do to win the title over Hamilto
 //   - Mercedes can clinch at Mexico by outscoring Ferrari by 20 points
 //     (blog says 20 pts; system requires 21 for strict guarantee)
 //   - Red Bull have already clinched P3 in the constructors' standings
-test('2018-10-25 | TITLE PERMUTATIONS: How Hamilton - and Mercedes - can be crowned champions in Mexico', () => {
+test("2018-10-25 | TITLE PERMUTATIONS: How Hamilton - and Mercedes - can be crowned champions in Mexico", () => {
   const data = readCalculationResults(2018)!;
-  const mexicoIdx = data.races.findIndex((r) => r.round === 19 && r.type === 'race');
+  const mexicoIdx = data.races.findIndex((r) => r.round === 19 && r.type === "race");
   const texts = renderInsights(data.driverLockInsights[String(mexicoIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(mexicoIdx)], data);
 
   // Hamilton clinches P1 (title) if Vettel doesn't outscore him by more than 19 points
-  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P1 in Mexican GP if is not outscored by Sebastian Vettel by more than 19 points.'));
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee at least P1 in Mexican GP if is not outscored by Sebastian Vettel by more than 19 points.",
+    ),
+  );
 
   // Vettel P1 eliminated unless he outscores Hamilton by more than 19 points
-  assert.ok(texts.includes('P1 is no longer possible for Sebastian Vettel in Mexican GP if Sebastian Vettel does not outscore Lewis Hamilton by more than 19 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Sebastian Vettel in Mexican GP if Sebastian Vettel does not outscore Lewis Hamilton by more than 19 points.",
+    ),
+  );
 
   // Mercedes can clinch the constructors' title at Mexico
   // Blog says "outscore Ferrari by 20 points" — system requires 21 (strict ≥ threshold)
-  assert.ok(constructorTexts.includes('Mercedes can guarantee at least P1 in Mexican GP if outscores Ferrari by 21 points.'));
+  assert.ok(
+    constructorTexts.includes(
+      "Mercedes can guarantee at least P1 in Mexican GP if outscores Ferrari by 21 points.",
+    ),
+  );
 
   // Ferrari P1 eliminated if outscored by Mercedes by 21 points
-  assert.ok(constructorTexts.includes('P1 is no longer possible for Ferrari in Mexican GP if is outscored by Mercedes by 21 points.'));
+  assert.ok(
+    constructorTexts.includes(
+      "P1 is no longer possible for Ferrari in Mexican GP if is outscored by Mercedes by 21 points.",
+    ),
+  );
 
   // Red Bull has already locked in P3 in the constructors' standings
-  assert.ok(constructorTexts.includes('Red Bull has already locked in P3.'));
+  assert.ok(constructorTexts.includes("Red Bull has already locked in P3."));
 
   // TODO: The blog expresses Vettel's path as "must win – and hope that Hamilton hits some form
   // of misfortune." Position-based clinch/elimination conditions are not yet generated.
@@ -683,21 +917,31 @@ test('2018-10-25 | TITLE PERMUTATIONS: How Hamilton - and Mercedes - can be crow
 //
 // Constructors' championship:
 //   - Mercedes cannot clinch at Austin; earliest opportunity is after Brazilian GP
-test('2018-10-17 | THE TITLE PERMUTATIONS: What Hamilton needs to do to be crowned F1 champion in Austin', () => {
+test("2018-10-17 | THE TITLE PERMUTATIONS: What Hamilton needs to do to be crowned F1 champion in Austin", () => {
   const data = readCalculationResults(2018)!;
-  const usIdx = data.races.findIndex((r) => r.round === 18 && r.type === 'race');
+  const usIdx = data.races.findIndex((r) => r.round === 18 && r.type === "race");
   const texts = renderInsights(data.driverLockInsights[String(usIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(usIdx)], data);
 
   // Hamilton can guarantee P1 (title) by outscoring Vettel by 9 points
   // Blog says "eight points" — system produces 9 (the strict ≥ threshold: 67 + 9 = 76 > 75)
-  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P1 in United States GP if outscores Sebastian Vettel by 9 points.'));
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee at least P1 in United States GP if outscores Sebastian Vettel by 9 points.",
+    ),
+  );
 
   // Vettel P1 eliminated if outscored by Hamilton by 9 points
-  assert.ok(texts.includes('P1 is no longer possible for Sebastian Vettel in United States GP if is outscored by Lewis Hamilton by 9 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Sebastian Vettel in United States GP if is outscored by Lewis Hamilton by 9 points.",
+    ),
+  );
 
   // Mercedes cannot clinch constructors' at Austin; earliest is Brazilian GP
-  assert.ok(constructorTexts.includes('Mercedes can first guarantee at least P1 after Brazilian GP.'));
+  assert.ok(
+    constructorTexts.includes("Mercedes can first guarantee at least P1 after Brazilian GP."),
+  );
 
   // TODO: The blog expresses the clinch in position-based terms (e.g., "Hamilton wins and Vettel
   // finishes 3rd or lower") and includes a permutation chart image. Position-based clinch
@@ -719,32 +963,48 @@ test('2018-10-17 | THE TITLE PERMUTATIONS: What Hamilton needs to do to be crown
 // Constructors' championship:
 //   - Mercedes, Red Bull, Ferrari have already locked in P1, P2, P3 respectively
 //   - Only P4 (Force India vs Williams) and P6 (McLaren vs Toro Rosso) remain open
-test('2016-10-26 | The 2016 title permutations for Sunday in Abu Dhabi', () => {
+test("2016-10-26 | The 2016 title permutations for Sunday in Abu Dhabi", () => {
   const data = readCalculationResults(2016)!;
-  const abuDhabiIdx = data.races.findIndex((r) => r.round === 21 && r.type === 'race');
+  const abuDhabiIdx = data.races.findIndex((r) => r.round === 21 && r.type === "race");
   const texts = renderInsights(data.driverLockInsights[String(abuDhabiIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(abuDhabiIdx)], data);
 
   // Rosberg can guarantee P1 (title) if not outscored by Hamilton by more than 11 points
   // (12-pt lead; tie on points → Rosberg wins on wins count; Hamilton needs 13+ to flip it)
-  assert.ok(texts.includes('Nico Rosberg can guarantee at least P1 in Abu Dhabi GP if is not outscored by Lewis Hamilton by more than 11 points.'));
+  assert.ok(
+    texts.includes(
+      "Nico Rosberg can guarantee at least P1 in Abu Dhabi GP if is not outscored by Lewis Hamilton by more than 11 points.",
+    ),
+  );
 
   // Rosberg P1 eliminated only if Hamilton outscores by 13+
-  assert.ok(texts.includes('P1 is no longer possible for Nico Rosberg in Abu Dhabi GP if is outscored by Lewis Hamilton by 13 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Nico Rosberg in Abu Dhabi GP if is outscored by Lewis Hamilton by 13 points.",
+    ),
+  );
 
   // Hamilton can guarantee P1 (title) only by outscoring Rosberg by 13+
-  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P1 in Abu Dhabi GP if outscores Nico Rosberg by 13 points.'));
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee at least P1 in Abu Dhabi GP if outscores Nico Rosberg by 13 points.",
+    ),
+  );
 
   // Hamilton P1 eliminated if he doesn't outscore Rosberg by more than 11
-  assert.ok(texts.includes('P1 is no longer possible for Lewis Hamilton in Abu Dhabi GP if Lewis Hamilton does not outscore Nico Rosberg by more than 11 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Lewis Hamilton in Abu Dhabi GP if Lewis Hamilton does not outscore Nico Rosberg by more than 11 points.",
+    ),
+  );
 
   // Ricciardo has already secured P3 in the drivers' standings
-  assert.ok(texts.includes('Daniel Ricciardo has already locked in P3.'));
+  assert.ok(texts.includes("Daniel Ricciardo has already locked in P3."));
 
   // Constructors' top three are already decided
-  assert.ok(constructorTexts.includes('Mercedes has already locked in P1.'));
-  assert.ok(constructorTexts.includes('Red Bull has already locked in P2.'));
-  assert.ok(constructorTexts.includes('Ferrari has already locked in P3.'));
+  assert.ok(constructorTexts.includes("Mercedes has already locked in P1."));
+  assert.ok(constructorTexts.includes("Red Bull has already locked in P2."));
+  assert.ok(constructorTexts.includes("Ferrari has already locked in P3."));
 
   // TODO: The blog provides detailed finishing-position combinations for both drivers
   // ("Rosberg P3 or better → champion", "Hamilton wins + Rosberg P4 or lower → Hamilton wins").
@@ -761,27 +1021,43 @@ test('2016-10-26 | The 2016 title permutations for Sunday in Abu Dhabi', () => {
 //
 // Constructors' championship:
 //   - Mercedes has already won the 2015 constructors' title before Austin
-test('2015-10-25 | Title permutations - how Hamilton can wrap it up in Austin', () => {
+test("2015-10-25 | Title permutations - how Hamilton can wrap it up in Austin", () => {
   const data = readCalculationResults(2015)!;
-  const usIdx = data.races.findIndex((r) => r.round === 16 && r.type === 'race');
+  const usIdx = data.races.findIndex((r) => r.round === 16 && r.type === "race");
   const texts = renderInsights(data.driverLockInsights[String(usIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(usIdx)], data);
 
   // Hamilton can guarantee P1 (title) with conditions on both Vettel and Rosberg
   // Blog says "nine points over Vettel" — system produces 10 (the strict ≥ threshold)
-  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P1 in United States GP if outscores Sebastian Vettel by 10 points, Nico Rosberg by 3 points.'));
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee at least P1 in United States GP if outscores Sebastian Vettel by 10 points, Nico Rosberg by 3 points.",
+    ),
+  );
 
   // Hamilton can guarantee P2 with only the Rosberg condition
-  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P2 in United States GP if outscores Nico Rosberg by 3 points.'));
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee at least P2 in United States GP if outscores Nico Rosberg by 3 points.",
+    ),
+  );
 
   // Vettel is eliminated from P1 at Austin if Hamilton outscores him by enough
-  assert.ok(texts.includes('P1 is no longer possible for Sebastian Vettel in United States GP if is outscored by Lewis Hamilton by 10 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Sebastian Vettel in United States GP if is outscored by Lewis Hamilton by 10 points.",
+    ),
+  );
 
   // Rosberg is eliminated from P1 at Austin if Hamilton outscores him enough
-  assert.ok(texts.includes('P1 is no longer possible for Nico Rosberg in United States GP if is outscored by Lewis Hamilton by 3 points.'));
+  assert.ok(
+    texts.includes(
+      "P1 is no longer possible for Nico Rosberg in United States GP if is outscored by Lewis Hamilton by 3 points.",
+    ),
+  );
 
   // Mercedes has already clinched the constructors' title before Austin
-  assert.ok(constructorTexts.includes('Mercedes has already locked in P1.'));
+  assert.ok(constructorTexts.includes("Mercedes has already locked in P1."));
 
   // TODO: The blog expresses conditions as finishing positions ("outscore Vettel by nine
   // points"), meaning Hamilton winning and Vettel finishing P3 or lower (25-15=10) or Hamilton

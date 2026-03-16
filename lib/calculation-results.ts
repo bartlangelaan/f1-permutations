@@ -47,7 +47,7 @@ export function readCalculationResults(year: number): CalculatedChartData | null
 export async function writeCalculationResults(
   year: number,
   drivers: EntitySeries[],
-  constructors: EntitySeries[]
+  constructors: EntitySeries[],
 ): Promise<void> {
   await removeCalculationResultsForSeason(year);
   await saveParticipants(year, drivers, constructors);

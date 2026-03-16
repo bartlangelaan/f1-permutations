@@ -24,5 +24,6 @@ This repository includes a GitHub Actions workflow at `.github/workflows/deploy.
 3. The workflow builds a static export (`next build` with `output: "export"`) and deploys the `out/` directory.
 
 The workflow automatically sets `BASE_PATH`:
+
 - empty for `<user>.github.io` repositories
 - `/<repo-name>` for project pages repositories

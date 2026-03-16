@@ -11,45 +11,65 @@ import {
 // Official / near-official team colors for every constructor since 2010
 const TEAM_COLORS: Record<string, string> = {
   // Current teams
-  ferrari:        "#E8002D",
-  red_bull:       "#3671C6",
-  mercedes:       "#00D2BE",
-  mclaren:        "#FF8000",
-  aston_martin:   "#358C75",
-  alpine:         "#FF87BC",
-  williams:       "#64C4FF",
-  haas:           "#B6BABD",
-  rb:             "#6692FF",   // RB (2024+)
-  sauber:         "#52E252",   // Kick Sauber (2024+)
+  ferrari: "#E8002D",
+  red_bull: "#3671C6",
+  mercedes: "#00D2BE",
+  mclaren: "#FF8000",
+  aston_martin: "#358C75",
+  alpine: "#FF87BC",
+  williams: "#64C4FF",
+  haas: "#B6BABD",
+  rb: "#6692FF", // RB (2024+)
+  sauber: "#52E252", // Kick Sauber (2024+)
   // Historical
-  alphatauri:     "#5E8FAA",   // 2020-2023
-  toro_rosso:     "#C72B2B",   // 2006-2019
-  alfa:           "#C92D4B",   // Alfa Romeo 2019-2023
-  racing_point:   "#F596C8",   // 2018-2020
-  force_india:    "#F596C8",   // 2008-2018 (same pink)
-  renault:        "#FFF500",   // 2010-2020
-  lotus_f1:       "#FFD700",   // 2012-2015 (black+gold → use gold)
-  lotus_racing:   "#FFD700",   // 2010-2011
-  caterham:       "#006F3C",
-  marussia:       "#8B0000",
-  manor:          "#8B0000",
-  hrt:            "#A0522D",
-  virgin:         "#CC2200",
+  alphatauri: "#5E8FAA", // 2020-2023
+  toro_rosso: "#C72B2B", // 2006-2019
+  alfa: "#C92D4B", // Alfa Romeo 2019-2023
+  racing_point: "#F596C8", // 2018-2020
+  force_india: "#F596C8", // 2008-2018 (same pink)
+  renault: "#FFF500", // 2010-2020
+  lotus_f1: "#FFD700", // 2012-2015 (black+gold → use gold)
+  lotus_racing: "#FFD700", // 2010-2011
+  caterham: "#006F3C",
+  marussia: "#8B0000",
+  manor: "#8B0000",
+  hrt: "#A0522D",
+  virgin: "#CC2200",
 };
 
 const FALLBACK_COLORS = [
-  "#e8002d", "#3671c6", "#27f4d2", "#ff8000", "#358c75",
-  "#b6babd", "#c92d4b", "#5e8faa", "#f0d800", "#64c4ff",
-  "#f596c8", "#7cc8a4", "#d9a600", "#a374dc", "#6dd25a",
-  "#ff6b6b", "#4ecdc4", "#a8d8ea", "#ffcc99", "#b8e0d2",
+  "#e8002d",
+  "#3671c6",
+  "#27f4d2",
+  "#ff8000",
+  "#358c75",
+  "#b6babd",
+  "#c92d4b",
+  "#5e8faa",
+  "#f0d800",
+  "#64c4ff",
+  "#f596c8",
+  "#7cc8a4",
+  "#d9a600",
+  "#a374dc",
+  "#6dd25a",
+  "#ff6b6b",
+  "#4ecdc4",
+  "#a8d8ea",
+  "#ffcc99",
+  "#b8e0d2",
 ];
 
 function teamColor(constructorId: string, fallbackIdx: number): string {
   return TEAM_COLORS[constructorId] ?? FALLBACK_COLORS[fallbackIdx % FALLBACK_COLORS.length];
 }
 
-
-function maxOvertakesSingleDriverRace(basePts: Map<string, number>, targetId: string, targetMinPts: number, eventPoints: number[]): number {
+function maxOvertakesSingleDriverRace(
+  basePts: Map<string, number>,
+  targetId: string,
+  targetMinPts: number,
+  eventPoints: number[],
+): number {
   const threshold = targetMinPts + 1;
   const deficits: number[] = [];
   let alreadyAhead = 0;
@@ -82,7 +102,6 @@ function maxOvertakesSingleDriverRace(basePts: Map<string, number>, targetId: st
 
   return alreadyAhead + additionalOvertakes;
 }
-
 
 function driverPointsByPositionForRace(year: number, race: TimelineRace): number[] {
   if (race.type === "sprint") {
@@ -130,7 +149,12 @@ interface SeasonChartData {
   constructors: EntitySeries[];
 }
 
-export type ProjectionEntry = { minPts: number; maxPts: number; bestPos: number; worstPos: number | null };
+export type ProjectionEntry = {
+  minPts: number;
+  maxPts: number;
+  bestPos: number;
+  worstPos: number | null;
+};
 /** projections[afterRaceNum][futureRaceNum][entityId] — all race numbers are 1-based */
 export type ProjectionMap = Record<string, Record<string, Record<string, ProjectionEntry>>>;
 
@@ -188,7 +212,12 @@ function raceMaxPoints(race: TimelineRace, isDriver: boolean): number {
   return isDriver ? race.maxDriverPoints : race.maxConstructorPoints;
 }
 
-function cumulativeMaxPoints(races: TimelineRace[], fromRaceNum: number, toRaceNum: number, isDriver: boolean): number {
+function cumulativeMaxPoints(
+  races: TimelineRace[],
+  fromRaceNum: number,
+  toRaceNum: number,
+  isDriver: boolean,
+): number {
   if (toRaceNum <= fromRaceNum) return 0;
   let total = 0;
   for (let i = fromRaceNum + 1; i <= toRaceNum; i++) {
@@ -203,21 +232,23 @@ function findGuaranteePlanForPosition(
   entityIds: string[],
   basePts: Map<string, number>,
   horizonMaxDelta: number,
-  pointsRemainingAfterHorizon: number
+  pointsRemainingAfterHorizon: number,
 ): {
   mustOutscoreBy: LockCondition[];
   cannotBeOutscoredByMoreThan: LockCondition[];
 } | null {
-  const opponents = entityIds.filter((id) => id !== entityId).map((opponentId) => {
-    const currentGap = (basePts.get(entityId) ?? 0) - (basePts.get(opponentId) ?? 0);
-    const requiredForEntityAbove = pointsRemainingAfterHorizon + 1 - currentGap;
+  const opponents = entityIds
+    .filter((id) => id !== entityId)
+    .map((opponentId) => {
+      const currentGap = (basePts.get(entityId) ?? 0) - (basePts.get(opponentId) ?? 0);
+      const requiredForEntityAbove = pointsRemainingAfterHorizon + 1 - currentGap;
 
-    return {
-      opponentId,
-      requiredForEntityAbove,
-      canForceEntityAbove: requiredForEntityAbove <= horizonMaxDelta,
-    };
-  });
+      return {
+        opponentId,
+        requiredForEntityAbove,
+        canForceEntityAbove: requiredForEntityAbove <= horizonMaxDelta,
+      };
+    });
 
   const requiredBelowCount = entityIds.length - position;
   const forceableBelow = opponents.filter((opponent) => opponent.canForceEntityAbove);
@@ -260,21 +291,23 @@ function findRuleOutPlanForPosition(
   entityIds: string[],
   basePts: Map<string, number>,
   horizonMaxDelta: number,
-  pointsRemainingAfterHorizon: number
+  pointsRemainingAfterHorizon: number,
 ): {
   mustBeOutscoredBy: LockCondition[];
   cannotOutscoreByMoreThan: LockCondition[];
 } | null {
-  const opponents = entityIds.filter((id) => id !== entityId).map((opponentId) => {
-    const currentGap = (basePts.get(entityId) ?? 0) - (basePts.get(opponentId) ?? 0);
-    const requiredForOpponentAbove = -pointsRemainingAfterHorizon - 1 - currentGap;
+  const opponents = entityIds
+    .filter((id) => id !== entityId)
+    .map((opponentId) => {
+      const currentGap = (basePts.get(entityId) ?? 0) - (basePts.get(opponentId) ?? 0);
+      const requiredForOpponentAbove = -pointsRemainingAfterHorizon - 1 - currentGap;
 
-    return {
-      opponentId,
-      requiredForOpponentAbove,
-      canForceOpponentAbove: requiredForOpponentAbove >= -horizonMaxDelta,
-    };
-  });
+      return {
+        opponentId,
+        requiredForOpponentAbove,
+        canForceOpponentAbove: requiredForOpponentAbove >= -horizonMaxDelta,
+      };
+    });
 
   const requiredAboveCount = position;
   const forceableAbove = opponents.filter((opponent) => opponent.canForceOpponentAbove);
@@ -328,7 +361,7 @@ function hasRuleOutConditions(plan: {
 export function computeLockInsightsForSelectedRace(
   data: SeasonChartData,
   afterRaceNum: number,
-  isDriver: boolean
+  isDriver: boolean,
 ): LockInsight[] {
   const entities = isDriver ? data.drivers : data.constructors;
   const entityIds = entities.map((e) => e.id);
@@ -341,7 +374,9 @@ export function computeLockInsightsForSelectedRace(
     basePts.set(entity.id, entity.cumulativePoints[afterRaceNum - 1] ?? 0);
   }
 
-  const endProjections = computeProjectionsForSelectedRace(data, afterRaceNum, isDriver)[lastRaceNum];
+  const endProjections = computeProjectionsForSelectedRace(data, afterRaceNum, isDriver)[
+    lastRaceNum
+  ];
   if (!endProjections) return insights;
 
   const orderedEntities = [...entities].sort((a, b) => {
@@ -349,11 +384,11 @@ export function computeLockInsightsForSelectedRace(
     if (pointDelta !== 0) return pointDelta;
     return a.name.localeCompare(b.name);
   });
-  const hasInsight = (
-    entityId: string,
-    position: number,
-    type: LockInsight["type"]
-  ): boolean => insights.some((insight) => insight.entityId === entityId && insight.position === position && insight.type === type);
+  const hasInsight = (entityId: string, position: number, type: LockInsight["type"]): boolean =>
+    insights.some(
+      (insight) =>
+        insight.entityId === entityId && insight.position === position && insight.type === type,
+    );
 
   for (const entity of orderedEntities) {
     const endEntry = endProjections[entity.id];
@@ -370,16 +405,25 @@ export function computeLockInsightsForSelectedRace(
 
     if (nextRaceNum <= lastRaceNum) {
       const nextHorizonMax = cumulativeMaxPoints(data.races, afterRaceNum, nextRaceNum, isDriver);
-      const pointsRemainingAfterNext = cumulativeMaxPoints(data.races, nextRaceNum, lastRaceNum, isDriver);
+      const pointsRemainingAfterNext = cumulativeMaxPoints(
+        data.races,
+        nextRaceNum,
+        lastRaceNum,
+        isDriver,
+      );
 
-      for (let position = endEntry.bestPos; position <= (endEntry.worstPos ?? entities.length); position++) {
+      for (
+        let position = endEntry.bestPos;
+        position <= (endEntry.worstPos ?? entities.length);
+        position++
+      ) {
         const nextPlan = findGuaranteePlanForPosition(
           entity.id,
           position,
           entityIds,
           basePts,
           nextHorizonMax,
-          pointsRemainingAfterNext
+          pointsRemainingAfterNext,
         );
 
         if (!nextPlan) continue;
@@ -395,14 +439,18 @@ export function computeLockInsightsForSelectedRace(
         });
       }
 
-      for (let position = endEntry.bestPos; position < (endEntry.worstPos ?? entities.length); position++) {
+      for (
+        let position = endEntry.bestPos;
+        position < (endEntry.worstPos ?? entities.length);
+        position++
+      ) {
         const ruleOutPlan = findRuleOutPlanForPosition(
           entity.id,
           position,
           entityIds,
           basePts,
           nextHorizonMax,
-          pointsRemainingAfterNext
+          pointsRemainingAfterNext,
         );
 
         if (!ruleOutPlan) continue;
@@ -419,7 +467,11 @@ export function computeLockInsightsForSelectedRace(
       }
     }
 
-    for (let position = endEntry.bestPos; position <= (endEntry.worstPos ?? entities.length); position++) {
+    for (
+      let position = endEntry.bestPos;
+      position <= (endEntry.worstPos ?? entities.length);
+      position++
+    ) {
       if (hasInsight(entity.id, position, "can_be_locked_in_next_race")) continue;
 
       let earliestRaceNum = 0;
@@ -432,11 +484,11 @@ export function computeLockInsightsForSelectedRace(
           entityIds,
           basePts,
           horizonMax,
-          pointsRemaining
+          pointsRemaining,
         );
         if (plan) {
           const nextRoundStart = data.races.findIndex(
-            (race, idx) => idx + 1 > raceNum && race.round > data.races[raceNum - 1].round
+            (race, idx) => idx + 1 > raceNum && race.round > data.races[raceNum - 1].round,
           );
           earliestRaceNum = nextRoundStart >= 0 ? nextRoundStart + 1 : raceNum;
           break;
@@ -453,7 +505,11 @@ export function computeLockInsightsForSelectedRace(
       }
     }
 
-    for (let position = endEntry.bestPos; position < (endEntry.worstPos ?? entities.length); position++) {
+    for (
+      let position = endEntry.bestPos;
+      position < (endEntry.worstPos ?? entities.length);
+      position++
+    ) {
       if (hasInsight(entity.id, position, "can_be_locked_in_next_race")) continue;
       if (hasInsight(entity.id, position, "can_be_locked_in_later")) continue;
       if (hasInsight(entity.id, position, "can_be_ruled_out_next_race")) continue;
@@ -468,13 +524,13 @@ export function computeLockInsightsForSelectedRace(
           entityIds,
           basePts,
           horizonMax,
-          pointsRemaining
+          pointsRemaining,
         );
         if (!plan) continue;
         if (!hasRuleOutConditions(plan)) continue;
 
         const nextRoundStart = data.races.findIndex(
-          (race, idx) => idx + 1 > raceNum && race.round > data.races[raceNum - 1].round
+          (race, idx) => idx + 1 > raceNum && race.round > data.races[raceNum - 1].round,
         );
         earliestRaceNum = nextRoundStart >= 0 ? nextRoundStart + 1 : raceNum;
         break;
@@ -559,7 +615,10 @@ export function buildSeasonChartData(year: number, upToRaceNum?: number): Season
         lastCompletedRaceNum = raceNum;
         for (const r of results) {
           driverCum.set(r.driverId, (driverCum.get(r.driverId) ?? 0) + r.points);
-          constructorCum.set(r.constructorId, (constructorCum.get(r.constructorId) ?? 0) + r.points);
+          constructorCum.set(
+            r.constructorId,
+            (constructorCum.get(r.constructorId) ?? 0) + r.points,
+          );
           driverNames.set(r.driverId, r.driverName);
           constructorNames.set(r.constructorId, r.constructorName);
           driverConstructor.set(r.driverId, r.constructorId);
@@ -578,10 +637,10 @@ export function buildSeasonChartData(year: number, upToRaceNum?: number): Season
 
   // Sort by final cumulative points (descending)
   const driverIds = [...driverNames.keys()].sort(
-    (a, b) => (driverCum.get(b) ?? 0) - (driverCum.get(a) ?? 0)
+    (a, b) => (driverCum.get(b) ?? 0) - (driverCum.get(a) ?? 0),
   );
   const constructorIds = [...constructorNames.keys()].sort(
-    (a, b) => (constructorCum.get(b) ?? 0) - (constructorCum.get(a) ?? 0)
+    (a, b) => (constructorCum.get(b) ?? 0) - (constructorCum.get(a) ?? 0),
   );
 
   // Assign constructor colors so teammates share the same color
@@ -591,7 +650,10 @@ export function buildSeasonChartData(year: number, upToRaceNum?: number): Season
   function computePos(snap: Map<string, number> | null, id: string): number | null {
     if (snap === null || !snap.has(id)) return null;
     const pts = snap.get(id)!;
-    return 1 + [...snap.entries()].filter(([otherId, otherPts]) => otherId !== id && otherPts > pts).length;
+    return (
+      1 +
+      [...snap.entries()].filter(([otherId, otherPts]) => otherId !== id && otherPts > pts).length
+    );
   }
 
   const drivers: EntitySeries[] = driverIds.map((id) => {
@@ -620,7 +682,7 @@ export function buildSeasonChartData(year: number, upToRaceNum?: number): Season
 export function computeProjectionsForSelectedRace(
   data: SeasonChartData,
   afterRaceNum: number,
-  isDriver: boolean
+  isDriver: boolean,
 ): Record<string, Record<string, ProjectionEntry>> {
   const { races } = data;
   const entities = isDriver ? data.drivers : data.constructors;

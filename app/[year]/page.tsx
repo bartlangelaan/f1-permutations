@@ -1,8 +1,8 @@
-import { Suspense } from "react";
-import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getSeasons } from "@/lib/data";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { readCalculationResults } from "@/lib/calculation-results";
+import { getSeasons } from "@/lib/data";
 import { SeasonChart } from "./SeasonChart";
 
 export const dynamicParams = false;
@@ -26,8 +26,9 @@ export default async function ChartPage({ params }: Props) {
   const data = readCalculationResults(year);
   if (!data) {
     return (
-      <div className="text-zinc-400 p-8">
-        Chart data not yet calculated for {year}. Run <code className="text-zinc-200">pnpm calculate</code> to generate it.
+      <div className="p-8 text-zinc-400">
+        Chart data not yet calculated for {year}. Run{" "}
+        <code className="text-zinc-200">pnpm calculate</code> to generate it.
       </div>
     );
   }
@@ -40,13 +41,13 @@ export default async function ChartPage({ params }: Props) {
   return (
     <div>
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-3 mb-1">
+          <div className="mb-1 flex items-center gap-3">
             {prevYear && (
               <Link
                 href={`/${prevYear}`}
-                className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors"
+                className="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
               >
                 ← {prevYear}
               </Link>
@@ -55,7 +56,7 @@ export default async function ChartPage({ params }: Props) {
             {nextYear && (
               <Link
                 href={`/${nextYear}`}
-                className="text-sm text-zinc-500 hover:text-zinc-300 transition-colors"
+                className="text-sm text-zinc-500 transition-colors hover:text-zinc-300"
               >
                 {nextYear} →
               </Link>
@@ -65,7 +66,6 @@ export default async function ChartPage({ params }: Props) {
             Championship points progression · drag the slider to time-travel
           </p>
         </div>
-
       </div>
       <Suspense
         fallback={

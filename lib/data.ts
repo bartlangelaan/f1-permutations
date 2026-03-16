@@ -1,8 +1,8 @@
 // This file is responsible only for reading and writing JSON files and listing
 // directories. It must not contain domain logic — keep it as simple I/O.
 
-import fs from "fs-extra";
 import path from "path";
+import fs from "fs-extra";
 import type { CalculatedChartData, EntitySeries, LockInsight, ProjectionEntry } from "./calculate";
 
 const DATA_DIR = path.join(process.cwd(), "data");
@@ -107,7 +107,11 @@ export function getEventResults(year: number, raceNumber: number): RaceResult[] 
   return readJsonFile<RaceResult[]>(file);
 }
 
-export async function saveEventResults(year: number, raceNumber: number, results: RaceResult[]): Promise<void> {
+export async function saveEventResults(
+  year: number,
+  raceNumber: number,
+  results: RaceResult[],
+): Promise<void> {
   await fs.outputJson(eventResultsFile(year, raceNumber), results, { spaces: 2 });
 }
 
@@ -122,13 +126,17 @@ export function readParticipants(year: number): Participants | null {
   return readJsonFile<Participants>(file);
 }
 
-export async function saveParticipants(year: number, drivers: EntitySeries[], constructors: EntitySeries[]): Promise<void> {
+export async function saveParticipants(
+  year: number,
+  drivers: EntitySeries[],
+  constructors: EntitySeries[],
+): Promise<void> {
   await fs.outputJson(participantsFile(year), { drivers, constructors }, { spaces: 2 });
 }
 
 export function readCalculationResultsAfterRace(
   year: number,
-  raceNum: number
+  raceNum: number,
 ): CalculationResultsAfterRace | null {
   const file = calculationResultsAfterRaceFile(year, raceNum);
   if (!fs.existsSync(file)) return null;
@@ -138,7 +146,7 @@ export function readCalculationResultsAfterRace(
 export async function saveCalculationResultsAfterRace(
   year: number,
   raceNum: number,
-  data: CalculationResultsAfterRace
+  data: CalculationResultsAfterRace,
 ): Promise<void> {
   await fs.outputJson(calculationResultsAfterRaceFile(year, raceNum), data, { spaces: 2 });
 }
@@ -151,6 +159,6 @@ export async function removeCalculationResultsForSeason(year: number): Promise<v
   await Promise.all(
     existingFiles
       .filter((name) => /^calculation-results-\d+\.json$/.test(name))
-      .map((name) => fs.remove(path.join(yearDir, name)))
+      .map((name) => fs.remove(path.join(yearDir, name))),
   );
 }

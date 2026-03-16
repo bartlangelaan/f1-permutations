@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
 import { createParser, useQueryState } from "nuqs";
+import { useState, useMemo } from "react";
 import {
   ComposedChart,
   Line,
@@ -59,9 +59,15 @@ function StandingsRows({
 
     const content = (
       <>
-        <span className="text-zinc-500 tabular-nums w-16 text-left">{formatPositionRange(row.minPos, row.maxPos)}</span>
-        <span className="flex-1 text-left" style={{ color: row.color }}>{row.name}</span>
-        <span className="tabular-nums text-zinc-300">{formatPointsRange(row.minPoints, row.maxPoints)}</span>
+        <span className="w-16 text-left text-zinc-500 tabular-nums">
+          {formatPositionRange(row.minPos, row.maxPos)}
+        </span>
+        <span className="flex-1 text-left" style={{ color: row.color }}>
+          {row.name}
+        </span>
+        <span className="text-zinc-300 tabular-nums">
+          {formatPointsRange(row.minPoints, row.maxPoints)}
+        </span>
       </>
     );
 
@@ -92,22 +98,25 @@ function getStandingsRowsForRace({
     const raceData = projections?.[afterRaceNum]?.[raceNum];
     if (!raceData) return { rows: [], isProjected: true };
 
-    const projectedRows = entities.reduce<(StandingsRow & { sortPos: number; sortPts: number })[]>((acc, e) => {
-      const entry = raceData[e.id];
-      if (!entry) return acc;
-      acc.push({
-        id: e.id,
-        name: e.name,
-        color: e.color,
-        minPos: entry.bestPos,
-        maxPos: entry.worstPos ?? entities.length,
-        minPoints: entry.minPts,
-        maxPoints: entry.maxPts,
-        sortPos: entry.bestPos,
-        sortPts: entry.maxPts,
-      });
-      return acc;
-    }, []);
+    const projectedRows = entities.reduce<(StandingsRow & { sortPos: number; sortPts: number })[]>(
+      (acc, e) => {
+        const entry = raceData[e.id];
+        if (!entry) return acc;
+        acc.push({
+          id: e.id,
+          name: e.name,
+          color: e.color,
+          minPos: entry.bestPos,
+          maxPos: entry.worstPos ?? entities.length,
+          minPoints: entry.minPts,
+          maxPoints: entry.maxPts,
+          sortPos: entry.bestPos,
+          sortPts: entry.maxPts,
+        });
+        return acc;
+      },
+      [],
+    );
 
     projectedRows.sort((a, b) => a.sortPos - b.sortPos || b.sortPts - a.sortPts);
     return {
@@ -116,7 +125,9 @@ function getStandingsRowsForRace({
     };
   }
 
-  const actualRows = entities.reduce<{ id: string; name: string; color: string; points: number; pos: number }[]>((acc, e) => {
+  const actualRows = entities.reduce<
+    { id: string; name: string; color: string; points: number; pos: number }[]
+  >((acc, e) => {
     const points = e.cumulativePoints[raceNum - 1];
     const pos = e.currentPos[raceNum - 1];
     if (points == null || pos == null) return acc;
@@ -147,15 +158,7 @@ function getStandingsRowsForRace({
 }
 
 // Custom tooltip
-function ChartTooltip({
-  active,
-  payload,
-  label,
-  races,
-  afterRaceNum,
-  projections,
-  entities,
-}: any) {
+function ChartTooltip({ active, payload, label, races, afterRaceNum, projections, entities }: any) {
   if (!active || !payload?.length) return null;
   const raceNum = payload[0]?.payload?.raceNum;
   const race = races[raceNum - 1];
@@ -170,8 +173,8 @@ function ChartTooltip({
   if (!rows.length) return null;
 
   return (
-    <div className="bg-zinc-900 border border-zinc-700 rounded-lg p-3 text-xs shadow-xl max-w-xs">
-      <div className="font-semibold text-zinc-200 mb-2">
+    <div className="max-w-xs rounded-lg border border-zinc-700 bg-zinc-900 p-3 text-xs shadow-xl">
+      <div className="mb-2 font-semibold text-zinc-200">
         {race?.fullLabel ?? label}
         {isProjected && <span className="ml-2 text-zinc-500">(projected)</span>}
       </div>
@@ -186,7 +189,7 @@ function buildChartData(
   races: TimelineRace[],
   entities: EntitySeries[],
   afterRaceNum: number,
-  isDriverMode: boolean
+  isDriverMode: boolean,
 ) {
   const startPt: Record<string, number | null | string> = {
     raceNum: 0,
@@ -216,11 +219,7 @@ function buildChartData(
         const base = e.cumulativePoints[afterRaceNum - 1] ?? 0;
         const additionalMax = races
           .slice(afterRaceNum, raceNum)
-          .reduce(
-            (sum, s) =>
-              sum + (isDriverMode ? s.maxDriverPoints : s.maxConstructorPoints),
-            0
-          );
+          .reduce((sum, s) => sum + (isDriverMode ? s.maxDriverPoints : s.maxConstructorPoints), 0);
         pt[`${e.id}_floor`] = base;
         pt[`${e.id}_delta`] = additionalMax;
       }
@@ -253,7 +252,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
         },
         serialize: (value) => String(value),
       }).withDefault(lastCompletedRaceNum),
-    [lastCompletedRaceNum]
+    [lastCompletedRaceNum],
   );
   const nextRaceOnlyParser = useMemo(
     () =>
@@ -265,7 +264,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
         },
         serialize: (value) => String(value),
       }).withDefault(true),
-    []
+    [],
   );
   const [afterRaceNum, setAfterRaceNum] = useQueryState("afterRace", afterRaceParser);
   const [nextRaceOnly, setNextRaceOnly] = useQueryState("nextRaceOnly", nextRaceOnlyParser);
@@ -280,7 +279,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
 
   const chartData = useMemo(
     () => buildChartData(races, entities, afterRaceNum, isDriverMode),
-    [races, entities, afterRaceNum, isDriverMode]
+    [races, entities, afterRaceNum, isDriverMode],
   );
 
   const currentRace = races[afterRaceNum - 1];
@@ -319,8 +318,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
 
     return items.filter(
       (insight) =>
-        insight.type !== "can_be_locked_in_later" &&
-        insight.type !== "can_be_ruled_out_later"
+        insight.type !== "can_be_locked_in_later" && insight.type !== "can_be_ruled_out_later",
     );
   }, [lockInsightsByRaceNum, nextRaceOnly, afterRaceNum]);
 
@@ -332,7 +330,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
         afterRaceNum,
         raceNum: lastRaceNum,
       }),
-    [allEntities, projections, afterRaceNum, lastRaceNum]
+    [allEntities, projections, afterRaceNum, lastRaceNum],
   );
 
   return (
@@ -346,9 +344,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
               onClick={() => setMode(m)}
               className={[
                 "rounded px-3 py-1 text-sm font-medium capitalize transition-colors",
-                mode === m
-                  ? "bg-red-600 text-white"
-                  : "text-zinc-400 hover:text-zinc-200",
+                mode === m ? "bg-red-600 text-white" : "text-zinc-400 hover:text-zinc-200",
               ].join(" ")}
             >
               {m}
@@ -357,7 +353,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
         </div>
 
         <div className="text-sm text-zinc-400">
-          <span className="text-zinc-200 font-medium">{currentRace?.fullLabel}</span>
+          <span className="font-medium text-zinc-200">{currentRace?.fullLabel}</span>
           {hasFuture && (
             <span className="ml-2 text-zinc-600">
               · {races.length - afterRaceNum} event
@@ -375,7 +371,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
           max={lastCompletedRaceNum}
           value={afterRaceNum}
           onChange={(e) => setAfterRaceNum(Number(e.target.value))}
-          className="w-full accent-red-500 cursor-pointer"
+          className="w-full cursor-pointer accent-red-500"
         />
         <div className="flex justify-between text-xs text-zinc-600">
           <span>{races[0]?.fullLabel}</span>
@@ -388,10 +384,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
         {/* Chart */}
         <div className="flex-1">
           <ResponsiveContainer width="100%" height={480}>
-            <ComposedChart
-              data={chartData}
-              margin={{ top: 8, right: 16, bottom: 40, left: 0 }}
-            >
+            <ComposedChart data={chartData} margin={{ top: 8, right: 16, bottom: 40, left: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
               <XAxis
                 dataKey="label"
@@ -402,10 +395,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
                 textAnchor="end"
                 height={48}
               />
-              <YAxis
-                tick={{ fill: "#71717a", fontSize: 11 }}
-                width={40}
-              />
+              <YAxis tick={{ fill: "#71717a", fontSize: 11 }} width={40} />
               <Tooltip
                 content={
                   <ChartTooltip
@@ -504,7 +494,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
         </div>
 
         {/* Legend + Projected GP Info */}
-        <div className="w-72 flex flex-col gap-4">
+        <div className="flex w-72 flex-col gap-4">
           {/* Entity toggles with inline projection */}
           <div className="space-y-2">
             <div className="text-xs font-semibold text-zinc-400">
@@ -529,7 +519,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
 
           {/* Symbol legend */}
           <div className="space-y-1 border-t border-zinc-800 pt-4 text-xs text-zinc-600">
-            <div className="font-semibold text-zinc-400 mb-2">Symbols</div>
+            <div className="mb-2 font-semibold text-zinc-400">Symbols</div>
             <span className="flex items-center gap-1.5">
               <svg width="14" height="10">
                 <circle cx="7" cy="5" r="2.5" fill="#71717a" opacity="0.7" />
@@ -545,7 +535,10 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
             <span className="flex items-center gap-1.5">
               <svg width="24" height="10">
                 <line
-                  x1="0" y1="5" x2="24" y2="5"
+                  x1="0"
+                  y1="5"
+                  x2="24"
+                  y2="5"
                   stroke="#71717a"
                   strokeWidth="1"
                   strokeDasharray="5 3"
@@ -570,8 +563,10 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
             Only show next-race lock-in scenarios
           </label>
         </div>
-        <div key={mode} className="space-y-1 text-xs text-zinc-400 max-h-64 overflow-y-auto pr-2">
-          {insightItems.map((insight, i) => <p key={i}>• {renderInsightText(insight, races, entitiesById)}</p>)}
+        <div key={mode} className="max-h-64 space-y-1 overflow-y-auto pr-2 text-xs text-zinc-400">
+          {insightItems.map((insight, i) => (
+            <p key={i}>• {renderInsightText(insight, races, entitiesById)}</p>
+          ))}
         </div>
       </div>
     </div>

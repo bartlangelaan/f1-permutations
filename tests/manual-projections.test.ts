@@ -1,12 +1,12 @@
-import test from 'node:test';
-import assert from 'node:assert/strict';
-import { readCalculationResults } from '../lib/calculation-results.ts';
-import { getEndOfSeasonProjections } from '../lib/projections.ts';
+import assert from "node:assert/strict";
+import test from "node:test";
+import { readCalculationResults } from "../lib/calculation-results.ts";
+import { getEndOfSeasonProjections } from "../lib/projections.ts";
 
-test('Check the calculation result of 2025 after race 23', () => {
+test("Check the calculation result of 2025 after race 23", () => {
   const data = readCalculationResults(2025)!;
-  const round23RaceNum = data.races.findIndex(r => r.round === 23 && r.type === 'race') + 1;
-  const gasly = data.drivers.find(d => d.name.toLowerCase().includes('gasly'))!;
+  const round23RaceNum = data.races.findIndex((r) => r.round === 23 && r.type === "race") + 1;
+  const gasly = data.drivers.find((d) => d.name.toLowerCase().includes("gasly"))!;
 
   // Check current state at round 23
   const gaslyCurrentPts = gasly.cumulativePoints[round23RaceNum - 1];

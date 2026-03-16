@@ -3,17 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@10.32.1",
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "fetch-data": "tsx scripts/fetch-data.ts",
     "calculate": "tsx scripts/calculate.ts",
-    "test": "pnpm calculate && node --import tsx/esm --test",
+    "dev": "next dev",
+    "fetch-data": "tsx scripts/fetch-data.ts",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
     "knip": "knip",
+    "start": "next start",
+    "test": "pnpm calculate && node --import tsx/esm --test",
     "tsc": "tsc",
-    "verify": "pnpm run \"/test|knip|tsc/\""
+    "verify": "pnpm run \"/test|knip|tsc|fmt:check/\""
   },
   "dependencies": {
     "@types/fs-extra": "^11.0.4",
@@ -33,9 +34,11 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "knip": "^5.85.0",
+    "oxfmt": "^0.40.0",
     "postcss": "^8.5.8",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "pnpm@10.32.1"
 }
