@@ -263,6 +263,9 @@ function findGuaranteePlanForPosition(
     });
 
   const requiredBelowCount = entityIds.length - position;
+  // Last place (position = total entities) needs zero rivals below — trivially guaranteed,
+  // not a useful insight.
+  if (requiredBelowCount <= 0) return null;
   const forceableBelow = opponents.filter((opponent) => opponent.canForceEntityAbove);
   if (forceableBelow.length < requiredBelowCount) {
     return null;
@@ -406,6 +409,8 @@ function computePositionCombinations(
     (a, b) => (basePts.get(b) ?? 0) - (basePts.get(a) ?? 0),
   );
   const mustBeBelowOpponents = sortedOpponents.slice(targetPosition - 1);
+  // Last place needs zero rivals below — trivially guaranteed, not a useful insight.
+  if (mustBeBelowOpponents.length === 0) return [];
 
   const raw: Array<{
     raceFinishPos: number;
