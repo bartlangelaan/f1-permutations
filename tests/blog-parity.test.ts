@@ -87,7 +87,7 @@ function renderInsights(insights: LockInsight[] | undefined, data: CalculatedCha
 //   - Can only win the title if he finishes P1 or P2
 //   - Finishes P1 + Norris finishes P6 or worse → wins championship
 //   - Finishes P2 + Norris finishes P10 or worse + Verstappen finishes P4 or worse → wins
-test('Abu Dhabi 2025 blog: championship permutation insights for Norris, Verstappen, and Piastri', () => {
+test('2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish in Abu Dhabi to seal the title?', () => {
   const data = readCalculationResults(2025)!;
   const afterRaceNum = data.races.findIndex((r) => r.fullLabel === 'Abu Dhabi GP' && r.type === 'race');
   const texts = renderInsights(data.driverLockInsights[String(afterRaceNum)], data);
@@ -119,6 +119,170 @@ test('Abu Dhabi 2025 blog: championship permutation insights for Norris, Verstap
   // TODO: The blog expresses all conditions as finishing positions (e.g. "Norris P3 or better wins
   // regardless", "Verstappen P1 + Norris P4 or worse → Verstappen wins"). Our system expresses them
   // as points margins only. Position-based clinch/elimination insights are not yet generated.
+});
+
+// Insights from: https://www.formula1.com/en/latest/article/championship-permutations-can-norris-still-win-the-title-in-qatar-after-his.6Yl07za0DPgfybgFrUXE6u
+// Standings before Qatar GP 2025 (after Qatar Sprint): Norris 396 pts, Piastri 374 pts, Verstappen 371 pts
+// 50 points remain across two races (Qatar GP + Abu Dhabi GP)
+//
+// Lando Norris:
+//   - Wins Qatar → champion regardless of where Piastri and Verstappen finish
+//   - Can also clinch without winning if rivals finish far enough behind
+//
+// Max Verstappen:
+//   - "Must beat Norris in Sunday's race" to keep title fight alive into Abu Dhabi
+//
+// Oscar Piastri:
+//   - "Must not be outscored by four or more points" to keep title hopes alive
+test('2025-11-25 | CHAMPIONSHIP PERMUTATIONS: Can Norris still win the title in Qatar after the Sprint?', () => {
+  const data = readCalculationResults(2025)!;
+  const qatarIdx = data.races.findIndex((r) => r.round === 23 && r.type === 'race');
+  const texts = renderInsights(data.driverLockInsights[String(qatarIdx)], data);
+
+  // Norris can guarantee P1 (title) by outscoring Piastri by 4 and Verstappen by 1
+  // (Norris wins = 25 pts; need 25 > Piastri's score + 3 and 25 > Verstappen's score)
+  assert.ok(texts.includes('Lando Norris can guarantee at least P1 in Qatar GP if outscores Oscar Piastri by 4 points, Max Verstappen by 1 points.'));
+
+  // Norris can guarantee P2 with only the Verstappen condition
+  assert.ok(texts.includes('Lando Norris can guarantee at least P2 in Qatar GP if outscores Max Verstappen by 1 points.'));
+
+  // Piastri P1 eliminated if Norris outscores him by 4 points
+  assert.ok(texts.includes('P1 is no longer possible for Oscar Piastri in Qatar GP if is outscored by Lando Norris by 4 points.'));
+
+  // Verstappen P1 eliminated if Norris outscores him by 1 point (= Norris finishes ahead of Verstappen)
+  assert.ok(texts.includes('P1 is no longer possible for Max Verstappen in Qatar GP if is outscored by Lando Norris by 1 points.'));
+
+  // TODO: The blog says "if Norris wins, he's champion regardless." Our system expresses this
+  // as points-margin conditions rather than position-based finishing scenarios.
+  // The exact scenario where Verstappen must "beat Norris" to keep the title alive is implicit
+  // in the points-margin insight but not expressed as a direct position comparison.
+});
+
+// Insights from: https://www.formula1.com/en/latest/article/points-permutations-when-is-the-earliest-norris-could-claim-the-world.T4F6V6THiKksJ6GdcYfvo
+// Standings before Las Vegas 2025: Norris 390 pts, Piastri 366 pts (gap 24), Verstappen 341 pts (gap 49)
+// Maximum 83 points available across the three final weekends (Las Vegas, Qatar sprint+race, Abu Dhabi)
+//
+// Lando Norris:
+//   - Cannot clinch at Las Vegas; earliest possible is Qatar Sprint (under best-case scenario)
+//   - Wins tiebreaker: Norris 8 wins vs Verstappen 7 — relevant if they tie on total points
+//
+// Constructors' championship:
+//   - McLaren have already clinched the constructors' title before Las Vegas
+test('2025-11-13 | POINTS PERMUTATIONS: When is the earliest Norris could claim the World Championship?', () => {
+  const data = readCalculationResults(2025)!;
+  const lasVegasIdx = data.races.findIndex((r) => r.round === 22 && r.type === 'race');
+  const texts = renderInsights(data.driverLockInsights[String(lasVegasIdx)], data);
+  const constructorTexts = renderInsights(data.constructorLockInsights[String(lasVegasIdx)], data);
+
+  // Norris can guarantee P2 at Las Vegas by outscoring Verstappen by 10 points
+  // (49-pt lead + 10 more = 59 > 58 remaining max → Verstappen can't catch Norris)
+  assert.ok(texts.includes('Lando Norris can guarantee at least P2 in Las Vegas GP if outscores Max Verstappen by 10 points.'));
+
+  // Norris cannot clinch P1 at Las Vegas; earliest is Abu Dhabi GP
+  assert.ok(texts.includes('Lando Norris can first guarantee at least P1 after Abu Dhabi GP.'));
+
+  // Piastri also cannot clinch at Las Vegas; earliest is Abu Dhabi GP
+  assert.ok(texts.includes('Oscar Piastri can first guarantee at least P1 after Abu Dhabi GP.'));
+
+  // Verstappen P1 eliminated at Las Vegas if outscored by Norris by 10 points
+  assert.ok(texts.includes('P1 is no longer possible for Max Verstappen in Las Vegas GP if is outscored by Lando Norris by 10 points.'));
+
+  // Verstappen also cannot clinch at Las Vegas; earliest is Abu Dhabi GP
+  assert.ok(texts.includes('Max Verstappen can first guarantee at least P1 after Abu Dhabi GP.'));
+
+  // McLaren have already locked in the constructors' title
+  assert.ok(constructorTexts.includes('McLaren has already locked in P1.'));
+
+  // TODO: The blog identifies the Qatar Sprint as the earliest clinch opportunity under the
+  // best-case scenario ("Norris wins Las Vegas + rivals score zero → needs P7 in Sprint").
+  // Our system does not distinguish Sprint from GP for earliest-clinch calculations — it
+  // reports Abu Dhabi GP as the earliest regardless of sprint scenarios.
+});
+
+// Insights from: https://www.formula1.com/en/latest/article/points-permutations-how-can-mclaren-win-the-2025-constructors-championship.SXmo98z0aCzJ4L1oVdf2b
+// Standings before Singapore 2025: McLaren 623 pts, Mercedes 290 pts (gap 333), Ferrari 286 pts (gap 337)
+// Red Bull 272 pts — already mathematically eliminated from P1 after Azerbaijan GP
+// 7 rounds remain with 346 points available
+//
+// McLaren constructors:
+//   - Can clinch with just 13 points in Singapore (one car on the podium is enough)
+//   - A 333-point lead means even worst-case outcomes can't cost them the title beyond Singapore
+//
+// Mercedes:
+//   - Must outscore McLaren by 31 points at Singapore to prevent McLaren from clinching
+//
+// Ferrari:
+//   - Must outscore McLaren by 35 points at Singapore to prevent McLaren from clinching
+//
+// Red Bull:
+//   - Already eliminated from the constructors' title after the Azerbaijan Grand Prix
+test('2025-09-17 | What do McLaren need to do to win the 2024 constructors\' championship in Abu Dhabi?', () => {
+  const data = readCalculationResults(2025)!;
+  const singaporeIdx = data.races.findIndex((r) => r.round === 18 && r.type === 'race');
+  const constructorTexts = renderInsights(data.constructorLockInsights[String(singaporeIdx)], data);
+
+  // McLaren can guarantee constructors' P1 at Singapore with conditions on both Mercedes and Ferrari
+  assert.ok(constructorTexts.includes('McLaren can guarantee at least P1 in Singapore GP if is not outscored by Mercedes by more than 29 points, Ferrari by more than 33 points.'));
+
+  // McLaren can guarantee P2 with only the Ferrari condition
+  assert.ok(constructorTexts.includes('McLaren can guarantee at least P2 in Singapore GP if is not outscored by Ferrari by more than 33 points.'));
+
+  // Mercedes P1 eliminated at Singapore unless they outscore McLaren by more than 29 pts
+  assert.ok(constructorTexts.includes('P1 is no longer possible for Mercedes in Singapore GP if Mercedes does not outscore McLaren by more than 29 points.'));
+
+  // Ferrari P1 eliminated at Singapore unless they outscore McLaren by more than 33 pts
+  assert.ok(constructorTexts.includes('P1 is no longer possible for Ferrari in Singapore GP if Ferrari does not outscore McLaren by more than 33 points.'));
+
+  // Red Bull already eliminated from P1 before Singapore — no P1 insight appears for them
+  assert.ok(!constructorTexts.some((t) => t.startsWith('Red Bull can guarantee at least P1')));
+  assert.ok(!constructorTexts.some((t) => t.startsWith('P1 is no longer possible for Red Bull in Singapore')));
+
+  // TODO: The blog expresses McLaren's clinch as "just 13 points = one car on the podium".
+  // Position-based clinch conditions ("finish P3 or better") are not yet generated.
+});
+
+// Insights from: https://www.formula1.com/en/latest/article/what-do-mclaren-need-to-do-to-win-the-2024-constructors-championship-in.6wkARNJU3HGjZnq2vaLeAM
+// Standings before Abu Dhabi 2024: Verstappen 429 pts (already champion), Norris 349 pts, Leclerc 341 pts
+// Constructors: McLaren 640, Ferrari 619, Red Bull 581 (McLaren leads Ferrari by 21 pts)
+// 44 points maximum available; McLaren needs 24 points (or 23 if Ferrari doesn't win) to clinch
+//
+// McLaren constructors:
+//   - A race victory alone is enough to guarantee the title
+//   - Must score 24 points to guarantee the title regardless of Ferrari
+//
+// Ferrari constructors:
+//   - Must outscore McLaren by 22 points to win the title
+//
+// Constructors already decided:
+//   - Red Bull can no longer win the title (eliminated after Qatar Sprint)
+//   - Mercedes has already locked in P4
+test('2024-11-29 | Abu Dhabi 2024 blog: McLaren win constructors\' championship', () => {
+  const data = readCalculationResults(2024)!;
+  const abuDhabiIdx = data.races.findIndex((r) => r.round === 24 && r.type === 'race');
+  const driverTexts = renderInsights(data.driverLockInsights[String(abuDhabiIdx)], data);
+  const constructorTexts = renderInsights(data.constructorLockInsights[String(abuDhabiIdx)], data);
+
+  // Verstappen has already locked in P1 (drivers' champion)
+  assert.ok(driverTexts.includes('Max Verstappen has already locked in P1.'));
+
+  // McLaren can guarantee constructors' P1 if not outscored by Ferrari by more than 20 pts
+  assert.ok(constructorTexts.includes('McLaren can guarantee at least P1 in Abu Dhabi GP if is not outscored by Ferrari by more than 20 points.'));
+
+  // Ferrari can guarantee constructors' P1 only by outscoring McLaren by 22 pts
+  assert.ok(constructorTexts.includes('Ferrari can guarantee at least P1 in Abu Dhabi GP if outscores McLaren by 22 points and is not outscored by Red Bull by more than 37 points.'));
+
+  // McLaren P1 eliminated if outscored by Ferrari by 22 pts
+  assert.ok(constructorTexts.includes('P1 is no longer possible for McLaren in Abu Dhabi GP if is outscored by Ferrari by 22 points.'));
+
+  // Ferrari P1 eliminated if they don't outscore McLaren by more than 20 pts
+  assert.ok(constructorTexts.includes('P1 is no longer possible for Ferrari in Abu Dhabi GP if Ferrari does not outscore McLaren by more than 20 points.'));
+
+  // Mercedes has already secured P4 in the constructors' standings
+  assert.ok(constructorTexts.includes('Mercedes has already locked in P4.'));
+
+  // TODO: The blog provides specific race-result combinations ("a win alone is enough for McLaren",
+  // "McLaren needs 24 pts or 23 if Ferrari doesn't win"). Position-based clinch conditions and
+  // scenario-based "if Ferrari scores zero" variants are not yet generated.
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/2024-drivers-championship-max-verstappen-lando-norris-red-bull-points-permutations.6BHWvf0q6MikIuW1IHEOyw
@@ -155,7 +319,7 @@ test('Abu Dhabi 2025 blog: championship permutation insights for Norris, Verstap
 //   - McLaren leads Ferrari by 36 pts, Red Bull a further 13 pts behind Ferrari; 147 pts available
 //   - Nobody can clinch the constructors' title at Las Vegas; earliest opportunity is Abu Dhabi
 //   - Mercedes are already eliminated from the top 3
-test('Las Vegas 2024 blog: championship permutation insights for Verstappen, Norris, Leclerc, Piastri', () => {
+test('2024-11-01 | What Verstappen needs to do to take his fourth title in Las Vegas', () => {
   const data = readCalculationResults(2024)!;
   const lasVegasIdx = data.races.findIndex((r) => r.round === 22 && r.type === 'race');
   const texts = renderInsights(data.driverLockInsights[String(lasVegasIdx)], data);
@@ -204,7 +368,7 @@ test('Las Vegas 2024 blog: championship permutation insights for Verstappen, Nor
 // Qatar GP race:
 //   - Verstappen clinches if he leaves Qatar with ≥146-pt lead over Pérez
 //   - Pérez can only stay mathematically alive by winning the GP and reducing the gap to 145 pts
-test('Qatar 2023 blog: Verstappen clinches championship at Qatar Sprint', () => {
+test('2023-09-12 | POINTS PERMUTATIONS: How Verstappen can become the 2023 F1 world champion in Qatar', () => {
   const data = readCalculationResults(2023)!;
 
   // Before Qatar Sprint: what can happen in the Sprint
@@ -228,62 +392,35 @@ test('Qatar 2023 blog: Verstappen clinches championship at Qatar Sprint', () => 
   // combinations are currently generated.
 });
 
-// Insights from: https://www.formula1.com/en/latest/article/points-permutations-what-verstappen-needs-to-do-to-secure-the-f1-title-in.2YMQSetyej7cmdDtsDJZnC
-// Standings before Singapore 2022: Verstappen 335 pts, Leclerc 219 pts (116-point gap), Pérez 210 pts (125-point gap)
-// Singapore is Verstappen's first opportunity to clinch; must outscore Leclerc by 22 pts to eliminate him
+// Insights from: https://www.formula1.com/en/latest/article/points-permutations-how-red-bull-can-seal-their-first-constructors-title.642CzC8rC2a20cSbbxswyv
+// Standings before United States 2022: Verstappen 366 pts (already champion), Leclerc 252 pts, Pérez 253 pts
+// Constructors: Red Bull 619, Ferrari 454 (Red Bull leads by 165 pts); 191 pts remain across 4 rounds
 //
-// Verstappen clinches at Singapore:
-//   - Wins (no fastest lap):   Leclerc 9th or lower  AND  Pérez 4th or lower (no FL) or 5th or lower (with FL)
-//   - Wins (with fastest lap): Leclerc 8th or lower  AND  Pérez 4th or lower
-//   - Any other Verstappen result → no clinch at Singapore; title fight rolls on to Japan
+// Red Bull clinch constructors' at Austin:
+//   - "Need to hold an advantage of 147 points at end of Austin weekend"
+//   - Win (no fastest lap): Ferrari 1-2 (no FL) is not enough to prevent clinch
+//   - Clinch if Ferrari fails to outscore Red Bull by 19 pts (blog figure; system requires 18 margin)
 //
-// Charles Leclerc:
-//   - Title becomes impossible at Singapore if outscored by Verstappen by 23 points
-//
-// Sergio Pérez:
-//   - Title becomes impossible at Singapore if outscored by Verstappen by 14 points
-//
-// George Russell:
-//   - Title becomes impossible at Singapore if outscored by Verstappen by 7 points
-//
-// Carlos Sainz:
-//   - Title becomes impossible at Singapore unless he outscores Verstappen by more than 9 points
-//
-// Constructors' championship:
-//   - Red Bull cannot clinch the constructors' title at Singapore; earliest opportunity is after United States GP
-//   - Red Bull would need a 191-pt lead after Japan; currently 139 pts up with only 88 pts available
-//     across Singapore and Japan combined
-test('Singapore 2022 blog: Verstappen first title clinch opportunity', () => {
+// Ferrari:
+//   - Must outscore Red Bull by 19 pts to stay alive, requiring a 1-2 finish with fastest lap
+test('2022-10-14 | POINTS PERMUTATIONS: How Red Bull can seal their first constructors\' title since 2013 at the United States GP', () => {
   const data = readCalculationResults(2022)!;
-  const singaporeIdx = data.races.findIndex((r) => r.round === 17 && r.type === 'race');
-  const texts = renderInsights(data.driverLockInsights[String(singaporeIdx)], data);
-  const constructorTexts = renderInsights(data.constructorLockInsights[String(singaporeIdx)], data);
+  const usIdx = data.races.findIndex((r) => r.round === 19 && r.type === 'race');
+  const texts = renderInsights(data.driverLockInsights[String(usIdx)], data);
+  const constructorTexts = renderInsights(data.constructorLockInsights[String(usIdx)], data);
 
-  // Verstappen can guarantee P1 (title) in Singapore GP with conditions on all top rivals
-  assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Singapore GP if outscores Charles Leclerc by 23 points, Sergio Pérez by 14 points, George Russell by 7 points and is not outscored by Carlos Sainz by more than 9 points.'));
+  // Verstappen already locked in P1 (drivers' champion)
+  assert.ok(texts.includes('Max Verstappen has already locked in P1.'));
 
-  // Leclerc P1 ruled out at Singapore if outscored by Verstappen by 23 points
-  assert.ok(texts.includes('P1 is no longer possible for Charles Leclerc in Singapore GP if is outscored by Max Verstappen by 23 points.'));
+  // Red Bull can guarantee constructors' P1 at Austin if not outscored by Ferrari by more than 17 pts
+  assert.ok(constructorTexts.includes('Red Bull can guarantee at least P1 in United States GP if is not outscored by Ferrari by more than 17 points.'));
 
-  // Pérez P1 ruled out at Singapore if outscored by Verstappen by 14 points
-  assert.ok(texts.includes('P1 is no longer possible for Sergio Pérez in Singapore GP if is outscored by Max Verstappen by 14 points.'));
+  // Ferrari P1 eliminated if they don't outscore Red Bull by more than 17 points
+  assert.ok(constructorTexts.includes('P1 is no longer possible for Ferrari in United States GP if Ferrari does not outscore Red Bull by more than 17 points.'));
 
-  // Russell P1 ruled out if outscored by Verstappen by 7 points
-  assert.ok(texts.includes('P1 is no longer possible for George Russell in Singapore GP if is outscored by Max Verstappen by 7 points.'));
-
-  // Sainz P1 ruled out unless he outscores Verstappen by more than 9 points
-  assert.ok(texts.includes('P1 is no longer possible for Carlos Sainz in Singapore GP if Carlos Sainz does not outscore Max Verstappen by more than 9 points.'));
-
-  // Red Bull cannot clinch constructors' at Singapore; earliest is after United States GP
-  assert.ok(constructorTexts.includes('Red Bull can first guarantee at least P1 after United States GP.'));
-
-  // TODO: The blog expresses Verstappen's clinch as specific finishing-position combinations
-  // ("wins + Leclerc 9th or lower + Pérez 4th or lower"), including a fastest-lap variant for Pérez
-  // ("Pérez 5th or lower with FL"). Position-based clinch conditions and the fastest-lap distinction
-  // are not yet generated.
-  // TODO: The blog describes the constructors' gap in terms of what Red Bull would need to clinch
-  // (a 191-pt lead) versus what is achievable (139 pts up with 88 remaining). Insight types for
-  // "cannot clinch this weekend due to insufficient points available" are not yet generated.
+  // TODO: The blog provides the exact "147-point threshold" and specific race-result combinations
+  // (e.g., "Red Bull 1-2 clinches", "Ferrari 1-2 + fastest lap required to stay alive").
+  // Position-based clinch conditions and fastest-lap variants are not yet generated.
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/points-permutations-what-verstappen-needs-to-do-to-win-his-second-drivers.2y2rFRR2d2o6LRHPijDzLP
@@ -322,7 +459,7 @@ test('Singapore 2022 blog: Verstappen first title clinch opportunity', () => {
 //   - Red Bull leads Ferrari by 137 pts with 235 pts remaining across the final 8 rounds
 //   - Even a Red Bull 1-2 with fastest lap at Japan does not clinch the constructors' title;
 //     Ferrari's Singapore double podium kept them alive and the fight continues at least to USA
-test('Japan 2022 blog: Verstappen clinches second championship', () => {
+test('2022-10-03 | POINTS PERMUTATIONS: What Verstappen needs to do to win his second drivers\' crown in Japan', () => {
   const data = readCalculationResults(2022)!;
   const japanIdx = data.races.findIndex((r) => r.round === 18 && r.type === 'race');
   const texts = renderInsights(data.driverLockInsights[String(japanIdx)], data);
@@ -362,41 +499,205 @@ test('Japan 2022 blog: Verstappen clinches second championship', () => {
   // weekend" are not yet generated.
 });
 
-// Insights from: https://www.formula1.com/en/latest/features/2015/10/title-permutations---how-hamilton-can-wrap-it-up-in-austin.html
-// Standings before United States 2015: Hamilton 302 pts, Vettel 236 pts (66-point gap), Rosberg 229 pts
-// 4 races remain (Austin + 3 more); max 75 pts available after Austin
+// Insights from: https://www.formula1.com/en/latest/article/points-permutations-what-verstappen-needs-to-do-to-secure-the-f1-title-in.2YMQSetyej7cmdDtsDJZnC
+// Standings before Singapore 2022: Verstappen 335 pts, Leclerc 219 pts (116-point gap), Pérez 210 pts (125-point gap)
+// Singapore is Verstappen's first opportunity to clinch; must outscore Leclerc by 22 pts to eliminate him
 //
-// Lewis Hamilton:
-//   - Blog: needs to outscore Vettel by nine points and Rosberg by two points to clinch
-//   - (With 66-pt gap and 75 remaining, Hamilton clinches if he extends lead by ≥9)
+// Verstappen clinches at Singapore:
+//   - Wins (no fastest lap):   Leclerc 9th or lower  AND  Pérez 4th or lower (no FL) or 5th or lower (with FL)
+//   - Wins (with fastest lap): Leclerc 8th or lower  AND  Pérez 4th or lower
+//   - Any other Verstappen result → no clinch at Singapore; title fight rolls on to Japan
+//
+// Charles Leclerc:
+//   - Title becomes impossible at Singapore if outscored by Verstappen by 23 points
+//
+// Sergio Pérez:
+//   - Title becomes impossible at Singapore if outscored by Verstappen by 14 points
+//
+// George Russell:
+//   - Title becomes impossible at Singapore if outscored by Verstappen by 7 points
+//
+// Carlos Sainz:
+//   - Title becomes impossible at Singapore unless he outscores Verstappen by more than 9 points
 //
 // Constructors' championship:
-//   - Mercedes has already won the 2015 constructors' title before Austin
-test('United States 2015 blog: Hamilton clinches third drivers\' championship', () => {
-  const data = readCalculationResults(2015)!;
-  const usIdx = data.races.findIndex((r) => r.round === 16 && r.type === 'race');
+//   - Red Bull cannot clinch the constructors' title at Singapore; earliest opportunity is after United States GP
+//   - Red Bull would need a 191-pt lead after Japan; currently 139 pts up with only 88 pts available
+//     across Singapore and Japan combined
+test('2022-09-15 | POINTS PERMUTATIONS: What Verstappen needs to do to secure the F1 title in Singapore', () => {
+  const data = readCalculationResults(2022)!;
+  const singaporeIdx = data.races.findIndex((r) => r.round === 17 && r.type === 'race');
+  const texts = renderInsights(data.driverLockInsights[String(singaporeIdx)], data);
+  const constructorTexts = renderInsights(data.constructorLockInsights[String(singaporeIdx)], data);
+
+  // Verstappen can guarantee P1 (title) in Singapore GP with conditions on all top rivals
+  assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Singapore GP if outscores Charles Leclerc by 23 points, Sergio Pérez by 14 points, George Russell by 7 points and is not outscored by Carlos Sainz by more than 9 points.'));
+
+  // Leclerc P1 ruled out at Singapore if outscored by Verstappen by 23 points
+  assert.ok(texts.includes('P1 is no longer possible for Charles Leclerc in Singapore GP if is outscored by Max Verstappen by 23 points.'));
+
+  // Pérez P1 ruled out at Singapore if outscored by Verstappen by 14 points
+  assert.ok(texts.includes('P1 is no longer possible for Sergio Pérez in Singapore GP if is outscored by Max Verstappen by 14 points.'));
+
+  // Russell P1 ruled out if outscored by Verstappen by 7 points
+  assert.ok(texts.includes('P1 is no longer possible for George Russell in Singapore GP if is outscored by Max Verstappen by 7 points.'));
+
+  // Sainz P1 ruled out unless he outscores Verstappen by more than 9 points
+  assert.ok(texts.includes('P1 is no longer possible for Carlos Sainz in Singapore GP if Carlos Sainz does not outscore Max Verstappen by more than 9 points.'));
+
+  // Red Bull cannot clinch constructors' at Singapore; earliest is after United States GP
+  assert.ok(constructorTexts.includes('Red Bull can first guarantee at least P1 after United States GP.'));
+
+  // TODO: The blog expresses Verstappen's clinch as specific finishing-position combinations
+  // ("wins + Leclerc 9th or lower + Pérez 4th or lower"), including a fastest-lap variant for Pérez
+  // ("Pérez 5th or lower with FL"). Position-based clinch conditions and the fastest-lap distinction
+  // are not yet generated.
+  // TODO: The blog describes the constructors' gap in terms of what Red Bull would need to clinch
+  // (a 191-pt lead) versus what is achievable (139 pts up with 88 remaining). Insight types for
+  // "cannot clinch this weekend due to insufficient points available" are not yet generated.
+});
+
+// Insights from: https://www.formula1.com/en/latest/article/what-to-watch-for-in-the-abu-dhabi-gp-the-championship-decider-nervous.1DFTdUW3mbcjM8ManPkbYJ
+// Standings before Abu Dhabi 2021: Verstappen 369.5 pts, Hamilton 369.5 pts (level on points!)
+// Both entered the finale tied; Verstappen leads on wins count (9 to 8) — tiebreaker in his favour
+// Final race of the season
+//
+// Championship rule: whoever finishes ahead wins, as long as both are in the top eight
+//   - If both finish level on points: Verstappen wins (more wins)
+//   - Tie scenarios: both DNF, both outside top 10, or Hamilton P9 + Verstappen P10 + Verstappen fastest lap
+//
+// Constructors' championship:
+//   - Mercedes 587.5 pts, Red Bull 559.5 pts (Mercedes leads by 28 pts)
+//   - Red Bull must outscore Mercedes by 28 pts to clinch; blog says 28, system requires 29
+test('2021-12-11 | What To Watch For in the Abu Dhabi GP: The championship decider, \'nervous\' Norris & other scores to be settled', () => {
+  const data = readCalculationResults(2021)!;
+  const abuDhabiIdx = data.races.findIndex((r) => r.round === 22 && r.type === 'race');
+  const texts = renderInsights(data.driverLockInsights[String(abuDhabiIdx)], data);
+  const constructorTexts = renderInsights(data.constructorLockInsights[String(abuDhabiIdx)], data);
+
+  // Both drivers need only 1 point margin to lock in P1 (tied on points entering the race)
+  assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Abu Dhabi GP if outscores Lewis Hamilton by 1 points.'));
+  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P1 in Abu Dhabi GP if outscores Max Verstappen by 1 points.'));
+
+  // Each driver's P1 is eliminated if outscored by the other by 1 point
+  assert.ok(texts.includes('P1 is no longer possible for Max Verstappen in Abu Dhabi GP if is outscored by Lewis Hamilton by 1 points.'));
+  assert.ok(texts.includes('P1 is no longer possible for Lewis Hamilton in Abu Dhabi GP if is outscored by Max Verstappen by 1 points.'));
+
+  // Bottas and Pérez have already locked in P3 and P4 respectively
+  assert.ok(texts.includes('Valtteri Bottas has already locked in P3.'));
+  assert.ok(texts.includes('Sergio Pérez has already locked in P4.'));
+
+  // Red Bull constructors: need to outscore Mercedes by 29 to win (blog says 28)
+  assert.ok(constructorTexts.includes('Red Bull can guarantee at least P1 in Abu Dhabi GP if outscores Mercedes by 29 points.'));
+
+  // Mercedes constructors: guaranteed P1 if not outscored by Red Bull by more than 27
+  assert.ok(constructorTexts.includes('Mercedes can guarantee at least P1 in Abu Dhabi GP if is not outscored by Red Bull by more than 27 points.'));
+
+  // TODO: The blog describes the tiebreaker rule ("tied on points → Verstappen wins via wins count")
+  // and edge-case tie scenarios (both DNF, or Hamilton 9th + Verstappen 10th + FL). Tiebreaker
+  // logic and fastest-lap tie scenarios are not yet expressed as distinct insights.
+});
+
+// Insights from: https://www.formula1.com/en/latest/article/what-does-verstappen-need-to-do-to-win-the-title-over-hamilton-in-saudi.24ex2L0wnanvf5ATHe0CCO
+// Standings before Saudi Arabia 2021: Verstappen 351.5 pts, Hamilton 343.5 pts (Verstappen leads by 8 pts)
+// Penultimate round; 1 race remains after Saudi (Abu Dhabi); max 26 pts available (race + fastest lap)
+//
+// Max Verstappen clinches at Saudi (position-based table from blog):
+//   - 1st + fastest lap:  Hamilton 6th or lower
+//   - 1st (no FL):        Hamilton 7th or lower
+//   - 2nd + fastest lap:  Hamilton outside points (11th or lower)
+//   - 2nd (no FL):        Hamilton does not score (DNF/DSQ)
+//
+// Lewis Hamilton:
+//   - Cannot clinch at Saudi; earliest is Abu Dhabi
+test('2021-11-25 | What does Verstappen need to do to win the title over Hamilton in Saudi Arabia?', () => {
+  const data = readCalculationResults(2021)!;
+  const saudiIdx = data.races.findIndex((r) => r.round === 21 && r.type === 'race');
+  const texts = renderInsights(data.driverLockInsights[String(saudiIdx)], data);
+
+  // Verstappen can guarantee P1 (title) by outscoring Hamilton by 19 points
+  // Blog's top scenario: Verstappen wins (25) + Hamilton 7th or lower (≤6 pts) = 19+ margin
+  assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Saudi Arabian GP if outscores Lewis Hamilton by 19 points.'));
+
+  // Hamilton P1 eliminated if outscored by Verstappen by 19 points
+  assert.ok(texts.includes('P1 is no longer possible for Lewis Hamilton in Saudi Arabian GP if is outscored by Max Verstappen by 19 points.'));
+
+  // Hamilton cannot clinch at Saudi; earliest opportunity is Abu Dhabi
+  assert.ok(texts.includes('Lewis Hamilton can first guarantee at least P1 after Abu Dhabi GP.'));
+
+  // TODO: The blog provides a full position-by-position table with fastest-lap variants
+  // (e.g., "1st + FL → Hamilton 6th or lower", "2nd + FL → Hamilton outside points").
+  // Position-based and fastest-lap clinch conditions are not yet generated.
+});
+
+// Insights from: https://www.formula1.com/en/latest/article/title-permutations-how-hamilton-and-mercedes-can-be-crowned-champions-in.5dcz3gODYWuuIia8cgC4uo
+// Standings before Mexico 2018: Hamilton 346 pts, Vettel 276 pts (Hamilton leads by 70 pts)
+// Constructors: Mercedes 563, Ferrari 497 (Mercedes leads by 66 pts); Red Bull already locked P3
+// 3 races remain after Mexico; max 75 points available
+//
+// Lewis Hamilton:
+//   - Clinches if Vettel doesn't outscore him by more than 19 points
+//   - "All-or-nothing for Vettel" — must win and hope Hamilton hits misfortune
+//
+// Constructors' championship:
+//   - Mercedes can clinch at Mexico by outscoring Ferrari by 20 points
+//     (blog says 20 pts; system requires 21 for strict guarantee)
+//   - Red Bull have already clinched P3 in the constructors' standings
+test('2018-10-25 | TITLE PERMUTATIONS: How Hamilton - and Mercedes - can be crowned champions in Mexico', () => {
+  const data = readCalculationResults(2018)!;
+  const mexicoIdx = data.races.findIndex((r) => r.round === 19 && r.type === 'race');
+  const texts = renderInsights(data.driverLockInsights[String(mexicoIdx)], data);
+  const constructorTexts = renderInsights(data.constructorLockInsights[String(mexicoIdx)], data);
+
+  // Hamilton clinches P1 (title) if Vettel doesn't outscore him by more than 19 points
+  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P1 in Mexican GP if is not outscored by Sebastian Vettel by more than 19 points.'));
+
+  // Vettel P1 eliminated unless he outscores Hamilton by more than 19 points
+  assert.ok(texts.includes('P1 is no longer possible for Sebastian Vettel in Mexican GP if Sebastian Vettel does not outscore Lewis Hamilton by more than 19 points.'));
+
+  // Mercedes can clinch the constructors' title at Mexico
+  // Blog says "outscore Ferrari by 20 points" — system requires 21 (strict ≥ threshold)
+  assert.ok(constructorTexts.includes('Mercedes can guarantee at least P1 in Mexican GP if outscores Ferrari by 21 points.'));
+
+  // Ferrari P1 eliminated if outscored by Mercedes by 21 points
+  assert.ok(constructorTexts.includes('P1 is no longer possible for Ferrari in Mexican GP if is outscored by Mercedes by 21 points.'));
+
+  // Red Bull has already locked in P3 in the constructors' standings
+  assert.ok(constructorTexts.includes('Red Bull has already locked in P3.'));
+
+  // TODO: The blog expresses Vettel's path as "must win – and hope that Hamilton hits some form
+  // of misfortune." Position-based clinch/elimination conditions are not yet generated.
+});
+
+// Insights from: https://www.formula1.com/en/latest/article.the-title-permutations-what-hamilton-needs-to-do-to-be-crowned-f1-champion-in-austin.5uZgCVSRZSma080U4CUSEc.html
+// Standings before United States 2018: Hamilton 331 pts, Vettel 264 pts (Hamilton leads by 67 pts)
+// 4 races remain (Austin + 3 more); max 75 points available after Austin
+//
+// Lewis Hamilton:
+//   - Blog: "outscore his Ferrari rival by eight points on Sunday and the 2018 drivers' crown is his"
+//   - (67-pt lead + 9-pt race margin > 75 remaining; system requires 9 for strict guarantee)
+//
+// Constructors' championship:
+//   - Mercedes cannot clinch at Austin; earliest opportunity is after Brazilian GP
+test('2018-10-17 | THE TITLE PERMUTATIONS: What Hamilton needs to do to be crowned F1 champion in Austin', () => {
+  const data = readCalculationResults(2018)!;
+  const usIdx = data.races.findIndex((r) => r.round === 18 && r.type === 'race');
   const texts = renderInsights(data.driverLockInsights[String(usIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(usIdx)], data);
 
-  // Hamilton can guarantee P1 (title) with conditions on both Vettel and Rosberg
-  // Blog says "nine points over Vettel" — system produces 10 (the strict ≥ threshold)
-  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P1 in United States GP if outscores Sebastian Vettel by 10 points, Nico Rosberg by 3 points.'));
+  // Hamilton can guarantee P1 (title) by outscoring Vettel by 9 points
+  // Blog says "eight points" — system produces 9 (the strict ≥ threshold: 67 + 9 = 76 > 75)
+  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P1 in United States GP if outscores Sebastian Vettel by 9 points.'));
 
-  // Hamilton can guarantee P2 with only the Rosberg condition
-  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P2 in United States GP if outscores Nico Rosberg by 3 points.'));
+  // Vettel P1 eliminated if outscored by Hamilton by 9 points
+  assert.ok(texts.includes('P1 is no longer possible for Sebastian Vettel in United States GP if is outscored by Lewis Hamilton by 9 points.'));
 
-  // Vettel is eliminated from P1 at Austin if Hamilton outscores him by enough
-  assert.ok(texts.includes('P1 is no longer possible for Sebastian Vettel in United States GP if is outscored by Lewis Hamilton by 10 points.'));
+  // Mercedes cannot clinch constructors' at Austin; earliest is Brazilian GP
+  assert.ok(constructorTexts.includes('Mercedes can first guarantee at least P1 after Brazilian GP.'));
 
-  // Rosberg is eliminated from P1 at Austin if Hamilton outscores him enough
-  assert.ok(texts.includes('P1 is no longer possible for Nico Rosberg in United States GP if is outscored by Lewis Hamilton by 3 points.'));
-
-  // Mercedes has already clinched the constructors' title before Austin
-  assert.ok(constructorTexts.includes('Mercedes has already locked in P1.'));
-
-  // TODO: The blog expresses conditions as finishing positions ("outscore Vettel by nine
-  // points"), meaning Hamilton winning and Vettel finishing P3 or lower (25-15=10) or Hamilton
-  // P2 and Vettel outside the points. Position-based clinch conditions are not yet generated.
+  // TODO: The blog expresses the clinch in position-based terms (e.g., "Hamilton wins and Vettel
+  // finishes 3rd or lower") and includes a permutation chart image. Position-based clinch
+  // conditions are not yet generated.
 });
 
 // Insights from: https://www.formula1.com/en/latest/features/2016/11/f1-2016-title-permutations-abu-dhabi-gp.html
@@ -414,7 +715,7 @@ test('United States 2015 blog: Hamilton clinches third drivers\' championship', 
 // Constructors' championship:
 //   - Mercedes, Red Bull, Ferrari have already locked in P1, P2, P3 respectively
 //   - Only P4 (Force India vs Williams) and P6 (McLaren vs Toro Rosso) remain open
-test('Abu Dhabi 2016 blog: Rosberg vs Hamilton title decider', () => {
+test('2016-10-26 | The 2016 title permutations for Sunday in Abu Dhabi', () => {
   const data = readCalculationResults(2016)!;
   const abuDhabiIdx = data.races.findIndex((r) => r.round === 21 && r.type === 'race');
   const texts = renderInsights(data.driverLockInsights[String(abuDhabiIdx)], data);
@@ -446,340 +747,39 @@ test('Abu Dhabi 2016 blog: Rosberg vs Hamilton title decider', () => {
   // Position-based clinch conditions are not yet generated by our system.
 });
 
-// Insights from: https://www.formula1.com/en/latest/article.the-title-permutations-what-hamilton-needs-to-do-to-be-crowned-f1-champion-in-austin.5uZgCVSRZSma080U4CUSEc.html
-// Standings before United States 2018: Hamilton 331 pts, Vettel 264 pts (Hamilton leads by 67 pts)
-// 4 races remain (Austin + 3 more); max 75 points available after Austin
+// Insights from: https://www.formula1.com/en/latest/features/2015/10/title-permutations---how-hamilton-can-wrap-it-up-in-austin.html
+// Standings before United States 2015: Hamilton 302 pts, Vettel 236 pts (66-point gap), Rosberg 229 pts
+// 4 races remain (Austin + 3 more); max 75 pts available after Austin
 //
 // Lewis Hamilton:
-//   - Blog: "outscore his Ferrari rival by eight points on Sunday and the 2018 drivers' crown is his"
-//   - (67-pt lead + 9-pt race margin > 75 remaining; system requires 9 for strict guarantee)
+//   - Blog: needs to outscore Vettel by nine points and Rosberg by two points to clinch
+//   - (With 66-pt gap and 75 remaining, Hamilton clinches if he extends lead by ≥9)
 //
 // Constructors' championship:
-//   - Mercedes cannot clinch at Austin; earliest opportunity is after Brazilian GP
-test('United States 2018 blog: Hamilton fifth championship clinch opportunity', () => {
-  const data = readCalculationResults(2018)!;
-  const usIdx = data.races.findIndex((r) => r.round === 18 && r.type === 'race');
+//   - Mercedes has already won the 2015 constructors' title before Austin
+test('2015-10-25 | Title permutations - how Hamilton can wrap it up in Austin', () => {
+  const data = readCalculationResults(2015)!;
+  const usIdx = data.races.findIndex((r) => r.round === 16 && r.type === 'race');
   const texts = renderInsights(data.driverLockInsights[String(usIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(usIdx)], data);
 
-  // Hamilton can guarantee P1 (title) by outscoring Vettel by 9 points
-  // Blog says "eight points" — system produces 9 (the strict ≥ threshold: 67 + 9 = 76 > 75)
-  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P1 in United States GP if outscores Sebastian Vettel by 9 points.'));
+  // Hamilton can guarantee P1 (title) with conditions on both Vettel and Rosberg
+  // Blog says "nine points over Vettel" — system produces 10 (the strict ≥ threshold)
+  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P1 in United States GP if outscores Sebastian Vettel by 10 points, Nico Rosberg by 3 points.'));
 
-  // Vettel P1 eliminated if outscored by Hamilton by 9 points
-  assert.ok(texts.includes('P1 is no longer possible for Sebastian Vettel in United States GP if is outscored by Lewis Hamilton by 9 points.'));
+  // Hamilton can guarantee P2 with only the Rosberg condition
+  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P2 in United States GP if outscores Nico Rosberg by 3 points.'));
 
-  // Mercedes cannot clinch constructors' at Austin; earliest is Brazilian GP
-  assert.ok(constructorTexts.includes('Mercedes can first guarantee at least P1 after Brazilian GP.'));
+  // Vettel is eliminated from P1 at Austin if Hamilton outscores him by enough
+  assert.ok(texts.includes('P1 is no longer possible for Sebastian Vettel in United States GP if is outscored by Lewis Hamilton by 10 points.'));
 
-  // TODO: The blog expresses the clinch in position-based terms (e.g., "Hamilton wins and Vettel
-  // finishes 3rd or lower") and includes a permutation chart image. Position-based clinch
-  // conditions are not yet generated.
-});
+  // Rosberg is eliminated from P1 at Austin if Hamilton outscores him enough
+  assert.ok(texts.includes('P1 is no longer possible for Nico Rosberg in United States GP if is outscored by Lewis Hamilton by 3 points.'));
 
-// Insights from: https://www.formula1.com/en/latest/article/title-permutations-how-hamilton-and-mercedes-can-be-crowned-champions-in.5dcz3gODYWuuIia8cgC4uo
-// Standings before Mexico 2018: Hamilton 346 pts, Vettel 276 pts (Hamilton leads by 70 pts)
-// Constructors: Mercedes 563, Ferrari 497 (Mercedes leads by 66 pts); Red Bull already locked P3
-// 3 races remain after Mexico; max 75 points available
-//
-// Lewis Hamilton:
-//   - Clinches if Vettel doesn't outscore him by more than 19 points
-//   - "All-or-nothing for Vettel" — must win and hope Hamilton hits misfortune
-//
-// Constructors' championship:
-//   - Mercedes can clinch at Mexico by outscoring Ferrari by 20 points
-//     (blog says 20 pts; system requires 21 for strict guarantee)
-//   - Red Bull have already clinched P3 in the constructors' standings
-test('Mexico 2018 blog: Hamilton clinches title, Mercedes win constructors\'', () => {
-  const data = readCalculationResults(2018)!;
-  const mexicoIdx = data.races.findIndex((r) => r.round === 19 && r.type === 'race');
-  const texts = renderInsights(data.driverLockInsights[String(mexicoIdx)], data);
-  const constructorTexts = renderInsights(data.constructorLockInsights[String(mexicoIdx)], data);
+  // Mercedes has already clinched the constructors' title before Austin
+  assert.ok(constructorTexts.includes('Mercedes has already locked in P1.'));
 
-  // Hamilton clinches P1 (title) if Vettel doesn't outscore him by more than 19 points
-  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P1 in Mexican GP if is not outscored by Sebastian Vettel by more than 19 points.'));
-
-  // Vettel P1 eliminated unless he outscores Hamilton by more than 19 points
-  assert.ok(texts.includes('P1 is no longer possible for Sebastian Vettel in Mexican GP if Sebastian Vettel does not outscore Lewis Hamilton by more than 19 points.'));
-
-  // Mercedes can clinch the constructors' title at Mexico
-  // Blog says "outscore Ferrari by 20 points" — system requires 21 (strict ≥ threshold)
-  assert.ok(constructorTexts.includes('Mercedes can guarantee at least P1 in Mexican GP if outscores Ferrari by 21 points.'));
-
-  // Ferrari P1 eliminated if outscored by Mercedes by 21 points
-  assert.ok(constructorTexts.includes('P1 is no longer possible for Ferrari in Mexican GP if is outscored by Mercedes by 21 points.'));
-
-  // Red Bull has already locked in P3 in the constructors' standings
-  assert.ok(constructorTexts.includes('Red Bull has already locked in P3.'));
-
-  // TODO: The blog expresses Vettel's path as "must win – and hope that Hamilton hits some form
-  // of misfortune." Position-based clinch/elimination conditions are not yet generated.
-});
-
-// Insights from: https://www.formula1.com/en/latest/article/what-does-verstappen-need-to-do-to-win-the-title-over-hamilton-in-saudi.24ex2L0wnanvf5ATHe0CCO
-// Standings before Saudi Arabia 2021: Verstappen 351.5 pts, Hamilton 343.5 pts (Verstappen leads by 8 pts)
-// Penultimate round; 1 race remains after Saudi (Abu Dhabi); max 26 pts available (race + fastest lap)
-//
-// Max Verstappen clinches at Saudi (position-based table from blog):
-//   - 1st + fastest lap:  Hamilton 6th or lower
-//   - 1st (no FL):        Hamilton 7th or lower
-//   - 2nd + fastest lap:  Hamilton outside points (11th or lower)
-//   - 2nd (no FL):        Hamilton does not score (DNF/DSQ)
-//
-// Lewis Hamilton:
-//   - Cannot clinch at Saudi; earliest is Abu Dhabi
-test('Saudi Arabia 2021 blog: Verstappen championship clinch opportunity', () => {
-  const data = readCalculationResults(2021)!;
-  const saudiIdx = data.races.findIndex((r) => r.round === 21 && r.type === 'race');
-  const texts = renderInsights(data.driverLockInsights[String(saudiIdx)], data);
-
-  // Verstappen can guarantee P1 (title) by outscoring Hamilton by 19 points
-  // Blog's top scenario: Verstappen wins (25) + Hamilton 7th or lower (≤6 pts) = 19+ margin
-  assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Saudi Arabian GP if outscores Lewis Hamilton by 19 points.'));
-
-  // Hamilton P1 eliminated if outscored by Verstappen by 19 points
-  assert.ok(texts.includes('P1 is no longer possible for Lewis Hamilton in Saudi Arabian GP if is outscored by Max Verstappen by 19 points.'));
-
-  // Hamilton cannot clinch at Saudi; earliest opportunity is Abu Dhabi
-  assert.ok(texts.includes('Lewis Hamilton can first guarantee at least P1 after Abu Dhabi GP.'));
-
-  // TODO: The blog provides a full position-by-position table with fastest-lap variants
-  // (e.g., "1st + FL → Hamilton 6th or lower", "2nd + FL → Hamilton outside points").
-  // Position-based and fastest-lap clinch conditions are not yet generated.
-});
-
-// Insights from: https://www.formula1.com/en/latest/article/what-to-watch-for-in-the-abu-dhabi-gp-the-championship-decider-nervous.1DFTdUW3mbcjM8ManPkbYJ
-// Standings before Abu Dhabi 2021: Verstappen 369.5 pts, Hamilton 369.5 pts (level on points!)
-// Both entered the finale tied; Verstappen leads on wins count (9 to 8) — tiebreaker in his favour
-// Final race of the season
-//
-// Championship rule: whoever finishes ahead wins, as long as both are in the top eight
-//   - If both finish level on points: Verstappen wins (more wins)
-//   - Tie scenarios: both DNF, both outside top 10, or Hamilton P9 + Verstappen P10 + Verstappen fastest lap
-//
-// Constructors' championship:
-//   - Mercedes 587.5 pts, Red Bull 559.5 pts (Mercedes leads by 28 pts)
-//   - Red Bull must outscore Mercedes by 28 pts to clinch; blog says 28, system requires 29
-test('Abu Dhabi 2021 blog: Verstappen vs Hamilton title decider', () => {
-  const data = readCalculationResults(2021)!;
-  const abuDhabiIdx = data.races.findIndex((r) => r.round === 22 && r.type === 'race');
-  const texts = renderInsights(data.driverLockInsights[String(abuDhabiIdx)], data);
-  const constructorTexts = renderInsights(data.constructorLockInsights[String(abuDhabiIdx)], data);
-
-  // Both drivers need only 1 point margin to lock in P1 (tied on points entering the race)
-  assert.ok(texts.includes('Max Verstappen can guarantee at least P1 in Abu Dhabi GP if outscores Lewis Hamilton by 1 points.'));
-  assert.ok(texts.includes('Lewis Hamilton can guarantee at least P1 in Abu Dhabi GP if outscores Max Verstappen by 1 points.'));
-
-  // Each driver's P1 is eliminated if outscored by the other by 1 point
-  assert.ok(texts.includes('P1 is no longer possible for Max Verstappen in Abu Dhabi GP if is outscored by Lewis Hamilton by 1 points.'));
-  assert.ok(texts.includes('P1 is no longer possible for Lewis Hamilton in Abu Dhabi GP if is outscored by Max Verstappen by 1 points.'));
-
-  // Bottas and Pérez have already locked in P3 and P4 respectively
-  assert.ok(texts.includes('Valtteri Bottas has already locked in P3.'));
-  assert.ok(texts.includes('Sergio Pérez has already locked in P4.'));
-
-  // Red Bull constructors: need to outscore Mercedes by 29 to win (blog says 28)
-  assert.ok(constructorTexts.includes('Red Bull can guarantee at least P1 in Abu Dhabi GP if outscores Mercedes by 29 points.'));
-
-  // Mercedes constructors: guaranteed P1 if not outscored by Red Bull by more than 27
-  assert.ok(constructorTexts.includes('Mercedes can guarantee at least P1 in Abu Dhabi GP if is not outscored by Red Bull by more than 27 points.'));
-
-  // TODO: The blog describes the tiebreaker rule ("tied on points → Verstappen wins via wins count")
-  // and edge-case tie scenarios (both DNF, or Hamilton 9th + Verstappen 10th + FL). Tiebreaker
-  // logic and fastest-lap tie scenarios are not yet expressed as distinct insights.
-});
-
-// Insights from: https://www.formula1.com/en/latest/article/points-permutations-how-red-bull-can-seal-their-first-constructors-title.642CzC8rC2a20cSbbxswyv
-// Standings before United States 2022: Verstappen 366 pts (already champion), Leclerc 252 pts, Pérez 253 pts
-// Constructors: Red Bull 619, Ferrari 454 (Red Bull leads by 165 pts); 191 pts remain across 4 rounds
-//
-// Red Bull clinch constructors' at Austin:
-//   - "Need to hold an advantage of 147 points at end of Austin weekend"
-//   - Win (no fastest lap): Ferrari 1-2 (no FL) is not enough to prevent clinch
-//   - Clinch if Ferrari fails to outscore Red Bull by 19 pts (blog figure; system requires 18 margin)
-//
-// Ferrari:
-//   - Must outscore Red Bull by 19 pts to stay alive, requiring a 1-2 finish with fastest lap
-test('United States 2022 blog: Red Bull clinch first constructors\' title since 2013', () => {
-  const data = readCalculationResults(2022)!;
-  const usIdx = data.races.findIndex((r) => r.round === 19 && r.type === 'race');
-  const texts = renderInsights(data.driverLockInsights[String(usIdx)], data);
-  const constructorTexts = renderInsights(data.constructorLockInsights[String(usIdx)], data);
-
-  // Verstappen already locked in P1 (drivers' champion)
-  assert.ok(texts.includes('Max Verstappen has already locked in P1.'));
-
-  // Red Bull can guarantee constructors' P1 at Austin if not outscored by Ferrari by more than 17 pts
-  assert.ok(constructorTexts.includes('Red Bull can guarantee at least P1 in United States GP if is not outscored by Ferrari by more than 17 points.'));
-
-  // Ferrari P1 eliminated if they don't outscore Red Bull by more than 17 points
-  assert.ok(constructorTexts.includes('P1 is no longer possible for Ferrari in United States GP if Ferrari does not outscore Red Bull by more than 17 points.'));
-
-  // TODO: The blog provides the exact "147-point threshold" and specific race-result combinations
-  // (e.g., "Red Bull 1-2 clinches", "Ferrari 1-2 + fastest lap required to stay alive").
-  // Position-based clinch conditions and fastest-lap variants are not yet generated.
-});
-
-// Insights from: https://www.formula1.com/en/latest/article/what-do-mclaren-need-to-do-to-win-the-2024-constructors-championship-in.6wkARNJU3HGjZnq2vaLeAM
-// Standings before Abu Dhabi 2024: Verstappen 429 pts (already champion), Norris 349 pts, Leclerc 341 pts
-// Constructors: McLaren 640, Ferrari 619, Red Bull 581 (McLaren leads Ferrari by 21 pts)
-// 44 points maximum available; McLaren needs 24 points (or 23 if Ferrari doesn't win) to clinch
-//
-// McLaren constructors:
-//   - A race victory alone is enough to guarantee the title
-//   - Must score 24 points to guarantee the title regardless of Ferrari
-//
-// Ferrari constructors:
-//   - Must outscore McLaren by 22 points to win the title
-//
-// Constructors already decided:
-//   - Red Bull can no longer win the title (eliminated after Qatar Sprint)
-//   - Mercedes has already locked in P4
-test('Abu Dhabi 2024 blog: McLaren win constructors\' championship', () => {
-  const data = readCalculationResults(2024)!;
-  const abuDhabiIdx = data.races.findIndex((r) => r.round === 24 && r.type === 'race');
-  const driverTexts = renderInsights(data.driverLockInsights[String(abuDhabiIdx)], data);
-  const constructorTexts = renderInsights(data.constructorLockInsights[String(abuDhabiIdx)], data);
-
-  // Verstappen has already locked in P1 (drivers' champion)
-  assert.ok(driverTexts.includes('Max Verstappen has already locked in P1.'));
-
-  // McLaren can guarantee constructors' P1 if not outscored by Ferrari by more than 20 pts
-  assert.ok(constructorTexts.includes('McLaren can guarantee at least P1 in Abu Dhabi GP if is not outscored by Ferrari by more than 20 points.'));
-
-  // Ferrari can guarantee constructors' P1 only by outscoring McLaren by 22 pts
-  assert.ok(constructorTexts.includes('Ferrari can guarantee at least P1 in Abu Dhabi GP if outscores McLaren by 22 points and is not outscored by Red Bull by more than 37 points.'));
-
-  // McLaren P1 eliminated if outscored by Ferrari by 22 pts
-  assert.ok(constructorTexts.includes('P1 is no longer possible for McLaren in Abu Dhabi GP if is outscored by Ferrari by 22 points.'));
-
-  // Ferrari P1 eliminated if they don't outscore McLaren by more than 20 pts
-  assert.ok(constructorTexts.includes('P1 is no longer possible for Ferrari in Abu Dhabi GP if Ferrari does not outscore McLaren by more than 20 points.'));
-
-  // Mercedes has already secured P4 in the constructors' standings
-  assert.ok(constructorTexts.includes('Mercedes has already locked in P4.'));
-
-  // TODO: The blog provides specific race-result combinations ("a win alone is enough for McLaren",
-  // "McLaren needs 24 pts or 23 if Ferrari doesn't win"). Position-based clinch conditions and
-  // scenario-based "if Ferrari scores zero" variants are not yet generated.
-});
-
-// Insights from: https://www.formula1.com/en/latest/article/points-permutations-how-can-mclaren-win-the-2025-constructors-championship.SXmo98z0aCzJ4L1oVdf2b
-// Standings before Singapore 2025: McLaren 623 pts, Mercedes 290 pts (gap 333), Ferrari 286 pts (gap 337)
-// Red Bull 272 pts — already mathematically eliminated from P1 after Azerbaijan GP
-// 7 rounds remain with 346 points available
-//
-// McLaren constructors:
-//   - Can clinch with just 13 points in Singapore (one car on the podium is enough)
-//   - A 333-point lead means even worst-case outcomes can't cost them the title beyond Singapore
-//
-// Mercedes:
-//   - Must outscore McLaren by 31 points at Singapore to prevent McLaren from clinching
-//
-// Ferrari:
-//   - Must outscore McLaren by 35 points at Singapore to prevent McLaren from clinching
-//
-// Red Bull:
-//   - Already eliminated from the constructors' title after the Azerbaijan Grand Prix
-test('Singapore 2025 blog: McLaren win constructors\' championship', () => {
-  const data = readCalculationResults(2025)!;
-  const singaporeIdx = data.races.findIndex((r) => r.round === 18 && r.type === 'race');
-  const constructorTexts = renderInsights(data.constructorLockInsights[String(singaporeIdx)], data);
-
-  // McLaren can guarantee constructors' P1 at Singapore with conditions on both Mercedes and Ferrari
-  assert.ok(constructorTexts.includes('McLaren can guarantee at least P1 in Singapore GP if is not outscored by Mercedes by more than 29 points, Ferrari by more than 33 points.'));
-
-  // McLaren can guarantee P2 with only the Ferrari condition
-  assert.ok(constructorTexts.includes('McLaren can guarantee at least P2 in Singapore GP if is not outscored by Ferrari by more than 33 points.'));
-
-  // Mercedes P1 eliminated at Singapore unless they outscore McLaren by more than 29 pts
-  assert.ok(constructorTexts.includes('P1 is no longer possible for Mercedes in Singapore GP if Mercedes does not outscore McLaren by more than 29 points.'));
-
-  // Ferrari P1 eliminated at Singapore unless they outscore McLaren by more than 33 pts
-  assert.ok(constructorTexts.includes('P1 is no longer possible for Ferrari in Singapore GP if Ferrari does not outscore McLaren by more than 33 points.'));
-
-  // Red Bull already eliminated from P1 before Singapore — no P1 insight appears for them
-  assert.ok(!constructorTexts.some((t) => t.startsWith('Red Bull can guarantee at least P1')));
-  assert.ok(!constructorTexts.some((t) => t.startsWith('P1 is no longer possible for Red Bull in Singapore')));
-
-  // TODO: The blog expresses McLaren's clinch as "just 13 points = one car on the podium".
-  // Position-based clinch conditions ("finish P3 or better") are not yet generated.
-});
-
-// Insights from: https://www.formula1.com/en/latest/article/points-permutations-when-is-the-earliest-norris-could-claim-the-world.T4F6V6THiKksJ6GdcYfvo
-// Standings before Las Vegas 2025: Norris 390 pts, Piastri 366 pts (gap 24), Verstappen 341 pts (gap 49)
-// Maximum 83 points available across the three final weekends (Las Vegas, Qatar sprint+race, Abu Dhabi)
-//
-// Lando Norris:
-//   - Cannot clinch at Las Vegas; earliest possible is Qatar Sprint (under best-case scenario)
-//   - Wins tiebreaker: Norris 8 wins vs Verstappen 7 — relevant if they tie on total points
-//
-// Constructors' championship:
-//   - McLaren have already clinched the constructors' title before Las Vegas
-test('Las Vegas 2025 blog: earliest Norris championship clinch analysis', () => {
-  const data = readCalculationResults(2025)!;
-  const lasVegasIdx = data.races.findIndex((r) => r.round === 22 && r.type === 'race');
-  const texts = renderInsights(data.driverLockInsights[String(lasVegasIdx)], data);
-  const constructorTexts = renderInsights(data.constructorLockInsights[String(lasVegasIdx)], data);
-
-  // Norris can guarantee P2 at Las Vegas by outscoring Verstappen by 10 points
-  // (49-pt lead + 10 more = 59 > 58 remaining max → Verstappen can't catch Norris)
-  assert.ok(texts.includes('Lando Norris can guarantee at least P2 in Las Vegas GP if outscores Max Verstappen by 10 points.'));
-
-  // Norris cannot clinch P1 at Las Vegas; earliest is Abu Dhabi GP
-  assert.ok(texts.includes('Lando Norris can first guarantee at least P1 after Abu Dhabi GP.'));
-
-  // Piastri also cannot clinch at Las Vegas; earliest is Abu Dhabi GP
-  assert.ok(texts.includes('Oscar Piastri can first guarantee at least P1 after Abu Dhabi GP.'));
-
-  // Verstappen P1 eliminated at Las Vegas if outscored by Norris by 10 points
-  assert.ok(texts.includes('P1 is no longer possible for Max Verstappen in Las Vegas GP if is outscored by Lando Norris by 10 points.'));
-
-  // Verstappen also cannot clinch at Las Vegas; earliest is Abu Dhabi GP
-  assert.ok(texts.includes('Max Verstappen can first guarantee at least P1 after Abu Dhabi GP.'));
-
-  // McLaren have already locked in the constructors' title
-  assert.ok(constructorTexts.includes('McLaren has already locked in P1.'));
-
-  // TODO: The blog identifies the Qatar Sprint as the earliest clinch opportunity under the
-  // best-case scenario ("Norris wins Las Vegas + rivals score zero → needs P7 in Sprint").
-  // Our system does not distinguish Sprint from GP for earliest-clinch calculations — it
-  // reports Abu Dhabi GP as the earliest regardless of sprint scenarios.
-});
-
-// Insights from: https://www.formula1.com/en/latest/article/championship-permutations-can-norris-still-win-the-title-in-qatar-after-his.6Yl07za0DPgfybgFrUXE6u
-// Standings before Qatar GP 2025 (after Qatar Sprint): Norris 396 pts, Piastri 374 pts, Verstappen 371 pts
-// 50 points remain across two races (Qatar GP + Abu Dhabi GP)
-//
-// Lando Norris:
-//   - Wins Qatar → champion regardless of where Piastri and Verstappen finish
-//   - Can also clinch without winning if rivals finish far enough behind
-//
-// Max Verstappen:
-//   - "Must beat Norris in Sunday's race" to keep title fight alive into Abu Dhabi
-//
-// Oscar Piastri:
-//   - "Must not be outscored by four or more points" to keep title hopes alive
-test('Qatar 2025 blog: Norris can clinch championship at Qatar Grand Prix', () => {
-  const data = readCalculationResults(2025)!;
-  const qatarIdx = data.races.findIndex((r) => r.round === 23 && r.type === 'race');
-  const texts = renderInsights(data.driverLockInsights[String(qatarIdx)], data);
-
-  // Norris can guarantee P1 (title) by outscoring Piastri by 4 and Verstappen by 1
-  // (Norris wins = 25 pts; need 25 > Piastri's score + 3 and 25 > Verstappen's score)
-  assert.ok(texts.includes('Lando Norris can guarantee at least P1 in Qatar GP if outscores Oscar Piastri by 4 points, Max Verstappen by 1 points.'));
-
-  // Norris can guarantee P2 with only the Verstappen condition
-  assert.ok(texts.includes('Lando Norris can guarantee at least P2 in Qatar GP if outscores Max Verstappen by 1 points.'));
-
-  // Piastri P1 eliminated if Norris outscores him by 4 points
-  assert.ok(texts.includes('P1 is no longer possible for Oscar Piastri in Qatar GP if is outscored by Lando Norris by 4 points.'));
-
-  // Verstappen P1 eliminated if Norris outscores him by 1 point (= Norris finishes ahead of Verstappen)
-  assert.ok(texts.includes('P1 is no longer possible for Max Verstappen in Qatar GP if is outscored by Lando Norris by 1 points.'));
-
-  // TODO: The blog says "if Norris wins, he's champion regardless." Our system expresses this
-  // as points-margin conditions rather than position-based finishing scenarios.
-  // The exact scenario where Verstappen must "beat Norris" to keep the title alive is implicit
-  // in the points-margin insight but not expressed as a direct position comparison.
+  // TODO: The blog expresses conditions as finishing positions ("outscore Vettel by nine
+  // points"), meaning Hamilton winning and Vettel finishing P3 or lower (25-15=10) or Hamilton
+  // P2 and Vettel outside the points. Position-based clinch conditions are not yet generated.
 });
