@@ -176,6 +176,7 @@ export type LockInsight =
       nextRaceNum: number;
       mustOutscoreBy: LockCondition[];
       cannotBeOutscoredByMoreThan: LockCondition[];
+      minFinishPos?: number;
     }
   | {
       type: "can_be_locked_in_later";
@@ -196,13 +197,6 @@ export type LockInsight =
       entityId: string;
       position: number;
       earliestRaceNum: number;
-    }
-  | {
-      type: "can_be_locked_in_next_race_with_finish";
-      entityId: string;
-      position: number;
-      nextRaceNum: number;
-      minFinishPos: number;
     };
 
 /** lockInsights[afterRaceNum] — race number is 1-based */
@@ -471,6 +465,9 @@ export function computeLockInsightsForSelectedRace(
         if (!nextPlan) continue;
         if (!hasGuaranteeConditions(nextPlan)) continue;
 
+        const nextRace = data.races[nextRaceNum - 1];
+        const minFinishPos = nextRace ? practicalFinishForGuaranteedLock(nextPlan, nextRace) : null;
+
         insights.push({
           type: "can_be_locked_in_next_race",
           entityId: entity.id,
@@ -478,21 +475,8 @@ export function computeLockInsightsForSelectedRace(
           nextRaceNum,
           mustOutscoreBy: nextPlan.mustOutscoreBy,
           cannotBeOutscoredByMoreThan: nextPlan.cannotBeOutscoredByMoreThan,
+          ...(minFinishPos !== null ? { minFinishPos } : {}),
         });
-
-        const nextRace = data.races[nextRaceNum - 1];
-        if (nextRace) {
-          const minFinishPos = practicalFinishForGuaranteedLock(nextPlan, nextRace);
-          if (minFinishPos !== null) {
-            insights.push({
-              type: "can_be_locked_in_next_race_with_finish",
-              entityId: entity.id,
-              position,
-              nextRaceNum,
-              minFinishPos,
-            });
-          }
-        }
       }
 
       for (
