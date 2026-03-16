@@ -28,15 +28,13 @@ export function renderInsightText(
     return `${entityName} could first lose the ability to finish ${positionLabel} after ${race?.fullLabel ?? `race ${insight.earliestRaceNum}`}.`;
   }
 
-  if (insight.type === "can_be_locked_in_by_finishing") {
-    const race = races[insight.nextRaceNum - 1];
-    return `${entityName} can guarantee at least ${positionLabel} in ${race?.fullLabel ?? "the next event"} by finishing P${insight.finishAtOrBetter} or better.`;
-  }
-
   const race = races[insight.nextRaceNum - 1];
   const details: string[] = [];
 
   if (insight.type === "can_be_locked_in_next_race") {
+    if (insight.finishAtOrBetter !== undefined) {
+      return `${entityName} can guarantee at least ${positionLabel} in ${race?.fullLabel ?? "the next event"} by finishing P${insight.finishAtOrBetter} or better.`;
+    }
     if (insight.mustOutscoreBy.length) {
       details.push(
         `outscores ${insight.mustOutscoreBy

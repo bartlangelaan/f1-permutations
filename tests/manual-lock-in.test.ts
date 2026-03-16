@@ -52,7 +52,7 @@ test("Lock-in insight: Verstappen exposes every next-race minimum lock from P1 t
   );
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P4 in Singapore GP if is not outscored by Carlos Sainz by more than 9 points.",
+      "Max Verstappen can guarantee at least P4 in Singapore GP by finishing P2 or better.",
     ),
   );
 });

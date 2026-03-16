@@ -100,17 +100,17 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
   );
   const texts = renderInsights(data.driverLockInsights[String(afterRaceNum)], data);
 
-  // Norris can guarantee P1 (championship win) with conditions on Verstappen and Piastri
+  // Norris clinches P1 (championship) by finishing P3 or better, regardless of rivals
   assert.ok(
     texts.includes(
-      "Lando Norris can guarantee at least P1 in Abu Dhabi GP if is not outscored by Max Verstappen by more than 11 points, Oscar Piastri by more than 15 points.",
+      "Lando Norris can guarantee at least P1 in Abu Dhabi GP by finishing P3 or better.",
     ),
   );
 
-  // Norris can guarantee P2 with a condition only on Piastri
+  // Norris secures at least P2 by finishing P5 or better
   assert.ok(
     texts.includes(
-      "Lando Norris can guarantee at least P2 in Abu Dhabi GP if is not outscored by Oscar Piastri by more than 15 points.",
+      "Lando Norris can guarantee at least P2 in Abu Dhabi GP by finishing P5 or better.",
     ),
   );
 
@@ -121,10 +121,10 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
     ),
   );
 
-  // Verstappen can guarantee P2 with a condition only on Piastri
+  // Verstappen can guarantee P2 by winning the race (only P1 is enough to beat Piastri's best)
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P2 in Abu Dhabi GP if is not outscored by Oscar Piastri by more than 3 points.",
+      "Max Verstappen can guarantee at least P2 in Abu Dhabi GP by finishing P1 or better.",
     ),
   );
 
@@ -153,20 +153,6 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
   assert.ok(
     texts.includes(
       "P1 is no longer possible for Oscar Piastri in Abu Dhabi GP if Oscar Piastri does not outscore Lando Norris by more than 15 points.",
-    ),
-  );
-
-  // Norris clinches P1 (championship) by finishing P3 or better, regardless of rivals
-  assert.ok(
-    texts.includes(
-      "Lando Norris can guarantee at least P1 in Abu Dhabi GP by finishing P3 or better.",
-    ),
-  );
-
-  // Norris secures at least P2 by finishing P5 or better
-  assert.ok(
-    texts.includes(
-      "Lando Norris can guarantee at least P2 in Abu Dhabi GP by finishing P5 or better.",
     ),
   );
 
@@ -484,17 +470,17 @@ test("2024-11-01 | What Verstappen needs to do to take his fourth title in Las V
   const texts = renderInsights(data.driverLockInsights[String(lasVegasIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(lasVegasIdx)], data);
 
-  // Verstappen can guarantee P1 (championship) in Las Vegas with conditions on Norris and Leclerc
+  // Verstappen can guarantee P1 (championship) by winning (any Norris/Leclerc result is irrelevant)
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P1 in Las Vegas GP if is not outscored by Lando Norris by more than 1 points, Charles Leclerc by more than 25 points.",
+      "Max Verstappen can guarantee at least P1 in Las Vegas GP by finishing P1 or better.",
     ),
   );
 
-  // Verstappen can guarantee P2 with only a Leclerc condition
+  // Verstappen can guarantee P2 even finishing P10 (Leclerc too far back to threaten)
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P2 in Las Vegas GP if is not outscored by Charles Leclerc by more than 25 points.",
+      "Max Verstappen can guarantee at least P2 in Las Vegas GP by finishing P10 or better.",
     ),
   );
 
@@ -556,10 +542,10 @@ test("2023-09-12 | POINTS PERMUTATIONS: How Verstappen can become the 2023 F1 wo
   const qatarSprintIdx = data.races.findIndex((r) => r.round === 17 && r.type === "sprint");
   const sprintTexts = renderInsights(data.driverLockInsights[String(qatarSprintIdx)], data);
 
-  // Verstappen can guarantee P1 (title) in Qatar Sprint if not outscored by Pérez by more than 4 points
+  // Verstappen can guarantee P1 (title) in Qatar Sprint by finishing P5 or better
   assert.ok(
     sprintTexts.includes(
-      "Max Verstappen can guarantee at least P1 in R20 Qatar GP Sprint if is not outscored by Sergio Pérez by more than 4 points.",
+      "Max Verstappen can guarantee at least P1 in R20 Qatar GP Sprint by finishing P5 or better.",
     ),
   );
 
@@ -676,10 +662,10 @@ test("2022-10-03 | POINTS PERMUTATIONS: What Verstappen needs to do to win his s
     ),
   );
 
-  // Verstappen can guarantee at least P3 with only the Russell condition
+  // Verstappen can guarantee at least P3 by finishing P10 or better (Russell too far back)
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P3 in Japanese GP if is not outscored by George Russell by more than 25 points.",
+      "Max Verstappen can guarantee at least P3 in Japanese GP by finishing P10 or better.",
     ),
   );
 
@@ -930,10 +916,10 @@ test("2018-10-25 | TITLE PERMUTATIONS: How Hamilton - and Mercedes - can be crow
   const texts = renderInsights(data.driverLockInsights[String(mexicoIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(mexicoIdx)], data);
 
-  // Hamilton clinches P1 (title) if Vettel doesn't outscore him by more than 19 points
+  // Hamilton clinches P1 (title) by finishing P7 or better (Vettel too far back to catch up regardless)
   assert.ok(
     texts.includes(
-      "Lewis Hamilton can guarantee at least P1 in Mexican GP if is not outscored by Sebastian Vettel by more than 19 points.",
+      "Lewis Hamilton can guarantee at least P1 in Mexican GP by finishing P7 or better.",
     ),
   );
 
@@ -1028,11 +1014,11 @@ test("2016-10-26 | The 2016 title permutations for Sunday in Abu Dhabi", () => {
   const texts = renderInsights(data.driverLockInsights[String(abuDhabiIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(abuDhabiIdx)], data);
 
-  // Rosberg can guarantee P1 (title) if not outscored by Hamilton by more than 11 points
+  // Rosberg can guarantee P1 (title) by finishing P3 or better
   // (12-pt lead; tie on points → Rosberg wins on wins count; Hamilton needs 13+ to flip it)
   assert.ok(
     texts.includes(
-      "Nico Rosberg can guarantee at least P1 in Abu Dhabi GP if is not outscored by Lewis Hamilton by more than 11 points.",
+      "Nico Rosberg can guarantee at least P1 in Abu Dhabi GP by finishing P3 or better.",
     ),
   );
 
