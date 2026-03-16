@@ -79,8 +79,8 @@ function renderInsights(insights: LockInsight[] | undefined, data: CalculatedCha
 //
 // Lando Norris:
 //   - Finishes P1, P2, or P3 → wins championship regardless of rivals
-//   - Finishes P4 or P5 → wins if Verstappen finishes P2 or worse AND Piastri doesn't win
-//   - Finishes P6 or P7 → wins if both Verstappen and Piastri finish outside the top 2
+//   - Finishes P4 or P5 → wins if Verstappen finishes P2 or worse (Piastri can win and Norris still leads)
+//   - Finishes P6 or P7 → wins if both Verstappen and Piastri finish P2 or worse (neither wins the race)
 //   - Finishes P8 → wins if Verstappen finishes P3 or worse AND Piastri finishes P2 or worse
 //   - Finishes P9 or lower → needs increasingly specific results from competitors
 //
