@@ -65,13 +65,13 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import type { CalculatedChartData, LockInsight } from "../lib/calculate.ts";
 import { readCalculationResults } from "../lib/calculation-results.ts";
-import { renderInsightText } from "../lib/render-insight.ts";
+import { renderInsightTexts } from "../lib/render-insight.ts";
 
 function renderInsights(insights: LockInsight[] | undefined, data: CalculatedChartData): string[] {
   const entitiesById = new Map(
     [...data.drivers, ...data.constructors].map((e) => [e.id, { name: e.name }]),
   );
-  return (insights ?? []).map((i) => renderInsightText(i, data.races, entitiesById));
+  return (insights ?? []).flatMap((i) => renderInsightTexts(i, data.races, entitiesById));
 }
 
 // Insights from: https://www.formula1.com/en/latest/article/championship-permutations-where-does-norris-need-to-finish-in-abu-dhabi-to.DtWufByimYARjI5kujzt3

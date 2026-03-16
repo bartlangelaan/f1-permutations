@@ -6376,73 +6376,65 @@
       "nextRaceNum": 14,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [],
-      "entityFinishPos": 1,
-      "rivalConstraints": [
+      "positionCombinations": [
         {
-          "opponentId": "alonso",
-          "maxFinishPos": 5
+          "entityFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxFinishPos": 5
+            },
+            {
+              "opponentId": "webber",
+              "maxFinishPos": 3
+            },
+            {
+              "opponentId": "button",
+              "maxFinishPos": 3
+            }
+          ]
         },
         {
-          "opponentId": "webber",
-          "maxFinishPos": 3
+          "entityFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxFinishPos": 8
+            },
+            {
+              "opponentId": "webber",
+              "maxFinishPos": 6
+            },
+            {
+              "opponentId": "button",
+              "maxFinishPos": 6
+            },
+            {
+              "opponentId": "hamilton",
+              "maxFinishPos": 3
+            }
+          ]
         },
         {
-          "opponentId": "button",
-          "maxFinishPos": 3
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "vettel",
-      "position": 1,
-      "nextRaceNum": 14,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "entityFinishPos": 2,
-      "rivalConstraints": [
-        {
-          "opponentId": "alonso",
-          "maxFinishPos": 8
-        },
-        {
-          "opponentId": "webber",
-          "maxFinishPos": 6
-        },
-        {
-          "opponentId": "button",
-          "maxFinishPos": 6
-        },
-        {
-          "opponentId": "hamilton",
-          "maxFinishPos": 3
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "vettel",
-      "position": 1,
-      "nextRaceNum": 14,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "entityFinishPos": 3,
-      "rivalConstraints": [
-        {
-          "opponentId": "alonso",
-          "maxFinishPos": 10
-        },
-        {
-          "opponentId": "webber",
-          "maxFinishPos": 7
-        },
-        {
-          "opponentId": "button",
-          "maxFinishPos": 7
-        },
-        {
-          "opponentId": "hamilton",
-          "maxFinishPos": 4
+          "entityFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxFinishPos": 10
+            },
+            {
+              "opponentId": "webber",
+              "maxFinishPos": 7
+            },
+            {
+              "opponentId": "button",
+              "maxFinishPos": 7
+            },
+            {
+              "opponentId": "hamilton",
+              "maxFinishPos": 4
+            }
+          ]
         }
       ]
     }

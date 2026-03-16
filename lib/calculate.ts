@@ -178,15 +178,15 @@ export type LockInsight =
       cannotBeOutscoredByMoreThan: LockCondition[];
       minFinishPos?: number;
       /**
-       * When present, this insight represents a specific race-finishing-position combination
-       * rather than a points-margin condition. `entityFinishPos` is the finishing position
-       * the entity takes in the next race; `rivalConstraints` lists the worst position each
-       * relevant rival can occupy while the entity still guarantees `position`. An empty
-       * array means the entity wins regardless of rivals' finishing positions.
-       * One insight is emitted per valid combination so each renders as a standalone sentence.
+       * When present, lists every race-finishing-position combination that guarantees
+       * `position`. Each entry pairs the entity's own race finishing position with the
+       * rival constraints that must hold simultaneously. An empty `rivalConstraints`
+       * array means the entity wins regardless of where rivals finish.
        */
-      entityFinishPos?: number;
-      rivalConstraints?: Array<{ opponentId: string; maxFinishPos: number }>;
+      positionCombinations?: Array<{
+        entityFinishPos: number;
+        rivalConstraints: Array<{ opponentId: string; maxFinishPos: number }>;
+      }>;
     }
   | {
       type: "can_be_locked_in_later";
@@ -725,7 +725,7 @@ export function computeLockInsightsForSelectedRace(
           pointsRemainingAfterNext,
         );
 
-        for (const combo of combinations) {
+        if (combinations.length > 0) {
           insights.push({
             type: "can_be_locked_in_next_race",
             entityId: entity.id,
@@ -733,8 +733,7 @@ export function computeLockInsightsForSelectedRace(
             nextRaceNum,
             mustOutscoreBy: [],
             cannotBeOutscoredByMoreThan: [],
-            entityFinishPos: combo.entityFinishPos,
-            rivalConstraints: combo.rivalConstraints,
+            positionCombinations: combinations,
           });
         }
       }

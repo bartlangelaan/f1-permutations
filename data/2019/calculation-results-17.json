@@ -2800,26 +2800,24 @@
       "nextRaceNum": 18,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [],
-      "entityFinishPos": 1,
-      "rivalConstraints": [
+      "positionCombinations": [
         {
-          "opponentId": "bottas",
-          "maxFinishPos": 5
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "hamilton",
-      "position": 1,
-      "nextRaceNum": 18,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "entityFinishPos": 2,
-      "rivalConstraints": [
+          "entityFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "bottas",
+              "maxFinishPos": 5
+            }
+          ]
+        },
         {
-          "opponentId": "bottas",
-          "maxFinishPos": 9
+          "entityFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "bottas",
+              "maxFinishPos": 9
+            }
+          ]
         }
       ]
     }

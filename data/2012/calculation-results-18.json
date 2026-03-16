@@ -7176,26 +7176,24 @@
       "nextRaceNum": 19,
       "mustOutscoreBy": [],
       "cannotBeOutscoredByMoreThan": [],
-      "entityFinishPos": 1,
-      "rivalConstraints": [
+      "positionCombinations": [
         {
-          "opponentId": "alonso",
-          "maxFinishPos": 6
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "vettel",
-      "position": 1,
-      "nextRaceNum": 19,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "entityFinishPos": 2,
-      "rivalConstraints": [
+          "entityFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxFinishPos": 6
+            }
+          ]
+        },
         {
-          "opponentId": "alonso",
-          "maxFinishPos": 9
+          "entityFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxFinishPos": 9
+            }
+          ]
         }
       ]
     }
