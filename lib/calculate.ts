@@ -103,6 +103,30 @@ function maxOvertakesSingleDriverRace(
   return alreadyAhead + additionalOvertakes;
 }
 
+/**
+ * Base driver points by finishing position for a race, without the fastest-lap bonus.
+ * Used for conservative "unconditional guarantee" calculations: the entity may not score
+ * the fastest-lap point, so we credit only the base finishing-position score.
+ */
+function driverBasePointsByPosition(year: number, race: TimelineRace): number[] {
+  if (race.type === "sprint") {
+    return sprintDriverPointsByPosition(year);
+  }
+  // For regular races with a fastest-lap bonus (2019–2024), subtract 1 from each position's max.
+  const maxPts = raceDriverMaxPointsByPosition(year);
+  const hasFl = maxPts[0] > 25; // fastest-lap years have P1 max = 26
+  if (hasFl) {
+    return maxPts.map((p) => p - 1);
+  }
+  // Handle double-points race (2014 Abu Dhabi)
+  const standardMax = maxRacePointsDriver(year);
+  if (race.maxDriverPoints !== standardMax) {
+    const multiplier = race.maxDriverPoints / standardMax;
+    return maxPts.map((p) => p * multiplier);
+  }
+  return maxPts;
+}
+
 function driverPointsByPositionForRace(year: number, race: TimelineRace): number[] {
   if (race.type === "sprint") {
     return sprintDriverPointsByPosition(year);
@@ -176,6 +200,14 @@ export type LockInsight =
       nextRaceNum: number;
       mustOutscoreBy: LockCondition[];
       cannotBeOutscoredByMoreThan: LockCondition[];
+    }
+  | {
+      type: "can_be_locked_in_by_finishing";
+      entityId: string;
+      position: number;
+      nextRaceNum: number;
+      /** Worst finishing position (1-based) that guarantees `position` regardless of all rivals' results. */
+      finishAtOrBetter: number;
     }
   | {
       type: "can_be_locked_in_later";
@@ -358,6 +390,61 @@ function hasRuleOutConditions(plan: {
   return plan.mustBeOutscoredBy.length > 0 || plan.cannotOutscoreByMoreThan.length > 0;
 }
 
+/**
+ * Returns the worst finishing position (1-based) at the next race that unconditionally
+ * guarantees `position` in the championship — i.e., even if all rivals score maximum
+ * at the next race and all subsequent races.
+ *
+ * Returns null if no such finishing position exists (rivals can always prevent the guarantee).
+ *
+ * Only applicable for drivers, since constructors have no simple per-finishing-position points table.
+ */
+function findUnconditionalGuaranteeFinishingPos(
+  entityId: string,
+  position: number,
+  entityIds: string[],
+  basePts: Map<string, number>,
+  /** Base points by finishing position (descending), e.g. [25, 18, 15, ...]. No fastest-lap bonus. */
+  basePointsTable: number[],
+  /** Maximum points any rival can score at the next race (may include fastest-lap bonus). */
+  nextRaceMaxPoints: number,
+  pointsRemainingAfterNext: number,
+): number | null {
+  const entityPts = basePts.get(entityId) ?? 0;
+  const opponents = entityIds.filter((id) => id !== entityId);
+
+  // Sort rivals by their best possible final score, descending (hardest to stay ahead of first).
+  const opponentMaxFinals = opponents
+    .map((id) => (basePts.get(id) ?? 0) + nextRaceMaxPoints + pointsRemainingAfterNext)
+    .sort((a, b) => b - a);
+
+  // To guarantee championship `position`, entity can allow at most (position - 1) rivals to finish
+  // above it. Entity must therefore beat the rival at index (position - 1) in the sorted list
+  // (the position-th strongest rival).
+  if (position - 1 >= opponentMaxFinals.length) return null;
+
+  // The hardest rival that entity must beat to guarantee `position`.
+  const hardestRivalMaxFinal = opponentMaxFinals[position - 1];
+
+  // Points entity needs at the next race so that entity's minimum total > hardestRivalMaxFinal.
+  const requiredNextRacePoints = hardestRivalMaxFinal - entityPts + 1;
+
+  if (requiredNextRacePoints <= 0) {
+    // Entity is already guaranteed regardless — covered by already_locked_in.
+    return null;
+  }
+
+  // Find the worst finishing position in the base points table that scores >= requiredNextRacePoints.
+  let worstGuaranteePos = 0;
+  for (let i = 0; i < basePointsTable.length; i++) {
+    if (basePointsTable[i] >= requiredNextRacePoints) {
+      worstGuaranteePos = i + 1; // 1-based
+    }
+  }
+
+  return worstGuaranteePos > 0 ? worstGuaranteePos : null;
+}
+
 export function computeLockInsightsForSelectedRace(
   data: SeasonChartData,
   afterRaceNum: number,
@@ -464,6 +551,39 @@ export function computeLockInsightsForSelectedRace(
           mustBeOutscoredBy: ruleOutPlan.mustBeOutscoredBy,
           cannotOutscoreByMoreThan: ruleOutPlan.cannotOutscoreByMoreThan,
         });
+      }
+
+      // For drivers only: compute the worst finishing position that unconditionally guarantees
+      // each championship position, regardless of what all rivals score.
+      if (isDriver) {
+        const nextRace = data.races[nextRaceNum - 1];
+        const basePointsTable = driverBasePointsByPosition(data.year, nextRace);
+
+        for (
+          let position = endEntry.bestPos;
+          position <= (endEntry.worstPos ?? entities.length);
+          position++
+        ) {
+          const finishAtOrBetter = findUnconditionalGuaranteeFinishingPos(
+            entity.id,
+            position,
+            entityIds,
+            basePts,
+            basePointsTable,
+            nextHorizonMax,
+            pointsRemainingAfterNext,
+          );
+
+          if (finishAtOrBetter !== null) {
+            insights.push({
+              type: "can_be_locked_in_by_finishing",
+              entityId: entity.id,
+              position,
+              nextRaceNum,
+              finishAtOrBetter,
+            });
+          }
+        }
       }
     }
 

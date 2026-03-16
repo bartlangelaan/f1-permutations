@@ -156,9 +156,23 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
     ),
   );
 
-  // TODO: The blog expresses all conditions as finishing positions (e.g. "Norris P3 or better wins
-  // regardless", "Verstappen P1 + Norris P4 or worse → Verstappen wins"). Our system expresses them
-  // as points margins only. Position-based clinch/elimination insights are not yet generated.
+  // Norris clinches P1 (championship) by finishing P3 or better, regardless of rivals
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee at least P1 in Abu Dhabi GP by finishing P3 or better.",
+    ),
+  );
+
+  // Norris secures at least P2 by finishing P5 or better
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee at least P2 in Abu Dhabi GP by finishing P5 or better.",
+    ),
+  );
+
+  // TODO: The blog also expresses two-entity conditional scenarios, e.g. "Verstappen P1 + Norris
+  // P4 or worse → Verstappen wins". These require cross-driver positional combinations and are not
+  // yet generated.
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/championship-permutations-can-norris-still-win-the-title-in-qatar-after-his.6Yl07za0DPgfybgFrUXE6u
