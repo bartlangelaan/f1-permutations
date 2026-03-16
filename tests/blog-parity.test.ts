@@ -156,9 +156,80 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
     ),
   );
 
-  // TODO: The blog also provides conditional finishing-position permutations for Verstappen and Piastri
-  // (e.g. "Verstappen P1 + Norris P4 or worse"). We now emit simple practical finish guidance for
-  // lock-ins, but multi-driver position-combination permutations are still not generated.
+  // Multi-driver position-combination permutations for championship P1
+  // (the blog's per-finishing-position table for each contender)
+
+  // Norris wins regardless of rivals from P1, P2, P3
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee P1 in Abu Dhabi GP by finishing P1 regardless of rivals.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee P1 in Abu Dhabi GP by finishing P2 regardless of rivals.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee P1 in Abu Dhabi GP by finishing P3 regardless of rivals.",
+    ),
+  );
+
+  // Norris P4/P5: only needs Verstappen outside P1
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee P1 in Abu Dhabi GP by finishing P4 if Max Verstappen finishes P2 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee P1 in Abu Dhabi GP by finishing P5 if Max Verstappen finishes P2 or worse.",
+    ),
+  );
+
+  // Norris P6: both rivals must finish outside P1
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee P1 in Abu Dhabi GP by finishing P6 if Max Verstappen finishes P2 or worse and Oscar Piastri finishes P2 or worse.",
+    ),
+  );
+
+  // Norris P8: blog-matching row (Verstappen P3 or worse + Piastri P2 or worse)
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee P1 in Abu Dhabi GP by finishing P8 if Max Verstappen finishes P3 or worse and Oscar Piastri finishes P2 or worse.",
+    ),
+  );
+
+  // Verstappen combinations (blog: P1+Norris P4 or worse; P2+Norris P8+Piastri P3; P3+Norris P9+Piastri P2)
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Abu Dhabi GP by finishing P1 if Lando Norris finishes P4 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Abu Dhabi GP by finishing P2 if Lando Norris finishes P8 or worse and Oscar Piastri finishes P3 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Abu Dhabi GP by finishing P3 if Lando Norris finishes P9 or worse and Oscar Piastri finishes P2 or worse.",
+    ),
+  );
+
+  // Piastri combinations (blog: P1+Norris P6 or worse; P2+Norris P10+Verstappen P4)
+  assert.ok(
+    texts.includes(
+      "Oscar Piastri can guarantee P1 in Abu Dhabi GP by finishing P1 if Lando Norris finishes P6 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Oscar Piastri can guarantee P1 in Abu Dhabi GP by finishing P2 if Lando Norris finishes P10 or worse and Max Verstappen finishes P4 or worse.",
+    ),
+  );
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/championship-permutations-can-norris-still-win-the-title-in-qatar-after-his.6Yl07za0DPgfybgFrUXE6u

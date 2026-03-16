@@ -60,6 +60,21 @@ export function renderInsightText(
     return `${entityName} can guarantee at least ${positionLabel} in ${race?.fullLabel ?? "the next event"}${detailText}.${practicalText}`;
   }
 
+  if (insight.type === "position_combo_lock_in") {
+    const raceLabel = race?.fullLabel ?? "the next event";
+    const byLine = `by finishing P${insight.entityFinishPos}`;
+    if (insight.rivalConstraints.length === 0) {
+      return `${entityName} can guarantee P${insight.position} in ${raceLabel} ${byLine} regardless of rivals.`;
+    }
+    const rivalText = insight.rivalConstraints
+      .map(
+        (r) =>
+          `${entitiesById.get(r.opponentId)?.name ?? r.opponentId} finishes P${r.maxFinishPos} or worse`,
+      )
+      .join(" and ");
+    return `${entityName} can guarantee P${insight.position} in ${raceLabel} ${byLine} if ${rivalText}.`;
+  }
+
   if (insight.mustBeOutscoredBy.length) {
     details.push(
       `is outscored by ${insight.mustBeOutscoredBy

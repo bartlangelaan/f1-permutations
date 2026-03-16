@@ -4481,6 +4481,36 @@
       "entityId": "gasly",
       "position": 24,
       "earliestRaceNum": 19
+    },
+    {
+      "type": "position_combo_lock_in",
+      "entityId": "hamilton",
+      "position": 1,
+      "nextRaceNum": 17,
+      "entityFinishPos": 1,
+      "rivalConstraints": [
+        {
+          "opponentId": "vettel",
+          "maxFinishPos": 6
+        }
+      ]
+    },
+    {
+      "type": "position_combo_lock_in",
+      "entityId": "hamilton",
+      "position": 1,
+      "nextRaceNum": 17,
+      "entityFinishPos": 2,
+      "rivalConstraints": [
+        {
+          "opponentId": "vettel",
+          "maxFinishPos": 10
+        },
+        {
+          "opponentId": "bottas",
+          "maxFinishPos": 4
+        }
+      ]
     }
   ],
   "constructorLockInsights": [

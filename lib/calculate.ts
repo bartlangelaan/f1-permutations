@@ -163,6 +163,12 @@ type LockCondition = {
   points: number;
 };
 
+export type PositionComboRival = {
+  opponentId: string;
+  /** Opponent must finish at this position or worse for entity to guarantee its target position. */
+  maxFinishPos: number;
+};
+
 export type LockInsight =
   | {
       type: "already_locked_in";
@@ -197,6 +203,26 @@ export type LockInsight =
       entityId: string;
       position: number;
       earliestRaceNum: number;
+    }
+  | {
+      /**
+       * A specific race-finishing-position combination that guarantees the entity a target
+       * championship position. One insight is emitted per valid (entityFinishPos, rivalConstraints)
+       * combination so each can be rendered as a standalone sentence.
+       */
+      type: "position_combo_lock_in";
+      entityId: string;
+      /** Championship position being guaranteed (typically 1). */
+      position: number;
+      nextRaceNum: number;
+      /** The finishing position the entity takes in the next race. */
+      entityFinishPos: number;
+      /**
+       * For each rival whose finishing position matters, the worst position they can be at
+       * (inclusive) while the entity still guarantees `position`. Empty means no constraints
+       * — the entity wins regardless of rivals' finishing positions.
+       */
+      rivalConstraints: PositionComboRival[];
     };
 
 /** lockInsights[afterRaceNum] — race number is 1-based */
@@ -357,6 +383,99 @@ function hasRuleOutConditions(plan: {
   cannotOutscoreByMoreThan: LockCondition[];
 }): boolean {
   return plan.mustBeOutscoredBy.length > 0 || plan.cannotOutscoreByMoreThan.length > 0;
+}
+
+/**
+ * For each finishing position the entity can take in the next race, compute which rival
+ * finishing positions are required for the entity to guarantee `targetPosition` in the
+ * final championship standings.
+ *
+ * A rival constraint "opponent must finish P{j} or worse" is emitted only when P{j} is
+ * the BEST position the opponent can take while the entity is still guaranteed above them.
+ * If the entity is guaranteed above the opponent regardless (opponent's max points can't
+ * overcome the entity's lead + race score), no constraint for that opponent is emitted.
+ *
+ * The entity's own finishing position is excluded from the search for rivals' worst
+ * valid position (two drivers cannot occupy the same race position).
+ *
+ * Only positions where ALL opponents can simultaneously satisfy their constraints are
+ * returned (i.e. the combination is feasible for the entity to guarantee `targetPosition`).
+ */
+function computePositionCombinations(
+  entityId: string,
+  targetPosition: number,
+  entityIds: string[],
+  basePts: Map<string, number>,
+  racePoints: number[],
+  pointsRemainingAfterNext: number,
+): Array<{ entityFinishPos: number; rivalConstraints: PositionComboRival[] }> {
+  const opponents = entityIds.filter((id) => id !== entityId);
+  // For targetPosition = 1 the entity must be guaranteed above ALL opponents.
+  // (Generalising to other positions would require choosing a subset; for now only P1 is used.)
+  const requiredBelowCount = entityIds.length - targetPosition;
+  if (requiredBelowCount !== opponents.length) return [];
+
+  const results: Array<{ entityFinishPos: number; rivalConstraints: PositionComboRival[] }> = [];
+
+  for (let i = 0; i < racePoints.length; i++) {
+    const entityFinishPos = i + 1;
+    const entityRacePoints = racePoints[i] ?? 0;
+    const entityFinalPts = (basePts.get(entityId) ?? 0) + entityRacePoints;
+
+    const rivalConstraints: PositionComboRival[] = [];
+    let feasible = true;
+
+    for (const opponentId of opponents) {
+      const opponentBasePts = basePts.get(opponentId) ?? 0;
+      // Entity is guaranteed strictly above opponent iff:
+      //   entityFinalPts > opponentBasePts + opponentRacePoints + pointsRemainingAfterNext
+      // => opponentRacePoints < entityFinalPts - opponentBasePts - pointsRemainingAfterNext
+      // => opponentRacePoints ≤ maxOppRacePoints  (integer arithmetic)
+      const maxOppRacePoints = entityFinalPts - opponentBasePts - pointsRemainingAfterNext - 1;
+
+      if (maxOppRacePoints < 0) {
+        // Even if the opponent scores 0 in the race, they still can't be beaten — infeasible.
+        feasible = false;
+        break;
+      }
+
+      if ((racePoints[0] ?? 0) <= maxOppRacePoints) {
+        // Opponent can finish anywhere (even P1) and entity is still guaranteed above them.
+        // No constraint needed for this opponent.
+        continue;
+      }
+
+      // Find the smallest (best) race position j (≠ entityFinishPos) where the opponent's
+      // points satisfy the constraint.  That position is the "worst they can be at" bound:
+      // the opponent must finish at P{j} or worse.
+      let smallestValidPos: number | null = null;
+      for (let j = 1; j <= racePoints.length; j++) {
+        if (j === entityFinishPos) continue; // position is taken by the entity
+        if ((racePoints[j - 1] ?? 0) <= maxOppRacePoints) {
+          smallestValidPos = j;
+          break;
+        }
+      }
+
+      if (smallestValidPos === null) {
+        // No valid position for this opponent — combination is infeasible.
+        feasible = false;
+        break;
+      }
+
+      // When the entity finishes P1, every opponent is naturally excluded from P1.
+      // A constraint of "P2 or worse" is therefore trivially satisfied and need not be listed.
+      if (entityFinishPos === 1 && smallestValidPos === 2) continue;
+
+      rivalConstraints.push({ opponentId, maxFinishPos: smallestValidPos });
+    }
+
+    if (feasible) {
+      results.push({ entityFinishPos, rivalConstraints });
+    }
+  }
+
+  return results;
 }
 
 export function computeLockInsightsForSelectedRace(
@@ -583,6 +702,49 @@ export function computeLockInsightsForSelectedRace(
           position,
           earliestRaceNum,
         });
+      }
+    }
+  }
+
+  // Generate multi-driver position-combination permutations for P1 (championship win).
+  // For each driver whose season-end best position is P1, enumerate all race finishing
+  // positions and the corresponding rival finishing-position constraints required for that
+  // driver to guarantee the championship.
+  if (isDriver && nextRaceNum <= lastRaceNum) {
+    const nextRace = data.races[nextRaceNum - 1];
+    if (nextRace) {
+      const racePoints = driverPointsByPositionForRace(data.year, nextRace);
+      const pointsRemainingAfterNext = cumulativeMaxPoints(
+        data.races,
+        nextRaceNum,
+        lastRaceNum,
+        isDriver,
+      );
+
+      for (const entity of orderedEntities) {
+        const endEntry = endProjections[entity.id];
+        if (!endEntry || endEntry.bestPos !== 1) continue;
+        if (endEntry.bestPos === endEntry.worstPos) continue; // already locked in
+
+        const combinations = computePositionCombinations(
+          entity.id,
+          1,
+          entityIds,
+          basePts,
+          racePoints,
+          pointsRemainingAfterNext,
+        );
+
+        for (const combo of combinations) {
+          insights.push({
+            type: "position_combo_lock_in",
+            entityId: entity.id,
+            position: 1,
+            nextRaceNum,
+            entityFinishPos: combo.entityFinishPos,
+            rivalConstraints: combo.rivalConstraints,
+          });
+        }
       }
     }
   }
