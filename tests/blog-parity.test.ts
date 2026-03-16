@@ -107,6 +107,13 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
     ),
   );
 
+  // Blog-style practical insight: Norris seals the title by finishing P3 or better
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee at least P1 in Abu Dhabi GP by finishing P3 or better.",
+    ),
+  );
+
   // Norris can guarantee P2 with a condition only on Piastri
   assert.ok(
     texts.includes(
@@ -156,9 +163,9 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
     ),
   );
 
-  // TODO: The blog expresses all conditions as finishing positions (e.g. "Norris P3 or better wins
-  // regardless", "Verstappen P1 + Norris P4 or worse → Verstappen wins"). Our system expresses them
-  // as points margins only. Position-based clinch/elimination insights are not yet generated.
+  // TODO: The blog also provides conditional finishing-position permutations for Verstappen and Piastri
+  // (e.g. "Verstappen P1 + Norris P4 or worse"). We now emit simple practical finish guidance for
+  // lock-ins, but multi-driver position-combination permutations are still not generated.
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/championship-permutations-can-norris-still-win-the-title-in-qatar-after-his.6Yl07za0DPgfybgFrUXE6u
@@ -187,6 +194,11 @@ test("2025-11-25 | CHAMPIONSHIP PERMUTATIONS: Can Norris still win the title in 
     ),
   );
 
+  // Blog-style practical insight: if Norris wins Qatar, he is champion
+  assert.ok(
+    texts.includes("Lando Norris can guarantee at least P1 in Qatar GP by finishing P1 or better."),
+  );
+
   // Norris can guarantee P2 with only the Verstappen condition
   assert.ok(
     texts.includes(
@@ -208,10 +220,8 @@ test("2025-11-25 | CHAMPIONSHIP PERMUTATIONS: Can Norris still win the title in 
     ),
   );
 
-  // TODO: The blog says "if Norris wins, he's champion regardless." Our system expresses this
-  // as points-margin conditions rather than position-based finishing scenarios.
-  // The exact scenario where Verstappen must "beat Norris" to keep the title alive is implicit
-  // in the points-margin insight but not expressed as a direct position comparison.
+  // TODO: The exact scenario where Verstappen must "beat Norris" to keep the title alive is implicit
+  // in the points-margin insight but not yet expressed as a direct head-to-head position comparison.
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/points-permutations-when-is-the-earliest-norris-could-claim-the-world.T4F6V6THiKksJ6GdcYfvo

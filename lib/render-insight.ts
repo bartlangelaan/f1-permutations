@@ -31,6 +31,11 @@ export function renderInsightText(
   const race = races[insight.nextRaceNum - 1];
   const details: string[] = [];
 
+  if (insight.type === "can_be_locked_in_next_race_with_finish") {
+    const race = races[insight.nextRaceNum - 1];
+    return `${entityName} can guarantee at least ${positionLabel} in ${race?.fullLabel ?? "the next event"} by finishing P${insight.minFinishPos} or better.`;
+  }
+
   if (insight.type === "can_be_locked_in_next_race") {
     if (insight.mustOutscoreBy.length) {
       details.push(
