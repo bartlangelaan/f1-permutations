@@ -230,7 +230,84 @@
           "points": 11
         }
       ],
-      "minFinishPos": 3
+      "minFinishPos": 3,
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 2,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 3,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "hamilton",
+              "maxFinishPos": 2
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "hamilton",
+              "maxFinishPos": 2
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "hamilton",
+              "maxFinishPos": 2
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "hamilton",
+              "maxFinishPos": 3
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "hamilton",
+              "maxFinishPos": 3
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "hamilton",
+              "maxFinishPos": 4
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "hamilton",
+              "maxFinishPos": 4
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -256,7 +333,36 @@
           "points": 13
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosberg",
+              "maxFinishPos": 4
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosberg",
+              "maxFinishPos": 8
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "rosberg",
+              "maxFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -7803,128 +7909,6 @@
         {
           "opponentId": "kvyat",
           "points": 24
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "rosberg",
-      "position": 1,
-      "nextRaceNum": 21,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 2,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 3,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 4,
-          "rivalConstraints": [
-            {
-              "opponentId": "hamilton",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 5,
-          "rivalConstraints": [
-            {
-              "opponentId": "hamilton",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 6,
-          "rivalConstraints": [
-            {
-              "opponentId": "hamilton",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 7,
-          "rivalConstraints": [
-            {
-              "opponentId": "hamilton",
-              "maxFinishPos": 3
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 8,
-          "rivalConstraints": [
-            {
-              "opponentId": "hamilton",
-              "maxFinishPos": 3
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 9,
-          "rivalConstraints": [
-            {
-              "opponentId": "hamilton",
-              "maxFinishPos": 4
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 10,
-          "rivalConstraints": [
-            {
-              "opponentId": "hamilton",
-              "maxFinishPos": 4
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "hamilton",
-      "position": 1,
-      "nextRaceNum": 21,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": [
-            {
-              "opponentId": "rosberg",
-              "maxFinishPos": 4
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 2,
-          "rivalConstraints": [
-            {
-              "opponentId": "rosberg",
-              "maxFinishPos": 8
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 3,
-          "rivalConstraints": [
-            {
-              "opponentId": "rosberg",
-              "maxFinishPos": 9
-            }
-          ]
         }
       ]
     }

@@ -851,7 +851,31 @@
           "points": 4
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 6
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 10
+            },
+            {
+              "opponentId": "bottas",
+              "maxFinishPos": 4
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -4481,38 +4505,6 @@
       "entityId": "gasly",
       "position": 24,
       "earliestRaceNum": 19
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "hamilton",
-      "position": 1,
-      "nextRaceNum": 17,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 6
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 2,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 10
-            },
-            {
-              "opponentId": "bottas",
-              "maxFinishPos": 4
-            }
-          ]
-        }
-      ]
     }
   ],
   "constructorLockInsights": [

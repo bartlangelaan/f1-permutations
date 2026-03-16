@@ -262,7 +262,117 @@
           "points": 23
         }
       ],
-      "minFinishPos": 2
+      "minFinishPos": 2,
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 2,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "webber",
+              "maxFinishPos": 2
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "webber",
+              "maxFinishPos": 2
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "webber",
+              "maxFinishPos": 3
+            },
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 2
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "webber",
+              "maxFinishPos": 3
+            },
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 2
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "webber",
+              "maxFinishPos": 4
+            },
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 2
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "webber",
+              "maxFinishPos": 5
+            },
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 2
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "webber",
+              "maxFinishPos": 6
+            },
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 3
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "webber",
+              "maxFinishPos": 6
+            },
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 3
+            },
+            {
+              "opponentId": "hamilton",
+              "maxFinishPos": 2
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -366,6 +476,69 @@
         {
           "opponentId": "hamilton",
           "points": 15
+        }
+      ],
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxFinishPos": 3
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxFinishPos": 6
+            },
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 3
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxFinishPos": 7
+            },
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 2
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxFinishPos": 9
+            },
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 2
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxFinishPos": 10
+            },
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 3
+            }
+          ]
         }
       ]
     },
@@ -473,6 +646,34 @@
         {
           "opponentId": "hamilton",
           "points": 8
+        }
+      ],
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxFinishPos": 6
+            },
+            {
+              "opponentId": "webber",
+              "maxFinishPos": 3
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxFinishPos": 9
+            },
+            {
+              "opponentId": "webber",
+              "maxFinishPos": 5
+            }
+          ]
         }
       ]
     },
@@ -16205,231 +16406,6 @@
         {
           "opponentId": "hulkenberg",
           "points": 21
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "alonso",
-      "position": 1,
-      "nextRaceNum": 19,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 2,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 3,
-          "rivalConstraints": [
-            {
-              "opponentId": "webber",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 4,
-          "rivalConstraints": [
-            {
-              "opponentId": "webber",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 5,
-          "rivalConstraints": [
-            {
-              "opponentId": "webber",
-              "maxFinishPos": 3
-            },
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 6,
-          "rivalConstraints": [
-            {
-              "opponentId": "webber",
-              "maxFinishPos": 3
-            },
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 7,
-          "rivalConstraints": [
-            {
-              "opponentId": "webber",
-              "maxFinishPos": 4
-            },
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 8,
-          "rivalConstraints": [
-            {
-              "opponentId": "webber",
-              "maxFinishPos": 5
-            },
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 9,
-          "rivalConstraints": [
-            {
-              "opponentId": "webber",
-              "maxFinishPos": 6
-            },
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 3
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 10,
-          "rivalConstraints": [
-            {
-              "opponentId": "webber",
-              "maxFinishPos": 6
-            },
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 3
-            },
-            {
-              "opponentId": "hamilton",
-              "maxFinishPos": 2
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "webber",
-      "position": 1,
-      "nextRaceNum": 19,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": [
-            {
-              "opponentId": "alonso",
-              "maxFinishPos": 3
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 2,
-          "rivalConstraints": [
-            {
-              "opponentId": "alonso",
-              "maxFinishPos": 6
-            },
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 3
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 3,
-          "rivalConstraints": [
-            {
-              "opponentId": "alonso",
-              "maxFinishPos": 7
-            },
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 4,
-          "rivalConstraints": [
-            {
-              "opponentId": "alonso",
-              "maxFinishPos": 9
-            },
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 5,
-          "rivalConstraints": [
-            {
-              "opponentId": "alonso",
-              "maxFinishPos": 10
-            },
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 3
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "vettel",
-      "position": 1,
-      "nextRaceNum": 19,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": [
-            {
-              "opponentId": "alonso",
-              "maxFinishPos": 6
-            },
-            {
-              "opponentId": "webber",
-              "maxFinishPos": 3
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 2,
-          "rivalConstraints": [
-            {
-              "opponentId": "alonso",
-              "maxFinishPos": 9
-            },
-            {
-              "opponentId": "webber",
-              "maxFinishPos": 5
-            }
-          ]
         }
       ]
     }

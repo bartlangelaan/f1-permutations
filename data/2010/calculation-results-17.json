@@ -504,6 +504,34 @@
           "opponentId": "button",
           "points": 16
         }
+      ],
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "webber",
+              "maxFinishPos": 5
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "webber",
+              "maxFinishPos": 9
+            },
+            {
+              "opponentId": "hamilton",
+              "maxFinishPos": 4
+            },
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 3
+            }
+          ]
+        }
       ]
     },
     {
@@ -10786,42 +10814,6 @@
       "entityId": "glock",
       "position": 27,
       "earliestRaceNum": 19
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "alonso",
-      "position": 1,
-      "nextRaceNum": 18,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": [
-            {
-              "opponentId": "webber",
-              "maxFinishPos": 5
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 2,
-          "rivalConstraints": [
-            {
-              "opponentId": "webber",
-              "maxFinishPos": 9
-            },
-            {
-              "opponentId": "hamilton",
-              "maxFinishPos": 4
-            },
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 3
-            }
-          ]
-        }
-      ]
     }
   ],
   "constructorLockInsights": [

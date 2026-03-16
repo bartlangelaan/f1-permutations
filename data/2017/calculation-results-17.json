@@ -658,7 +658,74 @@
           "points": 15
         }
       ],
-      "minFinishPos": 5
+      "minFinishPos": 5,
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 2,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 3,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 4,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 5,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 2
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 2
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 2
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 3
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 3
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_later",
@@ -6427,81 +6494,6 @@
       "entityId": "gasly",
       "position": 25,
       "earliestRaceNum": 20
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "hamilton",
-      "position": 1,
-      "nextRaceNum": 18,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 2,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 3,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 4,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 5,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 6,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 7,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 8,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 9,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 3
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 10,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 3
-            }
-          ]
-        }
-      ]
     }
   ],
   "constructorLockInsights": [

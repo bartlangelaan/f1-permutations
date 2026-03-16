@@ -1780,7 +1780,56 @@
           "points": 4
         }
       ],
-      "minFinishPos": 5
+      "minFinishPos": 5,
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 2,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 3,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 4,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 5,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "perez",
+              "maxFinishPos": 2
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "perez",
+              "maxFinishPos": 3
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "perez",
+              "maxFinishPos": 4
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_later",
@@ -4641,63 +4690,6 @@
       "entityId": "de_vries",
       "position": 22,
       "earliestRaceNum": 22
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "max_verstappen",
-      "position": 1,
-      "nextRaceNum": 20,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 2,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 3,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 4,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 5,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 6,
-          "rivalConstraints": [
-            {
-              "opponentId": "perez",
-              "maxFinishPos": 2
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 7,
-          "rivalConstraints": [
-            {
-              "opponentId": "perez",
-              "maxFinishPos": 3
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 8,
-          "rivalConstraints": [
-            {
-              "opponentId": "perez",
-              "maxFinishPos": 4
-            }
-          ]
-        }
-      ]
     }
   ],
   "constructorLockInsights": [

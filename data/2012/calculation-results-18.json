@@ -467,7 +467,27 @@
           "points": 16
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxFinishPos": 6
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_later",
@@ -7168,34 +7188,6 @@
       "entityId": "petrov",
       "position": 25,
       "earliestRaceNum": 20
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "vettel",
-      "position": 1,
-      "nextRaceNum": 19,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": [
-            {
-              "opponentId": "alonso",
-              "maxFinishPos": 6
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 2,
-          "rivalConstraints": [
-            {
-              "opponentId": "alonso",
-              "maxFinishPos": 9
-            }
-          ]
-        }
-      ]
     }
   ],
   "constructorLockInsights": [

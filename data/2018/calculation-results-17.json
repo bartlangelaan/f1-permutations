@@ -751,7 +751,54 @@
           "points": 9
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 3
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 6
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 7
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 9
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 10
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_later",
@@ -2547,61 +2594,6 @@
       "entityId": "sirotkin",
       "position": 20,
       "earliestRaceNum": 20
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "hamilton",
-      "position": 1,
-      "nextRaceNum": 18,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 3
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 2,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 6
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 3,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 7
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 4,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 9
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 5,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 10
-            }
-          ]
-        }
-      ]
     }
   ],
   "constructorLockInsights": [

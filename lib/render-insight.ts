@@ -37,24 +37,9 @@ export function renderInsightTexts(
   const details: string[] = [];
 
   if (insight.type === "can_be_locked_in_next_race") {
-    // Position-combination variant: expand each combo into its own sentence.
-    if (insight.positionCombinations) {
-      return insight.positionCombinations.map((combo) => {
-        const byLine = `by finishing P${combo.entityFinishPos}`;
-        if (combo.rivalConstraints.length === 0) {
-          return `${entityName} can guarantee ${positionLabel} in ${raceLabel} ${byLine} regardless of rivals.`;
-        }
-        const rivalText = combo.rivalConstraints
-          .map(
-            (r) =>
-              `${entitiesById.get(r.opponentId)?.name ?? r.opponentId} finishes P${r.maxFinishPos} or worse`,
-          )
-          .join(" and ");
-        return `${entityName} can guarantee ${positionLabel} in ${raceLabel} ${byLine} if ${rivalText}.`;
-      });
-    }
+    const sentences: string[] = [];
 
-    // Points-margin variant.
+    // Points-margin sentence (present when mustOutscoreBy or cannotBeOutscoredByMoreThan is non-empty).
     if (insight.mustOutscoreBy.length) {
       details.push(
         `outscores ${insight.mustOutscoreBy
@@ -74,15 +59,41 @@ export function renderInsightTexts(
           .join(", ")}`,
       );
     }
-    const detailText = details.length
-      ? ` if ${details.join(" and ")}`
-      : " regardless of the result there";
-    const practicalText = insight.minFinishPos
-      ? ` In practice, that means finishing P${insight.minFinishPos} or better.`
-      : "";
-    return [
-      `${entityName} can guarantee at least ${positionLabel} in ${raceLabel}${detailText}.${practicalText}`,
-    ];
+    if (details.length > 0 || !insight.positionCombinations) {
+      const detailText = details.length
+        ? ` if ${details.join(" and ")}`
+        : " regardless of the result there";
+      const practicalText = insight.minFinishPos
+        ? ` In practice, that means finishing P${insight.minFinishPos} or better.`
+        : "";
+      sentences.push(
+        `${entityName} can guarantee at least ${positionLabel} in ${raceLabel}${detailText}.${practicalText}`,
+      );
+    }
+
+    // Position-combination sentences: one per entry in the table.
+    if (insight.positionCombinations) {
+      for (const combo of insight.positionCombinations) {
+        const byLine = `by finishing P${combo.entityFinishPos}`;
+        if (combo.rivalConstraints.length === 0) {
+          sentences.push(
+            `${entityName} can guarantee ${positionLabel} in ${raceLabel} ${byLine} regardless of rivals.`,
+          );
+        } else {
+          const rivalText = combo.rivalConstraints
+            .map(
+              (r) =>
+                `${entitiesById.get(r.opponentId)?.name ?? r.opponentId} finishes P${r.maxFinishPos} or worse`,
+            )
+            .join(" and ");
+          sentences.push(
+            `${entityName} can guarantee ${positionLabel} in ${raceLabel} ${byLine} if ${rivalText}.`,
+          );
+        }
+      }
+    }
+
+    return sentences;
   }
 
   if (insight.mustBeOutscoredBy.length) {

@@ -1400,6 +1400,21 @@
           "opponentId": "sainz",
           "points": 9
         }
+      ],
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxFinishPos": 9
+            },
+            {
+              "opponentId": "perez",
+              "maxFinishPos": 5
+            }
+          ]
+        }
       ]
     },
     {
@@ -4381,29 +4396,6 @@
       "entityId": "hulkenberg",
       "position": 22,
       "earliestRaceNum": 21
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "max_verstappen",
-      "position": 1,
-      "nextRaceNum": 19,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": [
-            {
-              "opponentId": "leclerc",
-              "maxFinishPos": 9
-            },
-            {
-              "opponentId": "perez",
-              "maxFinishPos": 5
-            }
-          ]
-        }
-      ]
     }
   ],
   "constructorLockInsights": [

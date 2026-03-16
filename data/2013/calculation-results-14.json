@@ -1034,6 +1034,17 @@
           "opponentId": "hamilton",
           "points": 10
         }
+      ],
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxFinishPos": 10
+            }
+          ]
+        }
       ]
     },
     {
@@ -4559,25 +4570,6 @@
       "entityId": "bottas",
       "position": 22,
       "earliestRaceNum": 17
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "vettel",
-      "position": 1,
-      "nextRaceNum": 15,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": [
-            {
-              "opponentId": "alonso",
-              "maxFinishPos": 10
-            }
-          ]
-        }
-      ]
     }
   ],
   "constructorLockInsights": [

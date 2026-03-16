@@ -395,7 +395,18 @@
           "points": 19
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "hamilton",
+              "maxFinishPos": 7
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_later",
@@ -3939,25 +3950,6 @@
       "entityId": "kubica",
       "position": 21,
       "earliestRaceNum": 25
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "max_verstappen",
-      "position": 1,
-      "nextRaceNum": 24,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": [
-            {
-              "opponentId": "hamilton",
-              "maxFinishPos": 7
-            }
-          ]
-        }
-      ]
     }
   ],
   "constructorLockInsights": [

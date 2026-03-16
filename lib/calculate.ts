@@ -726,15 +726,27 @@ export function computeLockInsightsForSelectedRace(
         );
 
         if (combinations.length > 0) {
-          insights.push({
-            type: "can_be_locked_in_next_race",
-            entityId: entity.id,
-            position: 1,
-            nextRaceNum,
-            mustOutscoreBy: [],
-            cannotBeOutscoredByMoreThan: [],
-            positionCombinations: combinations,
-          });
+          // Attach to the existing points-margin insight for this entity at P1, if one was
+          // already emitted, so both representations live on the same insight object.
+          const existing = insights.find(
+            (ins): ins is Extract<LockInsight, { type: "can_be_locked_in_next_race" }> =>
+              ins.type === "can_be_locked_in_next_race" &&
+              ins.entityId === entity.id &&
+              ins.position === 1,
+          );
+          if (existing) {
+            existing.positionCombinations = combinations;
+          } else {
+            insights.push({
+              type: "can_be_locked_in_next_race",
+              entityId: entity.id,
+              position: 1,
+              nextRaceNum,
+              mustOutscoreBy: [],
+              cannotBeOutscoredByMoreThan: [],
+              positionCombinations: combinations,
+            });
+          }
         }
       }
     }

@@ -400,7 +400,91 @@
         }
       ],
       "cannotBeOutscoredByMoreThan": [],
-      "minFinishPos": 1
+      "minFinishPos": 1,
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "entityFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxFinishPos": 4
+            },
+            {
+              "opponentId": "max_verstappen",
+              "maxFinishPos": 3
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxFinishPos": 5
+            },
+            {
+              "opponentId": "max_verstappen",
+              "maxFinishPos": 4
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxFinishPos": 6
+            },
+            {
+              "opponentId": "max_verstappen",
+              "maxFinishPos": 5
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxFinishPos": 7
+            },
+            {
+              "opponentId": "max_verstappen",
+              "maxFinishPos": 6
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxFinishPos": 8
+            },
+            {
+              "opponentId": "max_verstappen",
+              "maxFinishPos": 7
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxFinishPos": 9
+            },
+            {
+              "opponentId": "max_verstappen",
+              "maxFinishPos": 8
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -5581,98 +5665,6 @@
       "entityId": "doohan",
       "position": 21,
       "earliestRaceNum": 30
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "norris",
-      "position": 1,
-      "nextRaceNum": 29,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": []
-        },
-        {
-          "entityFinishPos": 2,
-          "rivalConstraints": [
-            {
-              "opponentId": "piastri",
-              "maxFinishPos": 4
-            },
-            {
-              "opponentId": "max_verstappen",
-              "maxFinishPos": 3
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 3,
-          "rivalConstraints": [
-            {
-              "opponentId": "piastri",
-              "maxFinishPos": 5
-            },
-            {
-              "opponentId": "max_verstappen",
-              "maxFinishPos": 4
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 4,
-          "rivalConstraints": [
-            {
-              "opponentId": "piastri",
-              "maxFinishPos": 6
-            },
-            {
-              "opponentId": "max_verstappen",
-              "maxFinishPos": 5
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 5,
-          "rivalConstraints": [
-            {
-              "opponentId": "piastri",
-              "maxFinishPos": 7
-            },
-            {
-              "opponentId": "max_verstappen",
-              "maxFinishPos": 6
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 6,
-          "rivalConstraints": [
-            {
-              "opponentId": "piastri",
-              "maxFinishPos": 8
-            },
-            {
-              "opponentId": "max_verstappen",
-              "maxFinishPos": 7
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 7,
-          "rivalConstraints": [
-            {
-              "opponentId": "piastri",
-              "maxFinishPos": 9
-            },
-            {
-              "opponentId": "max_verstappen",
-              "maxFinishPos": 8
-            }
-          ]
-        }
-      ]
     }
   ],
   "constructorLockInsights": [

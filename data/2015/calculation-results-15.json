@@ -803,7 +803,57 @@
           "points": 3
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "positionCombinations": [
+        {
+          "entityFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 3
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 6
+            },
+            {
+              "opponentId": "rosberg",
+              "maxFinishPos": 3
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 8
+            },
+            {
+              "opponentId": "rosberg",
+              "maxFinishPos": 4
+            }
+          ]
+        },
+        {
+          "entityFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "vettel",
+              "maxFinishPos": 9
+            },
+            {
+              "opponentId": "rosberg",
+              "maxFinishPos": 6
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -4600,64 +4650,6 @@
       "entityId": "stevens",
       "position": 22,
       "earliestRaceNum": 18
-    },
-    {
-      "type": "can_be_locked_in_next_race",
-      "entityId": "hamilton",
-      "position": 1,
-      "nextRaceNum": 16,
-      "mustOutscoreBy": [],
-      "cannotBeOutscoredByMoreThan": [],
-      "positionCombinations": [
-        {
-          "entityFinishPos": 1,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 3
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 2,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 6
-            },
-            {
-              "opponentId": "rosberg",
-              "maxFinishPos": 3
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 3,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 8
-            },
-            {
-              "opponentId": "rosberg",
-              "maxFinishPos": 4
-            }
-          ]
-        },
-        {
-          "entityFinishPos": 4,
-          "rivalConstraints": [
-            {
-              "opponentId": "vettel",
-              "maxFinishPos": 9
-            },
-            {
-              "opponentId": "rosberg",
-              "maxFinishPos": 6
-            }
-          ]
-        }
-      ]
     }
   ],
   "constructorLockInsights": [
