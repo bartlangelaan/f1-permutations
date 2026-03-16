@@ -176,6 +176,7 @@ export type LockInsight =
       nextRaceNum: number;
       mustOutscoreBy: LockCondition[];
       cannotBeOutscoredByMoreThan: LockCondition[];
+      minFinishPos?: number;
     }
   | {
       type: "can_be_locked_in_later";
@@ -390,6 +391,41 @@ export function computeLockInsightsForSelectedRace(
         insight.entityId === entityId && insight.position === position && insight.type === type,
     );
 
+  const practicalFinishForGuaranteedLock = (
+    nextPlan: {
+      mustOutscoreBy: LockCondition[];
+      cannotBeOutscoredByMoreThan: LockCondition[];
+    },
+    nextRace: TimelineRace,
+  ): number | null => {
+    if (!isDriver) return null;
+
+    const pointsByPosition = driverPointsByPositionForRace(data.year, nextRace);
+    if (pointsByPosition.length < 2) return null;
+
+    const maxFinishPos = Math.min(pointsByPosition.length, entities.length);
+    let bestKnown: number | null = null;
+
+    for (let finishPos = 1; finishPos <= maxFinishPos; finishPos++) {
+      const ownPoints = pointsByPosition[finishPos - 1] ?? 0;
+      const maxOpponentPoints = pointsByPosition[finishPos === 1 ? 1 : 0] ?? 0;
+
+      const satisfiesMustOutscore = nextPlan.mustOutscoreBy.every(
+        (condition) => ownPoints - maxOpponentPoints >= condition.points,
+      );
+      if (!satisfiesMustOutscore) continue;
+
+      const satisfiesOutscoreCap = nextPlan.cannotBeOutscoredByMoreThan.every(
+        (condition) => maxOpponentPoints - ownPoints <= condition.points,
+      );
+      if (!satisfiesOutscoreCap) continue;
+
+      bestKnown = finishPos;
+    }
+
+    return bestKnown;
+  };
+
   for (const entity of orderedEntities) {
     const endEntry = endProjections[entity.id];
     if (!endEntry) continue;
@@ -429,6 +465,9 @@ export function computeLockInsightsForSelectedRace(
         if (!nextPlan) continue;
         if (!hasGuaranteeConditions(nextPlan)) continue;
 
+        const nextRace = data.races[nextRaceNum - 1];
+        const minFinishPos = nextRace ? practicalFinishForGuaranteedLock(nextPlan, nextRace) : null;
+
         insights.push({
           type: "can_be_locked_in_next_race",
           entityId: entity.id,
@@ -436,6 +475,7 @@ export function computeLockInsightsForSelectedRace(
           nextRaceNum,
           mustOutscoreBy: nextPlan.mustOutscoreBy,
           cannotBeOutscoredByMoreThan: nextPlan.cannotBeOutscoredByMoreThan,
+          ...(minFinishPos !== null ? { minFinishPos } : {}),
         });
       }
 

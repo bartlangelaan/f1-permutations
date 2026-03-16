@@ -54,7 +54,10 @@ export function renderInsightText(
     const detailText = details.length
       ? ` if ${details.join(" and ")}`
       : " regardless of the result there";
-    return `${entityName} can guarantee at least ${positionLabel} in ${race?.fullLabel ?? "the next event"}${detailText}.`;
+    const practicalText = insight.minFinishPos
+      ? ` In practice, that means finishing P${insight.minFinishPos} or better.`
+      : "";
+    return `${entityName} can guarantee at least ${positionLabel} in ${race?.fullLabel ?? "the next event"}${detailText}.${practicalText}`;
   }
 
   if (insight.mustBeOutscoredBy.length) {

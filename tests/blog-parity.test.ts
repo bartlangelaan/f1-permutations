@@ -103,14 +103,14 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
   // Norris can guarantee P1 (championship win) with conditions on Verstappen and Piastri
   assert.ok(
     texts.includes(
-      "Lando Norris can guarantee at least P1 in Abu Dhabi GP if is not outscored by Max Verstappen by more than 11 points, Oscar Piastri by more than 15 points.",
+      "Lando Norris can guarantee at least P1 in Abu Dhabi GP if is not outscored by Max Verstappen by more than 11 points, Oscar Piastri by more than 15 points. In practice, that means finishing P3 or better.",
     ),
   );
 
   // Norris can guarantee P2 with a condition only on Piastri
   assert.ok(
     texts.includes(
-      "Lando Norris can guarantee at least P2 in Abu Dhabi GP if is not outscored by Oscar Piastri by more than 15 points.",
+      "Lando Norris can guarantee at least P2 in Abu Dhabi GP if is not outscored by Oscar Piastri by more than 15 points. In practice, that means finishing P5 or better.",
     ),
   );
 
@@ -124,7 +124,7 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
   // Verstappen can guarantee P2 with a condition only on Piastri
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P2 in Abu Dhabi GP if is not outscored by Oscar Piastri by more than 3 points.",
+      "Max Verstappen can guarantee at least P2 in Abu Dhabi GP if is not outscored by Oscar Piastri by more than 3 points. In practice, that means finishing P1 or better.",
     ),
   );
 
@@ -138,7 +138,7 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
   // Piastri can guarantee P2 with a condition only on Verstappen
   assert.ok(
     texts.includes(
-      "Oscar Piastri can guarantee at least P2 in Abu Dhabi GP if outscores Max Verstappen by 5 points.",
+      "Oscar Piastri can guarantee at least P2 in Abu Dhabi GP if outscores Max Verstappen by 5 points. In practice, that means finishing P1 or better.",
     ),
   );
 
@@ -156,9 +156,9 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
     ),
   );
 
-  // TODO: The blog expresses all conditions as finishing positions (e.g. "Norris P3 or better wins
-  // regardless", "Verstappen P1 + Norris P4 or worse → Verstappen wins"). Our system expresses them
-  // as points margins only. Position-based clinch/elimination insights are not yet generated.
+  // TODO: The blog also provides conditional finishing-position permutations for Verstappen and Piastri
+  // (e.g. "Verstappen P1 + Norris P4 or worse"). We now emit simple practical finish guidance for
+  // lock-ins, but multi-driver position-combination permutations are still not generated.
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/championship-permutations-can-norris-still-win-the-title-in-qatar-after-his.6Yl07za0DPgfybgFrUXE6u
@@ -183,14 +183,14 @@ test("2025-11-25 | CHAMPIONSHIP PERMUTATIONS: Can Norris still win the title in 
   // (Norris wins = 25 pts; need 25 > Piastri's score + 3 and 25 > Verstappen's score)
   assert.ok(
     texts.includes(
-      "Lando Norris can guarantee at least P1 in Qatar GP if outscores Oscar Piastri by 4 points, Max Verstappen by 1 points.",
+      "Lando Norris can guarantee at least P1 in Qatar GP if outscores Oscar Piastri by 4 points, Max Verstappen by 1 points. In practice, that means finishing P1 or better.",
     ),
   );
 
   // Norris can guarantee P2 with only the Verstappen condition
   assert.ok(
     texts.includes(
-      "Lando Norris can guarantee at least P2 in Qatar GP if outscores Max Verstappen by 1 points.",
+      "Lando Norris can guarantee at least P2 in Qatar GP if outscores Max Verstappen by 1 points. In practice, that means finishing P1 or better.",
     ),
   );
 
@@ -208,10 +208,8 @@ test("2025-11-25 | CHAMPIONSHIP PERMUTATIONS: Can Norris still win the title in 
     ),
   );
 
-  // TODO: The blog says "if Norris wins, he's champion regardless." Our system expresses this
-  // as points-margin conditions rather than position-based finishing scenarios.
-  // The exact scenario where Verstappen must "beat Norris" to keep the title alive is implicit
-  // in the points-margin insight but not expressed as a direct position comparison.
+  // TODO: The exact scenario where Verstappen must "beat Norris" to keep the title alive is implicit
+  // in the points-margin insight but not yet expressed as a direct head-to-head position comparison.
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/points-permutations-when-is-the-earliest-norris-could-claim-the-world.T4F6V6THiKksJ6GdcYfvo
@@ -473,14 +471,14 @@ test("2024-11-01 | What Verstappen needs to do to take his fourth title in Las V
   // Verstappen can guarantee P1 (championship) in Las Vegas with conditions on Norris and Leclerc
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P1 in Las Vegas GP if is not outscored by Lando Norris by more than 1 points, Charles Leclerc by more than 25 points.",
+      "Max Verstappen can guarantee at least P1 in Las Vegas GP if is not outscored by Lando Norris by more than 1 points, Charles Leclerc by more than 25 points. In practice, that means finishing P1 or better.",
     ),
   );
 
   // Verstappen can guarantee P2 with only a Leclerc condition
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P2 in Las Vegas GP if is not outscored by Charles Leclerc by more than 25 points.",
+      "Max Verstappen can guarantee at least P2 in Las Vegas GP if is not outscored by Charles Leclerc by more than 25 points. In practice, that means finishing P10 or better.",
     ),
   );
 
@@ -545,7 +543,7 @@ test("2023-09-12 | POINTS PERMUTATIONS: How Verstappen can become the 2023 F1 wo
   // Verstappen can guarantee P1 (title) in Qatar Sprint if not outscored by Pérez by more than 4 points
   assert.ok(
     sprintTexts.includes(
-      "Max Verstappen can guarantee at least P1 in R20 Qatar GP Sprint if is not outscored by Sergio Pérez by more than 4 points.",
+      "Max Verstappen can guarantee at least P1 in R20 Qatar GP Sprint if is not outscored by Sergio Pérez by more than 4 points. In practice, that means finishing P5 or better.",
     ),
   );
 
@@ -658,14 +656,14 @@ test("2022-10-03 | POINTS PERMUTATIONS: What Verstappen needs to do to win his s
   // Verstappen can guarantee at least P2 with Pérez and Russell conditions
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P2 in Japanese GP if outscores Sergio Pérez by 7 points and is not outscored by George Russell by more than 25 points.",
+      "Max Verstappen can guarantee at least P2 in Japanese GP if outscores Sergio Pérez by 7 points and is not outscored by George Russell by more than 25 points. In practice, that means finishing P1 or better.",
     ),
   );
 
   // Verstappen can guarantee at least P3 with only the Russell condition
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P3 in Japanese GP if is not outscored by George Russell by more than 25 points.",
+      "Max Verstappen can guarantee at least P3 in Japanese GP if is not outscored by George Russell by more than 25 points. In practice, that means finishing P10 or better.",
     ),
   );
 
@@ -813,12 +811,12 @@ test("2021-12-11 | What To Watch For in the Abu Dhabi GP: The championship decid
   // Both drivers need only 1 point margin to lock in P1 (tied on points entering the race)
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P1 in Abu Dhabi GP if outscores Lewis Hamilton by 1 points.",
+      "Max Verstappen can guarantee at least P1 in Abu Dhabi GP if outscores Lewis Hamilton by 1 points. In practice, that means finishing P1 or better.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Lewis Hamilton can guarantee at least P1 in Abu Dhabi GP if outscores Max Verstappen by 1 points.",
+      "Lewis Hamilton can guarantee at least P1 in Abu Dhabi GP if outscores Max Verstappen by 1 points. In practice, that means finishing P1 or better.",
     ),
   );
 
@@ -919,7 +917,7 @@ test("2018-10-25 | TITLE PERMUTATIONS: How Hamilton - and Mercedes - can be crow
   // Hamilton clinches P1 (title) if Vettel doesn't outscore him by more than 19 points
   assert.ok(
     texts.includes(
-      "Lewis Hamilton can guarantee at least P1 in Mexican GP if is not outscored by Sebastian Vettel by more than 19 points.",
+      "Lewis Hamilton can guarantee at least P1 in Mexican GP if is not outscored by Sebastian Vettel by more than 19 points. In practice, that means finishing P7 or better.",
     ),
   );
 
@@ -1018,7 +1016,7 @@ test("2016-10-26 | The 2016 title permutations for Sunday in Abu Dhabi", () => {
   // (12-pt lead; tie on points → Rosberg wins on wins count; Hamilton needs 13+ to flip it)
   assert.ok(
     texts.includes(
-      "Nico Rosberg can guarantee at least P1 in Abu Dhabi GP if is not outscored by Lewis Hamilton by more than 11 points.",
+      "Nico Rosberg can guarantee at least P1 in Abu Dhabi GP if is not outscored by Lewis Hamilton by more than 11 points. In practice, that means finishing P3 or better.",
     ),
   );
 
@@ -1083,7 +1081,7 @@ test("2015-10-25 | Title permutations - how Hamilton can wrap it up in Austin", 
   // Hamilton can guarantee P2 with only the Rosberg condition
   assert.ok(
     texts.includes(
-      "Lewis Hamilton can guarantee at least P2 in United States GP if outscores Nico Rosberg by 3 points.",
+      "Lewis Hamilton can guarantee at least P2 in United States GP if outscores Nico Rosberg by 3 points. In practice, that means finishing P1 or better.",
     ),
   );
 
