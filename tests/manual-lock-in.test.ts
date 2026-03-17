@@ -2,26 +2,29 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import type { CalculatedChartData, LockInsight } from "../lib/calculate.ts";
 import { readCalculationResults } from "../lib/calculation-results.ts";
-import { renderInsightText } from "../lib/render-insight.ts";
+import { renderInsightTexts } from "../lib/render-insight.ts";
 
 function renderInsights(insights: LockInsight[] | undefined, data: CalculatedChartData): string[] {
   const entitiesById = new Map(
     [...data.drivers, ...data.constructors].map((e) => [e.id, { name: e.name }]),
   );
-  return (insights ?? []).map((i) => renderInsightText(i, data.races, entitiesById));
+  return (insights ?? []).flatMap((i) => renderInsightTexts(i, data.races, entitiesById));
 }
 
 test("Lock-in insight: Norris cannot lock P1 in the next race after Mexico 2025", () => {
   const data = readCalculationResults(2025)!;
   const mexicoRaceNum = data.races.findIndex((r) => r.round === 20 && r.type === "race") + 1;
 
-  const norrisNextRaceInsights = (data.driverLockInsights[String(mexicoRaceNum)] ?? []).filter(
-    (insight) => insight.entityId === "norris" && insight.type === "can_be_locked_in_next_race",
+  const norrisNextRaceP1Insights = (data.driverLockInsights[String(mexicoRaceNum)] ?? []).filter(
+    (insight) =>
+      insight.entityId === "norris" &&
+      insight.type === "can_be_locked_in_next_race" &&
+      insight.position === 1,
   );
   assert.equal(
-    norrisNextRaceInsights.length,
+    norrisNextRaceP1Insights.length,
     0,
-    "Expected no next-race guarantee insight for Norris after Mexico 2025",
+    "Expected no P1 next-race guarantee insight for Norris after Mexico 2025",
   );
 
   const texts = renderInsights(data.driverLockInsights[String(mexicoRaceNum)], data);
@@ -47,12 +50,12 @@ test("Lock-in insight: Verstappen exposes every next-race minimum lock from P1 t
   );
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P3 in Singapore GP if outscores George Russell by 7 points and is not outscored by Carlos Sainz by more than 9 points. In practice, that means finishing P1 or better.",
+      "Max Verstappen can guarantee at least P3 in Singapore GP if outscores George Russell by 7 points and is not outscored by Carlos Sainz by more than 9 points.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P4 in Singapore GP if is not outscored by Carlos Sainz by more than 9 points. In practice, that means finishing P2 or better.",
+      "Max Verstappen can guarantee at least P4 in Singapore GP if is not outscored by Carlos Sainz by more than 9 points.",
     ),
   );
 });

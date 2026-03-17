@@ -1227,7 +1227,72 @@
           "points": 2
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "piastri",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_later",
@@ -1289,7 +1354,75 @@
           "points": 1
         }
       ],
-      "minFinishPos": 2
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 2,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "russell",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "russell",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "russell",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "russell",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "russell",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "russell",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": [
+            {
+              "opponentId": "russell",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_later",
@@ -1478,7 +1611,66 @@
           "points": 2
         }
       ],
-      "minFinishPos": 3
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": [
+            {
+              "opponentId": "alonso",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -1541,7 +1733,30 @@
           "points": 6
         }
       ],
-      "minFinishPos": 7
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_later",
@@ -1689,12 +1904,6 @@
       "earliestRaceNum": 27
     },
     {
-      "type": "can_be_locked_in_later",
-      "entityId": "alonso",
-      "position": 23,
-      "earliestRaceNum": 27
-    },
-    {
       "type": "can_be_ruled_out_next_race",
       "entityId": "hulkenberg",
       "position": 8,
@@ -1799,12 +2008,6 @@
     },
     {
       "type": "can_be_locked_in_later",
-      "entityId": "hulkenberg",
-      "position": 23,
-      "earliestRaceNum": 27
-    },
-    {
-      "type": "can_be_locked_in_later",
       "entityId": "stroll",
       "position": 9,
       "earliestRaceNum": 30
@@ -1886,12 +2089,6 @@
       "entityId": "stroll",
       "position": 22,
       "earliestRaceNum": 28
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "stroll",
-      "position": 23,
-      "earliestRaceNum": 27
     },
     {
       "type": "can_be_locked_in_later",
@@ -1979,12 +2176,6 @@
     },
     {
       "type": "can_be_locked_in_later",
-      "entityId": "tsunoda",
-      "position": 23,
-      "earliestRaceNum": 27
-    },
-    {
-      "type": "can_be_locked_in_later",
       "entityId": "kevin_magnussen",
       "position": 9,
       "earliestRaceNum": 30
@@ -2066,12 +2257,6 @@
       "entityId": "kevin_magnussen",
       "position": 22,
       "earliestRaceNum": 28
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "kevin_magnussen",
-      "position": 23,
-      "earliestRaceNum": 27
     },
     {
       "type": "can_be_locked_in_later",
@@ -2159,12 +2344,6 @@
     },
     {
       "type": "can_be_locked_in_later",
-      "entityId": "albon",
-      "position": 23,
-      "earliestRaceNum": 27
-    },
-    {
-      "type": "can_be_locked_in_later",
       "entityId": "ricciardo",
       "position": 9,
       "earliestRaceNum": 30
@@ -2246,12 +2425,6 @@
       "entityId": "ricciardo",
       "position": 22,
       "earliestRaceNum": 28
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "ricciardo",
-      "position": 23,
-      "earliestRaceNum": 27
     },
     {
       "type": "can_be_locked_in_later",
@@ -2339,12 +2512,6 @@
     },
     {
       "type": "can_be_locked_in_later",
-      "entityId": "gasly",
-      "position": 23,
-      "earliestRaceNum": 27
-    },
-    {
-      "type": "can_be_locked_in_later",
       "entityId": "bearman",
       "position": 9,
       "earliestRaceNum": 30
@@ -2426,12 +2593,6 @@
       "entityId": "bearman",
       "position": 22,
       "earliestRaceNum": 28
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "bearman",
-      "position": 23,
-      "earliestRaceNum": 27
     },
     {
       "type": "can_be_locked_in_later",
@@ -2519,12 +2680,6 @@
     },
     {
       "type": "can_be_locked_in_later",
-      "entityId": "ocon",
-      "position": 23,
-      "earliestRaceNum": 27
-    },
-    {
-      "type": "can_be_locked_in_later",
       "entityId": "colapinto",
       "position": 9,
       "earliestRaceNum": 30
@@ -2606,12 +2761,6 @@
       "entityId": "colapinto",
       "position": 22,
       "earliestRaceNum": 28
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "colapinto",
-      "position": 23,
-      "earliestRaceNum": 27
     },
     {
       "type": "can_be_locked_in_later",
@@ -2699,12 +2848,6 @@
     },
     {
       "type": "can_be_locked_in_later",
-      "entityId": "lawson",
-      "position": 23,
-      "earliestRaceNum": 27
-    },
-    {
-      "type": "can_be_locked_in_later",
       "entityId": "zhou",
       "position": 9,
       "earliestRaceNum": 30
@@ -2786,12 +2929,6 @@
       "entityId": "zhou",
       "position": 22,
       "earliestRaceNum": 30
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "zhou",
-      "position": 23,
-      "earliestRaceNum": 27
     },
     {
       "type": "can_be_locked_in_later",
@@ -2879,12 +3016,6 @@
     },
     {
       "type": "can_be_locked_in_later",
-      "entityId": "sargeant",
-      "position": 23,
-      "earliestRaceNum": 27
-    },
-    {
-      "type": "can_be_locked_in_later",
       "entityId": "bottas",
       "position": 9,
       "earliestRaceNum": 30
@@ -2968,10 +3099,116 @@
       "earliestRaceNum": 30
     },
     {
-      "type": "can_be_locked_in_later",
-      "entityId": "bottas",
-      "position": 23,
-      "earliestRaceNum": 27
+      "type": "can_be_locked_in_next_race",
+      "entityId": "max_verstappen",
+      "position": 4,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "norris",
+      "position": 5,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "leclerc",
+      "position": 7,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "piastri",
+      "position": 8,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "sainz",
+      "position": 8,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "hamilton",
+      "position": 8,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "russell",
+      "position": 9,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "perez",
+      "position": 10,
+      "nextRaceNum": 25,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": []
+        }
+      ]
     }
   ],
   "constructorLockInsights": [
@@ -3123,12 +3360,6 @@
     },
     {
       "type": "can_be_locked_in_later",
-      "entityId": "aston_martin",
-      "position": 10,
-      "earliestRaceNum": 27
-    },
-    {
-      "type": "can_be_locked_in_later",
       "entityId": "haas",
       "position": 5,
       "earliestRaceNum": 30
@@ -3156,12 +3387,6 @@
       "entityId": "haas",
       "position": 9,
       "earliestRaceNum": 28
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "haas",
-      "position": 10,
-      "earliestRaceNum": 27
     },
     {
       "type": "can_be_locked_in_later",
@@ -3195,12 +3420,6 @@
     },
     {
       "type": "can_be_locked_in_later",
-      "entityId": "rb",
-      "position": 10,
-      "earliestRaceNum": 27
-    },
-    {
-      "type": "can_be_locked_in_later",
       "entityId": "williams",
       "position": 5,
       "earliestRaceNum": 30
@@ -3228,12 +3447,6 @@
       "entityId": "williams",
       "position": 9,
       "earliestRaceNum": 28
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "williams",
-      "position": 10,
-      "earliestRaceNum": 27
     },
     {
       "type": "can_be_locked_in_later",
@@ -3267,12 +3480,6 @@
     },
     {
       "type": "can_be_locked_in_later",
-      "entityId": "alpine",
-      "position": 10,
-      "earliestRaceNum": 27
-    },
-    {
-      "type": "can_be_locked_in_later",
       "entityId": "sauber",
       "position": 5,
       "earliestRaceNum": 30
@@ -3300,12 +3507,6 @@
       "entityId": "sauber",
       "position": 9,
       "earliestRaceNum": 30
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "sauber",
-      "position": 10,
-      "earliestRaceNum": 27
     }
   ]
 }

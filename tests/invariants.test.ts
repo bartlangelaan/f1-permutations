@@ -164,7 +164,10 @@ test("All can_be_locked_in_next_race insights include at least one lock conditio
     for (const insightMap of [data.driverLockInsights, data.constructorLockInsights]) {
       for (const [afterRaceNum, insights] of Object.entries(insightMap)) {
         for (const insight of insights) {
-          if (insight.type === "can_be_locked_in_next_race") {
+          if (
+            insight.type === "can_be_locked_in_next_race" &&
+            insight.racePositionCombinations === undefined
+          ) {
             const conditionCount =
               insight.mustOutscoreBy.length + insight.cannotBeOutscoredByMoreThan.length;
 

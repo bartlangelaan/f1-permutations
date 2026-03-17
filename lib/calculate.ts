@@ -138,6 +138,16 @@ export interface EntitySeries {
   cumulativePoints: (number | null)[];
   /** currentPos[i] = championship position after race i+1 (0-indexed array); null if race not yet run */
   currentPos: (number | null)[];
+  /**
+   * cumulativeWins[i] = number of race wins (P1 in a main race, not sprint) after race i+1.
+   * Only tracked for drivers; null if race not yet run. Used for tiebreaker calculations.
+   */
+  cumulativeWins?: (number | null)[];
+  /**
+   * cumulativeFinishCounts[i][p] = number of main-race finishes at position p+1 after race i+1.
+   * Only tracked for drivers; null if race not yet run. Used for tiebreaker calculations.
+   */
+  cumulativeFinishCounts?: ((number[] | null) | null)[];
 }
 
 interface SeasonChartData {
@@ -176,7 +186,19 @@ export type LockInsight =
       nextRaceNum: number;
       mustOutscoreBy: LockCondition[];
       cannotBeOutscoredByMoreThan: LockCondition[];
-      minFinishPos?: number;
+      /**
+       * When present, lists every race-finishing-position combination that guarantees
+       * `position`. Each entry's `raceFinishPos` is the threshold: finishing at that
+       * position *or better* guarantees `position` given the stated rival constraints.
+       * `null` means the entity's race result is irrelevant — any finish guarantees `position`.
+       * An empty `rivalConstraints` array means the entity wins regardless of where rivals finish.
+       * Entries with identical rivalConstraints are deduplicated — only the highest
+       * (worst) raceFinishPos is kept, so the threshold represents the full range.
+       */
+      racePositionCombinations?: Array<{
+        raceFinishPos: number | null;
+        rivalConstraints: Array<{ opponentId: string; maxRaceFinishPos: number }>;
+      }>;
     }
   | {
       type: "can_be_locked_in_later";
@@ -252,6 +274,9 @@ function findGuaranteePlanForPosition(
     });
 
   const requiredBelowCount = entityIds.length - position;
+  // Last place (position = total entities) needs zero rivals below — trivially guaranteed,
+  // not a useful insight.
+  if (requiredBelowCount <= 0) return null;
   const forceableBelow = opponents.filter((opponent) => opponent.canForceEntityAbove);
   if (forceableBelow.length < requiredBelowCount) {
     return null;
@@ -359,6 +384,175 @@ function hasRuleOutConditions(plan: {
   return plan.mustBeOutscoredBy.length > 0 || plan.cannotOutscoreByMoreThan.length > 0;
 }
 
+/**
+ * For each finishing position the entity can take in the next race, compute which rival
+ * finishing positions are required for the entity to guarantee `targetPosition` in the
+ * final championship standings.
+ *
+ * A rival constraint "opponent must finish P{j} or worse" is emitted only when P{j} is
+ * the BEST position the opponent can take while the entity is still guaranteed above them.
+ * If the entity is guaranteed above the opponent regardless (opponent's max points can't
+ * overcome the entity's lead + race score), no constraint for that opponent is emitted.
+ *
+ * The entity's own finishing position is excluded from the search for rivals' worst
+ * valid position (two drivers cannot occupy the same race position).
+ *
+ * Only positions where ALL opponents can simultaneously satisfy their constraints are
+ * returned (i.e. the combination is feasible for the entity to guarantee `targetPosition`).
+ */
+function computePositionCombinations(
+  entityId: string,
+  targetPosition: number,
+  entityIds: string[],
+  basePts: Map<string, number>,
+  racePoints: number[],
+  pointsRemainingAfterNext: number,
+  baseFinishCounts: Map<string, number[]> = new Map(),
+): Array<{
+  raceFinishPos: number | null;
+  rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[];
+}> {
+  const opponents = entityIds.filter((id) => id !== entityId);
+
+  // For targetPosition N the entity must be guaranteed above all opponents EXCEPT the
+  // top N-1 (by base points). Those top N-1 may legitimately finish ahead of the entity
+  // — we only constrain the rest.
+  const sortedOpponents = [...opponents].sort(
+    (a, b) => (basePts.get(b) ?? 0) - (basePts.get(a) ?? 0),
+  );
+  const mustBeBelowOpponents = sortedOpponents.slice(targetPosition - 1);
+  // Last place needs zero rivals below — trivially guaranteed, not a useful insight.
+  if (mustBeBelowOpponents.length === 0) return [];
+
+  const raw: Array<{
+    raceFinishPos: number;
+    rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[];
+  }> = [];
+
+  for (let i = 0; i < entityIds.length; i++) {
+    const entityFinishPos = i + 1;
+    const entityRacePoints = racePoints[i] ?? 0;
+    const entityFinalPts = (basePts.get(entityId) ?? 0) + entityRacePoints;
+
+    const rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[] = [];
+    let feasible = true;
+
+    // Finish counts for entity after this race (used for tiebreaker comparison below).
+    const entityBaseCounts = baseFinishCounts.get(entityId) ?? [];
+    const entityFinalCounts = [...entityBaseCounts];
+    if (entityFinishPos >= 1) {
+      entityFinalCounts[entityFinishPos - 1] = (entityFinalCounts[entityFinishPos - 1] ?? 0) + 1;
+    }
+
+    for (const opponentId of mustBeBelowOpponents) {
+      const opponentBasePts = basePts.get(opponentId) ?? 0;
+
+      // Determine whether entity wins the tiebreaker against this opponent if they tie on points.
+      // Only reliable when pointsRemainingAfterNext === 0 (no future races can shift counts).
+      // The "tying race pts" is what the opponent would need to score to exactly match entity.
+      // Find the finish position that scores exactly those points (if any) to know their tiebreaker.
+      let tiebreakAdj = 1; // default: strict inequality required
+      if (pointsRemainingAfterNext === 0) {
+        const tieOppRacePoints = entityFinalPts - opponentBasePts;
+        const tieOppFinishPos = racePoints.indexOf(tieOppRacePoints) + 1; // 0 if not found
+        if (tieOppFinishPos > 0) {
+          // A genuine tie is possible — compare finish-count arrays to determine tiebreaker winner.
+          const oppBaseCounts = baseFinishCounts.get(opponentId) ?? [];
+          const oppFinalCounts = [...oppBaseCounts];
+          oppFinalCounts[tieOppFinishPos - 1] = (oppFinalCounts[tieOppFinishPos - 1] ?? 0) + 1;
+          const maxLen = Math.max(entityFinalCounts.length, oppFinalCounts.length);
+          for (let p = 0; p < maxLen; p++) {
+            const eCount = entityFinalCounts[p] ?? 0;
+            const oCount = oppFinalCounts[p] ?? 0;
+            if (eCount !== oCount) {
+              if (eCount > oCount) tiebreakAdj = 0; // entity wins tiebreaker
+              break;
+            }
+          }
+        }
+        // If tieOppFinishPos === 0: no position scores those exact points → tie is impossible.
+      }
+
+      // Entity is guaranteed at or above opponent iff:
+      //   entityFinalPts >= opponentBasePts + opponentRacePoints + pointsRemainingAfterNext
+      //   (adjusted to strict when no tiebreaker advantage)
+      // => opponentRacePoints ≤ maxOppRacePoints  (integer arithmetic)
+      const maxOppRacePoints =
+        entityFinalPts - opponentBasePts - pointsRemainingAfterNext - tiebreakAdj;
+
+      if (maxOppRacePoints < 0) {
+        // Even if the opponent scores 0 in the race, they still can't be beaten — infeasible.
+        feasible = false;
+        break;
+      }
+
+      if ((racePoints[0] ?? 0) <= maxOppRacePoints) {
+        // Opponent can finish anywhere (even P1) and entity is still guaranteed above them.
+        // No constraint needed for this opponent.
+        continue;
+      }
+
+      // Find the smallest (best) race position j (≠ entityFinishPos) where the opponent's
+      // points satisfy the constraint.  That position is the "worst they can be at" bound:
+      // the opponent must finish at P{j} or worse.
+      let smallestValidPos: number | null = null;
+      for (let j = 1; j <= entityIds.length; j++) {
+        if (j === entityFinishPos) continue; // position is taken by the entity
+        if ((racePoints[j - 1] ?? 0) <= maxOppRacePoints) {
+          smallestValidPos = j;
+          break;
+        }
+      }
+
+      if (smallestValidPos === null) {
+        // No valid position for this opponent — combination is infeasible.
+        feasible = false;
+        break;
+      }
+
+      // When the entity finishes P1, every opponent is naturally excluded from P1.
+      // A constraint of "P2 or worse" is therefore trivially satisfied and need not be listed.
+      if (entityFinishPos === 1 && smallestValidPos === 2) continue;
+
+      rivalConstraints.push({ opponentId, maxRaceFinishPos: smallestValidPos });
+    }
+
+    if (feasible) {
+      raw.push({ raceFinishPos: entityFinishPos, rivalConstraints });
+    }
+  }
+
+  // Deduplicate: for rows with identical rivalConstraints (same opponents + same bounds),
+  // keep only the one with the highest (worst) raceFinishPos — this is the threshold,
+  // meaning the entity can finish at that position *or better* with those constraints.
+  const seen = new Map<string, number>();
+  const results: Array<{
+    raceFinishPos: number | null;
+    rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[];
+  }> = [];
+  for (const entry of raw) {
+    const key = JSON.stringify(
+      entry.rivalConstraints.map((r) => `${r.opponentId}:${r.maxRaceFinishPos}`),
+    );
+    const existingIdx = seen.get(key);
+    if (existingIdx === undefined) {
+      seen.set(key, results.length);
+      results.push(entry);
+    } else {
+      // Later entries have a higher (worse) raceFinishPos — update to extend the threshold.
+      results[existingIdx] = entry;
+    }
+  }
+
+  // When the threshold is the last place (all positions qualify), the entity's
+  // finish is irrelevant — represent that as null.
+  return results.map((entry) =>
+    entry.raceFinishPos === entityIds.length
+      ? { raceFinishPos: null as null, rivalConstraints: entry.rivalConstraints }
+      : entry,
+  );
+}
+
 export function computeLockInsightsForSelectedRace(
   data: SeasonChartData,
   afterRaceNum: number,
@@ -371,8 +565,13 @@ export function computeLockInsightsForSelectedRace(
   const insights: LockInsight[] = [];
 
   const basePts = new Map<string, number>();
+  const baseFinishCounts = new Map<string, number[]>();
   for (const entity of entities) {
     basePts.set(entity.id, entity.cumulativePoints[afterRaceNum - 1] ?? 0);
+    if (entity.cumulativeFinishCounts) {
+      const counts = entity.cumulativeFinishCounts[afterRaceNum - 1];
+      if (counts) baseFinishCounts.set(entity.id, counts);
+    }
   }
 
   const endProjections = computeProjectionsForSelectedRace(data, afterRaceNum, isDriver)[
@@ -390,41 +589,6 @@ export function computeLockInsightsForSelectedRace(
       (insight) =>
         insight.entityId === entityId && insight.position === position && insight.type === type,
     );
-
-  const practicalFinishForGuaranteedLock = (
-    nextPlan: {
-      mustOutscoreBy: LockCondition[];
-      cannotBeOutscoredByMoreThan: LockCondition[];
-    },
-    nextRace: TimelineRace,
-  ): number | null => {
-    if (!isDriver) return null;
-
-    const pointsByPosition = driverPointsByPositionForRace(data.year, nextRace);
-    if (pointsByPosition.length < 2) return null;
-
-    const maxFinishPos = Math.min(pointsByPosition.length, entities.length);
-    let bestKnown: number | null = null;
-
-    for (let finishPos = 1; finishPos <= maxFinishPos; finishPos++) {
-      const ownPoints = pointsByPosition[finishPos - 1] ?? 0;
-      const maxOpponentPoints = pointsByPosition[finishPos === 1 ? 1 : 0] ?? 0;
-
-      const satisfiesMustOutscore = nextPlan.mustOutscoreBy.every(
-        (condition) => ownPoints - maxOpponentPoints >= condition.points,
-      );
-      if (!satisfiesMustOutscore) continue;
-
-      const satisfiesOutscoreCap = nextPlan.cannotBeOutscoredByMoreThan.every(
-        (condition) => maxOpponentPoints - ownPoints <= condition.points,
-      );
-      if (!satisfiesOutscoreCap) continue;
-
-      bestKnown = finishPos;
-    }
-
-    return bestKnown;
-  };
 
   for (const entity of orderedEntities) {
     const endEntry = endProjections[entity.id];
@@ -465,9 +629,6 @@ export function computeLockInsightsForSelectedRace(
         if (!nextPlan) continue;
         if (!hasGuaranteeConditions(nextPlan)) continue;
 
-        const nextRace = data.races[nextRaceNum - 1];
-        const minFinishPos = nextRace ? practicalFinishForGuaranteedLock(nextPlan, nextRace) : null;
-
         insights.push({
           type: "can_be_locked_in_next_race",
           entityId: entity.id,
@@ -475,7 +636,6 @@ export function computeLockInsightsForSelectedRace(
           nextRaceNum,
           mustOutscoreBy: nextPlan.mustOutscoreBy,
           cannotBeOutscoredByMoreThan: nextPlan.cannotBeOutscoredByMoreThan,
-          ...(minFinishPos !== null ? { minFinishPos } : {}),
         });
       }
 
@@ -587,6 +747,68 @@ export function computeLockInsightsForSelectedRace(
     }
   }
 
+  // Generate multi-driver position-combination permutations for every achievable position.
+  // For each driver and each position they can still reach, enumerate all race finishing
+  // positions and the rival finishing-position constraints required to guarantee that position.
+  if (isDriver && nextRaceNum <= lastRaceNum) {
+    const nextRace = data.races[nextRaceNum - 1];
+    if (nextRace) {
+      const racePoints = driverPointsByPositionForRace(data.year, nextRace);
+      const pointsRemainingAfterNext = cumulativeMaxPoints(
+        data.races,
+        nextRaceNum,
+        lastRaceNum,
+        isDriver,
+      );
+
+      for (const entity of orderedEntities) {
+        const endEntry = endProjections[entity.id];
+        if (!endEntry) continue;
+        if (endEntry.bestPos === endEntry.worstPos) continue; // already locked in
+
+        for (
+          let position = endEntry.bestPos;
+          position <= (endEntry.worstPos ?? entities.length);
+          position++
+        ) {
+          const combinations = computePositionCombinations(
+            entity.id,
+            position,
+            entityIds,
+            basePts,
+            racePoints,
+            pointsRemainingAfterNext,
+            baseFinishCounts,
+          );
+
+          if (combinations.length > 0) {
+            // Attach to the existing points-margin insight for this entity/position, if one
+            // was already emitted, so both representations live on the same insight object.
+            const existing = insights.find(
+              (ins): ins is Extract<LockInsight, { type: "can_be_locked_in_next_race" }> =>
+                ins.type === "can_be_locked_in_next_race" &&
+                ins.entityId === entity.id &&
+                ins.position === position,
+            );
+            if (existing) {
+              existing.racePositionCombinations = combinations;
+            } else {
+              insights.push({
+                type: "can_be_locked_in_next_race",
+                entityId: entity.id,
+                position,
+                nextRaceNum,
+                mustOutscoreBy: [],
+                cannotBeOutscoredByMoreThan: [],
+                racePositionCombinations: combinations,
+              });
+            }
+          }
+        }
+      }
+    }
+  }
+
   return insights;
 }
 
@@ -640,7 +862,11 @@ export function buildSeasonChartData(year: number, upToRaceNum?: number): Season
   const driverConstructor = new Map<string, string>();
 
   const driverSnaps: (Map<string, number> | null)[] = [];
+  const driverWinSnaps: (Map<string, number> | null)[] = [];
+  const driverFinishCountSnaps: (Map<string, number[]> | null)[] = [];
   const constructorSnaps: (Map<string, number> | null)[] = [];
+  const driverCumWins = new Map<string, number>();
+  const driverCumFinishes = new Map<string, number[]>();
   let lastCompletedRaceNum = 0;
 
   for (let i = 0; i < races.length; i++) {
@@ -663,14 +889,34 @@ export function buildSeasonChartData(year: number, upToRaceNum?: number): Season
           constructorNames.set(r.constructorId, r.constructorName);
           driverConstructor.set(r.driverId, r.constructorId);
         }
+        // Track finish counts per position in main races only (not sprints) for tiebreaker.
+        if (race.type === "race") {
+          for (let pos = 0; pos < results.length; pos++) {
+            const driverId = results[pos]?.driverId;
+            if (driverId) {
+              const counts = driverCumFinishes.get(driverId) ?? [];
+              counts[pos] = (counts[pos] ?? 0) + 1;
+              driverCumFinishes.set(driverId, counts);
+              if (pos === 0) {
+                driverCumWins.set(driverId, (driverCumWins.get(driverId) ?? 0) + 1);
+              }
+            }
+          }
+        }
         driverSnaps.push(new Map(driverCum));
+        driverWinSnaps.push(new Map(driverCumWins));
+        driverFinishCountSnaps.push(new Map(driverCumFinishes.entries()));
         constructorSnaps.push(new Map(constructorCum));
       } else {
         driverSnaps.push(null);
+        driverWinSnaps.push(null);
+        driverFinishCountSnaps.push(null);
         constructorSnaps.push(null);
       }
     } else {
       driverSnaps.push(null);
+      driverWinSnaps.push(null);
+      driverFinishCountSnaps.push(null);
       constructorSnaps.push(null);
     }
   }
@@ -705,6 +951,8 @@ export function buildSeasonChartData(year: number, upToRaceNum?: number): Season
       color: teamColor(constructorId, fallbackIdx),
       cumulativePoints: driverSnaps.map((snap) => snap?.get(id) ?? null),
       currentPos: driverSnaps.map((snap) => computePos(snap, id)),
+      cumulativeWins: driverWinSnaps.map((snap) => snap?.get(id) ?? null),
+      cumulativeFinishCounts: driverFinishCountSnaps.map((snap) => snap?.get(id) ?? null),
     };
   });
 

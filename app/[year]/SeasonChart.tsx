@@ -20,7 +20,7 @@ import type {
   ProjectionMap,
   TimelineRace,
 } from "@/lib/calculate";
-import { renderInsightText } from "@/lib/render-insight";
+import { renderInsightTexts } from "@/lib/render-insight";
 
 type StandingsRow = {
   id: string;
@@ -564,9 +564,11 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
           </label>
         </div>
         <div key={mode} className="max-h-64 space-y-1 overflow-y-auto pr-2 text-xs text-zinc-400">
-          {insightItems.map((insight, i) => (
-            <p key={i}>• {renderInsightText(insight, races, entitiesById)}</p>
-          ))}
+          {insightItems.flatMap((insight, i) =>
+            renderInsightTexts(insight, races, entitiesById).map((text, j) => (
+              <p key={`${i}-${j}`}>• {text}</p>
+            )),
+          )}
         </div>
       </div>
     </div>

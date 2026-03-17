@@ -1307,7 +1307,22 @@
           "points": 13
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "max_verstappen",
+              "maxRaceFinishPos": 11
+            },
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1320,7 +1335,36 @@
           "points": 13
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 8
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "ricciardo",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_later",
@@ -1358,7 +1402,21 @@
           "points": 23
         }
       ],
-      "minFinishPos": 9
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 9,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": [
+            {
+              "opponentId": "hulkenberg",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_later",
@@ -1440,6 +1498,25 @@
           "opponentId": "sirotkin",
           "points": 12
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "sainz",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "gasly",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grosjean",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        }
       ]
     },
     {
@@ -1482,6 +1559,71 @@
           "opponentId": "sirotkin",
           "points": 12
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "gasly",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "grosjean",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "gasly",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "grosjean",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "gasly",
+              "maxRaceFinishPos": 11
+            },
+            {
+              "opponentId": "grosjean",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        }
       ]
     },
     {
@@ -1520,6 +1662,59 @@
           "opponentId": "sirotkin",
           "points": 12
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "grosjean",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "grosjean",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "grosjean",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        }
       ]
     },
     {
@@ -1554,7 +1749,307 @@
           "points": 12
         }
       ],
-      "minFinishPos": 1
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 11
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 11,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 12
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 11
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1584,7 +2079,213 @@
           "points": 12
         }
       ],
-      "minFinishPos": 1
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1610,7 +2311,151 @@
           "points": 12
         }
       ],
-      "minFinishPos": 2
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 2,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1632,7 +2477,123 @@
           "points": 12
         }
       ],
-      "minFinishPos": 2
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 2,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1650,7 +2611,77 @@
           "points": 12
         }
       ],
-      "minFinishPos": 3
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": [
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1664,7 +2695,39 @@
           "points": 12
         }
       ],
-      "minFinishPos": 3
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": [
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_later",
@@ -1727,12 +2790,6 @@
       "earliestRaceNum": 17
     },
     {
-      "type": "can_be_locked_in_later",
-      "entityId": "raikkonen",
-      "position": 20,
-      "earliestRaceNum": 17
-    },
-    {
       "type": "can_be_locked_in_next_race",
       "entityId": "bottas",
       "position": 12,
@@ -1772,6 +2829,21 @@
           "opponentId": "sirotkin",
           "points": 7
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "gasly",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "grosjean",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        }
       ]
     },
     {
@@ -1810,6 +2882,17 @@
           "opponentId": "sirotkin",
           "points": 7
         }
+      ],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "grosjean",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        }
       ]
     },
     {
@@ -1845,7 +2928,182 @@
           "points": 7
         }
       ],
-      "minFinishPos": 1
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "leclerc",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1875,7 +3133,283 @@
           "points": 7
         }
       ],
-      "minFinishPos": 1
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 10
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 11
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 11,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 12
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        },
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": [
+            {
+              "opponentId": "vandoorne",
+              "maxRaceFinishPos": 11
+            },
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1901,7 +3435,218 @@
           "points": 7
         }
       ],
-      "minFinishPos": 1
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": [
+            {
+              "opponentId": "stroll",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1923,7 +3668,178 @@
           "points": 7
         }
       ],
-      "minFinishPos": 1
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 3,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 8
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": [
+            {
+              "opponentId": "ericsson",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1941,7 +3857,125 @@
           "points": 7
         }
       ],
-      "minFinishPos": 1
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": 2,
+          "rivalConstraints": [
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 2
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 5,
+          "rivalConstraints": [
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 3
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 4
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 5
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 9,
+          "rivalConstraints": [
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 6
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": [
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 7
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -1955,7 +3989,66 @@
           "points": 7
         }
       ],
-      "minFinishPos": 2
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 2,
+          "rivalConstraints": []
+        },
+        {
+          "raceFinishPos": 4,
+          "rivalConstraints": [
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 2
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 6,
+          "rivalConstraints": [
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 3
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 7,
+          "rivalConstraints": [
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 4
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 8,
+          "rivalConstraints": [
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 5
+            }
+          ]
+        },
+        {
+          "raceFinishPos": 10,
+          "rivalConstraints": [
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 6
+            }
+          ]
+        },
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": [
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 7
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_later",
@@ -2024,12 +4117,6 @@
       "earliestRaceNum": 17
     },
     {
-      "type": "can_be_locked_in_later",
-      "entityId": "bottas",
-      "position": 20,
-      "earliestRaceNum": 17
-    },
-    {
       "type": "can_be_locked_in_next_race",
       "entityId": "max_verstappen",
       "position": 18,
@@ -2044,7 +4131,22 @@
           "points": 22
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "brendon_hartley",
+              "maxRaceFinishPos": 9
+            },
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_locked_in_next_race",
@@ -2057,7 +4159,18 @@
           "points": 22
         }
       ],
-      "cannotBeOutscoredByMoreThan": []
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": 1,
+          "rivalConstraints": [
+            {
+              "opponentId": "sirotkin",
+              "maxRaceFinishPos": 9
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -2175,12 +4288,6 @@
       "earliestRaceNum": 17
     },
     {
-      "type": "can_be_locked_in_later",
-      "entityId": "max_verstappen",
-      "position": 20,
-      "earliestRaceNum": 17
-    },
-    {
       "type": "can_be_ruled_out_next_race",
       "entityId": "ricciardo",
       "position": 1,
@@ -2305,12 +4412,6 @@
       "type": "can_be_locked_in_later",
       "entityId": "ricciardo",
       "position": 19,
-      "earliestRaceNum": 17
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "ricciardo",
-      "position": 20,
       "earliestRaceNum": 17
     },
     {
@@ -2436,12 +4537,6 @@
     },
     {
       "type": "can_be_locked_in_later",
-      "entityId": "hulkenberg",
-      "position": 20,
-      "earliestRaceNum": 17
-    },
-    {
-      "type": "can_be_locked_in_later",
       "entityId": "kevin_magnussen",
       "position": 3,
       "earliestRaceNum": 21
@@ -2541,12 +4636,6 @@
       "entityId": "kevin_magnussen",
       "position": 19,
       "earliestRaceNum": 18
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "kevin_magnussen",
-      "position": 20,
-      "earliestRaceNum": 17
     },
     {
       "type": "can_be_locked_in_later",
@@ -2652,12 +4741,6 @@
     },
     {
       "type": "can_be_locked_in_later",
-      "entityId": "perez",
-      "position": 20,
-      "earliestRaceNum": 17
-    },
-    {
-      "type": "can_be_locked_in_later",
       "entityId": "ocon",
       "position": 3,
       "earliestRaceNum": 21
@@ -2760,12 +4843,6 @@
     },
     {
       "type": "can_be_locked_in_later",
-      "entityId": "ocon",
-      "position": 20,
-      "earliestRaceNum": 17
-    },
-    {
-      "type": "can_be_locked_in_later",
       "entityId": "alonso",
       "position": 3,
       "earliestRaceNum": 21
@@ -2865,12 +4942,6 @@
       "entityId": "alonso",
       "position": 19,
       "earliestRaceNum": 18
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "alonso",
-      "position": 20,
-      "earliestRaceNum": 17
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -2986,12 +5057,6 @@
       "entityId": "sainz",
       "position": 19,
       "earliestRaceNum": 18
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "sainz",
-      "position": 20,
-      "earliestRaceNum": 17
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -3126,12 +5191,6 @@
       "earliestRaceNum": 18
     },
     {
-      "type": "can_be_locked_in_later",
-      "entityId": "gasly",
-      "position": 20,
-      "earliestRaceNum": 17
-    },
-    {
       "type": "can_be_ruled_out_next_race",
       "entityId": "grosjean",
       "position": 3,
@@ -3264,12 +5323,6 @@
       "earliestRaceNum": 18
     },
     {
-      "type": "can_be_locked_in_later",
-      "entityId": "grosjean",
-      "position": 20,
-      "earliestRaceNum": 17
-    },
-    {
       "type": "can_be_ruled_out_next_race",
       "entityId": "leclerc",
       "position": 3,
@@ -3403,12 +5456,6 @@
       "earliestRaceNum": 19
     },
     {
-      "type": "can_be_locked_in_later",
-      "entityId": "leclerc",
-      "position": 20,
-      "earliestRaceNum": 17
-    },
-    {
       "type": "can_be_ruled_out_next_race",
       "entityId": "vandoorne",
       "position": 3,
@@ -3541,12 +5588,6 @@
       "earliestRaceNum": 19
     },
     {
-      "type": "can_be_locked_in_later",
-      "entityId": "vandoorne",
-      "position": 20,
-      "earliestRaceNum": 17
-    },
-    {
       "type": "can_be_ruled_out_next_race",
       "entityId": "stroll",
       "position": 3,
@@ -3679,12 +5720,6 @@
       "earliestRaceNum": 19
     },
     {
-      "type": "can_be_locked_in_later",
-      "entityId": "stroll",
-      "position": 20,
-      "earliestRaceNum": 17
-    },
-    {
       "type": "can_be_ruled_out_next_race",
       "entityId": "ericsson",
       "position": 3,
@@ -3815,12 +5850,6 @@
       "entityId": "ericsson",
       "position": 19,
       "earliestRaceNum": 19
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "ericsson",
-      "position": 20,
-      "earliestRaceNum": 17
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -3977,12 +6006,6 @@
       "earliestRaceNum": 19
     },
     {
-      "type": "can_be_locked_in_later",
-      "entityId": "brendon_hartley",
-      "position": 20,
-      "earliestRaceNum": 17
-    },
-    {
       "type": "can_be_ruled_out_next_race",
       "entityId": "sirotkin",
       "position": 3,
@@ -4137,10 +6160,32 @@
       "earliestRaceNum": 19
     },
     {
-      "type": "can_be_locked_in_later",
-      "entityId": "sirotkin",
-      "position": 20,
-      "earliestRaceNum": 17
+      "type": "can_be_locked_in_next_race",
+      "entityId": "hamilton",
+      "position": 6,
+      "nextRaceNum": 15,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": []
+        }
+      ]
+    },
+    {
+      "type": "can_be_locked_in_next_race",
+      "entityId": "vettel",
+      "position": 7,
+      "nextRaceNum": 15,
+      "mustOutscoreBy": [],
+      "cannotBeOutscoredByMoreThan": [],
+      "racePositionCombinations": [
+        {
+          "raceFinishPos": null,
+          "rivalConstraints": []
+        }
+      ]
     }
   ],
   "constructorLockInsights": [
@@ -4281,12 +6326,6 @@
       "earliestRaceNum": 17
     },
     {
-      "type": "can_be_locked_in_later",
-      "entityId": "red_bull",
-      "position": 10,
-      "earliestRaceNum": 17
-    },
-    {
       "type": "can_be_ruled_out_next_race",
       "entityId": "force_india",
       "position": 2,
@@ -4349,12 +6388,6 @@
     },
     {
       "type": "can_be_locked_in_later",
-      "entityId": "force_india",
-      "position": 10,
-      "earliestRaceNum": 17
-    },
-    {
-      "type": "can_be_locked_in_later",
       "entityId": "renault",
       "position": 3,
       "earliestRaceNum": 21
@@ -4394,12 +6427,6 @@
       "entityId": "renault",
       "position": 9,
       "earliestRaceNum": 18
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "renault",
-      "position": 10,
-      "earliestRaceNum": 17
     },
     {
       "type": "can_be_locked_in_later",
@@ -4445,12 +6472,6 @@
     },
     {
       "type": "can_be_locked_in_later",
-      "entityId": "haas",
-      "position": 10,
-      "earliestRaceNum": 17
-    },
-    {
-      "type": "can_be_locked_in_later",
       "entityId": "mclaren",
       "position": 3,
       "earliestRaceNum": 21
@@ -4490,12 +6511,6 @@
       "entityId": "mclaren",
       "position": 9,
       "earliestRaceNum": 18
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "mclaren",
-      "position": 10,
-      "earliestRaceNum": 17
     },
     {
       "type": "can_be_ruled_out_next_race",
@@ -4553,12 +6568,6 @@
       "earliestRaceNum": 19
     },
     {
-      "type": "can_be_locked_in_later",
-      "entityId": "toro_rosso",
-      "position": 10,
-      "earliestRaceNum": 17
-    },
-    {
       "type": "can_be_ruled_out_next_race",
       "entityId": "sauber",
       "position": 3,
@@ -4614,12 +6623,6 @@
       "earliestRaceNum": 19
     },
     {
-      "type": "can_be_locked_in_later",
-      "entityId": "sauber",
-      "position": 10,
-      "earliestRaceNum": 17
-    },
-    {
       "type": "can_be_ruled_out_next_race",
       "entityId": "williams",
       "position": 3,
@@ -4673,12 +6676,6 @@
       "entityId": "williams",
       "position": 9,
       "earliestRaceNum": 19
-    },
-    {
-      "type": "can_be_locked_in_later",
-      "entityId": "williams",
-      "position": 10,
-      "earliestRaceNum": 17
     }
   ]
 }
