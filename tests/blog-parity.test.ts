@@ -198,10 +198,10 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
   );
 
   // Norris P10/P11 (blog): Verstappen P4 or worse + Piastri P3 or worse.
-  // All 0-pt finishes (P11–P21 in this 21-driver season) share the same constraints → threshold P21.
+  // All 0-pt finishes (P11–P21 in this 21-driver season) share the same constraints → any finish qualifies.
   assert.ok(
     texts.includes(
-      "Lando Norris can guarantee P1 in Abu Dhabi GP by finishing P21 or better if Max Verstappen finishes P4 or worse and Oscar Piastri finishes P3 or worse.",
+      "Lando Norris can guarantee P1 in Abu Dhabi GP regardless of finishing position if Max Verstappen finishes P4 or worse and Oscar Piastri finishes P3 or worse.",
     ),
   );
 

@@ -190,12 +190,13 @@ export type LockInsight =
        * When present, lists every race-finishing-position combination that guarantees
        * `position`. Each entry's `raceFinishPos` is the threshold: finishing at that
        * position *or better* guarantees `position` given the stated rival constraints.
+       * `null` means the entity's race result is irrelevant — any finish guarantees `position`.
        * An empty `rivalConstraints` array means the entity wins regardless of where rivals finish.
        * Entries with identical rivalConstraints are deduplicated — only the highest
        * (worst) raceFinishPos is kept, so the threshold represents the full range.
        */
       racePositionCombinations?: Array<{
-        raceFinishPos: number;
+        raceFinishPos: number | null;
         rivalConstraints: Array<{ opponentId: string; maxRaceFinishPos: number }>;
       }>;
     }
@@ -408,7 +409,7 @@ function computePositionCombinations(
   pointsRemainingAfterNext: number,
   baseFinishCounts: Map<string, number[]> = new Map(),
 ): Array<{
-  raceFinishPos: number;
+  raceFinishPos: number | null;
   rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[];
 }> {
   const opponents = entityIds.filter((id) => id !== entityId);
@@ -526,7 +527,7 @@ function computePositionCombinations(
   // meaning the entity can finish at that position *or better* with those constraints.
   const seen = new Map<string, number>();
   const results: Array<{
-    raceFinishPos: number;
+    raceFinishPos: number | null;
     rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[];
   }> = [];
   for (const entry of raw) {
@@ -543,7 +544,13 @@ function computePositionCombinations(
     }
   }
 
-  return results;
+  // When the threshold is the last place (all positions qualify), the entity's
+  // finish is irrelevant — represent that as null.
+  return results.map((entry) =>
+    entry.raceFinishPos === entityIds.length
+      ? { raceFinishPos: null as null, rivalConstraints: entry.rivalConstraints }
+      : entry,
+  );
 }
 
 export function computeLockInsightsForSelectedRace(

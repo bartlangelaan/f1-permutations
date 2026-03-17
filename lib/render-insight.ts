@@ -71,10 +71,14 @@ export function renderInsightTexts(
     // Position-combination sentences: one per entry in the table.
     if (insight.racePositionCombinations) {
       for (const combo of insight.racePositionCombinations) {
-        const byLine = `by finishing P${combo.raceFinishPos} or better`;
+        const byLine =
+          combo.raceFinishPos === null
+            ? "regardless of finishing position"
+            : `by finishing P${combo.raceFinishPos} or better`;
         if (combo.rivalConstraints.length === 0) {
+          const suffix = combo.raceFinishPos === null ? "" : " regardless of rivals";
           sentences.push(
-            `${entityName} can guarantee ${positionLabel} in ${raceLabel} ${byLine} regardless of rivals.`,
+            `${entityName} can guarantee ${positionLabel} in ${raceLabel} ${byLine}${suffix}.`,
           );
         } else {
           const rivalText = combo.rivalConstraints
