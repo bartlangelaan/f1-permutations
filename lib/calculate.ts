@@ -138,6 +138,16 @@ export interface EntitySeries {
   cumulativePoints: (number | null)[];
   /** currentPos[i] = championship position after race i+1 (0-indexed array); null if race not yet run */
   currentPos: (number | null)[];
+  /**
+   * cumulativeWins[i] = number of race wins (P1 in a main race, not sprint) after race i+1.
+   * Only tracked for drivers; null if race not yet run. Used for tiebreaker calculations.
+   */
+  cumulativeWins?: (number | null)[];
+  /**
+   * cumulativeFinishCounts[i][p] = number of main-race finishes at position p+1 after race i+1.
+   * Only tracked for drivers; null if race not yet run. Used for tiebreaker calculations.
+   */
+  cumulativeFinishCounts?: ((number[] | null) | null)[];
 }
 
 interface SeasonChartData {
@@ -396,6 +406,7 @@ function computePositionCombinations(
   basePts: Map<string, number>,
   racePoints: number[],
   pointsRemainingAfterNext: number,
+  baseFinishCounts: Map<string, number[]> = new Map(),
 ): Array<{
   raceFinishPos: number;
   rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[];
@@ -425,13 +436,48 @@ function computePositionCombinations(
     const rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[] = [];
     let feasible = true;
 
+    // Finish counts for entity after this race (used for tiebreaker comparison below).
+    const entityBaseCounts = baseFinishCounts.get(entityId) ?? [];
+    const entityFinalCounts = [...entityBaseCounts];
+    if (entityFinishPos >= 1) {
+      entityFinalCounts[entityFinishPos - 1] = (entityFinalCounts[entityFinishPos - 1] ?? 0) + 1;
+    }
+
     for (const opponentId of mustBeBelowOpponents) {
       const opponentBasePts = basePts.get(opponentId) ?? 0;
-      // Entity is guaranteed strictly above opponent iff:
-      //   entityFinalPts > opponentBasePts + opponentRacePoints + pointsRemainingAfterNext
-      // => opponentRacePoints < entityFinalPts - opponentBasePts - pointsRemainingAfterNext
+
+      // Determine whether entity wins the tiebreaker against this opponent if they tie on points.
+      // Only reliable when pointsRemainingAfterNext === 0 (no future races can shift counts).
+      // The "tying race pts" is what the opponent would need to score to exactly match entity.
+      // Find the finish position that scores exactly those points (if any) to know their tiebreaker.
+      let tiebreakAdj = 1; // default: strict inequality required
+      if (pointsRemainingAfterNext === 0) {
+        const tieOppRacePoints = entityFinalPts - opponentBasePts;
+        const tieOppFinishPos = racePoints.indexOf(tieOppRacePoints) + 1; // 0 if not found
+        if (tieOppFinishPos > 0) {
+          // A genuine tie is possible — compare finish-count arrays to determine tiebreaker winner.
+          const oppBaseCounts = baseFinishCounts.get(opponentId) ?? [];
+          const oppFinalCounts = [...oppBaseCounts];
+          oppFinalCounts[tieOppFinishPos - 1] = (oppFinalCounts[tieOppFinishPos - 1] ?? 0) + 1;
+          const maxLen = Math.max(entityFinalCounts.length, oppFinalCounts.length);
+          for (let p = 0; p < maxLen; p++) {
+            const eCount = entityFinalCounts[p] ?? 0;
+            const oCount = oppFinalCounts[p] ?? 0;
+            if (eCount !== oCount) {
+              if (eCount > oCount) tiebreakAdj = 0; // entity wins tiebreaker
+              break;
+            }
+          }
+        }
+        // If tieOppFinishPos === 0: no position scores those exact points → tie is impossible.
+      }
+
+      // Entity is guaranteed at or above opponent iff:
+      //   entityFinalPts >= opponentBasePts + opponentRacePoints + pointsRemainingAfterNext
+      //   (adjusted to strict when no tiebreaker advantage)
       // => opponentRacePoints ≤ maxOppRacePoints  (integer arithmetic)
-      const maxOppRacePoints = entityFinalPts - opponentBasePts - pointsRemainingAfterNext - 1;
+      const maxOppRacePoints =
+        entityFinalPts - opponentBasePts - pointsRemainingAfterNext - tiebreakAdj;
 
       if (maxOppRacePoints < 0) {
         // Even if the opponent scores 0 in the race, they still can't be beaten — infeasible.
@@ -512,8 +558,13 @@ export function computeLockInsightsForSelectedRace(
   const insights: LockInsight[] = [];
 
   const basePts = new Map<string, number>();
+  const baseFinishCounts = new Map<string, number[]>();
   for (const entity of entities) {
     basePts.set(entity.id, entity.cumulativePoints[afterRaceNum - 1] ?? 0);
+    if (entity.cumulativeFinishCounts) {
+      const counts = entity.cumulativeFinishCounts[afterRaceNum - 1];
+      if (counts) baseFinishCounts.set(entity.id, counts);
+    }
   }
 
   const endProjections = computeProjectionsForSelectedRace(data, afterRaceNum, isDriver)[
@@ -720,6 +771,7 @@ export function computeLockInsightsForSelectedRace(
             basePts,
             racePoints,
             pointsRemainingAfterNext,
+            baseFinishCounts,
           );
 
           if (combinations.length > 0) {
@@ -803,7 +855,11 @@ export function buildSeasonChartData(year: number, upToRaceNum?: number): Season
   const driverConstructor = new Map<string, string>();
 
   const driverSnaps: (Map<string, number> | null)[] = [];
+  const driverWinSnaps: (Map<string, number> | null)[] = [];
+  const driverFinishCountSnaps: (Map<string, number[]> | null)[] = [];
   const constructorSnaps: (Map<string, number> | null)[] = [];
+  const driverCumWins = new Map<string, number>();
+  const driverCumFinishes = new Map<string, number[]>();
   let lastCompletedRaceNum = 0;
 
   for (let i = 0; i < races.length; i++) {
@@ -826,14 +882,34 @@ export function buildSeasonChartData(year: number, upToRaceNum?: number): Season
           constructorNames.set(r.constructorId, r.constructorName);
           driverConstructor.set(r.driverId, r.constructorId);
         }
+        // Track finish counts per position in main races only (not sprints) for tiebreaker.
+        if (race.type === "race") {
+          for (let pos = 0; pos < results.length; pos++) {
+            const driverId = results[pos]?.driverId;
+            if (driverId) {
+              const counts = driverCumFinishes.get(driverId) ?? [];
+              counts[pos] = (counts[pos] ?? 0) + 1;
+              driverCumFinishes.set(driverId, counts);
+              if (pos === 0) {
+                driverCumWins.set(driverId, (driverCumWins.get(driverId) ?? 0) + 1);
+              }
+            }
+          }
+        }
         driverSnaps.push(new Map(driverCum));
+        driverWinSnaps.push(new Map(driverCumWins));
+        driverFinishCountSnaps.push(new Map(driverCumFinishes.entries()));
         constructorSnaps.push(new Map(constructorCum));
       } else {
         driverSnaps.push(null);
+        driverWinSnaps.push(null);
+        driverFinishCountSnaps.push(null);
         constructorSnaps.push(null);
       }
     } else {
       driverSnaps.push(null);
+      driverWinSnaps.push(null);
+      driverFinishCountSnaps.push(null);
       constructorSnaps.push(null);
     }
   }
@@ -868,6 +944,8 @@ export function buildSeasonChartData(year: number, upToRaceNum?: number): Season
       color: teamColor(constructorId, fallbackIdx),
       cumulativePoints: driverSnaps.map((snap) => snap?.get(id) ?? null),
       currentPos: driverSnaps.map((snap) => computePos(snap, id)),
+      cumulativeWins: driverWinSnaps.map((snap) => snap?.get(id) ?? null),
+      cumulativeFinishCounts: driverFinishCountSnaps.map((snap) => snap?.get(id) ?? null),
     };
   });
 

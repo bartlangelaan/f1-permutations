@@ -79,10 +79,11 @@ function renderInsights(insights: LockInsight[] | undefined, data: CalculatedCha
 //
 // Lando Norris:
 //   - Finishes P1, P2, or P3 → wins championship regardless of rivals
-//   - Finishes P4 or P5 → wins if Verstappen finishes P2 or worse (Piastri can win and Norris still leads)
-//   - Finishes P6 or P7 → wins if both Verstappen and Piastri finish P2 or worse (neither wins the race)
-//   - Finishes P8 → wins if Verstappen finishes P3 or worse AND Piastri finishes P2 or worse
-//   - Finishes P9 or lower → needs increasingly specific results from competitors
+//   - Finishes P4 or P5 → wins if Verstappen finishes P2 or worse; Piastri eliminated
+//   - Finishes P6 or P7 → wins if Verstappen finishes P2 or worse and Piastri finishes P2 or worse
+//   - Finishes P8 → wins if Verstappen finishes P3 or worse and Piastri finishes P2 or worse
+//   - Finishes P9 → wins if Verstappen finishes P4 or worse and Piastri finishes P2 or worse
+//   - Finishes P10 → wins if Verstappen finishes P4 or worse and Piastri finishes P3 or worse
 //
 // Max Verstappen:
 //   - Finishes P1 + Norris finishes P4 or worse → wins championship
@@ -174,17 +175,24 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
     ),
   );
 
-  // Norris P6: both rivals must finish outside P1 → threshold P6
+  // Norris P6 or P7: both rivals must not win the race → threshold P7 (tiebreaker gives Norris P7+VER P2)
   assert.ok(
     texts.includes(
-      "Lando Norris can guarantee P1 in Abu Dhabi GP by finishing P6 or better if Max Verstappen finishes P2 or worse and Oscar Piastri finishes P2 or worse.",
+      "Lando Norris can guarantee P1 in Abu Dhabi GP by finishing P7 or better if Max Verstappen finishes P2 or worse and Oscar Piastri finishes P2 or worse.",
     ),
   );
 
-  // Norris P7/P8: Verstappen P3 or worse + Piastri P2 or worse → threshold P8
+  // Norris P8: Verstappen P3 or worse + Piastri P2 or worse → threshold P8
   assert.ok(
     texts.includes(
       "Lando Norris can guarantee P1 in Abu Dhabi GP by finishing P8 or better if Max Verstappen finishes P3 or worse and Oscar Piastri finishes P2 or worse.",
+    ),
+  );
+
+  // Norris P9: Verstappen P4 or worse + Piastri P2 or worse → threshold P9 (tiebreaker gives Norris P9+PIA P2)
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee P1 in Abu Dhabi GP by finishing P9 or better if Max Verstappen finishes P4 or worse and Oscar Piastri finishes P2 or worse.",
     ),
   );
 
