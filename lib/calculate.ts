@@ -121,10 +121,12 @@ function driverPointsByPositionForRace(year: number, race: TimelineRace): number
 export interface TimelineRace {
   round: number;
   type: "sprint" | "race";
-  /** Short x-axis label, e.g. "R1" or "S4" */
+  /** X-axis tick label, e.g. "R1" for a race or "S2" for a sprint */
   label: string;
-  /** Full name, e.g. "Bahrain GP" or "R4 Sprint" */
+  /** Full name, e.g. "Round 1/24 - Bahrain GP - Race" or "Round 2/24 - Chinese GP - Sprint" */
   fullLabel: string;
+  /** Short display name, e.g. "Bahrain (1) Race" or "Chinese (2) Sprint" */
+  shortLabel: string;
   maxDriverPoints: number;
   maxConstructorPoints: number;
   completed: boolean;
@@ -133,6 +135,8 @@ export interface TimelineRace {
 export interface EntitySeries {
   id: string;
   name: string;
+  /** Short display label — last name for drivers, same as name for constructors */
+  shortLabel?: string;
   color: string;
   /** cumulativePoints[i] = points after race i+1 (0-indexed array); null if race not yet run */
   cumulativePoints: (number | null)[];
@@ -818,14 +822,18 @@ export function computeLockInsightsForSelectedRace(
  */
 export function buildRaces(year: number): TimelineRace[] {
   const races = getRaces(year);
+  const totalRounds = races.length > 0 ? Math.max(...races.map((r) => r.round)) : 0;
   return races.map((race, index) => {
     const shortName = race.raceName.replace(" Grand Prix", " GP");
+    const city = shortName.replace(" GP", "");
     const results = getEventResults(year, index + 1);
+    const eventType = race.type === "sprint" ? "Sprint" : "Race";
     return {
       round: race.round,
       type: race.type,
-      label: `R${index + 1}`,
-      fullLabel: race.type === "sprint" ? `R${index + 1} ${shortName} Sprint` : shortName,
+      label: race.type === "sprint" ? `S${race.round}` : `R${race.round}`,
+      fullLabel: `Round ${race.round}/${totalRounds} - ${shortName} - ${eventType}`,
+      shortLabel: `${city} (${race.round}) ${eventType}`,
       maxDriverPoints:
         year === 2014 && race.type === "race" && race.round === 19
           ? 50
@@ -945,9 +953,11 @@ export function buildSeasonChartData(year: number, upToRaceNum?: number): Season
   const drivers: EntitySeries[] = driverIds.map((id) => {
     const constructorId = driverConstructor.get(id) ?? "";
     const fallbackIdx = constructorColorIndex.get(constructorId) ?? 0;
+    const driverName = driverNames.get(id)!;
     return {
       id,
-      name: driverNames.get(id)!,
+      name: driverName,
+      shortLabel: driverName.split(" ").pop()!,
       color: teamColor(constructorId, fallbackIdx),
       cumulativePoints: driverSnaps.map((snap) => snap?.get(id) ?? null),
       currentPos: driverSnaps.map((snap) => computePos(snap, id)),

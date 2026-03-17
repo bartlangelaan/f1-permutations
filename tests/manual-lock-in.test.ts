@@ -6,7 +6,10 @@ import { renderInsightTexts } from "../lib/render-insight.ts";
 
 function renderInsights(insights: LockInsight[] | undefined, data: CalculatedChartData): string[] {
   const entitiesById = new Map(
-    [...data.drivers, ...data.constructors].map((e) => [e.id, { name: e.name }]),
+    [...data.drivers, ...data.constructors].map((e) => [
+      e.id,
+      { name: e.name, shortLabel: e.shortLabel },
+    ]),
   );
   return (insights ?? []).flatMap((i) => renderInsightTexts(i, data.races, entitiesById));
 }
@@ -29,7 +32,7 @@ test("Lock-in insight: Norris cannot lock P1 in the next race after Mexico 2025"
 
   const texts = renderInsights(data.driverLockInsights[String(mexicoRaceNum)], data);
   assert.ok(
-    texts.includes("Lando Norris can first guarantee at least P1 after R28 Qatar GP Sprint."),
+    texts.includes("Norris can first guarantee at least P1 after Round 23/24 - Qatar GP - Sprint."),
   );
 });
 
@@ -40,22 +43,22 @@ test("Lock-in insight: Verstappen exposes every next-race minimum lock from P1 t
 
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P1 in Singapore GP if outscores Charles Leclerc by 23 points, Sergio Pérez by 14 points, George Russell by 7 points and is not outscored by Carlos Sainz by more than 9 points.",
+      "Verstappen can guarantee at least P1 in Round 17/22 - Singapore GP - Race if outscores Leclerc by 23 points, Pérez by 14 points, Russell by 7 points and is not outscored by Sainz by more than 9 points.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P2 in Singapore GP if outscores Sergio Pérez by 14 points, George Russell by 7 points and is not outscored by Carlos Sainz by more than 9 points.",
+      "Verstappen can guarantee at least P2 in Round 17/22 - Singapore GP - Race if outscores Pérez by 14 points, Russell by 7 points and is not outscored by Sainz by more than 9 points.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P3 in Singapore GP if outscores George Russell by 7 points and is not outscored by Carlos Sainz by more than 9 points.",
+      "Verstappen can guarantee at least P3 in Round 17/22 - Singapore GP - Race if outscores Russell by 7 points and is not outscored by Sainz by more than 9 points.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Max Verstappen can guarantee at least P4 in Singapore GP if is not outscored by Carlos Sainz by more than 9 points.",
+      "Verstappen can guarantee at least P4 in Round 17/22 - Singapore GP - Race if is not outscored by Sainz by more than 9 points.",
     ),
   );
 });
@@ -65,12 +68,12 @@ test("Lock-in insight: 2025 title contenders show every lockable minimum positio
   const qatarRaceNum = data.races.findIndex((r) => r.round === 23 && r.type === "race") + 1;
   const texts = renderInsights(data.driverLockInsights[String(qatarRaceNum)], data);
 
-  assert.ok(texts.some((t) => t.startsWith("Lando Norris can guarantee at least P1 in")));
-  assert.ok(texts.some((t) => t.startsWith("Lando Norris can guarantee at least P2 in")));
-  assert.ok(texts.some((t) => t.startsWith("Max Verstappen can guarantee at least P1 in")));
-  assert.ok(texts.some((t) => t.startsWith("Max Verstappen can guarantee at least P2 in")));
-  assert.ok(texts.some((t) => t.startsWith("Oscar Piastri can guarantee at least P1 in")));
-  assert.ok(texts.some((t) => t.startsWith("Oscar Piastri can guarantee at least P2 in")));
+  assert.ok(texts.some((t) => t.startsWith("Norris can guarantee at least P1 in")));
+  assert.ok(texts.some((t) => t.startsWith("Norris can guarantee at least P2 in")));
+  assert.ok(texts.some((t) => t.startsWith("Verstappen can guarantee at least P1 in")));
+  assert.ok(texts.some((t) => t.startsWith("Verstappen can guarantee at least P2 in")));
+  assert.ok(texts.some((t) => t.startsWith("Piastri can guarantee at least P1 in")));
+  assert.ok(texts.some((t) => t.startsWith("Piastri can guarantee at least P2 in")));
 });
 
 test("Lock-in insight: later guarantees are emitted per position instead of stopping at the first one", () => {
@@ -79,13 +82,21 @@ test("Lock-in insight: later guarantees are emitted per position instead of stop
   const texts = renderInsights(data.driverLockInsights[String(mexicoRaceNum)], data);
 
   assert.ok(
-    texts.includes("Lando Norris can first guarantee at least P1 after R28 Qatar GP Sprint."),
+    texts.includes("Norris can first guarantee at least P1 after Round 23/24 - Qatar GP - Sprint."),
   );
   assert.ok(
-    texts.includes("Lando Norris can first guarantee at least P2 after R28 Qatar GP Sprint."),
+    texts.includes("Norris can first guarantee at least P2 after Round 23/24 - Qatar GP - Sprint."),
   );
-  assert.ok(texts.includes("Lando Norris can first guarantee at least P3 after Las Vegas GP."));
-  assert.ok(texts.includes("Lando Norris can first guarantee at least P4 after Las Vegas GP."));
+  assert.ok(
+    texts.includes(
+      "Norris can first guarantee at least P3 after Round 22/24 - Las Vegas GP - Race.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Norris can first guarantee at least P4 after Round 22/24 - Las Vegas GP - Race.",
+    ),
+  );
 });
 
 test("Lock-in insight: next-race ruled-out positions are exposed", () => {
@@ -95,7 +106,7 @@ test("Lock-in insight: next-race ruled-out positions are exposed", () => {
 
   assert.ok(
     texts.includes(
-      "P3 is no longer possible for Charles Leclerc in R25 São Paulo GP Sprint if Charles Leclerc does not outscore Max Verstappen by more than 2 points.",
+      "P3 is no longer possible for Leclerc in Round 21/24 - São Paulo GP - Sprint if Leclerc does not outscore Verstappen by more than 2 points.",
     ),
   );
 });

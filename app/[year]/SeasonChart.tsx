@@ -175,7 +175,7 @@ function ChartTooltip({ active, payload, label, races, afterRaceNum, projections
   return (
     <div className="max-w-xs rounded-lg border border-zinc-700 bg-zinc-900 p-3 text-xs shadow-xl">
       <div className="mb-2 font-semibold text-zinc-200">
-        {race?.fullLabel ?? label}
+        {race?.shortLabel ?? label}
         {isProjected && <span className="ml-2 text-zinc-500">(projected)</span>}
       </div>
       <div className="space-y-0.5">
@@ -300,14 +300,14 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
     if (index === 0) return label;
     const race = races[index - 1];
     if (!race) return label;
-    return race.type === "sprint" ? "·" : label;
+    return race.label;
   }
 
   const lastRace = races[lastRaceNum - 1];
   const entitiesById = useMemo(() => {
-    const map = new Map<string, EntitySeries>();
+    const map = new Map<string, { name: string; shortLabel?: string }>();
     for (const entity of allEntities) {
-      map.set(entity.id, entity);
+      map.set(entity.id, { name: entity.name, shortLabel: entity.shortLabel });
     }
     return map;
   }, [allEntities]);
@@ -353,7 +353,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
         </div>
 
         <div className="text-sm text-zinc-400">
-          <span className="font-medium text-zinc-200">{currentRace?.fullLabel}</span>
+          <span className="font-medium text-zinc-200">{currentRace?.shortLabel}</span>
           {hasFuture && (
             <span className="ml-2 text-zinc-600">
               · {races.length - afterRaceNum} event
@@ -374,8 +374,8 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
           className="w-full cursor-pointer accent-red-500"
         />
         <div className="flex justify-between text-xs text-zinc-600">
-          <span>{races[0]?.fullLabel}</span>
-          <span>{races[lastCompletedRaceNum - 1]?.fullLabel}</span>
+          <span>{races[0]?.shortLabel}</span>
+          <span>{races[lastCompletedRaceNum - 1]?.shortLabel}</span>
         </div>
       </div>
 
@@ -502,7 +502,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
               {lastRace && (
                 <span className="ml-1 font-normal text-zinc-600">
                   · {isLastRaceProjected ? "Projected " : ""}
-                  {lastRace.fullLabel}
+                  {lastRace.shortLabel}
                 </span>
               )}
             </div>
