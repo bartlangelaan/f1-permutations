@@ -428,7 +428,7 @@ function computePositionCombinations(
     rivalConstraints: { opponentId: string; maxRaceFinishPos: number }[];
   }> = [];
 
-  for (let i = 0; i < racePoints.length; i++) {
+  for (let i = 0; i < entityIds.length; i++) {
     const entityFinishPos = i + 1;
     const entityRacePoints = racePoints[i] ?? 0;
     const entityFinalPts = (basePts.get(entityId) ?? 0) + entityRacePoints;
@@ -495,7 +495,7 @@ function computePositionCombinations(
       // points satisfy the constraint.  That position is the "worst they can be at" bound:
       // the opponent must finish at P{j} or worse.
       let smallestValidPos: number | null = null;
-      for (let j = 1; j <= racePoints.length; j++) {
+      for (let j = 1; j <= entityIds.length; j++) {
         if (j === entityFinishPos) continue; // position is taken by the entity
         if ((racePoints[j - 1] ?? 0) <= maxOppRacePoints) {
           smallestValidPos = j;

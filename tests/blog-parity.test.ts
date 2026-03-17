@@ -83,7 +83,8 @@ function renderInsights(insights: LockInsight[] | undefined, data: CalculatedCha
 //   - Finishes P6 or P7 → wins if Verstappen finishes P2 or worse and Piastri finishes P2 or worse
 //   - Finishes P8 → wins if Verstappen finishes P3 or worse and Piastri finishes P2 or worse
 //   - Finishes P9 → wins if Verstappen finishes P4 or worse and Piastri finishes P2 or worse
-//   - Finishes P10 → wins if Verstappen finishes P4 or worse and Piastri finishes P3 or worse
+//   - Finishes P10 or P11 → wins if Verstappen finishes P4 or worse and Piastri finishes P3 or worse
+//     (blog table ends at P11; all non-scoring finishes P11–P21 share the same constraints)
 //
 // Max Verstappen:
 //   - Finishes P1 + Norris finishes P4 or worse → wins championship
@@ -193,6 +194,14 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
   assert.ok(
     texts.includes(
       "Lando Norris can guarantee P1 in Abu Dhabi GP by finishing P9 or better if Max Verstappen finishes P4 or worse and Oscar Piastri finishes P2 or worse.",
+    ),
+  );
+
+  // Norris P10/P11 (blog): Verstappen P4 or worse + Piastri P3 or worse.
+  // All 0-pt finishes (P11–P21 in this 21-driver season) share the same constraints → threshold P21.
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee P1 in Abu Dhabi GP by finishing P21 or better if Max Verstappen finishes P4 or worse and Oscar Piastri finishes P3 or worse.",
     ),
   );
 
