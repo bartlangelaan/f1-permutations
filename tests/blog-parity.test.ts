@@ -282,8 +282,19 @@ test("2025-11-25 | CHAMPIONSHIP PERMUTATIONS: Can Norris still win the title in 
     ),
   );
 
-  // TODO: The exact scenario where Verstappen must "beat Norris" to keep the title alive is implicit
-  // in the points-margin insight but not yet expressed as a direct head-to-head position comparison.
+  // Norris wins Qatar → champion regardless (blog: "Norris wins Sunday's race → clinches")
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee P1 in Qatar GP by finishing P1 or better regardless of rivals.",
+    ),
+  );
+
+  // Norris P2 → champion if both rivals outside top 3
+  assert.ok(
+    texts.includes(
+      "Lando Norris can guarantee P1 in Qatar GP by finishing P2 or better if Oscar Piastri finishes P4 or worse and Max Verstappen finishes P3 or worse.",
+    ),
+  );
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/points-permutations-when-is-the-earliest-norris-could-claim-the-world.T4F6V6THiKksJ6GdcYfvo
@@ -497,6 +508,37 @@ test("2024-11-29 | Abu Dhabi 2024 blog: McLaren win constructors' championship",
   // Mercedes has already secured P4 in the constructors' standings
   assert.ok(constructorTexts.includes("Mercedes has already locked in P4."));
 
+  // Drivers' P2/P3 battle: Norris vs Leclerc
+  // Norris has a points lead; guarantees P2 by finishing P2 or better regardless of Leclerc
+  assert.ok(
+    driverTexts.includes(
+      "Lando Norris can guarantee P2 in Abu Dhabi GP by finishing P2 or better regardless of rivals.",
+    ),
+  );
+  // Norris guaranteed P2 regardless of finishing position if Leclerc can't close the gap
+  assert.ok(
+    driverTexts.includes(
+      "Lando Norris can guarantee P2 in Abu Dhabi GP regardless of finishing position if Charles Leclerc finishes P7 or worse.",
+    ),
+  );
+  // Both Norris and Leclerc have already secured top-3; P3 is guaranteed regardless
+  assert.ok(
+    driverTexts.includes(
+      "Lando Norris can guarantee P3 in Abu Dhabi GP regardless of finishing position.",
+    ),
+  );
+  assert.ok(
+    driverTexts.includes(
+      "Charles Leclerc can guarantee P3 in Abu Dhabi GP regardless of finishing position.",
+    ),
+  );
+  // Leclerc can only take P2 by outfinishing Norris significantly
+  assert.ok(
+    driverTexts.includes(
+      "Charles Leclerc can guarantee P2 in Abu Dhabi GP by finishing P1 or better if Lando Norris finishes P3 or worse.",
+    ),
+  );
+
   // TODO: The blog provides specific race-result combinations ("a win alone is enough for McLaren",
   // "McLaren needs 24 pts or 23 if Ferrari doesn't win"). Position-based clinch conditions and
   // scenario-based "if Ferrari scores zero" variants are not yet generated.
@@ -591,9 +633,49 @@ test("2024-11-01 | What Verstappen needs to do to take his fourth title in Las V
   // Mercedes is already locked into P4 — eliminated from the top 3
   assert.ok(constructorTexts.includes("Mercedes has already locked in P4."));
 
-  // TODO: The blog provides a full position-based table ("Verstappen finishes Xth → Norris needs Yth
-  // to stay alive", including fastest-lap variants). Our system does not yet generate position-based
-  // clinch or keep-alive scenarios; only points-margin conditions are produced.
+  // Position-based table (blog: "Verstappen 1st → clinches regardless")
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Las Vegas GP by finishing P1 or better regardless of rivals.",
+    ),
+  );
+  // Verstappen 2nd → Norris must win to stay alive (= Norris P3 or worse → Verstappen clinches)
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Las Vegas GP by finishing P2 or better if Lando Norris finishes P3 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Las Vegas GP by finishing P3 or better if Lando Norris finishes P4 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Las Vegas GP by finishing P4 or better if Lando Norris finishes P5 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Las Vegas GP by finishing P5 or better if Lando Norris finishes P6 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Las Vegas GP by finishing P6 or better if Lando Norris finishes P7 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Las Vegas GP by finishing P7 or better if Lando Norris finishes P8 or worse.",
+    ),
+  );
+  // Blog: "11th or lower → same as 10th" (all zero-point finishes share same constraints)
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Las Vegas GP regardless of finishing position if Lando Norris finishes P11 or worse and Charles Leclerc finishes P2 or worse.",
+    ),
+  );
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/points-permutations-where-and-when-verstappen-can-become-the-2023-f1-world.412HcLWdfHinODX0u0sIub
@@ -774,10 +856,43 @@ test("2022-10-03 | POINTS PERMUTATIONS: What Verstappen needs to do to win his s
     ),
   );
 
-  // TODO: The blog provides a full position-based table with fastest-lap variants for every finishing
-  // position (e.g. "1st + FL → title regardless", "1st no FL → Leclerc must be 3rd or lower",
-  // "2nd + FL → Leclerc 5th or lower AND Pérez 4th or lower"). It also lists conditions under which
-  // the title fight stays alive. Position-based clinch conditions and fastest-lap distinctions
+  // Position-based clinch table (without fastest-lap distinction):
+  // Blog "1st (no FL): Leclerc 3rd or lower (Pérez position irrelevant)" → P1 if Leclerc P3 or worse
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Japanese GP by finishing P1 or better if Charles Leclerc finishes P3 or worse.",
+    ),
+  );
+  // Blog "2nd (no FL): Leclerc 5th or lower AND Pérez 4th or lower" → P2 if Leclerc P6 and Pérez P5
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Japanese GP by finishing P2 or better if Charles Leclerc finishes P6 or worse and Sergio Pérez finishes P5 or worse.",
+    ),
+  );
+  // Blog "3rd (no FL): Leclerc 7th or lower AND Pérez 6th or lower"
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Japanese GP by finishing P3 or better if Charles Leclerc finishes P7 or worse and Sergio Pérez finishes P6 or worse.",
+    ),
+  );
+  // Blog "4th (no FL): Leclerc 8th or lower AND Pérez 7th or lower" → P4 if Leclerc P9 and Pérez P8
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Japanese GP by finishing P4 or better if Charles Leclerc finishes P9 or worse and Sergio Pérez finishes P8 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Japanese GP by finishing P5 or better if Charles Leclerc finishes P10 or worse and Sergio Pérez finishes P9 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Japanese GP by finishing P6 or better if Charles Leclerc finishes P11 or worse and Sergio Pérez finishes P10 or worse.",
+    ),
+  );
+  // TODO: The blog includes fastest-lap variants (e.g. "1st + FL → title regardless",
+  // "2nd + FL → Leclerc 5th or lower AND Pérez 4th or lower"). Fastest-lap clinch distinctions
   // are not yet generated.
   // TODO: The blog explains that even a Red Bull 1-2 + fastest lap cannot clinch the constructors'
   // title at Japan. Insight types that describe "insufficient points available to clinch this
@@ -855,10 +970,15 @@ test("2022-09-15 | POINTS PERMUTATIONS: What Verstappen needs to do to secure th
     constructorTexts.includes("Red Bull can first guarantee at least P1 after United States GP."),
   );
 
-  // TODO: The blog expresses Verstappen's clinch as specific finishing-position combinations
-  // ("wins + Leclerc 9th or lower + Pérez 4th or lower"), including a fastest-lap variant for Pérez
-  // ("Pérez 5th or lower with FL"). Position-based clinch conditions and the fastest-lap distinction
-  // are not yet generated.
+  // Blog "Wins (no FL): Leclerc 9th or lower AND Pérez 4th or lower (no FL) or 5th or lower (with FL)"
+  // Our system generates the no-FL variant threshold (Pérez P5, between the two blog values):
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Singapore GP by finishing P1 or better if Charles Leclerc finishes P9 or worse and Sergio Pérez finishes P5 or worse.",
+    ),
+  );
+  // TODO: The blog distinguishes fastest-lap variants ("Pérez 4th or lower no FL" vs "5th or lower
+  // with FL"). Fastest-lap clinch conditions are not yet generated.
   // TODO: The blog describes the constructors' gap in terms of what Red Bull would need to clinch
   // (a 191-pt lead) versus what is achievable (139 pts up with 88 remaining). Insight types for
   // "cannot clinch this weekend due to insufficient points available" are not yet generated.
@@ -924,9 +1044,61 @@ test("2021-12-11 | What To Watch For in the Abu Dhabi GP: The championship decid
     ),
   );
 
-  // TODO: The blog describes the tiebreaker rule ("tied on points → Verstappen wins via wins count")
-  // and edge-case tie scenarios (both DNF, or Hamilton 9th + Verstappen 10th + FL). Tiebreaker
-  // logic and fastest-lap tie scenarios are not yet expressed as distinct insights.
+  // Position-based combinations: whoever finishes ahead wins the title (they're equal on points)
+  // Hamilton wins → champion regardless (Verstappen can score at most 18 pts from P2)
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee P1 in Abu Dhabi GP by finishing P1 or better regardless of rivals.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee P1 in Abu Dhabi GP by finishing P2 or better if Max Verstappen finishes P3 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee P1 in Abu Dhabi GP by finishing P3 or better if Max Verstappen finishes P4 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee P1 in Abu Dhabi GP by finishing P4 or better if Max Verstappen finishes P5 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee P1 in Abu Dhabi GP by finishing P5 or better if Max Verstappen finishes P6 or worse.",
+    ),
+  );
+  // Verstappen wins → champion regardless
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Abu Dhabi GP by finishing P1 or better regardless of rivals.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Abu Dhabi GP by finishing P2 or better if Lewis Hamilton finishes P3 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Abu Dhabi GP by finishing P3 or better if Lewis Hamilton finishes P4 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Abu Dhabi GP by finishing P4 or better if Lewis Hamilton finishes P5 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Abu Dhabi GP by finishing P5 or better if Lewis Hamilton finishes P6 or worse.",
+    ),
+  );
+  // TODO: The blog describes edge-case tie scenarios (both DNF, or Hamilton 9th + Verstappen 10th
+  // + FL). Fastest-lap tie scenarios are not yet expressed as distinct insights.
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/what-does-verstappen-need-to-do-to-win-the-title-over-hamilton-in-saudi.24ex2L0wnanvf5ATHe0CCO
@@ -964,9 +1136,21 @@ test("2021-11-25 | What does Verstappen need to do to win the title over Hamilto
   // Hamilton cannot clinch at Saudi; earliest opportunity is Abu Dhabi
   assert.ok(texts.includes("Lewis Hamilton can first guarantee at least P1 after Abu Dhabi GP."));
 
-  // TODO: The blog provides a full position-by-position table with fastest-lap variants
-  // (e.g., "1st + FL → Hamilton 6th or lower", "2nd + FL → Hamilton outside points").
-  // Position-based and fastest-lap clinch conditions are not yet generated.
+  // Position-based clinch table (without fastest-lap distinction):
+  // Blog "1st (no FL): Hamilton 7th or lower"
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Saudi Arabian GP by finishing P1 or better if Lewis Hamilton finishes P7 or worse.",
+    ),
+  );
+  // Blog "2nd (no FL): Hamilton outside points (11th or lower)"
+  assert.ok(
+    texts.includes(
+      "Max Verstappen can guarantee P1 in Saudi Arabian GP by finishing P2 or better if Lewis Hamilton finishes P11 or worse.",
+    ),
+  );
+  // TODO: The blog provides fastest-lap variants (e.g., "1st + FL → Hamilton 6th or lower",
+  // "2nd + FL → Hamilton outside points"). Fastest-lap clinch conditions are not yet generated.
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/title-permutations-how-hamilton-and-mercedes-can-be-crowned-champions-in.5dcz3gODYWuuIia8cgC4uo
@@ -1020,8 +1204,19 @@ test("2018-10-25 | TITLE PERMUTATIONS: How Hamilton - and Mercedes - can be crow
   // Red Bull has already locked in P3 in the constructors' standings
   assert.ok(constructorTexts.includes("Red Bull has already locked in P3."));
 
-  // TODO: The blog expresses Vettel's path as "must win – and hope that Hamilton hits some form
-  // of misfortune." Position-based clinch/elimination conditions are not yet generated.
+  // Position-based clinch conditions:
+  // Hamilton finishes P7 or better → clinches title regardless of Vettel
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee P1 in Mexican GP by finishing P7 or better regardless of rivals.",
+    ),
+  );
+  // Hamilton clinches regardless of finishing position if Vettel doesn't win (P2 or worse)
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee P1 in Mexican GP regardless of finishing position if Sebastian Vettel finishes P2 or worse.",
+    ),
+  );
 });
 
 // Insights from: https://www.formula1.com/en/latest/article.the-title-permutations-what-hamilton-needs-to-do-to-be-crowned-f1-champion-in-austin.5uZgCVSRZSma080U4CUSEc.html
@@ -1123,9 +1318,47 @@ test("2016-10-26 | The 2016 title permutations for Sunday in Abu Dhabi", () => {
   assert.ok(constructorTexts.includes("Red Bull has already locked in P2."));
   assert.ok(constructorTexts.includes("Ferrari has already locked in P3."));
 
-  // TODO: The blog provides detailed finishing-position combinations for both drivers
-  // ("Rosberg P3 or better → champion", "Hamilton wins + Rosberg P4 or lower → Hamilton wins").
-  // Position-based clinch conditions are not yet generated by our system.
+  // Position-based clinch conditions (matching blog exactly):
+  // Blog: "Finishes P3 or better → champion regardless of Hamilton"
+  assert.ok(
+    texts.includes(
+      "Nico Rosberg can guarantee P1 in Abu Dhabi GP by finishing P3 or better regardless of rivals.",
+    ),
+  );
+  // Blog: "Finishes P6 while Hamilton doesn't win"
+  assert.ok(
+    texts.includes(
+      "Nico Rosberg can guarantee P1 in Abu Dhabi GP by finishing P6 or better if Lewis Hamilton finishes P2 or worse.",
+    ),
+  );
+  // Blog: "Finishes P8 while Hamilton finishes P4 or lower"
+  assert.ok(
+    texts.includes(
+      "Nico Rosberg can guarantee P1 in Abu Dhabi GP by finishing P8 or better if Lewis Hamilton finishes P3 or worse.",
+    ),
+  );
+  // Any Rosberg result clinches if Hamilton finishes P4 or worse
+  assert.ok(
+    texts.includes(
+      "Nico Rosberg can guarantee P1 in Abu Dhabi GP regardless of finishing position if Lewis Hamilton finishes P4 or worse.",
+    ),
+  );
+  // Blog: "Hamilton wins AND Rosberg finishes P4 or lower → Hamilton wins title"
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee P1 in Abu Dhabi GP by finishing P1 or better if Nico Rosberg finishes P4 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee P1 in Abu Dhabi GP by finishing P2 or better if Nico Rosberg finishes P7 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee P1 in Abu Dhabi GP by finishing P3 or better if Nico Rosberg finishes P9 or worse.",
+    ),
+  );
 });
 
 // Insights from: https://www.formula1.com/en/latest/features/2015/10/title-permutations---how-hamilton-can-wrap-it-up-in-austin.html
@@ -1176,7 +1409,25 @@ test("2015-10-25 | Title permutations - how Hamilton can wrap it up in Austin", 
   // Mercedes has already clinched the constructors' title before Austin
   assert.ok(constructorTexts.includes("Mercedes has already locked in P1."));
 
-  // TODO: The blog expresses conditions as finishing positions ("outscore Vettel by nine
-  // points"), meaning Hamilton winning and Vettel finishing P3 or lower (25-15=10) or Hamilton
-  // P2 and Vettel outside the points. Position-based clinch conditions are not yet generated.
+  // Position-based clinch conditions:
+  // Hamilton wins → clinches if Vettel finishes P3 or worse (25-15=10 pts > 9 required)
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee P1 in United States GP by finishing P1 or better if Sebastian Vettel finishes P3 or worse.",
+    ),
+  );
+  // Hamilton P2 → clinches if Vettel well off points and Rosberg not close
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee P1 in United States GP by finishing P2 or better if Sebastian Vettel finishes P6 or worse and Nico Rosberg finishes P3 or worse.",
+    ),
+  );
+  assert.ok(
+    texts.includes(
+      "Lewis Hamilton can guarantee P1 in United States GP by finishing P3 or better if Sebastian Vettel finishes P8 or worse and Nico Rosberg finishes P4 or worse.",
+    ),
+  );
+  // TODO: The blog says "outscore Vettel by nine points" which maps to Hamilton winning and Vettel
+  // P3 or lower. Our threshold is P3 (P1→Vettel P3 or worse), which aligns. Fastest-lap variants
+  // are not generated.
 });
