@@ -408,7 +408,7 @@ test("2025-10-24 | IN NUMBERS: Can Max Verstappen beat the McLaren pair to the t
 //
 // Red Bull:
 //   - Already eliminated from the constructors' title after the Azerbaijan Grand Prix
-test("2025-09-17 | What do McLaren need to do to win the 2024 constructors' championship in Abu Dhabi?", () => {
+test("2025-09-17 | POINTS PERMUTATIONS: How can McLaren win the 2025 constructors' championship in Singapore?", () => {
   const data = readCalculationResults(2025)!;
   const singaporeIdx = data.races.findIndex((r) => r.round === 18 && r.type === "race");
   const constructorTexts = renderInsights(data.constructorLockInsights[String(singaporeIdx)], data);
