@@ -175,7 +175,7 @@ function ChartTooltip({ active, payload, label, races, afterRaceNum, projections
   return (
     <div className="max-w-xs rounded-lg border border-zinc-700 bg-zinc-900 p-3 text-xs shadow-xl">
       <div className="mb-2 font-semibold text-zinc-200">
-        {race?.shortLabel ?? label}
+        {race?.fullLabel ?? label}
         {isProjected && <span className="ml-2 text-zinc-500">(projected)</span>}
       </div>
       <div className="space-y-0.5">
@@ -353,7 +353,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
         </div>
 
         <div className="text-sm text-zinc-400">
-          <span className="font-medium text-zinc-200">{currentRace?.shortLabel}</span>
+          <span className="font-medium text-zinc-200">{currentRace?.fullLabel}</span>
           {hasFuture && (
             <span className="ml-2 text-zinc-600">
               · {races.length - afterRaceNum} event
@@ -374,8 +374,8 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
           className="w-full cursor-pointer accent-red-500"
         />
         <div className="flex justify-between text-xs text-zinc-600">
-          <span>{races[0]?.shortLabel}</span>
-          <span>{races[lastCompletedRaceNum - 1]?.shortLabel}</span>
+          <span>{races[0]?.fullLabel}</span>
+          <span>{races[lastCompletedRaceNum - 1]?.fullLabel}</span>
         </div>
       </div>
 
@@ -502,7 +502,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
               {lastRace && (
                 <span className="ml-1 font-normal text-zinc-600">
                   · {isLastRaceProjected ? "Projected " : ""}
-                  {lastRace.shortLabel}
+                  {lastRace.fullLabel}
                 </span>
               )}
             </div>
