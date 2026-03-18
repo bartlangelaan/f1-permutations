@@ -100,64 +100,62 @@ function renderInsights(insights: LockInsight[] | undefined, data: CalculatedCha
 //   - Finishes P2 + Norris finishes P10 or worse + Verstappen finishes P4 or worse → wins
 test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish in Abu Dhabi to seal the title?", () => {
   const data = readCalculationResults(2025)!;
-  const afterRaceNum = data.races.findIndex(
-    (r) => r.fullLabel === "Round 24/24 - Abu Dhabi GP - Race" && r.type === "race",
-  );
+  const afterRaceNum = data.races.findIndex((r) => r.round === 24 && r.type === "race");
   const texts = renderInsights(data.driverLockInsights[String(afterRaceNum)], data);
 
   // Norris can guarantee P1 (championship win) with conditions on Verstappen and Piastri
   assert.ok(
     texts.includes(
-      "Norris can guarantee at least P1 in Round 24/24 - Abu Dhabi GP - Race if is not outscored by Verstappen by more than 11 points, Piastri by more than 15 points.",
+      "Norris can guarantee at least P1 in Abu Dhabi (24) Race if is not outscored by Verstappen by more than 11 points, Piastri by more than 15 points.",
     ),
   );
 
   // Norris can guarantee P2 with a condition only on Piastri
   assert.ok(
     texts.includes(
-      "Norris can guarantee at least P2 in Round 24/24 - Abu Dhabi GP - Race if is not outscored by Piastri by more than 15 points.",
+      "Norris can guarantee at least P2 in Abu Dhabi (24) Race if is not outscored by Piastri by more than 15 points.",
     ),
   );
 
   // Verstappen can guarantee P1 (championship win) if he outscores Norris by enough and Piastri doesn't beat him
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee at least P1 in Round 24/24 - Abu Dhabi GP - Race if outscores Norris by 13 points and is not outscored by Piastri by more than 3 points.",
+      "Verstappen can guarantee at least P1 in Abu Dhabi (24) Race if outscores Norris by 13 points and is not outscored by Piastri by more than 3 points.",
     ),
   );
 
   // Verstappen can guarantee P2 with a condition only on Piastri
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee at least P2 in Round 24/24 - Abu Dhabi GP - Race if is not outscored by Piastri by more than 3 points.",
+      "Verstappen can guarantee at least P2 in Abu Dhabi (24) Race if is not outscored by Piastri by more than 3 points.",
     ),
   );
 
   // Piastri can guarantee P1 (championship win) by outscoring both Norris and Verstappen by enough
   assert.ok(
     texts.includes(
-      "Piastri can guarantee at least P1 in Round 24/24 - Abu Dhabi GP - Race if outscores Norris by 17 points, Verstappen by 5 points.",
+      "Piastri can guarantee at least P1 in Abu Dhabi (24) Race if outscores Norris by 17 points, Verstappen by 5 points.",
     ),
   );
 
   // Piastri can guarantee P2 with a condition only on Verstappen
   assert.ok(
     texts.includes(
-      "Piastri can guarantee at least P2 in Round 24/24 - Abu Dhabi GP - Race if outscores Verstappen by 5 points.",
+      "Piastri can guarantee at least P2 in Abu Dhabi (24) Race if outscores Verstappen by 5 points.",
     ),
   );
 
   // Norris is ruled out of P1 (loses championship) if Verstappen outscores him by enough
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Norris in Round 24/24 - Abu Dhabi GP - Race if is outscored by Verstappen by 13 points.",
+      "P1 is no longer possible for Norris in Abu Dhabi (24) Race if is outscored by Verstappen by 13 points.",
     ),
   );
 
   // Piastri is ruled out of P1 (can't win championship) if he doesn't outscore Norris by enough
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Piastri in Round 24/24 - Abu Dhabi GP - Race if Piastri does not outscore Norris by more than 15 points.",
+      "P1 is no longer possible for Piastri in Abu Dhabi (24) Race if Piastri does not outscore Norris by more than 15 points.",
     ),
   );
 
@@ -168,35 +166,35 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
   // Norris wins regardless of rivals finishing P1, P2, or P3 → threshold P3
   assert.ok(
     texts.includes(
-      "Norris can guarantee P1 in Round 24/24 - Abu Dhabi GP - Race by finishing P3 or better regardless of rivals.",
+      "Norris can guarantee P1 in Abu Dhabi (24) Race by finishing P3 or better regardless of rivals.",
     ),
   );
 
   // Norris P4 or P5: only needs Verstappen outside P1 → threshold P5
   assert.ok(
     texts.includes(
-      "Norris can guarantee P1 in Round 24/24 - Abu Dhabi GP - Race by finishing P5 or better if Verstappen finishes P2 or worse.",
+      "Norris can guarantee P1 in Abu Dhabi (24) Race by finishing P5 or better if Verstappen finishes P2 or worse.",
     ),
   );
 
   // Norris P6 or P7: both rivals must not win the race → threshold P7 (tiebreaker gives Norris P7+VER P2)
   assert.ok(
     texts.includes(
-      "Norris can guarantee P1 in Round 24/24 - Abu Dhabi GP - Race by finishing P7 or better if Verstappen finishes P2 or worse and Piastri finishes P2 or worse.",
+      "Norris can guarantee P1 in Abu Dhabi (24) Race by finishing P7 or better if Verstappen finishes P2 or worse and Piastri finishes P2 or worse.",
     ),
   );
 
   // Norris P8: Verstappen P3 or worse + Piastri P2 or worse → threshold P8
   assert.ok(
     texts.includes(
-      "Norris can guarantee P1 in Round 24/24 - Abu Dhabi GP - Race by finishing P8 or better if Verstappen finishes P3 or worse and Piastri finishes P2 or worse.",
+      "Norris can guarantee P1 in Abu Dhabi (24) Race by finishing P8 or better if Verstappen finishes P3 or worse and Piastri finishes P2 or worse.",
     ),
   );
 
   // Norris P9: Verstappen P4 or worse + Piastri P2 or worse → threshold P9 (tiebreaker gives Norris P9+PIA P2)
   assert.ok(
     texts.includes(
-      "Norris can guarantee P1 in Round 24/24 - Abu Dhabi GP - Race by finishing P9 or better if Verstappen finishes P4 or worse and Piastri finishes P2 or worse.",
+      "Norris can guarantee P1 in Abu Dhabi (24) Race by finishing P9 or better if Verstappen finishes P4 or worse and Piastri finishes P2 or worse.",
     ),
   );
 
@@ -204,43 +202,43 @@ test("2025-11-30 | CHAMPIONSHIP PERMUTATIONS: Where does Norris need to finish i
   // All 0-pt finishes (P11–P21 in this 21-driver season) share the same constraints → any finish qualifies.
   assert.ok(
     texts.includes(
-      "Norris can guarantee P1 in Round 24/24 - Abu Dhabi GP - Race regardless of finishing position if Verstappen finishes P4 or worse and Piastri finishes P3 or worse.",
+      "Norris can guarantee P1 in Abu Dhabi (24) Race regardless of finishing position if Verstappen finishes P4 or worse and Piastri finishes P3 or worse.",
     ),
   );
 
   // Verstappen combinations (blog: P1+Norris P4; P2+Norris P8+Piastri P3; P3+Norris P9+Piastri P2)
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 24/24 - Abu Dhabi GP - Race by finishing P1 or better if Norris finishes P4 or worse.",
+      "Verstappen can guarantee P1 in Abu Dhabi (24) Race by finishing P1 or better if Norris finishes P4 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 24/24 - Abu Dhabi GP - Race by finishing P2 or better if Norris finishes P8 or worse and Piastri finishes P3 or worse.",
+      "Verstappen can guarantee P1 in Abu Dhabi (24) Race by finishing P2 or better if Norris finishes P8 or worse and Piastri finishes P3 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 24/24 - Abu Dhabi GP - Race by finishing P3 or better if Norris finishes P9 or worse and Piastri finishes P2 or worse.",
+      "Verstappen can guarantee P1 in Abu Dhabi (24) Race by finishing P3 or better if Norris finishes P9 or worse and Piastri finishes P2 or worse.",
     ),
   );
 
   // Piastri combinations (blog: P1+Norris P6; P2+Norris P10+Verstappen P4)
   assert.ok(
     texts.includes(
-      "Piastri can guarantee P1 in Round 24/24 - Abu Dhabi GP - Race by finishing P1 or better if Norris finishes P6 or worse.",
+      "Piastri can guarantee P1 in Abu Dhabi (24) Race by finishing P1 or better if Norris finishes P6 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Piastri can guarantee P1 in Round 24/24 - Abu Dhabi GP - Race by finishing P2 or better if Norris finishes P10 or worse and Verstappen finishes P4 or worse.",
+      "Piastri can guarantee P1 in Abu Dhabi (24) Race by finishing P2 or better if Norris finishes P10 or worse and Verstappen finishes P4 or worse.",
     ),
   );
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/championship-permutations-can-norris-still-win-the-title-in-qatar-after-his.6Yl07za0DPgfybgFrUXE6u
-// Standings before Round 23/24 - Qatar GP - Race 2025 (after Qatar Sprint): Norris 396 pts, Piastri 374 pts, Verstappen 371 pts
-// 50 points remain across two races (Round 23/24 - Qatar GP - Race + Round 24/24 - Abu Dhabi GP - Race)
+// Standings before Qatar (23) Race 2025 (after Qatar Sprint): Norris 396 pts, Piastri 374 pts, Verstappen 371 pts
+// 50 points remain across two races (Qatar (23) Race + Abu Dhabi (24) Race)
 //
 // Norris:
 //   - Wins Qatar → champion regardless of where Piastri and Verstappen finish
@@ -260,42 +258,42 @@ test("2025-11-25 | CHAMPIONSHIP PERMUTATIONS: Can Norris still win the title in 
   // (Norris wins = 25 pts; need 25 > Piastri's score + 3 and 25 > Verstappen's score)
   assert.ok(
     texts.includes(
-      "Norris can guarantee at least P1 in Round 23/24 - Qatar GP - Race if outscores Piastri by 4 points, Verstappen by 1 points.",
+      "Norris can guarantee at least P1 in Qatar (23) Race if outscores Piastri by 4 points, Verstappen by 1 points.",
     ),
   );
 
   // Norris can guarantee P2 with only the Verstappen condition
   assert.ok(
     texts.includes(
-      "Norris can guarantee at least P2 in Round 23/24 - Qatar GP - Race if outscores Verstappen by 1 points.",
+      "Norris can guarantee at least P2 in Qatar (23) Race if outscores Verstappen by 1 points.",
     ),
   );
 
   // Piastri P1 eliminated if Norris outscores him by 4 points
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Piastri in Round 23/24 - Qatar GP - Race if is outscored by Norris by 4 points.",
+      "P1 is no longer possible for Piastri in Qatar (23) Race if is outscored by Norris by 4 points.",
     ),
   );
 
   // Verstappen P1 eliminated if Norris outscores him by 1 point (= Norris finishes ahead of Verstappen)
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Verstappen in Round 23/24 - Qatar GP - Race if is outscored by Norris by 1 points.",
+      "P1 is no longer possible for Verstappen in Qatar (23) Race if is outscored by Norris by 1 points.",
     ),
   );
 
   // Norris wins Qatar → champion regardless (blog: "Norris wins Sunday's race → clinches")
   assert.ok(
     texts.includes(
-      "Norris can guarantee P1 in Round 23/24 - Qatar GP - Race by finishing P1 or better regardless of rivals.",
+      "Norris can guarantee P1 in Qatar (23) Race by finishing P1 or better regardless of rivals.",
     ),
   );
 
   // Norris P2 → champion if both rivals outside top 3
   assert.ok(
     texts.includes(
-      "Norris can guarantee P1 in Round 23/24 - Qatar GP - Race by finishing P2 or better if Piastri finishes P4 or worse and Verstappen finishes P3 or worse.",
+      "Norris can guarantee P1 in Qatar (23) Race by finishing P2 or better if Piastri finishes P4 or worse and Verstappen finishes P3 or worse.",
     ),
   );
 });
@@ -320,36 +318,26 @@ test("2025-11-13 | POINTS PERMUTATIONS: When is the earliest Norris could claim 
   // (49-pt lead + 10 more = 59 > 58 remaining max → Verstappen can't catch Norris)
   assert.ok(
     texts.includes(
-      "Norris can guarantee at least P2 in Round 22/24 - Las Vegas GP - Race if outscores Verstappen by 10 points.",
+      "Norris can guarantee at least P2 in Las Vegas (22) Race if outscores Verstappen by 10 points.",
     ),
   );
 
-  // Norris cannot clinch P1 at Las Vegas; earliest is Round 24/24 - Abu Dhabi GP - Race
-  assert.ok(
-    texts.includes(
-      "Norris can first guarantee at least P1 after Round 24/24 - Abu Dhabi GP - Race.",
-    ),
-  );
+  // Norris cannot clinch P1 at Las Vegas; earliest is Abu Dhabi (24) Race
+  assert.ok(texts.includes("Norris can first guarantee at least P1 after Abu Dhabi (24) Race."));
 
-  // Piastri also cannot clinch at Las Vegas; earliest is Round 24/24 - Abu Dhabi GP - Race
-  assert.ok(
-    texts.includes(
-      "Piastri can first guarantee at least P1 after Round 24/24 - Abu Dhabi GP - Race.",
-    ),
-  );
+  // Piastri also cannot clinch at Las Vegas; earliest is Abu Dhabi (24) Race
+  assert.ok(texts.includes("Piastri can first guarantee at least P1 after Abu Dhabi (24) Race."));
 
   // Verstappen P1 eliminated at Las Vegas if outscored by Norris by 10 points
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Verstappen in Round 22/24 - Las Vegas GP - Race if is outscored by Norris by 10 points.",
+      "P1 is no longer possible for Verstappen in Las Vegas (22) Race if is outscored by Norris by 10 points.",
     ),
   );
 
-  // Verstappen also cannot clinch at Las Vegas; earliest is Round 24/24 - Abu Dhabi GP - Race
+  // Verstappen also cannot clinch at Las Vegas; earliest is Abu Dhabi (24) Race
   assert.ok(
-    texts.includes(
-      "Verstappen can first guarantee at least P1 after Round 24/24 - Abu Dhabi GP - Race.",
-    ),
+    texts.includes("Verstappen can first guarantee at least P1 after Abu Dhabi (24) Race."),
   );
 
   // McLaren have already locked in the constructors' title
@@ -358,7 +346,7 @@ test("2025-11-13 | POINTS PERMUTATIONS: When is the earliest Norris could claim 
   // TODO: The blog identifies the Qatar Sprint as the earliest clinch opportunity under the
   // best-case scenario ("Norris wins Las Vegas + rivals score zero → needs P7 in Sprint").
   // Our system does not distinguish Sprint from GP for earliest-clinch calculations — it
-  // reports Round 24/24 - Abu Dhabi GP - Race as the earliest regardless of sprint scenarios.
+  // reports Abu Dhabi (24) Race as the earliest regardless of sprint scenarios.
 });
 
 // Insights from: https://www.formula1.com/en/latest/article/in-numbers-can-verstappen-win-the-title-based-on-current-form.6M8Xqguw0JEXtqdYo39aWG
@@ -382,22 +370,14 @@ test("2025-10-24 | IN NUMBERS: Can Verstappen beat the McLaren pair to the title
   const constructorTexts = renderInsights(data.constructorLockInsights[String(mexicoIdx)], data);
 
   // Piastri leads the championship but can first guarantee P1 only after Qatar Sprint
-  assert.ok(
-    texts.includes(
-      "Piastri can first guarantee at least P1 after Round 23/24 - Qatar GP - Sprint.",
-    ),
-  );
+  assert.ok(texts.includes("Piastri can first guarantee at least P1 after Qatar (23) Sprint."));
 
   // Norris (14 behind Piastri) can also first guarantee P1 after Qatar Sprint
-  assert.ok(
-    texts.includes("Norris can first guarantee at least P1 after Round 23/24 - Qatar GP - Sprint."),
-  );
+  assert.ok(texts.includes("Norris can first guarantee at least P1 after Qatar (23) Sprint."));
 
   // Verstappen (40 behind) needs the final race (Abu Dhabi) to guarantee P1
   assert.ok(
-    texts.includes(
-      "Verstappen can first guarantee at least P1 after Round 24/24 - Abu Dhabi GP - Race.",
-    ),
+    texts.includes("Verstappen can first guarantee at least P1 after Abu Dhabi (24) Race."),
   );
 
   // McLaren have already clinched the constructors' championship
@@ -414,7 +394,7 @@ test("2025-10-24 | IN NUMBERS: Can Verstappen beat the McLaren pair to the title
 
 // Insights from: https://www.formula1.com/en/latest/article/points-permutations-how-can-mclaren-win-the-2025-constructors-championship.SXmo98z0aCzJ4L1oVdf2b
 // Standings before Singapore 2025: McLaren 623 pts, Mercedes 290 pts (gap 333), Ferrari 286 pts (gap 337)
-// Red Bull 272 pts — already mathematically eliminated from P1 after Round 17/24 - Azerbaijan GP - Race
+// Red Bull 272 pts — already mathematically eliminated from P1 after Azerbaijan (17) Race
 // 7 rounds remain with 346 points available
 //
 // McLaren constructors:
@@ -437,28 +417,28 @@ test("2025-09-17 | What do McLaren need to do to win the 2024 constructors' cham
   // McLaren can guarantee constructors' P1 at Singapore with conditions on both Mercedes and Ferrari
   assert.ok(
     constructorTexts.includes(
-      "McLaren can guarantee at least P1 in Round 18/24 - Singapore GP - Race if is not outscored by Mercedes by more than 29 points, Ferrari by more than 33 points.",
+      "McLaren can guarantee at least P1 in Singapore (18) Race if is not outscored by Mercedes by more than 29 points, Ferrari by more than 33 points.",
     ),
   );
 
   // McLaren can guarantee P2 with only the Ferrari condition
   assert.ok(
     constructorTexts.includes(
-      "McLaren can guarantee at least P2 in Round 18/24 - Singapore GP - Race if is not outscored by Ferrari by more than 33 points.",
+      "McLaren can guarantee at least P2 in Singapore (18) Race if is not outscored by Ferrari by more than 33 points.",
     ),
   );
 
   // Mercedes P1 eliminated at Singapore unless they outscore McLaren by more than 29 pts
   assert.ok(
     constructorTexts.includes(
-      "P1 is no longer possible for Mercedes in Round 18/24 - Singapore GP - Race if Mercedes does not outscore McLaren by more than 29 points.",
+      "P1 is no longer possible for Mercedes in Singapore (18) Race if Mercedes does not outscore McLaren by more than 29 points.",
     ),
   );
 
   // Ferrari P1 eliminated at Singapore unless they outscore McLaren by more than 33 pts
   assert.ok(
     constructorTexts.includes(
-      "P1 is no longer possible for Ferrari in Round 18/24 - Singapore GP - Race if Ferrari does not outscore McLaren by more than 33 points.",
+      "P1 is no longer possible for Ferrari in Singapore (18) Race if Ferrari does not outscore McLaren by more than 33 points.",
     ),
   );
 
@@ -501,28 +481,28 @@ test("2024-11-29 | Abu Dhabi 2024 blog: McLaren win constructors' championship",
   // McLaren can guarantee constructors' P1 if not outscored by Ferrari by more than 20 pts
   assert.ok(
     constructorTexts.includes(
-      "McLaren can guarantee at least P1 in Round 24/24 - Abu Dhabi GP - Race if is not outscored by Ferrari by more than 20 points.",
+      "McLaren can guarantee at least P1 in Abu Dhabi (24) Race if is not outscored by Ferrari by more than 20 points.",
     ),
   );
 
   // Ferrari can guarantee constructors' P1 only by outscoring McLaren by 22 pts
   assert.ok(
     constructorTexts.includes(
-      "Ferrari can guarantee at least P1 in Round 24/24 - Abu Dhabi GP - Race if outscores McLaren by 22 points and is not outscored by Red Bull by more than 37 points.",
+      "Ferrari can guarantee at least P1 in Abu Dhabi (24) Race if outscores McLaren by 22 points and is not outscored by Red Bull by more than 37 points.",
     ),
   );
 
   // McLaren P1 eliminated if outscored by Ferrari by 22 pts
   assert.ok(
     constructorTexts.includes(
-      "P1 is no longer possible for McLaren in Round 24/24 - Abu Dhabi GP - Race if is outscored by Ferrari by 22 points.",
+      "P1 is no longer possible for McLaren in Abu Dhabi (24) Race if is outscored by Ferrari by 22 points.",
     ),
   );
 
   // Ferrari P1 eliminated if they don't outscore McLaren by more than 20 pts
   assert.ok(
     constructorTexts.includes(
-      "P1 is no longer possible for Ferrari in Round 24/24 - Abu Dhabi GP - Race if Ferrari does not outscore McLaren by more than 20 points.",
+      "P1 is no longer possible for Ferrari in Abu Dhabi (24) Race if Ferrari does not outscore McLaren by more than 20 points.",
     ),
   );
 
@@ -533,30 +513,30 @@ test("2024-11-29 | Abu Dhabi 2024 blog: McLaren win constructors' championship",
   // Norris has a points lead; guarantees P2 by finishing P2 or better regardless of Leclerc
   assert.ok(
     driverTexts.includes(
-      "Norris can guarantee P2 in Round 24/24 - Abu Dhabi GP - Race by finishing P2 or better regardless of rivals.",
+      "Norris can guarantee P2 in Abu Dhabi (24) Race by finishing P2 or better regardless of rivals.",
     ),
   );
   // Norris guaranteed P2 regardless of finishing position if Leclerc can't close the gap
   assert.ok(
     driverTexts.includes(
-      "Norris can guarantee P2 in Round 24/24 - Abu Dhabi GP - Race regardless of finishing position if Leclerc finishes P7 or worse.",
+      "Norris can guarantee P2 in Abu Dhabi (24) Race regardless of finishing position if Leclerc finishes P7 or worse.",
     ),
   );
   // Both Norris and Leclerc have already secured top-3; P3 is guaranteed regardless
   assert.ok(
     driverTexts.includes(
-      "Norris can guarantee P3 in Round 24/24 - Abu Dhabi GP - Race regardless of finishing position.",
+      "Norris can guarantee P3 in Abu Dhabi (24) Race regardless of finishing position.",
     ),
   );
   assert.ok(
     driverTexts.includes(
-      "Leclerc can guarantee P3 in Round 24/24 - Abu Dhabi GP - Race regardless of finishing position.",
+      "Leclerc can guarantee P3 in Abu Dhabi (24) Race regardless of finishing position.",
     ),
   );
   // Leclerc can only take P2 by outfinishing Norris significantly
   assert.ok(
     driverTexts.includes(
-      "Leclerc can guarantee P2 in Round 24/24 - Abu Dhabi GP - Race by finishing P1 or better if Norris finishes P3 or worse.",
+      "Leclerc can guarantee P2 in Abu Dhabi (24) Race by finishing P1 or better if Norris finishes P3 or worse.",
     ),
   );
 
@@ -583,7 +563,7 @@ test("2024-11-29 | Abu Dhabi 2024 blog: McLaren win constructors' championship",
 //   - Finishes 11th or lower → Norris must finish 9th with fastest lap, or 8th
 //
 // Norris:
-//   - Cannot clinch the title at Las Vegas; earliest possible is after Round 24/24 - Abu Dhabi GP - Race
+//   - Cannot clinch the title at Las Vegas; earliest possible is after Abu Dhabi (24) Race
 //   - Must outscore Verstappen at every remaining race to keep title hopes alive
 //   - Needs minimum 3-point advantage at Las Vegas to keep the fight going
 //
@@ -608,60 +588,48 @@ test("2024-11-01 | What Verstappen needs to do to take his fourth title in Las V
   // Verstappen can guarantee P1 (championship) in Las Vegas with conditions on Norris and Leclerc
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee at least P1 in Round 22/24 - Las Vegas GP - Race if is not outscored by Norris by more than 1 points, Leclerc by more than 25 points.",
+      "Verstappen can guarantee at least P1 in Las Vegas (22) Race if is not outscored by Norris by more than 1 points, Leclerc by more than 25 points.",
     ),
   );
 
   // Verstappen can guarantee P2 with only a Leclerc condition
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee at least P2 in Round 22/24 - Las Vegas GP - Race if is not outscored by Leclerc by more than 25 points.",
+      "Verstappen can guarantee at least P2 in Las Vegas (22) Race if is not outscored by Leclerc by more than 25 points.",
     ),
   );
 
   // Norris cannot clinch the title at Las Vegas; earliest is Abu Dhabi
-  assert.ok(
-    texts.includes(
-      "Norris can first guarantee at least P1 after Round 24/24 - Abu Dhabi GP - Race.",
-    ),
-  );
+  assert.ok(texts.includes("Norris can first guarantee at least P1 after Abu Dhabi (24) Race."));
 
   // Norris P1 ruled out at Las Vegas if he fails to outscore Verstappen by 2+ points
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Norris in Round 22/24 - Las Vegas GP - Race if Norris does not outscore Verstappen by more than 1 points.",
+      "P1 is no longer possible for Norris in Las Vegas (22) Race if Norris does not outscore Verstappen by more than 1 points.",
     ),
   );
 
   // Leclerc P1 ruled out at Las Vegas unless he outscores Verstappen by 26+ points
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Leclerc in Round 22/24 - Las Vegas GP - Race if Leclerc does not outscore Verstappen by more than 25 points.",
+      "P1 is no longer possible for Leclerc in Las Vegas (22) Race if Leclerc does not outscore Verstappen by more than 25 points.",
     ),
   );
 
   // Piastri is eliminated: earliest P2 is Abu Dhabi, no P1 possible at all
-  assert.ok(
-    texts.includes(
-      "Piastri can first guarantee at least P2 after Round 24/24 - Abu Dhabi GP - Race.",
-    ),
-  );
+  assert.ok(texts.includes("Piastri can first guarantee at least P2 after Abu Dhabi (24) Race."));
   assert.ok(!texts.some((t) => t.startsWith("Piastri can guarantee at least P1")));
 
   // Nobody can clinch the constructors' title at Las Vegas; all top teams' earliest guarantee is Abu Dhabi
   assert.ok(
-    constructorTexts.includes(
-      "McLaren can first guarantee at least P1 after Round 24/24 - Abu Dhabi GP - Race.",
-    ),
+    constructorTexts.includes("McLaren can first guarantee at least P1 after Abu Dhabi (24) Race."),
+  );
+  assert.ok(
+    constructorTexts.includes("Ferrari can first guarantee at least P1 after Abu Dhabi (24) Race."),
   );
   assert.ok(
     constructorTexts.includes(
-      "Ferrari can first guarantee at least P1 after Round 24/24 - Abu Dhabi GP - Race.",
-    ),
-  );
-  assert.ok(
-    constructorTexts.includes(
-      "Red Bull can first guarantee at least P1 after Round 24/24 - Abu Dhabi GP - Race.",
+      "Red Bull can first guarantee at least P1 after Abu Dhabi (24) Race.",
     ),
   );
 
@@ -671,44 +639,44 @@ test("2024-11-01 | What Verstappen needs to do to take his fourth title in Las V
   // Position-based table (blog: "Verstappen 1st → clinches regardless")
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 22/24 - Las Vegas GP - Race by finishing P1 or better regardless of rivals.",
+      "Verstappen can guarantee P1 in Las Vegas (22) Race by finishing P1 or better regardless of rivals.",
     ),
   );
   // Verstappen 2nd → Norris must win to stay alive (= Norris P3 or worse → Verstappen clinches)
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 22/24 - Las Vegas GP - Race by finishing P2 or better if Norris finishes P3 or worse.",
+      "Verstappen can guarantee P1 in Las Vegas (22) Race by finishing P2 or better if Norris finishes P3 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 22/24 - Las Vegas GP - Race by finishing P3 or better if Norris finishes P4 or worse.",
+      "Verstappen can guarantee P1 in Las Vegas (22) Race by finishing P3 or better if Norris finishes P4 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 22/24 - Las Vegas GP - Race by finishing P4 or better if Norris finishes P5 or worse.",
+      "Verstappen can guarantee P1 in Las Vegas (22) Race by finishing P4 or better if Norris finishes P5 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 22/24 - Las Vegas GP - Race by finishing P5 or better if Norris finishes P6 or worse.",
+      "Verstappen can guarantee P1 in Las Vegas (22) Race by finishing P5 or better if Norris finishes P6 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 22/24 - Las Vegas GP - Race by finishing P6 or better if Norris finishes P7 or worse.",
+      "Verstappen can guarantee P1 in Las Vegas (22) Race by finishing P6 or better if Norris finishes P7 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 22/24 - Las Vegas GP - Race by finishing P7 or better if Norris finishes P8 or worse.",
+      "Verstappen can guarantee P1 in Las Vegas (22) Race by finishing P7 or better if Norris finishes P8 or worse.",
     ),
   );
   // Blog: "11th or lower → same as 10th" (all zero-point finishes share same constraints)
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 22/24 - Las Vegas GP - Race regardless of finishing position if Norris finishes P11 or worse and Leclerc finishes P2 or worse.",
+      "Verstappen can guarantee P1 in Las Vegas (22) Race regardless of finishing position if Norris finishes P11 or worse and Leclerc finishes P2 or worse.",
     ),
   );
 });
@@ -721,7 +689,7 @@ test("2024-11-01 | What Verstappen needs to do to take his fourth title in Las V
 //   - If Pérez wins Sprint (8 pts): Verstappen clinches by finishing 6th or better in the Sprint
 //   - If Verstappen finishes outside the Sprint points AND Pérez wins: Verstappen needs 8th in the GP
 //
-// Round 23/24 - Qatar GP - Race race:
+// Qatar (23) Race race:
 //   - Verstappen clinches if he leaves Qatar with ≥146-pt lead over Pérez
 //   - Pérez can only stay mathematically alive by winning the GP and reducing the gap to 145 pts
 test("2023-09-12 | POINTS PERMUTATIONS: How Verstappen can become the 2023 F1 world champion in Qatar", () => {
@@ -734,14 +702,14 @@ test("2023-09-12 | POINTS PERMUTATIONS: How Verstappen can become the 2023 F1 wo
   // Verstappen can guarantee P1 (title) in Qatar Sprint if not outscored by Pérez by more than 4 points
   assert.ok(
     sprintTexts.includes(
-      "Verstappen can guarantee at least P1 in Round 17/22 - Qatar GP - Sprint if is not outscored by Pérez by more than 4 points.",
+      "Verstappen can guarantee at least P1 in Qatar (17) Sprint if is not outscored by Pérez by more than 4 points.",
     ),
   );
 
   // Pérez P1 ruled out at Sprint if he fails to outscore Verstappen by 5+ points
   assert.ok(
     sprintTexts.includes(
-      "P1 is no longer possible for Pérez in Round 17/22 - Qatar GP - Sprint if Pérez does not outscore Verstappen by more than 4 points.",
+      "P1 is no longer possible for Pérez in Qatar (17) Sprint if Pérez does not outscore Verstappen by more than 4 points.",
     ),
   );
 
@@ -767,7 +735,7 @@ test("2023-09-12 | POINTS PERMUTATIONS: How Verstappen can become the 2023 F1 wo
 //
 // Ferrari:
 //   - Must outscore Red Bull by 19 pts to stay alive, requiring a 1-2 finish with fastest lap
-test("2022-10-14 | POINTS PERMUTATIONS: How Red Bull can seal their first constructors' title since 2013 at the Round 19/22 - United States GP - Race", () => {
+test("2022-10-14 | POINTS PERMUTATIONS: How Red Bull can seal their first constructors' title since 2013 at the United States (19) Race", () => {
   const data = readCalculationResults(2022)!;
   const usIdx = data.races.findIndex((r) => r.round === 19 && r.type === "race");
   const texts = renderInsights(data.driverLockInsights[String(usIdx)], data);
@@ -779,14 +747,14 @@ test("2022-10-14 | POINTS PERMUTATIONS: How Red Bull can seal their first constr
   // Red Bull can guarantee constructors' P1 at Austin if not outscored by Ferrari by more than 17 pts
   assert.ok(
     constructorTexts.includes(
-      "Red Bull can guarantee at least P1 in Round 19/22 - United States GP - Race if is not outscored by Ferrari by more than 17 points.",
+      "Red Bull can guarantee at least P1 in United States (19) Race if is not outscored by Ferrari by more than 17 points.",
     ),
   );
 
   // Ferrari P1 eliminated if they don't outscore Red Bull by more than 17 points
   assert.ok(
     constructorTexts.includes(
-      "P1 is no longer possible for Ferrari in Round 19/22 - United States GP - Race if Ferrari does not outscore Red Bull by more than 17 points.",
+      "P1 is no longer possible for Ferrari in United States (19) Race if Ferrari does not outscore Red Bull by more than 17 points.",
     ),
   );
 
@@ -837,59 +805,59 @@ test("2022-10-03 | POINTS PERMUTATIONS: What Verstappen needs to do to win his s
   const texts = renderInsights(data.driverLockInsights[String(japanIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(japanIdx)], data);
 
-  // Verstappen can guarantee P1 (title) in Round 18/22 - Japanese GP - Race with conditions on Leclerc, Pérez, and Russell
+  // Verstappen can guarantee P1 (title) in Japanese (18) Race with conditions on Leclerc, Pérez, and Russell
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee at least P1 in Round 18/22 - Japanese GP - Race if outscores Leclerc by 9 points, Pérez by 7 points and is not outscored by Russell by more than 25 points.",
+      "Verstappen can guarantee at least P1 in Japanese (18) Race if outscores Leclerc by 9 points, Pérez by 7 points and is not outscored by Russell by more than 25 points.",
     ),
   );
 
   // Verstappen can guarantee at least P2 with Pérez and Russell conditions
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee at least P2 in Round 18/22 - Japanese GP - Race if outscores Pérez by 7 points and is not outscored by Russell by more than 25 points.",
+      "Verstappen can guarantee at least P2 in Japanese (18) Race if outscores Pérez by 7 points and is not outscored by Russell by more than 25 points.",
     ),
   );
 
   // Verstappen can guarantee at least P3 with only the Russell condition
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee at least P3 in Round 18/22 - Japanese GP - Race if is not outscored by Russell by more than 25 points.",
+      "Verstappen can guarantee at least P3 in Japanese (18) Race if is not outscored by Russell by more than 25 points.",
     ),
   );
 
   // Leclerc P1 ruled out at Japan if outscored by Verstappen by 9 points
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Leclerc in Round 18/22 - Japanese GP - Race if is outscored by Verstappen by 9 points.",
+      "P1 is no longer possible for Leclerc in Japanese (18) Race if is outscored by Verstappen by 9 points.",
     ),
   );
 
   // Pérez P1 ruled out at Japan if outscored by Verstappen by 7 points
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Pérez in Round 18/22 - Japanese GP - Race if is outscored by Verstappen by 7 points.",
+      "P1 is no longer possible for Pérez in Japanese (18) Race if is outscored by Verstappen by 7 points.",
     ),
   );
 
   // Russell P1 ruled out unless he outscores Verstappen by more than 25 points
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Russell in Round 18/22 - Japanese GP - Race if Russell does not outscore Verstappen by more than 25 points.",
+      "P1 is no longer possible for Russell in Japanese (18) Race if Russell does not outscore Verstappen by more than 25 points.",
     ),
   );
 
-  // Red Bull cannot clinch constructors' at Japan; earliest is after Round 20/22 - Mexico City GP - Race
+  // Red Bull cannot clinch constructors' at Japan; earliest is after Mexico City (20) Race
   assert.ok(
     constructorTexts.includes(
-      "Red Bull can first guarantee at least P1 after Round 20/22 - Mexico City GP - Race.",
+      "Red Bull can first guarantee at least P1 after Mexico City (20) Race.",
     ),
   );
 
   // Red Bull can guarantee constructors' P2 in Japan (locking out Mercedes) with a small margin condition
   assert.ok(
     constructorTexts.includes(
-      "Red Bull can guarantee at least P2 in Round 18/22 - Japanese GP - Race if is not outscored by Mercedes by more than 11 points.",
+      "Red Bull can guarantee at least P2 in Japanese (18) Race if is not outscored by Mercedes by more than 11 points.",
     ),
   );
 
@@ -897,35 +865,35 @@ test("2022-10-03 | POINTS PERMUTATIONS: What Verstappen needs to do to win his s
   // Blog "1st (no FL): Leclerc 3rd or lower (Pérez position irrelevant)" → P1 if Leclerc P3 or worse
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 18/22 - Japanese GP - Race by finishing P1 or better if Leclerc finishes P3 or worse.",
+      "Verstappen can guarantee P1 in Japanese (18) Race by finishing P1 or better if Leclerc finishes P3 or worse.",
     ),
   );
   // Blog "2nd (no FL): Leclerc 5th or lower AND Pérez 4th or lower" → P2 if Leclerc P6 and Pérez P5
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 18/22 - Japanese GP - Race by finishing P2 or better if Leclerc finishes P6 or worse and Pérez finishes P5 or worse.",
+      "Verstappen can guarantee P1 in Japanese (18) Race by finishing P2 or better if Leclerc finishes P6 or worse and Pérez finishes P5 or worse.",
     ),
   );
   // Blog "3rd (no FL): Leclerc 7th or lower AND Pérez 6th or lower"
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 18/22 - Japanese GP - Race by finishing P3 or better if Leclerc finishes P7 or worse and Pérez finishes P6 or worse.",
+      "Verstappen can guarantee P1 in Japanese (18) Race by finishing P3 or better if Leclerc finishes P7 or worse and Pérez finishes P6 or worse.",
     ),
   );
   // Blog "4th (no FL): Leclerc 8th or lower AND Pérez 7th or lower" → P4 if Leclerc P9 and Pérez P8
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 18/22 - Japanese GP - Race by finishing P4 or better if Leclerc finishes P9 or worse and Pérez finishes P8 or worse.",
+      "Verstappen can guarantee P1 in Japanese (18) Race by finishing P4 or better if Leclerc finishes P9 or worse and Pérez finishes P8 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 18/22 - Japanese GP - Race by finishing P5 or better if Leclerc finishes P10 or worse and Pérez finishes P9 or worse.",
+      "Verstappen can guarantee P1 in Japanese (18) Race by finishing P5 or better if Leclerc finishes P10 or worse and Pérez finishes P9 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 18/22 - Japanese GP - Race by finishing P6 or better if Leclerc finishes P11 or worse and Pérez finishes P10 or worse.",
+      "Verstappen can guarantee P1 in Japanese (18) Race by finishing P6 or better if Leclerc finishes P11 or worse and Pérez finishes P10 or worse.",
     ),
   );
   // TODO: The blog includes fastest-lap variants (e.g. "1st + FL → title regardless",
@@ -958,7 +926,7 @@ test("2022-10-03 | POINTS PERMUTATIONS: What Verstappen needs to do to win his s
 //   - Title becomes impossible at Singapore unless he outscores Verstappen by more than 9 points
 //
 // Constructors' championship:
-//   - Red Bull cannot clinch the constructors' title at Singapore; earliest opportunity is after Round 19/22 - United States GP - Race
+//   - Red Bull cannot clinch the constructors' title at Singapore; earliest opportunity is after United States (19) Race
 //   - Red Bull would need a 191-pt lead after Japan; currently 139 pts up with only 88 pts available
 //     across Singapore and Japan combined
 test("2022-09-15 | POINTS PERMUTATIONS: What Verstappen needs to do to secure the F1 title in Singapore", () => {
@@ -967,45 +935,45 @@ test("2022-09-15 | POINTS PERMUTATIONS: What Verstappen needs to do to secure th
   const texts = renderInsights(data.driverLockInsights[String(singaporeIdx)], data);
   const constructorTexts = renderInsights(data.constructorLockInsights[String(singaporeIdx)], data);
 
-  // Verstappen can guarantee P1 (title) in Round 17/22 - Singapore GP - Race with conditions on all top rivals
+  // Verstappen can guarantee P1 (title) in Singapore (17) Race with conditions on all top rivals
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee at least P1 in Round 17/22 - Singapore GP - Race if outscores Leclerc by 23 points, Pérez by 14 points, Russell by 7 points and is not outscored by Sainz by more than 9 points.",
+      "Verstappen can guarantee at least P1 in Singapore (17) Race if outscores Leclerc by 23 points, Pérez by 14 points, Russell by 7 points and is not outscored by Sainz by more than 9 points.",
     ),
   );
 
   // Leclerc P1 ruled out at Singapore if outscored by Verstappen by 23 points
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Leclerc in Round 17/22 - Singapore GP - Race if is outscored by Verstappen by 23 points.",
+      "P1 is no longer possible for Leclerc in Singapore (17) Race if is outscored by Verstappen by 23 points.",
     ),
   );
 
   // Pérez P1 ruled out at Singapore if outscored by Verstappen by 14 points
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Pérez in Round 17/22 - Singapore GP - Race if is outscored by Verstappen by 14 points.",
+      "P1 is no longer possible for Pérez in Singapore (17) Race if is outscored by Verstappen by 14 points.",
     ),
   );
 
   // Russell P1 ruled out if outscored by Verstappen by 7 points
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Russell in Round 17/22 - Singapore GP - Race if is outscored by Verstappen by 7 points.",
+      "P1 is no longer possible for Russell in Singapore (17) Race if is outscored by Verstappen by 7 points.",
     ),
   );
 
   // Sainz P1 ruled out unless he outscores Verstappen by more than 9 points
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Sainz in Round 17/22 - Singapore GP - Race if Sainz does not outscore Verstappen by more than 9 points.",
+      "P1 is no longer possible for Sainz in Singapore (17) Race if Sainz does not outscore Verstappen by more than 9 points.",
     ),
   );
 
-  // Red Bull cannot clinch constructors' at Singapore; earliest is after Round 19/22 - United States GP - Race
+  // Red Bull cannot clinch constructors' at Singapore; earliest is after United States (19) Race
   assert.ok(
     constructorTexts.includes(
-      "Red Bull can first guarantee at least P1 after Round 19/22 - United States GP - Race.",
+      "Red Bull can first guarantee at least P1 after United States (19) Race.",
     ),
   );
 
@@ -1013,7 +981,7 @@ test("2022-09-15 | POINTS PERMUTATIONS: What Verstappen needs to do to secure th
   // Our system generates the no-FL variant threshold (Pérez P5, between the two blog values):
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 17/22 - Singapore GP - Race by finishing P1 or better if Leclerc finishes P9 or worse and Pérez finishes P5 or worse.",
+      "Verstappen can guarantee P1 in Singapore (17) Race by finishing P1 or better if Leclerc finishes P9 or worse and Pérez finishes P5 or worse.",
     ),
   );
   // TODO: The blog distinguishes fastest-lap variants ("Pérez 4th or lower no FL" vs "5th or lower
@@ -1044,24 +1012,24 @@ test("2021-12-11 | What To Watch For in the Abu Dhabi GP: The championship decid
   // Both drivers need only 1 point margin to lock in P1 (tied on points entering the race)
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee at least P1 in Round 22/22 - Abu Dhabi GP - Race if outscores Hamilton by 1 points.",
+      "Verstappen can guarantee at least P1 in Abu Dhabi (22) Race if outscores Hamilton by 1 points.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee at least P1 in Round 22/22 - Abu Dhabi GP - Race if outscores Verstappen by 1 points.",
+      "Hamilton can guarantee at least P1 in Abu Dhabi (22) Race if outscores Verstappen by 1 points.",
     ),
   );
 
   // Each driver's P1 is eliminated if outscored by the other by 1 point
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Verstappen in Round 22/22 - Abu Dhabi GP - Race if is outscored by Hamilton by 1 points.",
+      "P1 is no longer possible for Verstappen in Abu Dhabi (22) Race if is outscored by Hamilton by 1 points.",
     ),
   );
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Hamilton in Round 22/22 - Abu Dhabi GP - Race if is outscored by Verstappen by 1 points.",
+      "P1 is no longer possible for Hamilton in Abu Dhabi (22) Race if is outscored by Verstappen by 1 points.",
     ),
   );
 
@@ -1072,14 +1040,14 @@ test("2021-12-11 | What To Watch For in the Abu Dhabi GP: The championship decid
   // Red Bull constructors: need to outscore Mercedes by 29 to win (blog says 28)
   assert.ok(
     constructorTexts.includes(
-      "Red Bull can guarantee at least P1 in Round 22/22 - Abu Dhabi GP - Race if outscores Mercedes by 29 points.",
+      "Red Bull can guarantee at least P1 in Abu Dhabi (22) Race if outscores Mercedes by 29 points.",
     ),
   );
 
   // Mercedes constructors: guaranteed P1 if not outscored by Red Bull by more than 27
   assert.ok(
     constructorTexts.includes(
-      "Mercedes can guarantee at least P1 in Round 22/22 - Abu Dhabi GP - Race if is not outscored by Red Bull by more than 27 points.",
+      "Mercedes can guarantee at least P1 in Abu Dhabi (22) Race if is not outscored by Red Bull by more than 27 points.",
     ),
   );
 
@@ -1087,53 +1055,53 @@ test("2021-12-11 | What To Watch For in the Abu Dhabi GP: The championship decid
   // Hamilton wins → champion regardless (Verstappen can score at most 18 pts from P2)
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee P1 in Round 22/22 - Abu Dhabi GP - Race by finishing P1 or better regardless of rivals.",
+      "Hamilton can guarantee P1 in Abu Dhabi (22) Race by finishing P1 or better regardless of rivals.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee P1 in Round 22/22 - Abu Dhabi GP - Race by finishing P2 or better if Verstappen finishes P3 or worse.",
+      "Hamilton can guarantee P1 in Abu Dhabi (22) Race by finishing P2 or better if Verstappen finishes P3 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee P1 in Round 22/22 - Abu Dhabi GP - Race by finishing P3 or better if Verstappen finishes P4 or worse.",
+      "Hamilton can guarantee P1 in Abu Dhabi (22) Race by finishing P3 or better if Verstappen finishes P4 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee P1 in Round 22/22 - Abu Dhabi GP - Race by finishing P4 or better if Verstappen finishes P5 or worse.",
+      "Hamilton can guarantee P1 in Abu Dhabi (22) Race by finishing P4 or better if Verstappen finishes P5 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee P1 in Round 22/22 - Abu Dhabi GP - Race by finishing P5 or better if Verstappen finishes P6 or worse.",
+      "Hamilton can guarantee P1 in Abu Dhabi (22) Race by finishing P5 or better if Verstappen finishes P6 or worse.",
     ),
   );
   // Verstappen wins → champion regardless
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 22/22 - Abu Dhabi GP - Race by finishing P1 or better regardless of rivals.",
+      "Verstappen can guarantee P1 in Abu Dhabi (22) Race by finishing P1 or better regardless of rivals.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 22/22 - Abu Dhabi GP - Race by finishing P2 or better if Hamilton finishes P3 or worse.",
+      "Verstappen can guarantee P1 in Abu Dhabi (22) Race by finishing P2 or better if Hamilton finishes P3 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 22/22 - Abu Dhabi GP - Race by finishing P3 or better if Hamilton finishes P4 or worse.",
+      "Verstappen can guarantee P1 in Abu Dhabi (22) Race by finishing P3 or better if Hamilton finishes P4 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 22/22 - Abu Dhabi GP - Race by finishing P4 or better if Hamilton finishes P5 or worse.",
+      "Verstappen can guarantee P1 in Abu Dhabi (22) Race by finishing P4 or better if Hamilton finishes P5 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 22/22 - Abu Dhabi GP - Race by finishing P5 or better if Hamilton finishes P6 or worse.",
+      "Verstappen can guarantee P1 in Abu Dhabi (22) Race by finishing P5 or better if Hamilton finishes P6 or worse.",
     ),
   );
   // TODO: The blog describes edge-case tie scenarios (both DNF, or Hamilton 9th + Verstappen 10th
@@ -1161,35 +1129,31 @@ test("2021-11-25 | What does Verstappen need to do to win the title over Hamilto
   // Blog's top scenario: Verstappen wins (25) + Hamilton 7th or lower (≤6 pts) = 19+ margin
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee at least P1 in Round 21/22 - Saudi Arabian GP - Race if outscores Hamilton by 19 points.",
+      "Verstappen can guarantee at least P1 in Saudi Arabian (21) Race if outscores Hamilton by 19 points.",
     ),
   );
 
   // Hamilton P1 eliminated if outscored by Verstappen by 19 points
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Hamilton in Round 21/22 - Saudi Arabian GP - Race if is outscored by Verstappen by 19 points.",
+      "P1 is no longer possible for Hamilton in Saudi Arabian (21) Race if is outscored by Verstappen by 19 points.",
     ),
   );
 
   // Hamilton cannot clinch at Saudi; earliest opportunity is Abu Dhabi
-  assert.ok(
-    texts.includes(
-      "Hamilton can first guarantee at least P1 after Round 22/22 - Abu Dhabi GP - Race.",
-    ),
-  );
+  assert.ok(texts.includes("Hamilton can first guarantee at least P1 after Abu Dhabi (22) Race."));
 
   // Position-based clinch table (without fastest-lap distinction):
   // Blog "1st (no FL): Hamilton 7th or lower"
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 21/22 - Saudi Arabian GP - Race by finishing P1 or better if Hamilton finishes P7 or worse.",
+      "Verstappen can guarantee P1 in Saudi Arabian (21) Race by finishing P1 or better if Hamilton finishes P7 or worse.",
     ),
   );
   // Blog "2nd (no FL): Hamilton outside points (11th or lower)"
   assert.ok(
     texts.includes(
-      "Verstappen can guarantee P1 in Round 21/22 - Saudi Arabian GP - Race by finishing P2 or better if Hamilton finishes P11 or worse.",
+      "Verstappen can guarantee P1 in Saudi Arabian (21) Race by finishing P2 or better if Hamilton finishes P11 or worse.",
     ),
   );
   // TODO: The blog provides fastest-lap variants (e.g., "1st + FL → Hamilton 6th or lower",
@@ -1218,14 +1182,14 @@ test("2018-10-25 | TITLE PERMUTATIONS: How Hamilton - and Mercedes - can be crow
   // Hamilton clinches P1 (title) if Vettel doesn't outscore him by more than 19 points
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee at least P1 in Round 19/21 - Mexican GP - Race if is not outscored by Vettel by more than 19 points.",
+      "Hamilton can guarantee at least P1 in Mexican (19) Race if is not outscored by Vettel by more than 19 points.",
     ),
   );
 
   // Vettel P1 eliminated unless he outscores Hamilton by more than 19 points
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Vettel in Round 19/21 - Mexican GP - Race if Vettel does not outscore Hamilton by more than 19 points.",
+      "P1 is no longer possible for Vettel in Mexican (19) Race if Vettel does not outscore Hamilton by more than 19 points.",
     ),
   );
 
@@ -1233,14 +1197,14 @@ test("2018-10-25 | TITLE PERMUTATIONS: How Hamilton - and Mercedes - can be crow
   // Blog says "outscore Ferrari by 20 points" — system requires 21 (strict ≥ threshold)
   assert.ok(
     constructorTexts.includes(
-      "Mercedes can guarantee at least P1 in Round 19/21 - Mexican GP - Race if outscores Ferrari by 21 points.",
+      "Mercedes can guarantee at least P1 in Mexican (19) Race if outscores Ferrari by 21 points.",
     ),
   );
 
   // Ferrari P1 eliminated if outscored by Mercedes by 21 points
   assert.ok(
     constructorTexts.includes(
-      "P1 is no longer possible for Ferrari in Round 19/21 - Mexican GP - Race if is outscored by Mercedes by 21 points.",
+      "P1 is no longer possible for Ferrari in Mexican (19) Race if is outscored by Mercedes by 21 points.",
     ),
   );
 
@@ -1251,13 +1215,13 @@ test("2018-10-25 | TITLE PERMUTATIONS: How Hamilton - and Mercedes - can be crow
   // Hamilton finishes P7 or better → clinches title regardless of Vettel
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee P1 in Round 19/21 - Mexican GP - Race by finishing P7 or better regardless of rivals.",
+      "Hamilton can guarantee P1 in Mexican (19) Race by finishing P7 or better regardless of rivals.",
     ),
   );
   // Hamilton clinches regardless of finishing position if Vettel doesn't win (P2 or worse)
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee P1 in Round 19/21 - Mexican GP - Race regardless of finishing position if Vettel finishes P2 or worse.",
+      "Hamilton can guarantee P1 in Mexican (19) Race regardless of finishing position if Vettel finishes P2 or worse.",
     ),
   );
 });
@@ -1282,21 +1246,21 @@ test("2018-10-17 | THE TITLE PERMUTATIONS: What Hamilton needs to do to be crown
   // Blog says "eight points" — system produces 9 (the strict ≥ threshold: 67 + 9 = 76 > 75)
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee at least P1 in Round 18/21 - United States GP - Race if outscores Vettel by 9 points.",
+      "Hamilton can guarantee at least P1 in United States (18) Race if outscores Vettel by 9 points.",
     ),
   );
 
   // Vettel P1 eliminated if outscored by Hamilton by 9 points
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Vettel in Round 18/21 - United States GP - Race if is outscored by Hamilton by 9 points.",
+      "P1 is no longer possible for Vettel in United States (18) Race if is outscored by Hamilton by 9 points.",
     ),
   );
 
-  // Mercedes cannot clinch constructors' at Austin; earliest is Round 20/21 - Brazilian GP - Race
+  // Mercedes cannot clinch constructors' at Austin; earliest is Brazilian (20) Race
   assert.ok(
     constructorTexts.includes(
-      "Mercedes can first guarantee at least P1 after Round 20/21 - Brazilian GP - Race.",
+      "Mercedes can first guarantee at least P1 after Brazilian (20) Race.",
     ),
   );
 
@@ -1330,28 +1294,28 @@ test("2016-10-26 | The 2016 title permutations for Sunday in Abu Dhabi", () => {
   // (12-pt lead; tie on points → Rosberg wins on wins count; Hamilton needs 13+ to flip it)
   assert.ok(
     texts.includes(
-      "Rosberg can guarantee at least P1 in Round 21/21 - Abu Dhabi GP - Race if is not outscored by Hamilton by more than 11 points.",
+      "Rosberg can guarantee at least P1 in Abu Dhabi (21) Race if is not outscored by Hamilton by more than 11 points.",
     ),
   );
 
   // Rosberg P1 eliminated only if Hamilton outscores by 13+
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Rosberg in Round 21/21 - Abu Dhabi GP - Race if is outscored by Hamilton by 13 points.",
+      "P1 is no longer possible for Rosberg in Abu Dhabi (21) Race if is outscored by Hamilton by 13 points.",
     ),
   );
 
   // Hamilton can guarantee P1 (title) only by outscoring Rosberg by 13+
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee at least P1 in Round 21/21 - Abu Dhabi GP - Race if outscores Rosberg by 13 points.",
+      "Hamilton can guarantee at least P1 in Abu Dhabi (21) Race if outscores Rosberg by 13 points.",
     ),
   );
 
   // Hamilton P1 eliminated if he doesn't outscore Rosberg by more than 11
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Hamilton in Round 21/21 - Abu Dhabi GP - Race if Hamilton does not outscore Rosberg by more than 11 points.",
+      "P1 is no longer possible for Hamilton in Abu Dhabi (21) Race if Hamilton does not outscore Rosberg by more than 11 points.",
     ),
   );
 
@@ -1367,41 +1331,41 @@ test("2016-10-26 | The 2016 title permutations for Sunday in Abu Dhabi", () => {
   // Blog: "Finishes P3 or better → champion regardless of Hamilton"
   assert.ok(
     texts.includes(
-      "Rosberg can guarantee P1 in Round 21/21 - Abu Dhabi GP - Race by finishing P3 or better regardless of rivals.",
+      "Rosberg can guarantee P1 in Abu Dhabi (21) Race by finishing P3 or better regardless of rivals.",
     ),
   );
   // Blog: "Finishes P6 while Hamilton doesn't win"
   assert.ok(
     texts.includes(
-      "Rosberg can guarantee P1 in Round 21/21 - Abu Dhabi GP - Race by finishing P6 or better if Hamilton finishes P2 or worse.",
+      "Rosberg can guarantee P1 in Abu Dhabi (21) Race by finishing P6 or better if Hamilton finishes P2 or worse.",
     ),
   );
   // Blog: "Finishes P8 while Hamilton finishes P4 or lower"
   assert.ok(
     texts.includes(
-      "Rosberg can guarantee P1 in Round 21/21 - Abu Dhabi GP - Race by finishing P8 or better if Hamilton finishes P3 or worse.",
+      "Rosberg can guarantee P1 in Abu Dhabi (21) Race by finishing P8 or better if Hamilton finishes P3 or worse.",
     ),
   );
   // Any Rosberg result clinches if Hamilton finishes P4 or worse
   assert.ok(
     texts.includes(
-      "Rosberg can guarantee P1 in Round 21/21 - Abu Dhabi GP - Race regardless of finishing position if Hamilton finishes P4 or worse.",
+      "Rosberg can guarantee P1 in Abu Dhabi (21) Race regardless of finishing position if Hamilton finishes P4 or worse.",
     ),
   );
   // Blog: "Hamilton wins AND Rosberg finishes P4 or lower → Hamilton wins title"
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee P1 in Round 21/21 - Abu Dhabi GP - Race by finishing P1 or better if Rosberg finishes P4 or worse.",
+      "Hamilton can guarantee P1 in Abu Dhabi (21) Race by finishing P1 or better if Rosberg finishes P4 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee P1 in Round 21/21 - Abu Dhabi GP - Race by finishing P2 or better if Rosberg finishes P7 or worse.",
+      "Hamilton can guarantee P1 in Abu Dhabi (21) Race by finishing P2 or better if Rosberg finishes P7 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee P1 in Round 21/21 - Abu Dhabi GP - Race by finishing P3 or better if Rosberg finishes P9 or worse.",
+      "Hamilton can guarantee P1 in Abu Dhabi (21) Race by finishing P3 or better if Rosberg finishes P9 or worse.",
     ),
   );
 });
@@ -1426,28 +1390,28 @@ test("2015-10-25 | Title permutations - how Hamilton can wrap it up in Austin", 
   // Blog says "nine points over Vettel" — system produces 10 (the strict ≥ threshold)
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee at least P1 in Round 16/19 - United States GP - Race if outscores Vettel by 10 points, Rosberg by 3 points.",
+      "Hamilton can guarantee at least P1 in United States (16) Race if outscores Vettel by 10 points, Rosberg by 3 points.",
     ),
   );
 
   // Hamilton can guarantee P2 with only the Rosberg condition
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee at least P2 in Round 16/19 - United States GP - Race if outscores Rosberg by 3 points.",
+      "Hamilton can guarantee at least P2 in United States (16) Race if outscores Rosberg by 3 points.",
     ),
   );
 
   // Vettel is eliminated from P1 at Austin if Hamilton outscores him by enough
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Vettel in Round 16/19 - United States GP - Race if is outscored by Hamilton by 10 points.",
+      "P1 is no longer possible for Vettel in United States (16) Race if is outscored by Hamilton by 10 points.",
     ),
   );
 
   // Rosberg is eliminated from P1 at Austin if Hamilton outscores him enough
   assert.ok(
     texts.includes(
-      "P1 is no longer possible for Rosberg in Round 16/19 - United States GP - Race if is outscored by Hamilton by 3 points.",
+      "P1 is no longer possible for Rosberg in United States (16) Race if is outscored by Hamilton by 3 points.",
     ),
   );
 
@@ -1458,18 +1422,18 @@ test("2015-10-25 | Title permutations - how Hamilton can wrap it up in Austin", 
   // Hamilton wins → clinches if Vettel finishes P3 or worse (25-15=10 pts > 9 required)
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee P1 in Round 16/19 - United States GP - Race by finishing P1 or better if Vettel finishes P3 or worse.",
+      "Hamilton can guarantee P1 in United States (16) Race by finishing P1 or better if Vettel finishes P3 or worse.",
     ),
   );
   // Hamilton P2 → clinches if Vettel well off points and Rosberg not close
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee P1 in Round 16/19 - United States GP - Race by finishing P2 or better if Vettel finishes P6 or worse and Rosberg finishes P3 or worse.",
+      "Hamilton can guarantee P1 in United States (16) Race by finishing P2 or better if Vettel finishes P6 or worse and Rosberg finishes P3 or worse.",
     ),
   );
   assert.ok(
     texts.includes(
-      "Hamilton can guarantee P1 in Round 16/19 - United States GP - Race by finishing P3 or better if Vettel finishes P8 or worse and Rosberg finishes P4 or worse.",
+      "Hamilton can guarantee P1 in United States (16) Race by finishing P3 or better if Vettel finishes P8 or worse and Rosberg finishes P4 or worse.",
     ),
   );
   // TODO: The blog says "outscore Vettel by nine points" which maps to Hamilton winning and Vettel

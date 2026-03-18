@@ -3,14 +3,12 @@ import type { LockInsight, TimelineRace } from "./calculate.ts";
 export function renderInsightTexts(
   insight: LockInsight,
   races: TimelineRace[],
-  entitiesById: Map<string, { name: string; shortLabel?: string }>,
+  entitiesById: Map<string, { name: string; shortLabel: string }>,
 ): string[] {
   const entity = entitiesById.get(insight.entityId);
-  const entityName = entity?.shortLabel ?? entity?.name ?? insight.entityId;
-  const getOpponentName = (opponentId: string) => {
-    const opp = entitiesById.get(opponentId);
-    return opp?.shortLabel ?? opp?.name ?? opponentId;
-  };
+  const entityName = entity?.shortLabel ?? insight.entityId;
+  const getOpponentName = (opponentId: string) =>
+    entitiesById.get(opponentId)?.shortLabel ?? opponentId;
   const positionLabel = `P${insight.position}`;
   const formatOutscoreCap = (opponentId: string, points: number) => {
     const opponentName = getOpponentName(opponentId);
@@ -26,19 +24,19 @@ export function renderInsightTexts(
   if (insight.type === "can_be_locked_in_later") {
     const race = races[insight.earliestRaceNum - 1];
     return [
-      `${entityName} can first guarantee at least ${positionLabel} after ${race?.fullLabel ?? `race ${insight.earliestRaceNum}`}.`,
+      `${entityName} can first guarantee at least ${positionLabel} after ${race?.shortLabel ?? `race ${insight.earliestRaceNum}`}.`,
     ];
   }
 
   if (insight.type === "can_be_ruled_out_later") {
     const race = races[insight.earliestRaceNum - 1];
     return [
-      `${entityName} could first lose the ability to finish ${positionLabel} after ${race?.fullLabel ?? `race ${insight.earliestRaceNum}`}.`,
+      `${entityName} could first lose the ability to finish ${positionLabel} after ${race?.shortLabel ?? `race ${insight.earliestRaceNum}`}.`,
     ];
   }
 
   const race = races[insight.nextRaceNum - 1];
-  const raceLabel = race?.fullLabel ?? "the next event";
+  const raceLabel = race?.shortLabel ?? "the next event";
   const details: string[] = [];
 
   if (insight.type === "can_be_locked_in_next_race") {

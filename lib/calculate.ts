@@ -136,7 +136,7 @@ export interface EntitySeries {
   id: string;
   name: string;
   /** Short display label — last name for drivers, same as name for constructors */
-  shortLabel?: string;
+  shortLabel: string;
   color: string;
   /** cumulativePoints[i] = points after race i+1 (0-indexed array); null if race not yet run */
   cumulativePoints: (number | null)[];
@@ -969,6 +969,7 @@ export function buildSeasonChartData(year: number, upToRaceNum?: number): Season
   const constructors: EntitySeries[] = constructorIds.map((id, idx) => ({
     id,
     name: constructorNames.get(id)!,
+    shortLabel: constructorNames.get(id)!,
     color: teamColor(id, idx),
     cumulativePoints: constructorSnaps.map((snap) => snap?.get(id) ?? null),
     currentPos: constructorSnaps.map((snap) => computePos(snap, id)),

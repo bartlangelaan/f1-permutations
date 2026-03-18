@@ -305,7 +305,7 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
 
   const lastRace = races[lastRaceNum - 1];
   const entitiesById = useMemo(() => {
-    const map = new Map<string, { name: string; shortLabel?: string }>();
+    const map = new Map<string, { name: string; shortLabel: string }>();
     for (const entity of allEntities) {
       map.set(entity.id, { name: entity.name, shortLabel: entity.shortLabel });
     }
