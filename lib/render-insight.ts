@@ -3,12 +3,15 @@ import type { LockInsight, TimelineRace } from "./calculate.ts";
 export function renderInsightTexts(
   insight: LockInsight,
   races: TimelineRace[],
-  entitiesById: Map<string, { name: string }>,
+  entitiesById: Map<string, { name: string; shortLabel: string }>,
 ): string[] {
-  const entityName = entitiesById.get(insight.entityId)?.name ?? insight.entityId;
+  const entity = entitiesById.get(insight.entityId);
+  const entityName = entity?.shortLabel ?? insight.entityId;
+  const getOpponentName = (opponentId: string) =>
+    entitiesById.get(opponentId)?.shortLabel ?? opponentId;
   const positionLabel = `P${insight.position}`;
   const formatOutscoreCap = (opponentId: string, points: number) => {
-    const opponentName = entitiesById.get(opponentId)?.name ?? opponentId;
+    const opponentName = getOpponentName(opponentId);
     return points === 0
       ? `${entityName} does not outscore ${opponentName}`
       : `${entityName} does not outscore ${opponentName} by more than ${points} points`;
@@ -21,19 +24,19 @@ export function renderInsightTexts(
   if (insight.type === "can_be_locked_in_later") {
     const race = races[insight.earliestRaceNum - 1];
     return [
-      `${entityName} can first guarantee at least ${positionLabel} after ${race?.fullLabel ?? `race ${insight.earliestRaceNum}`}.`,
+      `${entityName} can first guarantee at least ${positionLabel} after ${race?.shortLabel ?? `race ${insight.earliestRaceNum}`}.`,
     ];
   }
 
   if (insight.type === "can_be_ruled_out_later") {
     const race = races[insight.earliestRaceNum - 1];
     return [
-      `${entityName} could first lose the ability to finish ${positionLabel} after ${race?.fullLabel ?? `race ${insight.earliestRaceNum}`}.`,
+      `${entityName} could first lose the ability to finish ${positionLabel} after ${race?.shortLabel ?? `race ${insight.earliestRaceNum}`}.`,
     ];
   }
 
   const race = races[insight.nextRaceNum - 1];
-  const raceLabel = race?.fullLabel ?? "the next event";
+  const raceLabel = race?.shortLabel ?? "the next event";
   const details: string[] = [];
 
   if (insight.type === "can_be_locked_in_next_race") {
@@ -43,19 +46,14 @@ export function renderInsightTexts(
     if (insight.mustOutscoreBy.length) {
       details.push(
         `outscores ${insight.mustOutscoreBy
-          .map(
-            (c) => `${entitiesById.get(c.opponentId)?.name ?? c.opponentId} by ${c.points} points`,
-          )
+          .map((c) => `${getOpponentName(c.opponentId)} by ${c.points} points`)
           .join(", ")}`,
       );
     }
     if (insight.cannotBeOutscoredByMoreThan.length) {
       details.push(
         `is not outscored by ${insight.cannotBeOutscoredByMoreThan
-          .map(
-            (c) =>
-              `${entitiesById.get(c.opponentId)?.name ?? c.opponentId} by more than ${c.points} points`,
-          )
+          .map((c) => `${getOpponentName(c.opponentId)} by more than ${c.points} points`)
           .join(", ")}`,
       );
     }
@@ -82,10 +80,7 @@ export function renderInsightTexts(
           );
         } else {
           const rivalText = combo.rivalConstraints
-            .map(
-              (r) =>
-                `${entitiesById.get(r.opponentId)?.name ?? r.opponentId} finishes P${r.maxRaceFinishPos} or worse`,
-            )
+            .map((r) => `${getOpponentName(r.opponentId)} finishes P${r.maxRaceFinishPos} or worse`)
             .join(" and ");
           sentences.push(
             `${entityName} can guarantee ${positionLabel} in ${raceLabel} ${byLine} if ${rivalText}.`,
@@ -100,7 +95,7 @@ export function renderInsightTexts(
   if (insight.mustBeOutscoredBy.length) {
     details.push(
       `is outscored by ${insight.mustBeOutscoredBy
-        .map((c) => `${entitiesById.get(c.opponentId)?.name ?? c.opponentId} by ${c.points} points`)
+        .map((c) => `${getOpponentName(c.opponentId)} by ${c.points} points`)
         .join(", ")}`,
     );
   }
