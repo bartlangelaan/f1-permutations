@@ -300,14 +300,14 @@ export function SeasonChart({ data }: { data: CalculatedChartData }) {
     if (index === 0) return label;
     const race = races[index - 1];
     if (!race) return label;
-    return race.type === "sprint" ? "·" : label;
+    return race.label;
   }
 
   const lastRace = races[lastRaceNum - 1];
   const entitiesById = useMemo(() => {
-    const map = new Map<string, EntitySeries>();
+    const map = new Map<string, { name: string; shortLabel: string }>();
     for (const entity of allEntities) {
-      map.set(entity.id, entity);
+      map.set(entity.id, { name: entity.name, shortLabel: entity.shortLabel });
     }
     return map;
   }, [allEntities]);
