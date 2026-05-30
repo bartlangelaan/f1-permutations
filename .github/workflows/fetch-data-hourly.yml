@@ -32,6 +32,9 @@ jobs:
       - name: Fetch latest data
         run: pnpm fetch-data
 
+      - name: Recalculate permutations
+        run: pnpm calculate
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
